@@ -1,0 +1,30 @@
+export const colors = {
+  background: "#F7F9FC",
+  surface: "#FFFFFF",
+  surfaceMuted: "#EEF3F8",
+  ink: "#111827",
+  inkSoft: "#374151",
+  muted: "#677184",
+  line: "#D8E2EF",
+  lineStrong: "#AFC0D6",
+  accent: "#2F80ED",
+  accentSoft: "#DCEBFF",
+  teal: "#00A88E",
+  tealSoft: "#DDF7F2",
+  gold: "#D9A521",
+  goldSoft: "#FFF3C4",
+  red: "#D84A4A",
+  redSoft: "#FFE3E3",
+  violet: "#7057D2",
+  violetSoft: "#E9E5FF",
+  code: "#151B2B",
+  codeSoft: "#242B3D",
+  white: "#FFFFFF",
+};
+
+export const gradients = {
+  page: `linear-gradient(135deg, ${colors.background} 0%, #FFFFFF 48%, #EEF7F5 100%)`,
+  aurora: `linear-gradient(135deg, ${colors.accentSoft} 0%, ${colors.tealSoft} 52%, ${colors.violetSoft} 100%)`,
+  accent: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.teal} 100%)`,
+  dark: `linear-gradient(135deg, ${colors.code} 0%, #202944 100%)`,
+};

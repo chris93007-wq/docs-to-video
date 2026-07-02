@@ -1,0 +1,22 @@
+{
+  "kind": "SemanticDocument",
+  "title": "Release Gate Compiler",
+  "conceptNames": [
+    "Release Gate Compiler",
+    "Compiler Workflow",
+    "Manual Releases Are Fragile",
+    "Approve",
+    "Build",
+    "Collect",
+    "Engineers",
+    "Jira"
+  ],
+  "workflowNames": [
+    "Manual Releases Are Fragile",
+    "Compiler Workflow"
+  ],
+  "architecture": [
+    "Diagram: mermaid"
+  ],
+  "keyMessageCount": 3
+}

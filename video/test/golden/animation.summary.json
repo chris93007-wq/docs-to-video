@@ -1,0 +1,11 @@
+{
+  "kind": "AnimationPlan",
+  "cameras": [
+    "steady-focus",
+    "pan-across-parallel-lanes",
+    "slow-push-in",
+    "track-left-to-right",
+    "steady-focus",
+    "pan-to-final-state"
+  ]
+}

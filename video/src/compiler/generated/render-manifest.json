@@ -1,0 +1,88 @@
+{
+  "kind": "RenderManifest",
+  "version": "1.0.0",
+  "renderer": "remotion",
+  "sourceHash": "default",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalDurationSeconds": 18,
+  "scenes": [
+    {
+      "id": "compiler",
+      "title": "Documentation Becomes Source",
+      "purpose": "Compiler overview",
+      "teachingPoint": "The compiler turns structured documentation into inspectable video artifacts.",
+      "startSeconds": 0,
+      "durationSeconds": 18,
+      "visual": {
+        "sceneId": "compiler",
+        "metaphor": "A pipeline from document AST to rendered video",
+        "visualType": "pipeline",
+        "layout": "horizontal rail with typed artifacts",
+        "emphasis": [
+          "Document AST",
+          "Story plan",
+          "Render manifest"
+        ],
+        "avoid": [
+          "free-form slides"
+        ]
+      },
+      "assets": [
+        {
+          "identifier": "compiler-pipeline",
+          "sceneId": "compiler",
+          "type": "diagram",
+          "purpose": "Show the compiler pipeline",
+          "generationMethod": "deterministic-vector",
+          "reuseKey": "pipeline"
+        }
+      ],
+      "animation": {
+        "sceneId": "compiler",
+        "camera": "track-left-to-right",
+        "layout": "horizontal rail with typed artifacts",
+        "transition": "fade-in-from-source",
+        "focus": [
+          "Document AST",
+          "Story plan",
+          "Render manifest"
+        ],
+        "elements": [
+          {
+            "asset": "compiler-pipeline",
+            "animation": "draw",
+            "startSeconds": 0,
+            "durationSeconds": 12
+          }
+        ]
+      },
+      "narration": {
+        "sceneId": "compiler",
+        "startSeconds": 0,
+        "endSeconds": 18,
+        "text": "Documentation is now treated as source code. The compiler parses structure, analyzes meaning, plans the story, directs visuals, prepares assets, writes narration, and hands renderer-neutral animation intent to Remotion."
+      }
+    }
+  ],
+  "narration": {
+    "kind": "Narration",
+    "version": "1.0.0",
+    "sourceHash": "default",
+    "targetWordCount": [
+      220,
+      300
+    ],
+    "wordCount": 29,
+    "text": "Documentation is now treated as source code. The compiler parses structure, analyzes meaning, plans the story, directs visuals, prepares assets, writes narration, and hands renderer-neutral animation intent to Remotion.",
+    "segments": [
+      {
+        "sceneId": "compiler",
+        "startSeconds": 0,
+        "endSeconds": 18,
+        "text": "Documentation is now treated as source code. The compiler parses structure, analyzes meaning, plans the story, directs visuals, prepares assets, writes narration, and hands renderer-neutral animation intent to Remotion."
+      }
+    ]
+  }
+}

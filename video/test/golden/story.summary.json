@@ -1,0 +1,20 @@
+{
+  "kind": "StoryPlan",
+  "narrativeArc": [
+    "Problem",
+    "Pain",
+    "Solution",
+    "Workflow",
+    "Benefits",
+    "Call to action"
+  ],
+  "totalDurationSeconds": 95,
+  "sceneIds": [
+    "problem",
+    "pain",
+    "solution",
+    "workflow",
+    "benefits",
+    "call-to-action"
+  ]
+}

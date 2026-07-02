@@ -1,0 +1,25 @@
+{
+  "name": "sdd-orchestrator-explainer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "video": "node scripts/video.mjs",
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepare-audio": "node scripts/prepare-audio.mjs",
+    "studio": "node scripts/prepare-audio.mjs && remotion studio src/index.ts",
+    "render": "node scripts/prepare-audio.mjs && remotion render src/index.ts SddOrchestratorExplainer out/sdd-orchestrator-explainer.mp4 --codec=h264 --pixel-format=yuv420p",
+    "render:compiler": "DOC_VIDEO_NARRATION=compiler node scripts/prepare-audio.mjs && remotion render src/index.ts DocumentationCompilerVideo out/documentation-video.mp4 --codec=h264 --pixel-format=yuv420p"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remotion": "^4.0.0",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {}
+}

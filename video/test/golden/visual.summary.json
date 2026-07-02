@@ -1,0 +1,11 @@
+{
+  "kind": "VisualPlan",
+  "visualTypes": [
+    "callout",
+    "lanes",
+    "control-room",
+    "checkpoint-gate",
+    "chain",
+    "timeline"
+  ]
+}
