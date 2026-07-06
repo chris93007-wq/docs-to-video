@@ -5,12 +5,16 @@
   "type": "module",
   "scripts": {
     "video": "node scripts/video.mjs",
+    "compile": "node scripts/video.mjs compile",
+    "inspect": "node scripts/video.mjs inspect",
+    "validate-experience": "node scripts/video.mjs validate-experience",
     "test": "node --test test/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "prepare-audio": "node scripts/prepare-audio.mjs",
     "studio": "node scripts/prepare-audio.mjs && remotion studio src/index.ts",
-    "render": "node scripts/prepare-audio.mjs && remotion render src/index.ts SddOrchestratorExplainer out/sdd-orchestrator-explainer.mp4 --codec=h264 --pixel-format=yuv420p",
-    "render:compiler": "DOC_VIDEO_NARRATION=compiler node scripts/prepare-audio.mjs && remotion render src/index.ts DocumentationCompilerVideo out/documentation-video.mp4 --codec=h264 --pixel-format=yuv420p"
+    "render": "node scripts/video.mjs render",
+    "render:v1": "node scripts/prepare-audio.mjs && remotion render src/index.ts SddOrchestratorExplainer out/sdd-orchestrator-explainer.mp4 --codec=h264 --pixel-format=yuv420p",
+    "render:compiler": "node scripts/video.mjs render"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",

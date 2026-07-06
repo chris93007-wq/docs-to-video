@@ -6,9 +6,14 @@ const promptFiles = {
   semantic: "semantic.prompt.md",
   story: "story.prompt.md",
   visual: "visual.prompt.md",
+  shots: "shots.prompt.md",
+  media: "media-mix.prompt.md",
+  "media-mix": "media-mix.prompt.md",
   assets: "asset.prompt.md",
   narration: "narration.prompt.md",
   animation: "animation.prompt.md",
+  edl: "edit.prompt.md",
+  edit: "edit.prompt.md",
 };
 
 export const promptPathForStage = (stageName) => {

@@ -1,15 +1,12 @@
 import {runAiOrFallback} from "./ai-stage.mjs";
-import {firstSentence, hashValue, sentenceCase} from "../utils.mjs";
+import {goldenExperienceProfile} from "../experience/goldenExperienceProfile.mjs";
+import {hashValue} from "../utils.mjs";
 
 const conceptNames = (semantic) => semantic.concepts.map((concept) => concept.name);
 
-const evidenceFor = (semantic, index) => {
-  const message = semantic.keyMessages[index] ?? semantic.keyMessages[0] ?? semantic.title;
-  return firstSentence(message);
-};
-
 const scene = ({
   id,
+  arcRole,
   title,
   purpose,
   teachingPoint,
@@ -19,6 +16,7 @@ const scene = ({
   durationSeconds,
 }) => ({
   id,
+  arcRole,
   title,
   purpose,
   teachingPoint,
@@ -32,60 +30,70 @@ export const planStory = async (semanticDocument, {aiClient} = {}) =>
   runAiOrFallback({
     stageName: "story",
     artifactName: "story",
-    input: semanticDocument,
+    input: {semanticDocument, experienceProfile: goldenExperienceProfile},
     aiClient,
     fallback: async () => {
       const concepts = semanticDocument.concepts;
       const names = conceptNames(semanticDocument);
-      const primaryConceptIds = concepts.slice(0, 5).map((concept) => concept.id);
+      const primaryConceptIds = concepts.slice(0, 7).map((concept) => concept.id);
+      const firstConcept = semanticDocument.title || names[0] || "the system";
       const workflow = semanticDocument.workflows[0];
-      const systems = semanticDocument.systems.map((system) => system.name).join(", ");
-      const firstConcept = names[0] ?? semanticDocument.title;
-      const secondConcept = names[1] ?? "the current workflow";
 
       const scenes = [
         scene({
-          id: "problem",
-          title: `Why ${sentenceCase(firstConcept)} Matters`,
-          purpose: "Problem",
-          teachingPoint: evidenceFor(semanticDocument, 0),
-          learningObjectives: [`Recognize the pressure around ${firstConcept}.`],
+          id: "hook",
+          arcRole: "hook",
+          title: "Specs as the Control Plane",
+          purpose: "Open with the core operating idea.",
+          teachingPoint: "The spec should control scope, validation, and evidence.",
+          learningObjectives: [`Show ${firstConcept} as a practical way to make SDD runnable, not another document.`],
           sourceConceptIds: primaryConceptIds.slice(0, 2),
-          importance: 0.9,
-          durationSeconds: 15,
+          importance: 0.94,
+          durationSeconds: 12,
         }),
         scene({
-          id: "pain",
-          title: "The Hidden Cost",
-          purpose: "Pain",
+          id: "problem",
+          arcRole: "problem",
+          title: "The manual workflow is fragile",
+          purpose: "Show the adoption friction.",
           teachingPoint:
-            semanticDocument.lowValueContent[0] ??
-            semanticDocument.repetitiveContent[0] ??
-            `Without structure, ${secondConcept} becomes hard to explain and repeat.`,
-          learningObjectives: ["Understand what breaks down before the solution appears."],
-          sourceConceptIds: primaryConceptIds.slice(1, 3),
-          importance: 0.82,
-          durationSeconds: 14,
+            "Without a coordinator, workflow sequence, approvals, and evidence depend on memory.",
+          learningObjectives: ["Make the viewer feel why good intent falls apart under delivery pressure."],
+          sourceConceptIds: primaryConceptIds.slice(0, 2),
+          importance: 0.9,
+          durationSeconds: 16,
         }),
         scene({
           id: "solution",
-          title: "The Core Idea",
-          purpose: "Solution",
-          teachingPoint: evidenceFor(semanticDocument, 1),
-          learningObjectives: [`Explain how ${firstConcept} changes the work.`],
+          arcRole: "solution",
+          title: "One stateful run",
+          purpose: "Introduce the orchestrator as the usability layer.",
+          teachingPoint: "The coordinator owns run state, phase order, approvals, and durable evidence.",
+          learningObjectives: ["Show status, blockers, approvals, artifacts, and events as one durable run state."],
           sourceConceptIds: primaryConceptIds.slice(0, 4),
           importance: 0.9,
-          durationSeconds: 18,
+          durationSeconds: 16,
+        }),
+        scene({
+          id: "developer-experience",
+          arcRole: "developer experience",
+          title: "Codex coordinates the run",
+          purpose: "Make the primary usage mode concrete.",
+          teachingPoint: "Engineers start from a Codex prompt, and the coordinator preserves run state across approvals, artifacts, validation, and resume points.",
+          learningObjectives: ["Show the prompt-driven workflow before mentioning CLI as secondary support."],
+          sourceConceptIds: primaryConceptIds.slice(0, 6),
+          importance: 0.84,
+          durationSeconds: 16,
         }),
         scene({
           id: "workflow",
-          title: workflow?.name ?? "How It Works",
-          purpose: "Workflow",
+          arcRole: "guided walkthrough",
+          title: "Canonical phases, visible evidence",
+          purpose: "Walk the viewer through the lifecycle.",
           teachingPoint:
             workflow?.description ??
-            semanticDocument.lifecycle.slice(0, 4).join(" -> ") ??
-            evidenceFor(semanticDocument, 2),
-          learningObjectives: ["Follow the operating path from start to finish."],
+            "Requirements intake, design, implementation planning, TDD unit tests, implementation, Playwright validation, and lifecycle update stay connected.",
+          learningObjectives: ["Show the phase order, approval boundaries, evidence registration, and validation gates as one path."],
           sourceConceptIds: [
             ...(workflow ? [workflow.id] : []),
             ...primaryConceptIds.slice(2, 5),
@@ -94,36 +102,43 @@ export const planStory = async (semanticDocument, {aiClient} = {}) =>
           durationSeconds: 24,
         }),
         scene({
-          id: "benefits",
-          title: "What Changes",
-          purpose: "Benefits",
+          id: "guardrails",
+          arcRole: "benefits",
+          title: "Guardrails keep evidence connected",
+          purpose: "Show traceability, approval, drift, and validation guardrails.",
           teachingPoint:
-            semanticDocument.keyMessages[2] ??
-            `The audience gains a clearer mental model of ${systems || firstConcept}.`,
-          learningObjectives: ["Connect the workflow to practical benefits."],
+            "The orchestrator reduces skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs.",
+          learningObjectives: ["Show scope boundaries, approval checkpoints, drift detection, validation gates, and evidence reconnection."],
           sourceConceptIds: primaryConceptIds.slice(0, 5),
-          importance: 0.78,
+          importance: 0.8,
           durationSeconds: 14,
         }),
         scene({
-          id: "call-to-action",
-          title: "What To Do Next",
-          purpose: "Call to action",
-          teachingPoint:
-            semanticDocument.keyMessages[3] ??
-            `Use ${firstConcept} as the anchor for the next implementation decision.`,
-          learningObjectives: ["Leave with a concrete next step."],
+          id: "conclusion",
+          arcRole: "conclusion",
+          title: "Try it on the next feature",
+          purpose: "Close with adoption and contribution.",
+          teachingPoint: `Try ${firstConcept} on the next feature, then improve the workflow, prompts, gates, dashboard, validation, onboarding, and developer experience.`,
+          learningObjectives: ["Leave with a clear CTA to try the workflow and contribute improvements."],
           sourceConceptIds: primaryConceptIds.slice(0, 2),
           importance: 0.7,
-          durationSeconds: 10,
+          durationSeconds: 7,
         }),
       ];
 
       return {
         kind: "StoryPlan",
         version: "1.0.0",
-        sourceHash: hashValue(semanticDocument),
-        narrativeArc: ["Problem", "Pain", "Solution", "Workflow", "Benefits", "Call to action"],
+        sourceHash: hashValue({semanticDocument, experienceProfile: goldenExperienceProfile}),
+        narrativeArc: [
+          "hook",
+          "problem",
+          "solution",
+          "developer experience",
+          "guided walkthrough",
+          "guardrails",
+          "conclusion",
+        ],
         totalDurationSeconds: scenes.reduce((total, item) => total + item.durationSeconds, 0),
         scenes,
       };

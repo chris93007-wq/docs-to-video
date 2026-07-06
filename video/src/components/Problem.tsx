@@ -21,7 +21,7 @@ const items: ProblemItem[] = [
   {label: "Which skill?", detail: "requirements, design, plan", icon: "worker", tone: theme.colors.accent},
   {label: "Which artifact?", detail: "durable or local-only evidence", icon: "document", tone: theme.colors.violet},
   {label: "Stop here?", detail: "approval and clarification boundaries", icon: "approval", tone: theme.colors.gold},
-  {label: "Gate ready?", detail: "red Jest, drift, Playwright", icon: "gate", tone: theme.colors.red},
+  {label: "Gate ready?", detail: "TDD unit tests, drift, Playwright", icon: "gate", tone: theme.colors.red},
 ];
 
 export const ProblemScene = ({scene, durationFrames}: Props) => {

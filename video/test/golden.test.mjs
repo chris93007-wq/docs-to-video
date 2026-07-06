@@ -46,6 +46,7 @@ test("golden summaries remain stable for deterministic compiler stages", async (
     {
       kind: result.visual.kind,
       visualTypes: result.visual.scenes.map((scene) => scene.visualType),
+      visualPrimitives: result.visual.scenes.map((scene) => scene.visualPrimitive),
     },
     readGolden("visual.summary.json"),
   );

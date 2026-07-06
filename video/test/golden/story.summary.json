@@ -1,20 +1,22 @@
 {
   "kind": "StoryPlan",
   "narrativeArc": [
-    "Problem",
-    "Pain",
-    "Solution",
-    "Workflow",
-    "Benefits",
-    "Call to action"
-  ],
-  "totalDurationSeconds": 95,
-  "sceneIds": [
+    "hook",
     "problem",
-    "pain",
     "solution",
+    "developer experience",
+    "guided walkthrough",
+    "guardrails",
+    "conclusion"
+  ],
+  "totalDurationSeconds": 105,
+  "sceneIds": [
+    "hook",
+    "problem",
+    "solution",
+    "developer-experience",
     "workflow",
-    "benefits",
-    "call-to-action"
+    "guardrails",
+    "conclusion"
   ]
 }

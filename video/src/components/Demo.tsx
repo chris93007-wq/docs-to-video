@@ -15,7 +15,7 @@ const codexLines = [
   "Use the SDD coordinator.",
   "Register durable artifacts.",
   "Stop for required approvals.",
-  "Generate red-phase Jest before product code.",
+  "Create TDD unit tests before product code.",
   "Report blockers honestly.",
 ];
 

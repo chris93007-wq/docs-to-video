@@ -1,11 +1,21 @@
 {
   "kind": "VisualPlan",
   "visualTypes": [
-    "callout",
-    "lanes",
     "control-room",
+    "callout",
+    "network",
+    "comparison",
     "checkpoint-gate",
-    "chain",
-    "timeline"
+    "checkpoint-gate",
+    "chain"
+  ],
+  "visualPrimitives": [
+    "FloatingDocumentCloud",
+    "PathDraw",
+    "ConnectedNodeGraph",
+    "TerminalSequence",
+    "AnimatedWorkflow",
+    "ValidationGate",
+    "TraceabilityChain"
   ]
 }

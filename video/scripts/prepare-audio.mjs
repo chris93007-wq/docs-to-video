@@ -1,4 +1,5 @@
 import {execFileSync} from "node:child_process";
+import {createHash} from "node:crypto";
 import {existsSync, mkdirSync, readFileSync, writeFileSync, statSync} from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
@@ -6,6 +7,7 @@ import {fileURLToPath} from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
 const narrationFile = path.join(projectRoot, "src", "narration", "narration.ts");
+const timelineFile = path.join(projectRoot, "src", "data", "timeline.ts");
 const compilerManifestFile = path.join(projectRoot, "src", "compiler", "generated", "render-manifest.json");
 const audioDir = path.join(projectRoot, "public", "audio");
 const narrationMode = process.env.DOC_VIDEO_NARRATION === "compiler" ? "compiler" : "legacy";
@@ -13,16 +15,24 @@ const audioFile = path.join(
   audioDir,
   narrationMode === "compiler" ? "compiler-narration.wav" : "narration.wav",
 );
+const audioMetaFile = `${audioFile}.json`;
+const speechRate = process.env.DOC_VIDEO_SPEECH_RATE ?? "195";
 
 mkdirSync(audioDir, {recursive: true});
 
 const readLegacyNarration = () => {
   const narrationSource = readFileSync(narrationFile, "utf8");
+  const timelineSource = readFileSync(timelineFile, "utf8");
   const textMatch = narrationSource.match(/export const narrationText = `([\s\S]*?)`;/);
-  const durationMatch = narrationSource.match(/estimatedDurationSeconds:\s*(\d+)/);
+  const starts = [...timelineSource.matchAll(/startFrame: seconds\((\d+)\)/g)].map((match) => Number(match[1]));
+  const durations = [...timelineSource.matchAll(/durationFrames: seconds\((\d+)\)/g)].map((match) => Number(match[1]));
+  const durationSeconds = starts.reduce(
+    (max, start, index) => Math.max(max, start + (durations[index] ?? 0)),
+    105,
+  );
   return {
     text: textMatch?.[1].replace(/\s+/g, " ").trim(),
-    durationSeconds: Number(durationMatch?.[1] ?? 105),
+    durationSeconds,
   };
 };
 
@@ -58,11 +68,27 @@ const hasAudibleSamples = (filePath) => {
   return false;
 };
 
-const isUsableAudio = () => {
-  if (!existsSync(audioFile)) {
+const narrationHash = createHash("sha256")
+  .update(JSON.stringify({narrationMode, narrationText, durationSeconds, speechRate}))
+  .digest("hex");
+
+const metadataMatches = () => {
+  if (!existsSync(audioMetaFile)) {
     return false;
   }
-  return statSync(audioFile).size > 44100 && hasAudibleSamples(audioFile);
+  try {
+    const metadata = JSON.parse(readFileSync(audioMetaFile, "utf8"));
+    return metadata.narrationHash === narrationHash;
+  } catch {
+    return false;
+  }
+};
+
+const hasUsableSamples = () =>
+  existsSync(audioFile) && statSync(audioFile).size > 44100 && hasAudibleSamples(audioFile);
+
+const isUsableAudio = () => {
+  return hasUsableSamples() && metadataMatches();
 };
 
 const writeSilentWav = (filePath, seconds) => {
@@ -103,7 +129,7 @@ try {
       "-v",
       "Samantha",
       "-r",
-      "225",
+      speechRate,
       "--file-format=WAVE",
       "--data-format=LEI16@44100",
       "-o",
@@ -116,6 +142,13 @@ try {
   writeSilentWav(audioFile, durationSeconds);
 }
 
-if (!isUsableAudio()) {
+if (!hasUsableSamples()) {
   writeSilentWav(audioFile, durationSeconds);
+}
+
+if (hasUsableSamples()) {
+  writeFileSync(
+    audioMetaFile,
+    `${JSON.stringify({narrationMode, durationSeconds, speechRate, narrationHash}, null, 2)}\n`,
+  );
 }

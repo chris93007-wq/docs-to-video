@@ -1,6 +1,6 @@
 import {AbsoluteFill, interpolate, useCurrentFrame} from "remotion";
 import {Caption} from "../captions/captions";
-import {theme} from "../styles/theme";
+import {subtitleBoxStyle, subtitleSafeArea} from "../styles/subtitles";
 import {clamp} from "../utils/animation";
 
 type CaptionLayerProps = {
@@ -25,20 +25,11 @@ export const CaptionLayer = ({captions}: CaptionLayerProps) => {
       <div
         style={{
           position: "absolute",
-          bottom: 54,
+          bottom: subtitleSafeArea.bottom,
           left: "50%",
           transform: "translateX(-50%)",
-          maxWidth: 1180,
-          padding: "18px 28px",
-          borderRadius: theme.radius.md,
-          background: "rgba(17, 24, 39, 0.82)",
-          color: theme.colors.white,
-          fontFamily: theme.typography.family,
-          fontSize: 30,
-          lineHeight: 1.22,
-          fontWeight: 620,
-          textAlign: "center",
-          boxShadow: "0 18px 60px rgba(17, 24, 39, 0.22)",
+          ...subtitleBoxStyle,
+          maxWidth: `min(${subtitleSafeArea.maxWidth}px, calc(100% - ${subtitleSafeArea.horizontalInset * 2}px))`,
           opacity,
         }}
       >

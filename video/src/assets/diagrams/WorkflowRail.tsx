@@ -14,9 +14,9 @@ const phases: Phase[] = [
   {label: "Requirements intake", short: "Intake", icon: "jira", color: theme.colors.accent},
   {label: "Design authoring", short: "Design", icon: "document", color: theme.colors.violet},
   {label: "Implementation plan", short: "Plan", icon: "timeline", color: theme.colors.gold},
-  {label: "Red-phase Jest", short: "Jest", icon: "gate", color: theme.colors.red},
+  {label: "TDD unit tests", short: "Tests", icon: "gate", color: theme.colors.red},
   {label: "Bounded implementation", short: "Build", icon: "code", color: theme.colors.teal},
-  {label: "Playwright validation", short: "Browser", icon: "browser", color: theme.colors.accent},
+  {label: "Browser validation", short: "Validate", icon: "browser", color: theme.colors.accent},
   {label: "Lifecycle update", short: "Close", icon: "check", color: theme.colors.teal},
 ];
 

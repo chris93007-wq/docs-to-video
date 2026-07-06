@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {existsSync, readdirSync, statSync} from "node:fs";
 import path from "node:path";
+import {createInterface} from "node:readline/promises";
 import {fileURLToPath} from "node:url";
 import {OpenAICompilerClient} from "./ai/openai-client.mjs";
 import {artifactRoot} from "./utils.mjs";
@@ -12,9 +13,13 @@ const commandStages = new Set([
   "semantic",
   "story",
   "visual",
+  "shots",
+  "media",
+  "media-mix",
   "assets",
   "narration",
   "animation",
+  "edl",
   "render",
 ]);
 
@@ -26,11 +31,15 @@ Usage:
   video semantic docs.md
   video story docs.md
   video visual docs.md
+  video shots docs.md
+  video media docs.md
   video assets docs.md
   video narration docs.md
   video animation docs.md
+  video edl docs.md
   video render docs.md [--no-mp4]
-  video inspect semantic [docs.md] [--artifact-dir path]
+  video validate-experience docs.md
+  video inspect semantic|shots|media|edl [docs.md] [--artifact-dir path]
   video clean [docs.md] [--artifact-dir path]
 
 Flags:
@@ -40,6 +49,10 @@ Flags:
   --no-ai                Use deterministic stage fallbacks
   --mp4                  Render MP4 after producing the Remotion manifest
   --no-mp4               Skip MP4 rendering for the render command
+  --title <text>         Title used for versioned MP4 filenames
+  --version <tag>        Version tag for the MP4 filename, such as v002
+  --output <path>        Explicit MP4 output path
+  --showcase <name>      Curated showcase renderer, such as sdd-orchestrator; use none to force generic
   --silent               Suppress compiler logs
 `;
 
@@ -74,6 +87,19 @@ const parseArgs = (argv) => {
       case "--no-mp4":
         flags.mp4 = false;
         break;
+      case "--title":
+        flags.title = argv[++index];
+        break;
+      case "--version":
+        flags.version = argv[++index];
+        break;
+      case "--output":
+        flags.output = argv[++index];
+        break;
+      case "--showcase":
+      case "--template":
+        flags.showcase = argv[++index];
+        break;
       case "--silent":
         flags.silent = true;
         break;
@@ -103,6 +129,26 @@ const latestArtifactDir = () => {
     .sort((a, b) => b.mtimeMs - a.mtimeMs);
 
   return candidates[0]?.fullPath;
+};
+
+const titleFromSourcePath = (sourcePath) => {
+  const baseName = path.basename(sourcePath, path.extname(sourcePath));
+  return baseName
+    .split(/[-_]+/g)
+    .filter(Boolean)
+    .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+    .join(" ") || "Documentation Video";
+};
+
+const promptForRenderTitle = async (sourcePath) => {
+  const suggestedTitle = titleFromSourcePath(sourcePath);
+  const rl = createInterface({input: process.stdin, output: process.stdout});
+  try {
+    const answer = await rl.question(`Video title for versioned output [${suggestedTitle}]: `);
+    return answer.trim() || suggestedTitle;
+  } finally {
+    rl.close();
+  }
 };
 
 export const main = async (argv = process.argv.slice(2)) => {
@@ -143,6 +189,25 @@ export const main = async (argv = process.argv.slice(2)) => {
     return;
   }
 
+  if (command === "validate-experience") {
+    if (!firstArg) {
+      throw new Error("validate-experience requires a document path");
+    }
+    const aiClient = flags.noAi ? {enabled: false} : new OpenAICompilerClient();
+    const result = await runPipeline({
+      sourcePath: firstArg,
+      targetStage: "validate-experience",
+      artifactDir: flags.artifactDir,
+      force: flags.force,
+      aiClient,
+      rendererName: flags.renderer,
+      renderMp4: false,
+      silent: flags.silent,
+    });
+    process.stdout.write(`${JSON.stringify(result.experience, null, 2)}\n`);
+    return;
+  }
+
   if (!commandStages.has(command)) {
     throw new Error(`Unknown command: ${command}\n\n${usage}`);
   }
@@ -153,6 +218,9 @@ export const main = async (argv = process.argv.slice(2)) => {
 
   const aiClient = flags.noAi ? {enabled: false} : new OpenAICompilerClient();
   const renderMp4 = command === "render" ? flags.mp4 !== false : flags.mp4 === true;
+  const title = renderMp4 && !flags.title && !flags.output && process.stdin.isTTY && process.stdout.isTTY
+    ? await promptForRenderTitle(firstArg)
+    : flags.title;
 
   await runPipeline({
     sourcePath: firstArg,
@@ -162,6 +230,12 @@ export const main = async (argv = process.argv.slice(2)) => {
     aiClient,
     rendererName: flags.renderer,
     renderMp4,
+    renderOptions: {
+      title,
+      version: flags.version,
+      outputPath: flags.output,
+      ...(flags.showcase !== undefined ? {showcase: flags.showcase} : {}),
+    },
     silent: flags.silent,
   });
 };

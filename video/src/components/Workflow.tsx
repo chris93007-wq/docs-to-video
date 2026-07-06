@@ -62,7 +62,7 @@ export const WorkflowScene = ({scene, durationFrames}: Props) => {
         }}
       >
         <Pill tone="gold">Approvals before implementation</Pill>
-        <Pill tone="red">Red Jest before product code</Pill>
+        <Pill tone="red">TDD unit tests before product code</Pill>
         <Pill tone="teal">Playwright evidence after implementation</Pill>
       </div>
     </SceneFrame>

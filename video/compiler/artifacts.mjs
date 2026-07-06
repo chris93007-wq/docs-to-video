@@ -4,7 +4,13 @@ import {artifactFiles, assertValidArtifact} from "./schemas.mjs";
 import {artifactRoot, hashValue, slugify} from "./utils.mjs";
 
 export const artifactKeyForStage = (stageName) =>
-  stageName === "parse" ? "documentAst" : stageName;
+  stageName === "parse"
+    ? "documentAst"
+    : stageName === "media" || stageName === "media-mix"
+      ? "mediaMix"
+      : stageName === "edl"
+        ? "edit"
+      : stageName;
 
 export const defaultArtifactDir = (sourcePath) => {
   const base = path.basename(sourcePath ?? "document", path.extname(sourcePath ?? "document"));

@@ -1,13 +1,17 @@
 import {existsSync} from "node:fs";
 import path from "node:path";
 import {
+  artifactPath,
   artifactKeyForStage,
   cleanArtifacts,
   defaultArtifactDir,
   readArtifact,
   runCachedStage,
+  writeJson,
 } from "./artifacts.mjs";
 import {OpenAICompilerClient} from "./ai/openai-client.mjs";
+import {goldenExperienceProfile} from "./experience/goldenExperienceProfile.mjs";
+import {validateExperience} from "./experience/validateExperience.mjs";
 import {CompilerLogger} from "./logger.mjs";
 import {loadPrompt} from "./prompts.mjs";
 import {MotionCanvasRenderer} from "./renderers/motion-canvas-renderer.mjs";
@@ -20,9 +24,12 @@ import {parseDocument} from "./stages/parser.mjs";
 import {analyzeSemantics} from "./stages/semantic.mjs";
 import {planStory} from "./stages/story.mjs";
 import {directVisuals} from "./stages/visual.mjs";
+import {planShots} from "./stages/shots.mjs";
+import {planMediaMix} from "./stages/media-mix.mjs";
 import {planAssets} from "./stages/assets.mjs";
 import {generateNarration} from "./stages/narration.mjs";
 import {planAnimation} from "./stages/animation.mjs";
+import {planEditDecisionList} from "./stages/edl.mjs";
 import {hashFile} from "./utils.mjs";
 
 const stageIndex = {
@@ -30,21 +37,38 @@ const stageIndex = {
   semantic: 1,
   story: 2,
   visual: 3,
-  assets: 4,
-  narration: 5,
-  animation: 6,
-  render: 7,
-  compile: 7,
+  shots: 4,
+  media: 5,
+  "media-mix": 5,
+  assets: 6,
+  narration: 7,
+  animation: 8,
+  edl: 9,
+  edit: 9,
+  "validate-experience": 9,
+  render: 10,
+  compile: 10,
+};
+
+const normalizeStageName = (stageName) => {
+  if (stageName === "media-mix") {
+    return "media";
+  }
+  if (stageName === "edit") {
+    return "edl";
+  }
+  return stageName;
 };
 
 const promptVersion = (stageName) => {
+  const normalized = normalizeStageName(stageName);
   if (stageName === "parse") {
     return "parser-1.0.0";
   }
   if (stageName === "render") {
     return "renderer-adapter-1.0.0";
   }
-  return loadPrompt(stageName).version;
+  return loadPrompt(normalized).version;
 };
 
 const rendererFor = (rendererName) => {
@@ -58,8 +82,30 @@ const rendererFor = (rendererName) => {
   }
 };
 
+const normalizeShowcase = (showcase) => {
+  const normalized = String(showcase ?? "").trim().toLowerCase();
+  if (!normalized || normalized === "none" || normalized === "generic") {
+    return undefined;
+  }
+  return normalized;
+};
+
+const inferShowcase = ({sourcePath, semanticDocument} = {}) => {
+  const haystack = [
+    sourcePath,
+    semanticDocument?.title,
+    ...(semanticDocument?.concepts ?? []).map((concept) => concept.name),
+    ...(semanticDocument?.keyMessages ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  return haystack.includes("sdd orchestrator") ? "sdd-orchestrator" : undefined;
+};
+
 export const targetIncludes = (targetStage, stageName) =>
-  stageIndex[stageName] <= stageIndex[targetStage];
+  stageIndex[normalizeStageName(stageName)] <= stageIndex[normalizeStageName(targetStage)];
 
 export const runPipeline = async ({
   sourcePath,
@@ -69,12 +115,14 @@ export const runPipeline = async ({
   aiClient = new OpenAICompilerClient(),
   rendererName = "remotion",
   renderMp4 = false,
+  renderOptions = {},
   silent = false,
 } = {}) => {
   if (!sourcePath) {
     throw new Error("sourcePath is required");
   }
-  if (!(targetStage in stageIndex)) {
+  const normalizedTargetStage = normalizeStageName(targetStage);
+  if (!(normalizedTargetStage in stageIndex)) {
     throw new Error(`Unknown target stage: ${targetStage}`);
   }
 
@@ -124,7 +172,7 @@ export const runPipeline = async ({
       stageName: "story",
       artifactName: "story",
       artifactDir: outputDir,
-      input: result.semantic,
+      input: {semanticDocument: result.semantic, experienceProfile: goldenExperienceProfile},
       promptVersion: promptVersion("story"),
       force,
       build: () => planStory(result.semantic, {aiClient}),
@@ -140,7 +188,11 @@ export const runPipeline = async ({
       stageName: "visual",
       artifactName: "visual",
       artifactDir: outputDir,
-      input: {storyPlan: result.story, semanticDocument: result.semantic},
+      input: {
+        storyPlan: result.story,
+        semanticDocument: result.semantic,
+        experienceProfile: goldenExperienceProfile,
+      },
       promptVersion: promptVersion("visual"),
       force,
       build: () =>
@@ -151,7 +203,67 @@ export const runPipeline = async ({
     }),
   );
   result.visual = visualResult.artifact;
-  if (!targetIncludes(targetStage, "assets")) {
+  if (!targetIncludes(normalizedTargetStage, "shots")) {
+    return result;
+  }
+
+  const shotResult = await logger.stage("shots", () =>
+    runCachedStage({
+      stageName: "shots",
+      artifactName: "shots",
+      artifactDir: outputDir,
+      input: {
+        semanticDocument: result.semantic,
+        storyPlan: result.story,
+        visualPlan: result.visual,
+        experienceProfile: goldenExperienceProfile,
+      },
+      promptVersion: promptVersion("shots"),
+      force,
+      build: () =>
+        planShots(
+          {
+            semanticDocument: result.semantic,
+            storyPlan: result.story,
+            visualPlan: result.visual,
+          },
+          {aiClient},
+        ),
+    }),
+  );
+  result.shots = shotResult.artifact;
+  if (!targetIncludes(normalizedTargetStage, "media")) {
+    return result;
+  }
+
+  const mediaResult = await logger.stage("media", () =>
+    runCachedStage({
+      stageName: "media",
+      artifactName: "mediaMix",
+      artifactDir: outputDir,
+      input: {
+        semanticDocument: result.semantic,
+        storyPlan: result.story,
+        visualPlan: result.visual,
+        shotPlan: result.shots,
+        experienceProfile: goldenExperienceProfile,
+      },
+      promptVersion: promptVersion("media"),
+      force,
+      build: () =>
+        planMediaMix(
+          {
+            semanticDocument: result.semantic,
+            storyPlan: result.story,
+            visualPlan: result.visual,
+            shotPlan: result.shots,
+          },
+          {aiClient},
+        ),
+    }),
+  );
+  result.mediaMix = mediaResult.artifact;
+  if (!targetIncludes(normalizedTargetStage, "assets")) {
     return result;
   }
 
@@ -160,10 +272,26 @@ export const runPipeline = async ({
       stageName: "assets",
       artifactName: "assets",
       artifactDir: outputDir,
-      input: {storyPlan: result.story, visualPlan: result.visual},
+      input: {
+        semanticDocument: result.semantic,
+        storyPlan: result.story,
+        visualPlan: result.visual,
+        shotPlan: result.shots,
+        mediaMixPlan: result.mediaMix,
+      },
       promptVersion: promptVersion("assets"),
       force,
-      build: () => planAssets({storyPlan: result.story, visualPlan: result.visual}, {aiClient}),
+      build: () =>
+        planAssets(
+          {
+            semanticDocument: result.semantic,
+            storyPlan: result.story,
+            visualPlan: result.visual,
+            shotPlan: result.shots,
+            mediaMixPlan: result.mediaMix,
+          },
+          {aiClient},
+        ),
     }),
   );
   result.assets = assetResult.artifact;
@@ -176,7 +304,11 @@ export const runPipeline = async ({
       stageName: "narration",
       artifactName: "narration",
       artifactDir: outputDir,
-      input: {storyPlan: result.story, semanticDocument: result.semantic},
+      input: {
+        storyPlan: result.story,
+        semanticDocument: result.semantic,
+        experienceProfile: goldenExperienceProfile,
+      },
       promptVersion: promptVersion("narration"),
       force,
       build: () =>
@@ -199,8 +331,11 @@ export const runPipeline = async ({
       input: {
         storyPlan: result.story,
         visualPlan: result.visual,
+        shotPlan: result.shots,
+        mediaMixPlan: result.mediaMix,
         assetManifest: result.assets,
         narration: result.narration,
+        experienceProfile: goldenExperienceProfile,
       },
       promptVersion: promptVersion("animation"),
       force,
@@ -209,6 +344,8 @@ export const runPipeline = async ({
           {
             storyPlan: result.story,
             visualPlan: result.visual,
+            shotPlan: result.shots,
+            mediaMixPlan: result.mediaMix,
             assetManifest: result.assets,
             narration: result.narration,
           },
@@ -217,15 +354,70 @@ export const runPipeline = async ({
     }),
   );
   result.animation = animationResult.artifact;
+  if (!targetIncludes(normalizedTargetStage, "edl")) {
+    logger.info(`Artifacts: ${outputDir}`);
+    return result;
+  }
+
+  const editResult = await logger.stage("edl", () =>
+    runCachedStage({
+      stageName: "edl",
+      artifactName: "edit",
+      artifactDir: outputDir,
+      input: {
+        storyPlan: result.story,
+        shotPlan: result.shots,
+        mediaMixPlan: result.mediaMix,
+        animationPlan: result.animation,
+        narration: result.narration,
+      },
+      promptVersion: promptVersion("edl"),
+      force,
+      build: () =>
+        planEditDecisionList({
+          storyPlan: result.story,
+          shotPlan: result.shots,
+          mediaMixPlan: result.mediaMix,
+          animationPlan: result.animation,
+          narration: result.narration,
+        }),
+    }),
+  );
+  result.edit = editResult.artifact;
+
+  result.experience = validateExperience({
+    storyPlan: result.story,
+    visualPlan: result.visual,
+    shotPlan: result.shots,
+    mediaMixPlan: result.mediaMix,
+    animationPlan: result.animation,
+    editDecisionList: result.edit,
+    narration: result.narration,
+    documentAst: result.documentAst,
+    profile: goldenExperienceProfile,
+  });
+  writeJson(artifactPath(outputDir, "experience"), result.experience);
+  if (!result.experience.passed) {
+    throw new Error(`Experience validation failed:\n${result.experience.errors.join("\n")}`);
+  }
+
   if (!targetIncludes(targetStage, "render")) {
+    logger.info(`Artifacts: ${outputDir}`);
     return result;
   }
 
   const renderer = rendererFor(rendererName);
+  const showcase = Object.hasOwn(renderOptions, "showcase")
+    ? normalizeShowcase(renderOptions.showcase)
+    : inferShowcase({sourcePath: absoluteSourcePath, semanticDocument: result.semantic});
   const rendererInputs = {
+    ...(showcase ? {showcase} : {}),
     storyPlan: result.story,
     visualPlan: result.visual,
+    shotPlan: result.shots,
+    mediaMixPlan: result.mediaMix,
     animationPlan: result.animation,
+    editDecisionList: result.edit,
     narration: result.narration,
     assetManifest: result.assets,
   };
@@ -234,8 +426,8 @@ export const runPipeline = async ({
       stageName: "render",
       artifactName: "render",
       artifactDir: outputDir,
-      input: {rendererName, ...rendererInputs},
-      promptVersion: `${promptVersion("render")}:${rendererName}`,
+      input: {rendererName, showcase, ...rendererInputs},
+      promptVersion: `${promptVersion("render")}:${rendererName}:${showcase ?? "generic"}`,
       force,
       build: () => renderer.render(rendererInputs, {artifactDir: outputDir, renderMp4: false}),
     }),
@@ -250,7 +442,11 @@ export const runPipeline = async ({
     if (rendererName !== "remotion") {
       throw new Error("MP4 rendering is currently wired for the Remotion renderer");
     }
-    renderRemotionMp4();
+    result.output = renderRemotionMp4({
+      ...renderOptions,
+      sourcePath: absoluteSourcePath,
+      manifest: result.render,
+    });
   }
 
   logger.info(`Artifacts: ${outputDir}`);

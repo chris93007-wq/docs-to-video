@@ -9,9 +9,9 @@ type Props = {
 
 const rows = [
   {left: "Reviewed requirements", right: "Design approval", tone: theme.colors.accent},
-  {left: "Unit Test Target Plan", right: "Red Jest baseline", tone: theme.colors.red},
+  {left: "Unit Test Target Plan", right: "TDD unit tests", tone: theme.colors.red},
   {left: "Implementation slices", right: "Drift checks", tone: theme.colors.teal},
-  {left: "Playwright evidence", right: "Lifecycle status", tone: theme.colors.violet},
+  {left: "Browser evidence", right: "Lifecycle status", tone: theme.colors.violet},
 ];
 
 export const GateDiagram = ({frame}: Props) => (
