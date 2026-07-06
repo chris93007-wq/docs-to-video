@@ -216,6 +216,17 @@ const narrationSegmentSchema = object("NarrationSegment", {
   text: {type: "string"},
 });
 
+const narrationAudioSegmentSchema = object("NarrationAudioSegment", {
+  sceneId: {type: "string"},
+  spokenText: {type: "string"},
+  staticFile: {type: "string"},
+  sampleRate: {type: "number"},
+  audioDurationSeconds: {type: "number"},
+  startSeconds: {type: "number"},
+  endSeconds: {type: "number"},
+  pauseAfterSeconds: {type: "number"},
+});
+
 const animationSceneSchema = object("AnimationScene", {
   sceneId: {type: "string"},
   camera: {type: "string"},
@@ -350,6 +361,7 @@ export const artifactFiles = {
   mediaMix: "media-mix-plan.json",
   assets: "asset-manifest.json",
   narration: "narration.json",
+  narrationAudio: "narration-audio.json",
   animation: "animation-plan.json",
   edit: "edit-decision-list.json",
   experience: "experience-validation.json",
@@ -365,6 +377,7 @@ export const stageOrder = [
   "media-mix",
   "assets",
   "narration",
+  "audio",
   "animation",
   "edit",
   "render",
@@ -486,6 +499,17 @@ export const artifactSchemas = {
     segments: {type: "array", items: narrationSegmentSchema},
   }),
 
+  narrationAudio: object("NarrationAudio", {
+    kind: {type: "string", const: "NarrationAudio"},
+    version: {type: "string"},
+    sourceHash: {type: "string"},
+    model: {type: "string"},
+    voice: {type: "string"},
+    pauseSeconds: {type: "number"},
+    totalDurationSeconds: {type: "number"},
+    segments: {type: "array", items: narrationAudioSegmentSchema},
+  }),
+
   animation: object("AnimationPlan", {
     kind: {type: "string", const: "AnimationPlan"},
     version: {type: "string"},
@@ -560,10 +584,12 @@ export const artifactSchemas = {
     mediaMix: {type: "object"},
     edl: {type: "object"},
     narration: {type: "object"},
+    narrationAudio: {type: "object"},
   }, ["kind", "version", "renderer", "sourceHash", "fps", "width", "height", "totalDurationSeconds", "scenes"]),
 };
 
 artifactSchemas.render.properties.narration = artifactSchemas.narration;
+artifactSchemas.render.properties.narrationAudio = artifactSchemas.narrationAudio;
 
 export const schemaForStage = (stageName) => {
   const key =

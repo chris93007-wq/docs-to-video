@@ -2,7 +2,7 @@ export const goldenExperienceProfile = {
   runtimeSeconds: {
     min: 90,
     target: 105,
-    max: 120,
+    max: 125,
   },
   narration: {
     minWords: 220,

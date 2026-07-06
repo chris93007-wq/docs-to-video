@@ -14,15 +14,19 @@
     "studio": "node scripts/prepare-audio.mjs && remotion studio src/index.ts",
     "render": "node scripts/video.mjs render",
     "render:v1": "node scripts/prepare-audio.mjs && remotion render src/index.ts SddOrchestratorExplainer out/sdd-orchestrator-explainer.mp4 --codec=h264 --pixel-format=yuv420p",
-    "render:compiler": "node scripts/video.mjs render"
+    "render:compiler": "node scripts/video.mjs render",
+    "build:launch-v006": "node scripts/build-sdd-launch-v006.mjs",
+    "render:launch-v006": "node scripts/build-sdd-launch-v006.mjs && remotion render src/index.ts SddOrchestratorLaunchV006 out/sdd-orchestrator-launch-explainer-new-v006.mp4 --codec=h264 --pixel-format=yuv420p"
   },
   "dependencies": {
+    "@huggingface/transformers": "^3.8.1",
     "@remotion/cli": "^4.0.0",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remotion": "^4.0.0",
+    "kokoro-js": "^1.2.1",
     "typescript": "^5.4.5"
   },
   "devDependencies": {}

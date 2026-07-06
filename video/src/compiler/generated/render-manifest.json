@@ -2,12 +2,12 @@
   "kind": "RenderManifest",
   "version": "1.0.0",
   "renderer": "remotion",
-  "sourceHash": "cb1fbce28438c1cd01df45fe9cea6910d97c87788271ba5a94e35eac76e11ebd",
+  "sourceHash": "1e3a3142723fb55798b7c6a238861aa815a8202359fc7310a68af6d7e05e86f8",
   "showcase": "sdd-orchestrator",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalDurationSeconds": 105,
+  "totalDurationSeconds": 121.72499999999997,
   "scenes": [
     {
       "id": "hook",
@@ -15,7 +15,7 @@
       "purpose": "Open with the core operating idea.",
       "teachingPoint": "The spec should control scope, validation, and evidence.",
       "startSeconds": 0,
-      "durationSeconds": 12,
+      "durationSeconds": 11.75,
       "visual": {
         "sceneId": "hook",
         "metaphor": "Source documents drifting into a single control plane",
@@ -139,44 +139,44 @@
             "asset": "hook-floatingdocumentcloud",
             "animation": "morphing-progressive-reveal",
             "startSeconds": 0,
-            "durationSeconds": 2.71
+            "durationSeconds": 2.68
           },
           {
             "asset": "hook-motion-accents",
             "animation": "morphing-progressive-reveal",
-            "startSeconds": 1.71,
-            "durationSeconds": 2.71
+            "startSeconds": 1.68,
+            "durationSeconds": 2.68
           },
           {
             "asset": "hook-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 3.43,
-            "durationSeconds": 2.71
+            "startSeconds": 3.36,
+            "durationSeconds": 2.68
           },
           {
             "asset": "hook-shot-01-kinetic-text",
             "animation": "morphing-progressive-reveal",
-            "startSeconds": 5.14,
-            "durationSeconds": 2.71
+            "startSeconds": 5.04,
+            "durationSeconds": 2.68
           },
           {
             "asset": "hook-shot-02-source-excerpt",
             "animation": "morphing-progressive-reveal",
-            "startSeconds": 6.86,
-            "durationSeconds": 2.71
+            "startSeconds": 6.71,
+            "durationSeconds": 2.68
           },
           {
             "asset": "hook-shot-03-metaphor-visual",
             "animation": "morphing-progressive-reveal",
-            "startSeconds": 8.57,
-            "durationSeconds": 2.71
+            "startSeconds": 8.39,
+            "durationSeconds": 2.68
           }
         ]
       },
       "narration": {
         "sceneId": "hook",
         "startSeconds": 0,
-        "endSeconds": 12,
+        "endSeconds": 11.15,
         "text": "Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected."
       }
     },
@@ -185,8 +185,8 @@
       "title": "The manual workflow is fragile",
       "purpose": "Show the adoption friction.",
       "teachingPoint": "Without a coordinator, workflow sequence, approvals, and evidence depend on memory.",
-      "startSeconds": 12,
-      "durationSeconds": 16,
+      "startSeconds": 11.75,
+      "durationSeconds": 18,
       "visual": {
         "sceneId": "problem",
         "metaphor": "Fragile manual decisions tangled into a knot",
@@ -323,50 +323,50 @@
             "asset": "problem-pathdraw",
             "animation": "svg-path-draw-and-progressive-highlight",
             "startSeconds": 0,
-            "durationSeconds": 3
+            "durationSeconds": 3.25
           },
           {
             "asset": "problem-motion-accents",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 2,
-            "durationSeconds": 3
+            "startSeconds": 2.25,
+            "durationSeconds": 3.25
           },
           {
             "asset": "problem-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 4,
-            "durationSeconds": 3
+            "startSeconds": 4.5,
+            "durationSeconds": 3.25
           },
           {
             "asset": "problem-shot-01-kinetic-text",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 6,
-            "durationSeconds": 3
+            "startSeconds": 6.75,
+            "durationSeconds": 3.25
           },
           {
             "asset": "problem-shot-02-ui-mockup",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 8,
-            "durationSeconds": 3
+            "startSeconds": 9,
+            "durationSeconds": 3.25
           },
           {
             "asset": "problem-shot-03-source-excerpt",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 10,
-            "durationSeconds": 3
+            "startSeconds": 11.25,
+            "durationSeconds": 3.25
           },
           {
             "asset": "problem-shot-04-diagram",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 12,
-            "durationSeconds": 3
+            "startSeconds": 13.5,
+            "durationSeconds": 3.25
           }
         ]
       },
       "narration": {
         "sceneId": "problem",
-        "startSeconds": 12,
-        "endSeconds": 28,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
         "text": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear."
       }
     },
@@ -375,8 +375,8 @@
       "title": "One stateful run",
       "purpose": "Introduce the orchestrator as the usability layer.",
       "teachingPoint": "The coordinator owns run state, phase order, approvals, and durable evidence.",
-      "startSeconds": 28,
-      "durationSeconds": 16,
+      "startSeconds": 29.75,
+      "durationSeconds": 18.575000000000003,
       "visual": {
         "sceneId": "solution",
         "metaphor": "A stateful run coordinating status, blockers, approvals, artifacts, and events",
@@ -513,50 +513,50 @@
             "asset": "solution-connectednodegraph",
             "animation": "svg-path-draw-and-progressive-highlight",
             "startSeconds": 0,
-            "durationSeconds": 3
+            "durationSeconds": 3.32
           },
           {
             "asset": "solution-motion-accents",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 2,
-            "durationSeconds": 3
+            "startSeconds": 2.32,
+            "durationSeconds": 3.32
           },
           {
             "asset": "solution-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 4,
-            "durationSeconds": 3
+            "startSeconds": 4.64,
+            "durationSeconds": 3.32
           },
           {
             "asset": "solution-shot-01-metaphor-visual",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 6,
-            "durationSeconds": 3
+            "startSeconds": 6.97,
+            "durationSeconds": 3.32
           },
           {
             "asset": "solution-shot-02-diagram",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 8,
-            "durationSeconds": 3
+            "startSeconds": 9.29,
+            "durationSeconds": 3.32
           },
           {
             "asset": "solution-shot-03-ui-mockup",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 10,
-            "durationSeconds": 3
+            "startSeconds": 11.61,
+            "durationSeconds": 3.32
           },
           {
             "asset": "solution-shot-04-icon-card",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 12,
-            "durationSeconds": 3
+            "startSeconds": 13.93,
+            "durationSeconds": 3.32
           }
         ]
       },
       "narration": {
         "sceneId": "solution",
-        "startSeconds": 28,
-        "endSeconds": 44,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
         "text": "The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required."
       }
     },
@@ -565,8 +565,8 @@
       "title": "Codex coordinates the run",
       "purpose": "Make the primary usage mode concrete.",
       "teachingPoint": "Engineers start from a Codex prompt, and the coordinator preserves run state across approvals, artifacts, validation, and resume points.",
-      "startSeconds": 44,
-      "durationSeconds": 16,
+      "startSeconds": 48.325,
+      "durationSeconds": 21,
       "visual": {
         "sceneId": "developer-experience",
         "metaphor": "Codex prompt driving the same event-sourced runtime",
@@ -711,50 +711,50 @@
             "asset": "developer-experience-terminalsequence",
             "animation": "terminal-type-in",
             "startSeconds": 0,
-            "durationSeconds": 3
+            "durationSeconds": 3.63
           },
           {
             "asset": "developer-experience-motion-accents",
             "animation": "terminal-type-in",
-            "startSeconds": 2,
-            "durationSeconds": 3
+            "startSeconds": 2.63,
+            "durationSeconds": 3.63
           },
           {
             "asset": "developer-experience-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 4,
-            "durationSeconds": 3
+            "startSeconds": 5.25,
+            "durationSeconds": 3.63
           },
           {
             "asset": "developer-experience-shot-01-ui-mockup",
             "animation": "terminal-type-in",
-            "startSeconds": 6,
-            "durationSeconds": 3
+            "startSeconds": 7.88,
+            "durationSeconds": 3.63
           },
           {
             "asset": "developer-experience-shot-02-terminal",
             "animation": "terminal-type-in",
-            "startSeconds": 8,
-            "durationSeconds": 3
+            "startSeconds": 10.5,
+            "durationSeconds": 3.63
           },
           {
             "asset": "developer-experience-shot-03-source-excerpt",
             "animation": "terminal-type-in",
-            "startSeconds": 10,
-            "durationSeconds": 3
+            "startSeconds": 13.13,
+            "durationSeconds": 3.63
           },
           {
             "asset": "developer-experience-shot-04-diagram",
             "animation": "terminal-type-in",
-            "startSeconds": 12,
-            "durationSeconds": 3
+            "startSeconds": 15.75,
+            "durationSeconds": 3.63
           }
         ]
       },
       "narration": {
         "sceneId": "developer-experience",
-        "startSeconds": 44,
-        "endSeconds": 60,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
         "text": "In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption."
       }
     },
@@ -763,8 +763,8 @@
       "title": "Canonical phases, visible evidence",
       "purpose": "Walk the viewer through the lifecycle.",
       "teachingPoint": "Workflow with 7 documented steps.",
-      "startSeconds": 60,
-      "durationSeconds": 24,
+      "startSeconds": 69.325,
+      "durationSeconds": 20.700000000000003,
       "visual": {
         "sceneId": "workflow",
         "metaphor": "A canonical workflow rail with evidence gates",
@@ -914,56 +914,56 @@
             "asset": "workflow-animatedworkflow",
             "animation": "svg-path-draw-and-progressive-highlight",
             "startSeconds": 0,
-            "durationSeconds": 3.67
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-motion-accents",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 2.67,
-            "durationSeconds": 3.67
+            "startSeconds": 2.3,
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 5.33,
-            "durationSeconds": 3.67
+            "startSeconds": 4.6,
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-shot-01-workflow-animation",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 8,
-            "durationSeconds": 3.67
+            "startSeconds": 6.9,
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-shot-02-diagram",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 10.67,
-            "durationSeconds": 3.67
+            "startSeconds": 9.2,
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-shot-03-source-excerpt",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 13.33,
-            "durationSeconds": 3.67
+            "startSeconds": 11.5,
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-shot-04-ui-mockup",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 16,
-            "durationSeconds": 3.67
+            "startSeconds": 13.8,
+            "durationSeconds": 3.3
           },
           {
             "asset": "workflow-shot-05-workflow-animation",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 18.67,
-            "durationSeconds": 3.67
+            "startSeconds": 16.1,
+            "durationSeconds": 3.3
           }
         ]
       },
       "narration": {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       }
     },
@@ -972,8 +972,8 @@
       "title": "Guardrails keep evidence connected",
       "purpose": "Show traceability, approval, drift, and validation guardrails.",
       "teachingPoint": "The orchestrator reduces skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs.",
-      "startSeconds": 84,
-      "durationSeconds": 14,
+      "startSeconds": 90.025,
+      "durationSeconds": 18.85,
       "visual": {
         "sceneId": "guardrails",
         "metaphor": "Guardrails catching drift and reconnecting evidence to source truth",
@@ -1110,50 +1110,50 @@
             "asset": "guardrails-validationgate",
             "animation": "svg-path-draw-and-progressive-highlight",
             "startSeconds": 0,
-            "durationSeconds": 2.75
+            "durationSeconds": 3.36
           },
           {
             "asset": "guardrails-motion-accents",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 1.75,
-            "durationSeconds": 2.75
+            "startSeconds": 2.36,
+            "durationSeconds": 3.36
           },
           {
             "asset": "guardrails-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 3.5,
-            "durationSeconds": 2.75
+            "startSeconds": 4.71,
+            "durationSeconds": 3.36
           },
           {
             "asset": "guardrails-shot-01-diagram",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 5.25,
-            "durationSeconds": 2.75
+            "startSeconds": 7.07,
+            "durationSeconds": 3.36
           },
           {
             "asset": "guardrails-shot-02-source-excerpt",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 7,
-            "durationSeconds": 2.75
+            "startSeconds": 9.43,
+            "durationSeconds": 3.36
           },
           {
             "asset": "guardrails-shot-03-ui-mockup",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 8.75,
-            "durationSeconds": 2.75
+            "startSeconds": 11.78,
+            "durationSeconds": 3.36
           },
           {
             "asset": "guardrails-shot-04-workflow-animation",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 10.5,
-            "durationSeconds": 2.75
+            "startSeconds": 14.14,
+            "durationSeconds": 3.36
           }
         ]
       },
       "narration": {
         "sceneId": "guardrails",
-        "startSeconds": 84,
-        "endSeconds": 98,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
         "text": "The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update."
       }
     },
@@ -1162,8 +1162,8 @@
       "title": "Try it on the next feature",
       "purpose": "Close with adoption and contribution.",
       "teachingPoint": "Try SDD Orchestrator on the next feature, then improve the workflow, prompts, gates, dashboard, validation, onboarding, and developer experience.",
-      "startSeconds": 98,
-      "durationSeconds": 7,
+      "startSeconds": 108.875,
+      "durationSeconds": 12.85,
       "visual": {
         "sceneId": "conclusion",
         "metaphor": "The evidence chain closes around the source of truth",
@@ -1267,12 +1267,12 @@
           {
             "label": "Try SDD Orchestrator on the next feature, then improve the workflow, prompts, gates, dashboard, validation, onboarding, and developer experience.",
             "startSeconds": 1,
-            "durationSeconds": 2.33
+            "durationSeconds": 2.6
           },
           {
             "label": "Leave with a clear CTA to try the workflow and contribute improvements.",
             "startSeconds": 3.1,
-            "durationSeconds": 2.33
+            "durationSeconds": 2.6
           }
         ],
         "focus": [
@@ -1287,44 +1287,44 @@
             "asset": "conclusion-traceabilitychain",
             "animation": "svg-path-draw-and-progressive-highlight",
             "startSeconds": 0,
-            "durationSeconds": 2.5
+            "durationSeconds": 2.84
           },
           {
             "asset": "conclusion-motion-accents",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 1.5,
-            "durationSeconds": 2.5
+            "startSeconds": 1.84,
+            "durationSeconds": 2.84
           },
           {
             "asset": "conclusion-background-grid",
             "animation": "ambient-grid-drift",
-            "startSeconds": 3,
-            "durationSeconds": 2.5
+            "startSeconds": 3.67,
+            "durationSeconds": 2.84
           },
           {
             "asset": "conclusion-shot-01-metaphor-visual",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 4.5,
-            "durationSeconds": 2.5
+            "startSeconds": 5.51,
+            "durationSeconds": 2.84
           },
           {
             "asset": "conclusion-shot-02-source-excerpt",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 6,
-            "durationSeconds": 2.5
+            "startSeconds": 7.34,
+            "durationSeconds": 2.84
           },
           {
             "asset": "conclusion-shot-03-kinetic-text",
             "animation": "svg-path-draw-and-progressive-highlight",
-            "startSeconds": 7.5,
-            "durationSeconds": 2.5
+            "startSeconds": 9.18,
+            "durationSeconds": 2.84
           }
         ]
       },
       "narration": {
         "sceneId": "conclusion",
-        "startSeconds": 98,
-        "endSeconds": 105,
+        "startSeconds": 108.87499999999997,
+        "endSeconds": 121.72499999999997,
         "text": "Try it on the next feature. Start one SDD Orchestrator run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience."
       }
     }
@@ -1339,7 +1339,7 @@
       "teachingPoint": "The spec should control scope, validation, and evidence.",
       "shotRole": "kinetic-title",
       "startSeconds": 0,
-      "durationSeconds": 4,
+      "durationSeconds": 3.933,
       "visualIntent": "FloatingDocumentCloud: Source documents drifting into a single control plane",
       "framing": "medium",
       "camera": "match-cut",
@@ -1437,7 +1437,7 @@
       "narration": {
         "sceneId": "hook",
         "startSeconds": 0,
-        "endSeconds": 12,
+        "endSeconds": 11.15,
         "text": "Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected."
       },
       "decision": {
@@ -1445,7 +1445,7 @@
         "shotId": "hook-shot-01",
         "sceneId": "hook",
         "fromFrame": 0,
-        "durationFrames": 120,
+        "durationFrames": 118,
         "transition": "crossfade",
         "pacingRole": "hook",
         "narrationSegmentId": "hook",
@@ -1461,8 +1461,8 @@
       "purpose": "Open with the core operating idea.",
       "teachingPoint": "The spec should control scope, validation, and evidence.",
       "shotRole": "source-document-closeup",
-      "startSeconds": 4,
-      "durationSeconds": 4,
+      "startSeconds": 3.933,
+      "durationSeconds": 3.9,
       "visualIntent": "FloatingDocumentCloud: Source documents drifting into a single control plane",
       "framing": "closeup",
       "camera": "zoom-to-detail",
@@ -1561,15 +1561,15 @@
       "narration": {
         "sceneId": "hook",
         "startSeconds": 0,
-        "endSeconds": 12,
+        "endSeconds": 11.15,
         "text": "Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected."
       },
       "decision": {
         "cutId": "cut-002",
         "shotId": "hook-shot-02",
         "sceneId": "hook",
-        "fromFrame": 120,
-        "durationFrames": 120,
+        "fromFrame": 118,
+        "durationFrames": 117,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "hook",
@@ -1585,8 +1585,8 @@
       "purpose": "Open with the core operating idea.",
       "teachingPoint": "The spec should control scope, validation, and evidence.",
       "shotRole": "metaphor-visual",
-      "startSeconds": 8,
-      "durationSeconds": 4,
+      "startSeconds": 7.833,
+      "durationSeconds": 3.933,
       "visualIntent": "FloatingDocumentCloud: Source documents drifting into a single control plane",
       "framing": "wide",
       "camera": "parallax",
@@ -1684,15 +1684,15 @@
       "narration": {
         "sceneId": "hook",
         "startSeconds": 0,
-        "endSeconds": 12,
+        "endSeconds": 11.15,
         "text": "Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected."
       },
       "decision": {
         "cutId": "cut-003",
         "shotId": "hook-shot-03",
         "sceneId": "hook",
-        "fromFrame": 240,
-        "durationFrames": 120,
+        "fromFrame": 235,
+        "durationFrames": 118,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "hook",
@@ -1708,8 +1708,8 @@
       "purpose": "Show the adoption friction.",
       "teachingPoint": "Without a coordinator, workflow sequence, approvals, and evidence depend on memory.",
       "shotRole": "emotional-hook",
-      "startSeconds": 12,
-      "durationSeconds": 4,
+      "startSeconds": 11.767,
+      "durationSeconds": 4.5,
       "visualIntent": "PathDraw: Fragile manual decisions tangled into a knot",
       "framing": "hero",
       "camera": "push-in",
@@ -1807,16 +1807,16 @@
       },
       "narration": {
         "sceneId": "problem",
-        "startSeconds": 12,
-        "endSeconds": 28,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
         "text": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear."
       },
       "decision": {
         "cutId": "cut-004",
         "shotId": "problem-shot-01",
         "sceneId": "problem",
-        "fromFrame": 360,
-        "durationFrames": 120,
+        "fromFrame": 353,
+        "durationFrames": 135,
         "transition": "match-cut",
         "pacingRole": "hook",
         "narrationSegmentId": "problem",
@@ -1832,8 +1832,8 @@
       "purpose": "Show the adoption friction.",
       "teachingPoint": "Without a coordinator, workflow sequence, approvals, and evidence depend on memory.",
       "shotRole": "comparison",
-      "startSeconds": 16,
-      "durationSeconds": 4,
+      "startSeconds": 16.267,
+      "durationSeconds": 4.5,
       "visualIntent": "PathDraw: Fragile manual decisions tangled into a knot",
       "framing": "split-screen",
       "camera": "pan-left",
@@ -1932,16 +1932,16 @@
       },
       "narration": {
         "sceneId": "problem",
-        "startSeconds": 12,
-        "endSeconds": 28,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
         "text": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear."
       },
       "decision": {
         "cutId": "cut-005",
         "shotId": "problem-shot-02",
         "sceneId": "problem",
-        "fromFrame": 480,
-        "durationFrames": 120,
+        "fromFrame": 488,
+        "durationFrames": 135,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "problem",
@@ -1957,8 +1957,8 @@
       "purpose": "Show the adoption friction.",
       "teachingPoint": "Without a coordinator, workflow sequence, approvals, and evidence depend on memory.",
       "shotRole": "source-document-closeup",
-      "startSeconds": 20,
-      "durationSeconds": 4,
+      "startSeconds": 20.767,
+      "durationSeconds": 4.5,
       "visualIntent": "PathDraw: Fragile manual decisions tangled into a knot",
       "framing": "closeup",
       "camera": "zoom-to-detail",
@@ -2056,16 +2056,16 @@
       },
       "narration": {
         "sceneId": "problem",
-        "startSeconds": 12,
-        "endSeconds": 28,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
         "text": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear."
       },
       "decision": {
         "cutId": "cut-006",
         "shotId": "problem-shot-03",
         "sceneId": "problem",
-        "fromFrame": 600,
-        "durationFrames": 120,
+        "fromFrame": 623,
+        "durationFrames": 135,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "problem",
@@ -2081,8 +2081,8 @@
       "purpose": "Show the adoption friction.",
       "teachingPoint": "Without a coordinator, workflow sequence, approvals, and evidence depend on memory.",
       "shotRole": "diagram-build",
-      "startSeconds": 24,
-      "durationSeconds": 4,
+      "startSeconds": 25.267,
+      "durationSeconds": 4.5,
       "visualIntent": "PathDraw: Fragile manual decisions tangled into a knot",
       "framing": "medium",
       "camera": "push-in",
@@ -2181,16 +2181,16 @@
       },
       "narration": {
         "sceneId": "problem",
-        "startSeconds": 12,
-        "endSeconds": 28,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
         "text": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear."
       },
       "decision": {
         "cutId": "cut-007",
         "shotId": "problem-shot-04",
         "sceneId": "problem",
-        "fromFrame": 720,
-        "durationFrames": 120,
+        "fromFrame": 758,
+        "durationFrames": 135,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "problem",
@@ -2206,8 +2206,8 @@
       "purpose": "Introduce the orchestrator as the usability layer.",
       "teachingPoint": "The coordinator owns run state, phase order, approvals, and durable evidence.",
       "shotRole": "metaphor-visual",
-      "startSeconds": 28,
-      "durationSeconds": 4,
+      "startSeconds": 29.767,
+      "durationSeconds": 4.633,
       "visualIntent": "ConnectedNodeGraph: A stateful run coordinating status, blockers, approvals, artifacts, and events",
       "framing": "wide",
       "camera": "parallax",
@@ -2305,16 +2305,16 @@
       },
       "narration": {
         "sceneId": "solution",
-        "startSeconds": 28,
-        "endSeconds": 44,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
         "text": "The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required."
       },
       "decision": {
         "cutId": "cut-008",
         "shotId": "solution-shot-01",
         "sceneId": "solution",
-        "fromFrame": 840,
-        "durationFrames": 120,
+        "fromFrame": 893,
+        "durationFrames": 139,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "solution",
@@ -2330,8 +2330,8 @@
       "purpose": "Introduce the orchestrator as the usability layer.",
       "teachingPoint": "The coordinator owns run state, phase order, approvals, and durable evidence.",
       "shotRole": "diagram-build",
-      "startSeconds": 32,
-      "durationSeconds": 4,
+      "startSeconds": 34.4,
+      "durationSeconds": 4.633,
       "visualIntent": "ConnectedNodeGraph: A stateful run coordinating status, blockers, approvals, artifacts, and events",
       "framing": "medium",
       "camera": "push-in",
@@ -2430,16 +2430,16 @@
       },
       "narration": {
         "sceneId": "solution",
-        "startSeconds": 28,
-        "endSeconds": 44,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
         "text": "The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required."
       },
       "decision": {
         "cutId": "cut-009",
         "shotId": "solution-shot-02",
         "sceneId": "solution",
-        "fromFrame": 960,
-        "durationFrames": 120,
+        "fromFrame": 1032,
+        "durationFrames": 139,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "solution",
@@ -2455,8 +2455,8 @@
       "purpose": "Introduce the orchestrator as the usability layer.",
       "teachingPoint": "The coordinator owns run state, phase order, approvals, and durable evidence.",
       "shotRole": "product-ui-proof",
-      "startSeconds": 36,
-      "durationSeconds": 4,
+      "startSeconds": 39.033,
+      "durationSeconds": 4.633,
       "visualIntent": "ConnectedNodeGraph: A stateful run coordinating status, blockers, approvals, artifacts, and events",
       "framing": "split-screen",
       "camera": "push-in",
@@ -2555,16 +2555,16 @@
       },
       "narration": {
         "sceneId": "solution",
-        "startSeconds": 28,
-        "endSeconds": 44,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
         "text": "The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required."
       },
       "decision": {
         "cutId": "cut-010",
         "shotId": "solution-shot-03",
         "sceneId": "solution",
-        "fromFrame": 1080,
-        "durationFrames": 120,
+        "fromFrame": 1171,
+        "durationFrames": 139,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "solution",
@@ -2580,8 +2580,8 @@
       "purpose": "Introduce the orchestrator as the usability layer.",
       "teachingPoint": "The coordinator owns run state, phase order, approvals, and durable evidence.",
       "shotRole": "callout-insert",
-      "startSeconds": 40,
-      "durationSeconds": 4,
+      "startSeconds": 43.667,
+      "durationSeconds": 4.667,
       "visualIntent": "ConnectedNodeGraph: A stateful run coordinating status, blockers, approvals, artifacts, and events",
       "framing": "macro",
       "camera": "zoom-to-detail",
@@ -2679,16 +2679,16 @@
       },
       "narration": {
         "sceneId": "solution",
-        "startSeconds": 28,
-        "endSeconds": 44,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
         "text": "The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required."
       },
       "decision": {
         "cutId": "cut-011",
         "shotId": "solution-shot-04",
         "sceneId": "solution",
-        "fromFrame": 1200,
-        "durationFrames": 120,
+        "fromFrame": 1310,
+        "durationFrames": 140,
         "transition": "match-cut",
         "pacingRole": "emphasis",
         "narrationSegmentId": "solution",
@@ -2704,8 +2704,8 @@
       "purpose": "Make the primary usage mode concrete.",
       "teachingPoint": "Engineers start from a Codex prompt, and the coordinator preserves run state across approvals, artifacts, validation, and resume points.",
       "shotRole": "product-ui-proof",
-      "startSeconds": 44,
-      "durationSeconds": 4,
+      "startSeconds": 48.333,
+      "durationSeconds": 5.233,
       "visualIntent": "TerminalSequence: Codex prompt driving the same event-sourced runtime",
       "framing": "split-screen",
       "camera": "push-in",
@@ -2806,16 +2806,16 @@
       },
       "narration": {
         "sceneId": "developer-experience",
-        "startSeconds": 44,
-        "endSeconds": 60,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
         "text": "In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption."
       },
       "decision": {
         "cutId": "cut-012",
         "shotId": "developer-experience-shot-01",
         "sceneId": "developer-experience",
-        "fromFrame": 1320,
-        "durationFrames": 120,
+        "fromFrame": 1450,
+        "durationFrames": 157,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "developer-experience",
@@ -2831,8 +2831,8 @@
       "purpose": "Make the primary usage mode concrete.",
       "teachingPoint": "Engineers start from a Codex prompt, and the coordinator preserves run state across approvals, artifacts, validation, and resume points.",
       "shotRole": "terminal-demo",
-      "startSeconds": 48,
-      "durationSeconds": 4,
+      "startSeconds": 53.567,
+      "durationSeconds": 5.267,
       "visualIntent": "TerminalSequence: Codex prompt driving the same event-sourced runtime",
       "framing": "closeup",
       "camera": "pan-right",
@@ -2933,16 +2933,16 @@
       },
       "narration": {
         "sceneId": "developer-experience",
-        "startSeconds": 44,
-        "endSeconds": 60,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
         "text": "In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption."
       },
       "decision": {
         "cutId": "cut-013",
         "shotId": "developer-experience-shot-02",
         "sceneId": "developer-experience",
-        "fromFrame": 1440,
-        "durationFrames": 120,
+        "fromFrame": 1607,
+        "durationFrames": 158,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "developer-experience",
@@ -2958,8 +2958,8 @@
       "purpose": "Make the primary usage mode concrete.",
       "teachingPoint": "Engineers start from a Codex prompt, and the coordinator preserves run state across approvals, artifacts, validation, and resume points.",
       "shotRole": "source-document-closeup",
-      "startSeconds": 52,
-      "durationSeconds": 4,
+      "startSeconds": 58.833,
+      "durationSeconds": 5.233,
       "visualIntent": "TerminalSequence: Codex prompt driving the same event-sourced runtime",
       "framing": "closeup",
       "camera": "zoom-to-detail",
@@ -3059,16 +3059,16 @@
       },
       "narration": {
         "sceneId": "developer-experience",
-        "startSeconds": 44,
-        "endSeconds": 60,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
         "text": "In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption."
       },
       "decision": {
         "cutId": "cut-014",
         "shotId": "developer-experience-shot-03",
         "sceneId": "developer-experience",
-        "fromFrame": 1560,
-        "durationFrames": 120,
+        "fromFrame": 1765,
+        "durationFrames": 157,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "developer-experience",
@@ -3084,8 +3084,8 @@
       "purpose": "Make the primary usage mode concrete.",
       "teachingPoint": "Engineers start from a Codex prompt, and the coordinator preserves run state across approvals, artifacts, validation, and resume points.",
       "shotRole": "diagram-build",
-      "startSeconds": 56,
-      "durationSeconds": 4,
+      "startSeconds": 64.067,
+      "durationSeconds": 5.267,
       "visualIntent": "TerminalSequence: Codex prompt driving the same event-sourced runtime",
       "framing": "medium",
       "camera": "push-in",
@@ -3186,16 +3186,16 @@
       },
       "narration": {
         "sceneId": "developer-experience",
-        "startSeconds": 44,
-        "endSeconds": 60,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
         "text": "In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption."
       },
       "decision": {
         "cutId": "cut-015",
         "shotId": "developer-experience-shot-04",
         "sceneId": "developer-experience",
-        "fromFrame": 1680,
-        "durationFrames": 120,
+        "fromFrame": 1922,
+        "durationFrames": 158,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "developer-experience",
@@ -3211,8 +3211,8 @@
       "purpose": "Walk the viewer through the lifecycle.",
       "teachingPoint": "Workflow with 7 documented steps.",
       "shotRole": "workflow-wide",
-      "startSeconds": 60,
-      "durationSeconds": 4.8,
+      "startSeconds": 69.333,
+      "durationSeconds": 4.133,
       "visualIntent": "AnimatedWorkflow: A canonical workflow rail with evidence gates",
       "framing": "wide",
       "camera": "track",
@@ -3311,16 +3311,16 @@
       },
       "narration": {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       },
       "decision": {
         "cutId": "cut-016",
         "shotId": "workflow-shot-01",
         "sceneId": "workflow",
-        "fromFrame": 1800,
-        "durationFrames": 144,
+        "fromFrame": 2080,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "workflow",
@@ -3336,8 +3336,8 @@
       "purpose": "Walk the viewer through the lifecycle.",
       "teachingPoint": "Workflow with 7 documented steps.",
       "shotRole": "diagram-build",
-      "startSeconds": 64.8,
-      "durationSeconds": 4.8,
+      "startSeconds": 73.467,
+      "durationSeconds": 4.133,
       "visualIntent": "AnimatedWorkflow: A canonical workflow rail with evidence gates",
       "framing": "medium",
       "camera": "push-in",
@@ -3436,16 +3436,16 @@
       },
       "narration": {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       },
       "decision": {
         "cutId": "cut-017",
         "shotId": "workflow-shot-02",
         "sceneId": "workflow",
-        "fromFrame": 1944,
-        "durationFrames": 144,
+        "fromFrame": 2204,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "workflow",
@@ -3461,8 +3461,8 @@
       "purpose": "Walk the viewer through the lifecycle.",
       "teachingPoint": "Workflow with 7 documented steps.",
       "shotRole": "source-document-closeup",
-      "startSeconds": 69.6,
-      "durationSeconds": 4.8,
+      "startSeconds": 77.6,
+      "durationSeconds": 4.167,
       "visualIntent": "AnimatedWorkflow: A canonical workflow rail with evidence gates",
       "framing": "closeup",
       "camera": "zoom-to-detail",
@@ -3560,16 +3560,16 @@
       },
       "narration": {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       },
       "decision": {
         "cutId": "cut-018",
         "shotId": "workflow-shot-03",
         "sceneId": "workflow",
-        "fromFrame": 2088,
-        "durationFrames": 144,
+        "fromFrame": 2328,
+        "durationFrames": 125,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "workflow",
@@ -3585,8 +3585,8 @@
       "purpose": "Walk the viewer through the lifecycle.",
       "teachingPoint": "Workflow with 7 documented steps.",
       "shotRole": "product-ui-proof",
-      "startSeconds": 74.4,
-      "durationSeconds": 4.8,
+      "startSeconds": 81.767,
+      "durationSeconds": 4.133,
       "visualIntent": "AnimatedWorkflow: A canonical workflow rail with evidence gates",
       "framing": "split-screen",
       "camera": "push-in",
@@ -3685,16 +3685,16 @@
       },
       "narration": {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       },
       "decision": {
         "cutId": "cut-019",
         "shotId": "workflow-shot-04",
         "sceneId": "workflow",
-        "fromFrame": 2232,
-        "durationFrames": 144,
+        "fromFrame": 2453,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "workflow",
@@ -3710,8 +3710,8 @@
       "purpose": "Walk the viewer through the lifecycle.",
       "teachingPoint": "Workflow with 7 documented steps.",
       "shotRole": "workflow-wide",
-      "startSeconds": 79.2,
-      "durationSeconds": 4.8,
+      "startSeconds": 85.9,
+      "durationSeconds": 4.133,
       "visualIntent": "AnimatedWorkflow: A canonical workflow rail with evidence gates",
       "framing": "wide",
       "camera": "track",
@@ -3810,16 +3810,16 @@
       },
       "narration": {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       },
       "decision": {
         "cutId": "cut-020",
         "shotId": "workflow-shot-05",
         "sceneId": "workflow",
-        "fromFrame": 2376,
-        "durationFrames": 144,
+        "fromFrame": 2577,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "workflow",
@@ -3835,8 +3835,8 @@
       "purpose": "Show traceability, approval, drift, and validation guardrails.",
       "teachingPoint": "The orchestrator reduces skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs.",
       "shotRole": "diagram-build",
-      "startSeconds": 84,
-      "durationSeconds": 3.5,
+      "startSeconds": 90.033,
+      "durationSeconds": 4.7,
       "visualIntent": "ValidationGate: Guardrails catching drift and reconnecting evidence to source truth",
       "framing": "medium",
       "camera": "push-in",
@@ -3935,16 +3935,16 @@
       },
       "narration": {
         "sceneId": "guardrails",
-        "startSeconds": 84,
-        "endSeconds": 98,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
         "text": "The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update."
       },
       "decision": {
         "cutId": "cut-021",
         "shotId": "guardrails-shot-01",
         "sceneId": "guardrails",
-        "fromFrame": 2520,
-        "durationFrames": 105,
+        "fromFrame": 2701,
+        "durationFrames": 141,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "guardrails",
@@ -3960,8 +3960,8 @@
       "purpose": "Show traceability, approval, drift, and validation guardrails.",
       "teachingPoint": "The orchestrator reduces skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs.",
       "shotRole": "source-document-closeup",
-      "startSeconds": 87.5,
-      "durationSeconds": 3.5,
+      "startSeconds": 94.733,
+      "durationSeconds": 4.7,
       "visualIntent": "ValidationGate: Guardrails catching drift and reconnecting evidence to source truth",
       "framing": "closeup",
       "camera": "zoom-to-detail",
@@ -4059,16 +4059,16 @@
       },
       "narration": {
         "sceneId": "guardrails",
-        "startSeconds": 84,
-        "endSeconds": 98,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
         "text": "The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update."
       },
       "decision": {
         "cutId": "cut-022",
         "shotId": "guardrails-shot-02",
         "sceneId": "guardrails",
-        "fromFrame": 2625,
-        "durationFrames": 105,
+        "fromFrame": 2842,
+        "durationFrames": 141,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "guardrails",
@@ -4084,8 +4084,8 @@
       "purpose": "Show traceability, approval, drift, and validation guardrails.",
       "teachingPoint": "The orchestrator reduces skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs.",
       "shotRole": "product-ui-proof",
-      "startSeconds": 91,
-      "durationSeconds": 3.5,
+      "startSeconds": 99.433,
+      "durationSeconds": 4.733,
       "visualIntent": "ValidationGate: Guardrails catching drift and reconnecting evidence to source truth",
       "framing": "split-screen",
       "camera": "push-in",
@@ -4184,16 +4184,16 @@
       },
       "narration": {
         "sceneId": "guardrails",
-        "startSeconds": 84,
-        "endSeconds": 98,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
         "text": "The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update."
       },
       "decision": {
         "cutId": "cut-023",
         "shotId": "guardrails-shot-03",
         "sceneId": "guardrails",
-        "fromFrame": 2730,
-        "durationFrames": 105,
+        "fromFrame": 2983,
+        "durationFrames": 142,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "guardrails",
@@ -4209,8 +4209,8 @@
       "purpose": "Show traceability, approval, drift, and validation guardrails.",
       "teachingPoint": "The orchestrator reduces skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs.",
       "shotRole": "workflow-wide",
-      "startSeconds": 94.5,
-      "durationSeconds": 3.5,
+      "startSeconds": 104.167,
+      "durationSeconds": 4.7,
       "visualIntent": "ValidationGate: Guardrails catching drift and reconnecting evidence to source truth",
       "framing": "wide",
       "camera": "track",
@@ -4309,16 +4309,16 @@
       },
       "narration": {
         "sceneId": "guardrails",
-        "startSeconds": 84,
-        "endSeconds": 98,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
         "text": "The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update."
       },
       "decision": {
         "cutId": "cut-024",
         "shotId": "guardrails-shot-04",
         "sceneId": "guardrails",
-        "fromFrame": 2835,
-        "durationFrames": 105,
+        "fromFrame": 3125,
+        "durationFrames": 141,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "guardrails",
@@ -4334,8 +4334,8 @@
       "purpose": "Close with adoption and contribution.",
       "teachingPoint": "Try SDD Orchestrator on the next feature, then improve the workflow, prompts, gates, dashboard, validation, onboarding, and developer experience.",
       "shotRole": "metaphor-visual",
-      "startSeconds": 98,
-      "durationSeconds": 2.333,
+      "startSeconds": 108.867,
+      "durationSeconds": 4.3,
       "visualIntent": "TraceabilityChain: The evidence chain closes around the source of truth",
       "framing": "wide",
       "camera": "parallax",
@@ -4433,16 +4433,16 @@
       },
       "narration": {
         "sceneId": "conclusion",
-        "startSeconds": 98,
-        "endSeconds": 105,
+        "startSeconds": 108.87499999999997,
+        "endSeconds": 121.72499999999997,
         "text": "Try it on the next feature. Start one SDD Orchestrator run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience."
       },
       "decision": {
         "cutId": "cut-025",
         "shotId": "conclusion-shot-01",
         "sceneId": "conclusion",
-        "fromFrame": 2940,
-        "durationFrames": 70,
+        "fromFrame": 3266,
+        "durationFrames": 129,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "conclusion",
@@ -4458,8 +4458,8 @@
       "purpose": "Close with adoption and contribution.",
       "teachingPoint": "Try SDD Orchestrator on the next feature, then improve the workflow, prompts, gates, dashboard, validation, onboarding, and developer experience.",
       "shotRole": "source-document-closeup",
-      "startSeconds": 100.333,
-      "durationSeconds": 2.333,
+      "startSeconds": 113.167,
+      "durationSeconds": 4.267,
       "visualIntent": "TraceabilityChain: The evidence chain closes around the source of truth",
       "framing": "closeup",
       "camera": "zoom-to-detail",
@@ -4557,16 +4557,16 @@
       },
       "narration": {
         "sceneId": "conclusion",
-        "startSeconds": 98,
-        "endSeconds": 105,
+        "startSeconds": 108.87499999999997,
+        "endSeconds": 121.72499999999997,
         "text": "Try it on the next feature. Start one SDD Orchestrator run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience."
       },
       "decision": {
         "cutId": "cut-026",
         "shotId": "conclusion-shot-02",
         "sceneId": "conclusion",
-        "fromFrame": 3010,
-        "durationFrames": 70,
+        "fromFrame": 3395,
+        "durationFrames": 128,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "conclusion",
@@ -4582,8 +4582,8 @@
       "purpose": "Close with adoption and contribution.",
       "teachingPoint": "Try SDD Orchestrator on the next feature, then improve the workflow, prompts, gates, dashboard, validation, onboarding, and developer experience.",
       "shotRole": "kinetic-title",
-      "startSeconds": 102.667,
-      "durationSeconds": 2.333,
+      "startSeconds": 117.433,
+      "durationSeconds": 4.3,
       "visualIntent": "TraceabilityChain: The evidence chain closes around the source of truth",
       "framing": "medium",
       "camera": "match-cut",
@@ -4681,16 +4681,16 @@
       },
       "narration": {
         "sceneId": "conclusion",
-        "startSeconds": 98,
-        "endSeconds": 105,
+        "startSeconds": 108.87499999999997,
+        "endSeconds": 121.72499999999997,
         "text": "Try it on the next feature. Start one SDD Orchestrator run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience."
       },
       "decision": {
         "cutId": "cut-027",
         "shotId": "conclusion-shot-03",
         "sceneId": "conclusion",
-        "fromFrame": 3080,
-        "durationFrames": 70,
+        "fromFrame": 3523,
+        "durationFrames": 129,
         "transition": "match-cut",
         "pacingRole": "hook",
         "narrationSegmentId": "conclusion",
@@ -4702,7 +4702,7 @@
   "mediaMix": {
     "kind": "MediaMixPlan",
     "version": "1.0.0",
-    "sourceHash": "d2da37063085e41c65dd9b47e37472e86bc80244a840cdf583c3af7e18220317",
+    "sourceHash": "1b10824858f29e59fdb5eff601a9b6c74201a44f883c35125ff5ebb8936fe2b3",
     "documentSlug": "sdd-orchestrator",
     "targetMix": {
       "source-excerpt": 0.222,
@@ -5006,16 +5006,16 @@
   "edl": {
     "kind": "EditDecisionList",
     "version": "1.0.0",
-    "sourceHash": "7eb5b2c5166bdbc41cdfe55a2a5a989429e95f4ff936ab84d15db3bc898a9787",
+    "sourceHash": "23cd1b43a34a98e6a384cf30f1737adb5bf57a1c9867f269b1cde8601d52af07",
     "fps": 30,
-    "totalFrames": 3150,
+    "totalFrames": 3652,
     "decisions": [
       {
         "cutId": "cut-001",
         "shotId": "hook-shot-01",
         "sceneId": "hook",
         "fromFrame": 0,
-        "durationFrames": 120,
+        "durationFrames": 118,
         "transition": "crossfade",
         "pacingRole": "hook",
         "narrationSegmentId": "hook",
@@ -5026,8 +5026,8 @@
         "cutId": "cut-002",
         "shotId": "hook-shot-02",
         "sceneId": "hook",
-        "fromFrame": 120,
-        "durationFrames": 120,
+        "fromFrame": 118,
+        "durationFrames": 117,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "hook",
@@ -5038,8 +5038,8 @@
         "cutId": "cut-003",
         "shotId": "hook-shot-03",
         "sceneId": "hook",
-        "fromFrame": 240,
-        "durationFrames": 120,
+        "fromFrame": 235,
+        "durationFrames": 118,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "hook",
@@ -5050,8 +5050,8 @@
         "cutId": "cut-004",
         "shotId": "problem-shot-01",
         "sceneId": "problem",
-        "fromFrame": 360,
-        "durationFrames": 120,
+        "fromFrame": 353,
+        "durationFrames": 135,
         "transition": "match-cut",
         "pacingRole": "hook",
         "narrationSegmentId": "problem",
@@ -5062,8 +5062,8 @@
         "cutId": "cut-005",
         "shotId": "problem-shot-02",
         "sceneId": "problem",
-        "fromFrame": 480,
-        "durationFrames": 120,
+        "fromFrame": 488,
+        "durationFrames": 135,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "problem",
@@ -5074,8 +5074,8 @@
         "cutId": "cut-006",
         "shotId": "problem-shot-03",
         "sceneId": "problem",
-        "fromFrame": 600,
-        "durationFrames": 120,
+        "fromFrame": 623,
+        "durationFrames": 135,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "problem",
@@ -5086,8 +5086,8 @@
         "cutId": "cut-007",
         "shotId": "problem-shot-04",
         "sceneId": "problem",
-        "fromFrame": 720,
-        "durationFrames": 120,
+        "fromFrame": 758,
+        "durationFrames": 135,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "problem",
@@ -5098,8 +5098,8 @@
         "cutId": "cut-008",
         "shotId": "solution-shot-01",
         "sceneId": "solution",
-        "fromFrame": 840,
-        "durationFrames": 120,
+        "fromFrame": 893,
+        "durationFrames": 139,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "solution",
@@ -5110,8 +5110,8 @@
         "cutId": "cut-009",
         "shotId": "solution-shot-02",
         "sceneId": "solution",
-        "fromFrame": 960,
-        "durationFrames": 120,
+        "fromFrame": 1032,
+        "durationFrames": 139,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "solution",
@@ -5122,8 +5122,8 @@
         "cutId": "cut-010",
         "shotId": "solution-shot-03",
         "sceneId": "solution",
-        "fromFrame": 1080,
-        "durationFrames": 120,
+        "fromFrame": 1171,
+        "durationFrames": 139,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "solution",
@@ -5134,8 +5134,8 @@
         "cutId": "cut-011",
         "shotId": "solution-shot-04",
         "sceneId": "solution",
-        "fromFrame": 1200,
-        "durationFrames": 120,
+        "fromFrame": 1310,
+        "durationFrames": 140,
         "transition": "match-cut",
         "pacingRole": "emphasis",
         "narrationSegmentId": "solution",
@@ -5146,8 +5146,8 @@
         "cutId": "cut-012",
         "shotId": "developer-experience-shot-01",
         "sceneId": "developer-experience",
-        "fromFrame": 1320,
-        "durationFrames": 120,
+        "fromFrame": 1450,
+        "durationFrames": 157,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "developer-experience",
@@ -5158,8 +5158,8 @@
         "cutId": "cut-013",
         "shotId": "developer-experience-shot-02",
         "sceneId": "developer-experience",
-        "fromFrame": 1440,
-        "durationFrames": 120,
+        "fromFrame": 1607,
+        "durationFrames": 158,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "developer-experience",
@@ -5170,8 +5170,8 @@
         "cutId": "cut-014",
         "shotId": "developer-experience-shot-03",
         "sceneId": "developer-experience",
-        "fromFrame": 1560,
-        "durationFrames": 120,
+        "fromFrame": 1765,
+        "durationFrames": 157,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "developer-experience",
@@ -5182,8 +5182,8 @@
         "cutId": "cut-015",
         "shotId": "developer-experience-shot-04",
         "sceneId": "developer-experience",
-        "fromFrame": 1680,
-        "durationFrames": 120,
+        "fromFrame": 1922,
+        "durationFrames": 158,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "developer-experience",
@@ -5194,8 +5194,8 @@
         "cutId": "cut-016",
         "shotId": "workflow-shot-01",
         "sceneId": "workflow",
-        "fromFrame": 1800,
-        "durationFrames": 144,
+        "fromFrame": 2080,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "workflow",
@@ -5206,8 +5206,8 @@
         "cutId": "cut-017",
         "shotId": "workflow-shot-02",
         "sceneId": "workflow",
-        "fromFrame": 1944,
-        "durationFrames": 144,
+        "fromFrame": 2204,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "workflow",
@@ -5218,8 +5218,8 @@
         "cutId": "cut-018",
         "shotId": "workflow-shot-03",
         "sceneId": "workflow",
-        "fromFrame": 2088,
-        "durationFrames": 144,
+        "fromFrame": 2328,
+        "durationFrames": 125,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "workflow",
@@ -5230,8 +5230,8 @@
         "cutId": "cut-019",
         "shotId": "workflow-shot-04",
         "sceneId": "workflow",
-        "fromFrame": 2232,
-        "durationFrames": 144,
+        "fromFrame": 2453,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "workflow",
@@ -5242,8 +5242,8 @@
         "cutId": "cut-020",
         "shotId": "workflow-shot-05",
         "sceneId": "workflow",
-        "fromFrame": 2376,
-        "durationFrames": 144,
+        "fromFrame": 2577,
+        "durationFrames": 124,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "workflow",
@@ -5254,8 +5254,8 @@
         "cutId": "cut-021",
         "shotId": "guardrails-shot-01",
         "sceneId": "guardrails",
-        "fromFrame": 2520,
-        "durationFrames": 105,
+        "fromFrame": 2701,
+        "durationFrames": 141,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "guardrails",
@@ -5266,8 +5266,8 @@
         "cutId": "cut-022",
         "shotId": "guardrails-shot-02",
         "sceneId": "guardrails",
-        "fromFrame": 2625,
-        "durationFrames": 105,
+        "fromFrame": 2842,
+        "durationFrames": 141,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "guardrails",
@@ -5278,8 +5278,8 @@
         "cutId": "cut-023",
         "shotId": "guardrails-shot-03",
         "sceneId": "guardrails",
-        "fromFrame": 2730,
-        "durationFrames": 105,
+        "fromFrame": 2983,
+        "durationFrames": 142,
         "transition": "match-cut",
         "pacingRole": "proof",
         "narrationSegmentId": "guardrails",
@@ -5290,8 +5290,8 @@
         "cutId": "cut-024",
         "shotId": "guardrails-shot-04",
         "sceneId": "guardrails",
-        "fromFrame": 2835,
-        "durationFrames": 105,
+        "fromFrame": 3125,
+        "durationFrames": 141,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "guardrails",
@@ -5302,8 +5302,8 @@
         "cutId": "cut-025",
         "shotId": "conclusion-shot-01",
         "sceneId": "conclusion",
-        "fromFrame": 2940,
-        "durationFrames": 70,
+        "fromFrame": 3266,
+        "durationFrames": 129,
         "transition": "match-cut",
         "pacingRole": "explain",
         "narrationSegmentId": "conclusion",
@@ -5314,8 +5314,8 @@
         "cutId": "cut-026",
         "shotId": "conclusion-shot-02",
         "sceneId": "conclusion",
-        "fromFrame": 3010,
-        "durationFrames": 70,
+        "fromFrame": 3395,
+        "durationFrames": 128,
         "transition": "cut",
         "pacingRole": "proof",
         "narrationSegmentId": "conclusion",
@@ -5326,8 +5326,8 @@
         "cutId": "cut-027",
         "shotId": "conclusion-shot-03",
         "sceneId": "conclusion",
-        "fromFrame": 3080,
-        "durationFrames": 70,
+        "fromFrame": 3523,
+        "durationFrames": 129,
         "transition": "match-cut",
         "pacingRole": "hook",
         "narrationSegmentId": "conclusion",
@@ -5339,7 +5339,7 @@
   "narration": {
     "kind": "Narration",
     "version": "1.0.0",
-    "sourceHash": "92bb62e982ecf0b560b73061bd1b213717b3c92e97a2010d7567fc104c06b7f1",
+    "sourceHash": "805ebd649a1374814e6230d660b5cfc1c2009509bba93508fc8bc23273d0d4ae",
     "targetWordCount": [
       220,
       300
@@ -5350,44 +5350,125 @@
       {
         "sceneId": "hook",
         "startSeconds": 0,
-        "endSeconds": 12,
+        "endSeconds": 11.15,
         "text": "Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected."
       },
       {
         "sceneId": "problem",
-        "startSeconds": 12,
-        "endSeconds": 28,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
         "text": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear."
       },
       {
         "sceneId": "solution",
-        "startSeconds": 28,
-        "endSeconds": 44,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
         "text": "The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required."
       },
       {
         "sceneId": "developer-experience",
-        "startSeconds": 44,
-        "endSeconds": 60,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
         "text": "In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption."
       },
       {
         "sceneId": "workflow",
-        "startSeconds": 60,
-        "endSeconds": 84,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
         "text": "The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context."
       },
       {
         "sceneId": "guardrails",
-        "startSeconds": 84,
-        "endSeconds": 98,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
         "text": "The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update."
       },
       {
         "sceneId": "conclusion",
-        "startSeconds": 98,
-        "endSeconds": 105,
+        "startSeconds": 108.87499999999997,
+        "endSeconds": 121.72499999999997,
         "text": "Try it on the next feature. Start one SDD Orchestrator run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience."
+      }
+    ]
+  },
+  "narrationAudio": {
+    "kind": "NarrationAudio",
+    "version": "1.0.0",
+    "sourceHash": "2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47",
+    "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
+    "voice": "af_heart",
+    "pauseSeconds": 0.6,
+    "totalDurationSeconds": 121.72499999999997,
+    "segments": [
+      {
+        "sceneId": "hook",
+        "spokenText": "Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/hook.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 11.15,
+        "startSeconds": 0,
+        "endSeconds": 11.15,
+        "pauseAfterSeconds": 0.6
+      },
+      {
+        "sceneId": "problem",
+        "spokenText": "Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/problem.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 17.4,
+        "startSeconds": 11.75,
+        "endSeconds": 29.15,
+        "pauseAfterSeconds": 0.6
+      },
+      {
+        "sceneId": "solution",
+        "spokenText": "The S D D orchestrator turns those loose steps into a stateful workflow. Start from a JEE-rah key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/solution.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 17.975,
+        "startSeconds": 29.75,
+        "endSeconds": 47.725,
+        "pauseAfterSeconds": 0.6
+      },
+      {
+        "sceneId": "developer-experience",
+        "spokenText": "In Codex, the prompt asks the coordinator to run S D D for the JEE-rah issue, register artifacts, capture approvals, create T D D unit tests before product code, and report blockers honestly. C L I support uses the same runtime, but Codex is the guided path for adoption.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/developer-experience.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 20.4,
+        "startSeconds": 48.325,
+        "endSeconds": 68.725,
+        "pauseAfterSeconds": 0.6
+      },
+      {
+        "sceneId": "workflow",
+        "spokenText": "The canonical path stays visible: requirements intake, design, implementation planning, T D D unit tests, bounded implementation, PLAY-right requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/workflow.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 20.1,
+        "startSeconds": 69.32499999999999,
+        "endSeconds": 89.42499999999998,
+        "pauseAfterSeconds": 0.6
+      },
+      {
+        "sceneId": "guardrails",
+        "spokenText": "The orchestrator also guards against the failures that make S D D hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/guardrails.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 18.25,
+        "startSeconds": 90.02499999999998,
+        "endSeconds": 108.27499999999998,
+        "pauseAfterSeconds": 0.6
+      },
+      {
+        "sceneId": "conclusion",
+        "spokenText": "Try it on the next feature. Start one S D D Orchestrator run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience.",
+        "staticFile": "audio/compiler/2dfdec603fb55b8f8cc8f870e122715d0f7f905e0763105ac95a8a27f8770f47/conclusion.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 12.85,
+        "startSeconds": 108.87499999999997,
+        "endSeconds": 121.72499999999997,
+        "pauseAfterSeconds": 0
       }
     ]
   }

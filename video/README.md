@@ -14,6 +14,8 @@ Input Document
   -> Semantic Model
   -> Story Planner
   -> Story Plan
+  -> Narration Generator
+  -> Kokoro Narration Audio + Timed Story
   -> Visual Director
   -> Visual Plan
   -> Shot Planner
@@ -22,8 +24,6 @@ Input Document
   -> Media Mix Plan
   -> Asset Planner
   -> Asset Manifest
-  -> Narration Generator
-  -> Narration
   -> Animation Planner
   -> Animation Plan
   -> Edit Decision List
@@ -60,6 +60,7 @@ npm run video -- shots docs.md
 npm run video -- media docs.md
 npm run video -- assets docs.md
 npm run video -- narration docs.md
+npm run video -- audio docs.md
 npm run video -- animation docs.md
 npm run video -- edl docs.md
 ```
@@ -126,6 +127,7 @@ shot-plan.json
 media-mix-plan.json
 asset-manifest.json
 narration.json
+narration-audio.json
 animation-plan.json
 edit-decision-list.json
 experience-validation.json
@@ -184,6 +186,7 @@ Schemas exist for:
 - `MediaMixPlan`
 - `AssetManifest`
 - `Narration`
+- `NarrationAudio`
 - `AnimationPlan`
 - `EditDecisionList`
 - `RenderManifest`
@@ -206,6 +209,12 @@ src/compiler/generated/render-manifest.json
 ```
 
 The new Remotion composition `DocumentationCompilerVideo` consumes that manifest. The original `SddOrchestratorExplainer` composition remains available for backwards compatibility.
+
+## Narration audio
+
+Compiler renders use Kokoro through the local Node/ONNX runtime. On the first audio stage, the model is downloaded into the local Hugging Face cache; later renders reuse it. Each narration scene is synthesized to its own WAV, followed by a short pause, and the downstream visual timeline is retimed from the measured audio duration.
+
+The defaults are the Apache-licensed `onnx-community/Kokoro-82M-v1.0-ONNX` model and the American-English `af_heart` voice. Override either with `DOC_VIDEO_KOKORO_MODEL` or `DOC_VIDEO_KOKORO_VOICE`.
 
 To switch renderers:
 
@@ -265,7 +274,7 @@ src/compiler/experience/goldenExperienceProfile.ts
 
 It encodes the v1-style defaults:
 
-- 90 to 120 second runtime, target 105 seconds.
+- 90 to 125 second runtime, target 105 seconds. The upper tolerance preserves natural scene narration rather than speeding it up to fit an arbitrary cutoff.
 - 220 to 300 narrated words.
 - 7 to 9 scenes with a story arc of hook, problem, pain, solution, guided walkthrough, benefits, developer experience, and conclusion.
 - Low on-screen text density, high motion density, animated diagrams, SVG-first visuals, path drawing, progressive reveal, camera movement, terminal animation, and no stock imagery.

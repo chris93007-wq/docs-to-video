@@ -1,4 +1,4 @@
-import {Sequence} from "remotion";
+import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from "remotion";
 import {SddApprovalGate} from "./SddApprovalGate";
 import {SddCodexRun} from "./SddCodexRun";
 import {SddContributionCta} from "./SddContributionCta";
@@ -39,6 +39,39 @@ const componentForScene = (scene: ShowcaseScene) => {
   }
 };
 
+const ShowcaseSceneCut = ({
+  Component,
+  scene,
+  shots,
+  edl,
+  fps,
+}: {
+  Component: ReturnType<typeof componentForScene>;
+  scene: ShowcaseScene;
+  shots: ShowcaseShot[];
+  edl: ShowcaseEdl[];
+  fps: number;
+}) => {
+  const frame = useCurrentFrame();
+  const durationFrames = Math.round(scene.durationSeconds * fps);
+  const opacity = interpolate(
+    frame,
+    [0, 8, Math.max(9, durationFrames - 8), durationFrames],
+    [0, 1, 1, 0],
+    {extrapolateLeft: "clamp", extrapolateRight: "clamp"},
+  );
+  const scale = interpolate(frame, [0, durationFrames], [1.015, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <AbsoluteFill style={{opacity, transform: `scale(${scale})`, transformOrigin: "center"}}>
+      <Component scene={scene} shots={shots} edl={edl} fps={fps} />
+    </AbsoluteFill>
+  );
+};
+
 export const SddShowcaseComposition = ({manifest}: {manifest: ShowcaseManifest}) => {
   const allShots = [...(manifest.shots ?? [])].sort((a, b) => a.startSeconds - b.startSeconds);
   const allDecisions = manifest.edl?.decisions ?? [];
@@ -57,7 +90,13 @@ export const SddShowcaseComposition = ({manifest}: {manifest: ShowcaseManifest})
             from={Math.round(scene.startSeconds * manifest.fps)}
             durationInFrames={Math.round(scene.durationSeconds * manifest.fps)}
           >
-            <Component scene={scene} shots={shots} edl={edl} fps={manifest.fps} />
+            <ShowcaseSceneCut
+              Component={Component}
+              scene={scene}
+              shots={shots}
+              edl={edl}
+              fps={manifest.fps}
+            />
           </Sequence>
         );
       })}

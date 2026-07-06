@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import {test} from "node:test";
 import {runPipeline} from "../compiler/pipeline.mjs";
+import {testNarrationSynthesize} from "./helpers/narration-audio.mjs";
 
 const fixturePath = path.resolve("fixtures/sdd-orchestrator.md");
 
@@ -13,6 +14,7 @@ test("SDD Orchestrator fixture compiles to the golden experience profile", async
     sourcePath: fixturePath,
     artifactDir,
     aiClient: {enabled: false},
+    narrationSynthesize: testNarrationSynthesize,
     targetStage: "validate-experience",
     silent: true,
   });

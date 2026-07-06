@@ -28,6 +28,16 @@ import {planShots} from "./stages/shots.mjs";
 import {planMediaMix} from "./stages/media-mix.mjs";
 import {planAssets} from "./stages/assets.mjs";
 import {generateNarration} from "./stages/narration.mjs";
+import {
+  applyNarrationTiming,
+  createNarrationAudio,
+  createDeterministicTestSynthesizer,
+  DEFAULT_KOKORO_MODEL,
+  DEFAULT_KOKORO_VOICE,
+  DEFAULT_SCENE_PAUSE_SECONDS,
+  narrationAudioFilesExist,
+  pronunciationProfile,
+} from "./stages/narration-audio.mjs";
 import {planAnimation} from "./stages/animation.mjs";
 import {planEditDecisionList} from "./stages/edl.mjs";
 import {hashFile} from "./utils.mjs";
@@ -36,18 +46,19 @@ const stageIndex = {
   parse: 0,
   semantic: 1,
   story: 2,
-  visual: 3,
-  shots: 4,
-  media: 5,
-  "media-mix": 5,
-  assets: 6,
-  narration: 7,
-  animation: 8,
-  edl: 9,
-  edit: 9,
-  "validate-experience": 9,
-  render: 10,
-  compile: 10,
+  narration: 3,
+  audio: 4,
+  visual: 5,
+  shots: 6,
+  media: 7,
+  "media-mix": 7,
+  assets: 8,
+  animation: 9,
+  edl: 10,
+  edit: 10,
+  "validate-experience": 10,
+  render: 11,
+  compile: 11,
 };
 
 const normalizeStageName = (stageName) => {
@@ -56,6 +67,9 @@ const normalizeStageName = (stageName) => {
   }
   if (stageName === "edit") {
     return "edl";
+  }
+  if (stageName === "narration-audio") {
+    return "audio";
   }
   return stageName;
 };
@@ -116,6 +130,7 @@ export const runPipeline = async ({
   rendererName = "remotion",
   renderMp4 = false,
   renderOptions = {},
+  narrationSynthesize,
   silent = false,
 } = {}) => {
   if (!sourcePath) {
@@ -179,6 +194,76 @@ export const runPipeline = async ({
     }),
   );
   result.story = storyResult.artifact;
+  if (!targetIncludes(targetStage, "narration")) {
+    return result;
+  }
+
+  const narrationResult = await logger.stage("narration", () =>
+    runCachedStage({
+      stageName: "narration",
+      artifactName: "narration",
+      artifactDir: outputDir,
+      input: {
+        storyPlan: result.story,
+        semanticDocument: result.semantic,
+        experienceProfile: goldenExperienceProfile,
+      },
+      promptVersion: promptVersion("narration"),
+      force,
+      build: () =>
+        generateNarration(
+          {storyPlan: result.story, semanticDocument: result.semantic},
+          {aiClient},
+        ),
+    }),
+  );
+  result.narration = narrationResult.artifact;
+  if (!targetIncludes(targetStage, "audio")) {
+    return result;
+  }
+
+  const narrationAudioOptions = {
+    model: process.env.DOC_VIDEO_KOKORO_MODEL || DEFAULT_KOKORO_MODEL,
+    voice: process.env.DOC_VIDEO_KOKORO_VOICE || DEFAULT_KOKORO_VOICE,
+    pauseSeconds: DEFAULT_SCENE_PAUSE_SECONDS,
+  };
+  const existingNarrationAudio = existsSync(artifactPath(outputDir, "narrationAudio"))
+    ? readArtifact(outputDir, "narrationAudio")
+    : undefined;
+  const narrationAudioResult = await logger.stage("audio", () =>
+    runCachedStage({
+      stageName: "audio",
+      artifactName: "narrationAudio",
+      artifactDir: outputDir,
+      input: {
+        storyPlan: result.story,
+        narration: result.narration,
+        pronunciationProfile,
+        ...narrationAudioOptions,
+      },
+      promptVersion: "kokoro-onnx-1.0.0",
+      force: force || !narrationAudioFilesExist(existingNarrationAudio),
+      build: () =>
+        createNarrationAudio({
+          storyPlan: result.story,
+          narration: result.narration,
+          ...narrationAudioOptions,
+          ...(narrationSynthesize
+            ? {synthesize: narrationSynthesize}
+            : process.env.DOC_VIDEO_TEST_SYNTHESIS === "1"
+              ? {synthesize: createDeterministicTestSynthesizer}
+              : {}),
+        }),
+    }),
+  );
+  result.narrationAudio = narrationAudioResult.artifact;
+  const timed = applyNarrationTiming({
+    storyPlan: result.story,
+    narration: result.narration,
+    narrationAudio: result.narrationAudio,
+  });
+  result.story = timed.storyPlan;
+  result.narration = timed.narration;
   if (!targetIncludes(targetStage, "visual")) {
     return result;
   }
@@ -295,30 +380,6 @@ export const runPipeline = async ({
     }),
   );
   result.assets = assetResult.artifact;
-  if (!targetIncludes(targetStage, "narration")) {
-    return result;
-  }
-
-  const narrationResult = await logger.stage("narration", () =>
-    runCachedStage({
-      stageName: "narration",
-      artifactName: "narration",
-      artifactDir: outputDir,
-      input: {
-        storyPlan: result.story,
-        semanticDocument: result.semantic,
-        experienceProfile: goldenExperienceProfile,
-      },
-      promptVersion: promptVersion("narration"),
-      force,
-      build: () =>
-        generateNarration(
-          {storyPlan: result.story, semanticDocument: result.semantic},
-          {aiClient},
-        ),
-    }),
-  );
-  result.narration = narrationResult.artifact;
   if (!targetIncludes(targetStage, "animation")) {
     return result;
   }
@@ -419,6 +480,7 @@ export const runPipeline = async ({
     animationPlan: result.animation,
     editDecisionList: result.edit,
     narration: result.narration,
+    narrationAudio: result.narrationAudio,
     assetManifest: result.assets,
   };
   const renderResult = await logger.stage("render", () =>

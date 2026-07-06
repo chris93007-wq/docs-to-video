@@ -214,9 +214,14 @@ export const validateExperience = ({
     }
   }
 
-  if (runtimeSeconds >= 90 && runtimeSeconds <= 120) {
+  if (
+    runtimeSeconds >= profile.runtimeSeconds.min &&
+    runtimeSeconds <= profile.runtimeSeconds.max
+  ) {
     if (shots.length < 25 || shots.length > 45) {
-      errors.push(`Shot count must be 25-45 for a 90-120s video; got ${shots.length}.`);
+      errors.push(
+        `Shot count must be 25-45 for a ${profile.runtimeSeconds.min}-${profile.runtimeSeconds.max}s video; got ${shots.length}.`,
+      );
     }
     if (averageShotDurationSeconds < 2 || averageShotDurationSeconds > 5) {
       errors.push(`Average shot duration must be 2-5s; got ${averageShotDurationSeconds.toFixed(2)}s.`);

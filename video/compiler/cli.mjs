@@ -18,6 +18,7 @@ const commandStages = new Set([
   "media-mix",
   "assets",
   "narration",
+  "audio",
   "animation",
   "edl",
   "render",
@@ -35,6 +36,7 @@ Usage:
   video media docs.md
   video assets docs.md
   video narration docs.md
+  video audio docs.md
   video animation docs.md
   video edl docs.md
   video render docs.md [--no-mp4]

@@ -8,6 +8,13 @@ import {
 } from "./compiler/CompilerComposition";
 import {SddOrchestratorComposition} from "./Composition";
 import {FPS, VIDEO_DURATION_FRAMES, VIDEO_HEIGHT, VIDEO_WIDTH} from "./data/timeline";
+import {
+  SDD_LAUNCH_V006_DURATION_FRAMES,
+  SDD_LAUNCH_V006_FPS,
+  SDD_LAUNCH_V006_HEIGHT,
+  SDD_LAUNCH_V006_WIDTH,
+  SddLaunchV006Composition,
+} from "./launch/SddLaunchV006Composition";
 
 export const RemotionRoot = () => (
   <>
@@ -26,6 +33,14 @@ export const RemotionRoot = () => (
       fps={COMPILER_FPS}
       width={COMPILER_WIDTH}
       height={COMPILER_HEIGHT}
+    />
+    <Composition
+      id="SddOrchestratorLaunchV006"
+      component={SddLaunchV006Composition}
+      durationInFrames={SDD_LAUNCH_V006_DURATION_FRAMES}
+      fps={SDD_LAUNCH_V006_FPS}
+      width={SDD_LAUNCH_V006_WIDTH}
+      height={SDD_LAUNCH_V006_HEIGHT}
     />
   </>
 );

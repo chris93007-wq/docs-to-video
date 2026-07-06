@@ -10,6 +10,7 @@ export const buildRenderManifest = ({
   animationPlan,
   editDecisionList,
   narration,
+  narrationAudio,
   assetManifest,
   showcase,
 }) => {
@@ -70,7 +71,7 @@ export const buildRenderManifest = ({
     kind: "RenderManifest",
     version: "1.0.0",
     renderer,
-    sourceHash: hashValue({storyPlan, visualPlan, shotPlan, mediaMixPlan, animationPlan, editDecisionList, narration, assetManifest, showcase}),
+    sourceHash: hashValue({storyPlan, visualPlan, shotPlan, mediaMixPlan, animationPlan, editDecisionList, narration, narrationAudio, assetManifest, showcase}),
     ...(showcase ? {showcase} : {}),
     fps: 30,
     width: 1920,
@@ -81,5 +82,6 @@ export const buildRenderManifest = ({
     ...(mediaMixPlan ? {mediaMix: mediaMixPlan} : {}),
     ...(editDecisionList ? {edl: editDecisionList} : {}),
     narration,
+    ...(narrationAudio ? {narrationAudio} : {}),
   });
 };

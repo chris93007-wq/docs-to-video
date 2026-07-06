@@ -119,15 +119,6 @@ export const renderRemotionMp4 = ({title, version, outputPath, sourcePath, manif
   const renderOutput = resolveRenderOutput({title, version, outputPath, sourcePath});
   ensureDir(path.dirname(renderOutput.outputPath));
 
-  execFileSync("node", ["scripts/prepare-audio.mjs"], {
-    cwd: projectRoot,
-    stdio: "inherit",
-    env: {
-      ...process.env,
-      DOC_VIDEO_NARRATION: "compiler",
-    },
-  });
-
   execFileSync(remotionBin, [
     "render",
     "src/index.ts",
@@ -138,10 +129,6 @@ export const renderRemotionMp4 = ({title, version, outputPath, sourcePath, manif
   ], {
     cwd: projectRoot,
     stdio: "inherit",
-    env: {
-      ...process.env,
-      DOC_VIDEO_NARRATION: "compiler",
-    },
   });
 
   return recordRenderVersion({renderOutput, sourcePath, manifest});

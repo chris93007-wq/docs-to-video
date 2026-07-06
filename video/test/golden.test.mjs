@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import {test} from "node:test";
 import {runPipeline} from "../compiler/pipeline.mjs";
+import {testNarrationSynthesize} from "./helpers/narration-audio.mjs";
 
 const samplePath = path.resolve("test/fixtures/sample.md");
 const readGolden = (name) =>
@@ -16,6 +17,7 @@ test("golden summaries remain stable for deterministic compiler stages", async (
     sourcePath: samplePath,
     artifactDir,
     aiClient: {enabled: false},
+    narrationSynthesize: testNarrationSynthesize,
     targetStage: "animation",
     silent: true,
   });

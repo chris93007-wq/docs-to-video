@@ -17,7 +17,7 @@ test("CLI can run an individual stage and inspect its artifact", () => {
     "--no-ai",
     "--artifact-dir",
     artifactDir,
-  ], {cwd: process.cwd()});
+  ], {cwd: process.cwd(), env: {...process.env, DOC_VIDEO_TEST_SYNTHESIS: "1"}});
 
   const output = execFileSync("node", [
     "scripts/video.mjs",
@@ -42,7 +42,7 @@ test("CLI can run and inspect shot-based editorial stages", () => {
     "--no-ai",
     "--artifact-dir",
     artifactDir,
-  ], {cwd: process.cwd()});
+  ], {cwd: process.cwd(), env: {...process.env, DOC_VIDEO_TEST_SYNTHESIS: "1"}});
 
   const shots = JSON.parse(execFileSync("node", [
     "scripts/video.mjs",

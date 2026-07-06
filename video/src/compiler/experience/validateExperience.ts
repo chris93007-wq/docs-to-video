@@ -92,7 +92,9 @@ export const validateExperience = ({
     runtimeSeconds < goldenExperienceProfile.runtimeSeconds.min ||
     runtimeSeconds > goldenExperienceProfile.runtimeSeconds.max
   ) {
-    errors.push(`Runtime must be 90-120s; got ${runtimeSeconds}s.`);
+    errors.push(
+      `Runtime must be ${goldenExperienceProfile.runtimeSeconds.min}-${goldenExperienceProfile.runtimeSeconds.max}s; got ${runtimeSeconds}s.`,
+    );
   }
   if (sceneCount < goldenExperienceProfile.scenes.min || sceneCount > goldenExperienceProfile.scenes.max) {
     errors.push(`Scene count must be 7-9; got ${sceneCount}.`);
@@ -138,7 +140,10 @@ export const validateExperience = ({
     }
   }
 
-  if (runtimeSeconds >= 90 && runtimeSeconds <= 120) {
+  if (
+    runtimeSeconds >= goldenExperienceProfile.runtimeSeconds.min &&
+    runtimeSeconds <= goldenExperienceProfile.runtimeSeconds.max
+  ) {
     if (shots.length < 25 || shots.length > 45) {
       errors.push(`Shot count must be 25-45; got ${shots.length}.`);
     }

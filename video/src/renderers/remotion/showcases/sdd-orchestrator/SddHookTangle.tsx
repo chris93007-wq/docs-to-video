@@ -13,12 +13,21 @@ const tangleItems: Array<{
   x: number;
   y: number;
 }> = [
-  {label: "Jira", detail: "Feature Intent", icon: "jira", color: theme.colors.accent, x: 1070, y: 186},
-  {label: "Confluence", detail: "Source Truth", icon: "confluence", color: theme.colors.violet, x: 1454, y: 252},
-  {label: "Codex", detail: "Coordinator Prompt", icon: "code", color: theme.colors.teal, x: 1110, y: 690},
-  {label: "Approvals", detail: "Human Boundaries", icon: "approval", color: theme.colors.gold, x: 1530, y: 642},
-  {label: "Jest", detail: "Red Phase", icon: "gate", color: theme.colors.red, x: 1288, y: 460},
-  {label: "Playwright", detail: "Visible Validation", icon: "browser", color: theme.colors.accent, x: 840, y: 512},
+  {label: "Jira", detail: "Feature intent", icon: "jira", color: theme.colors.accent, x: 1018, y: 170},
+  {label: "Confluence", detail: "Source truth", icon: "confluence", color: theme.colors.violet, x: 1488, y: 230},
+  {label: "Codex", detail: "Natural entry point", icon: "code", color: theme.colors.teal, x: 1050, y: 726},
+  {label: "Approvals", detail: "Human boundaries", icon: "approval", color: theme.colors.gold, x: 1506, y: 684},
+  {label: "Jest", detail: "Red phase", icon: "gate", color: theme.colors.red, x: 1338, y: 474},
+  {label: "Playwright", detail: "Validation", icon: "browser", color: theme.colors.accent, x: 842, y: 472},
+];
+
+const orbitLabels = [
+  {label: "Requirements", x: 1000, y: 370},
+  {label: "Design", x: 1176, y: 280},
+  {label: "Implementation Plan", x: 1390, y: 366},
+  {label: "PR Review", x: 1482, y: 540},
+  {label: "Lifecycle Update", x: 1204, y: 648},
+  {label: "Evidence", x: 904, y: 618},
 ];
 
 export const SddHookTangle = (props: ShowcaseSceneProps) => {
@@ -33,17 +42,17 @@ export const SddHookTangle = (props: ShowcaseSceneProps) => {
   );
 
   return (
-    <ShowcaseFrame eyebrow="SDD Orchestrator" title={props.scene.title}>
-      <div style={{position: "absolute", left: 96, top: 390, width: 780}}>
+    <ShowcaseFrame eyebrow="Internal Developer Platform Launch" title={props.scene.title} subtitle="Here’s what that means for you.">
+      <div style={{position: "absolute", left: 96, top: 390, width: 720}}>
         <div style={{display: "flex", gap: 14, marginBottom: 30}}>
-          <TimingPill opacity={fadeAt(1, 4.2)} tone="blue">{cue(1, "Jira and Confluence intent")}</TimingPill>
-          <TimingPill opacity={fadeAt(2, 8.0)} tone="gold">{cue(2, "One Guided Workflow")}</TimingPill>
+          <TimingPill opacity={fadeAt(1, 3.2)} tone="blue">{cue(1, "Powerful skills")}</TimingPill>
+          <TimingPill opacity={fadeAt(2, 6.2)} tone="gold">{cue(2, "Missing workflow")}</TimingPill>
         </div>
         <div style={{...theme.typography.hero, fontSize: 76, lineHeight: 0.98, opacity: fadeAt(0, 0.6), transform: `translateY(${rise(frame, 14, 36, 24)}px)`}}>
-          Too Many Moving Parts
+          Powerful Method.<br />Hard to Coordinate.
         </div>
         <div style={{...theme.typography.body, width: 690, marginTop: 30, color: theme.colors.muted, opacity: fadeAt(1, 3.4)}}>
-          Requirements, design, approvals, tests, implementation, validation, and evidence all need to stay connected.
+          Teams have had to connect every skill, artifact, review, gate, and evidence handoff themselves.
         </div>
       </div>
 
@@ -78,6 +87,30 @@ export const SddHookTangle = (props: ShowcaseSceneProps) => {
           opacity={fadeAt(index % Math.max(1, props.shots.length), 1.4 + index * 0.55)}
         />
       ))}
+
+      {orbitLabels.map((item, index) => {
+        const opacity = fadeAt((index + 1) % Math.max(1, props.shots.length), 2.4 + index * 0.42);
+        return (
+          <div
+            key={item.label}
+            style={{
+              position: "absolute",
+              left: item.x,
+              top: item.y + Math.sin((frame + index * 24) / 26) * 8,
+              padding: "10px 15px",
+              borderRadius: theme.radius.pill,
+              background: "rgba(21,27,43,0.88)",
+              color: theme.colors.white,
+              ...theme.typography.small,
+              fontWeight: 760,
+              boxShadow: "0 12px 34px rgba(21,27,43,0.16)",
+              opacity,
+            }}
+          >
+            {item.label}
+          </div>
+        );
+      })}
     </ShowcaseFrame>
   );
 };

@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import {test} from "node:test";
 import {runPipeline} from "../compiler/pipeline.mjs";
+import {testNarrationSynthesize} from "./helpers/narration-audio.mjs";
 import {RemotionRenderer, resolveRenderOutput} from "../compiler/renderers/remotion-renderer.mjs";
 import {MotionCanvasRenderer} from "../compiler/renderers/motion-canvas-renderer.mjs";
 
@@ -15,6 +16,8 @@ test("renderer adapters consume compiler artifacts without calling AI", async ()
     sourcePath: samplePath,
     artifactDir,
     aiClient: {enabled: false},
+    narrationSynthesize: testNarrationSynthesize,
+    rendererName: "motion-canvas",
     targetStage: "render",
     silent: true,
   });
@@ -24,6 +27,7 @@ test("renderer adapters consume compiler artifacts without calling AI", async ()
     visualPlan: pipeline.visual,
     animationPlan: pipeline.animation,
     narration: pipeline.narration,
+    narrationAudio: pipeline.narrationAudio,
     assetManifest: pipeline.assets,
   };
   const shotInputs = {
@@ -48,6 +52,7 @@ test("renderer adapters consume compiler artifacts without calling AI", async ()
   assert.equal(remotion.scenes.length, pipeline.story.scenes.length);
   assert.equal(remotion.shots.length, pipeline.shots.shots.length);
   assert.equal(remotion.edl.decisions.length, pipeline.edit.decisions.length);
+  assert.equal(remotion.narrationAudio.segments.length, pipeline.story.scenes.length);
   assert.equal(sceneFallback.scenes.length, pipeline.story.scenes.length);
   assert.equal(sceneFallback.shots, undefined);
 });

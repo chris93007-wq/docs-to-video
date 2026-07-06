@@ -7,6 +7,7 @@ const labelFor = {
   visual: "Planned visuals",
   assets: "Planned assets",
   narration: "Generated narration",
+  audio: "Synthesized Kokoro narration",
   animation: "Planned animation",
   render: "Render manifest complete",
 };

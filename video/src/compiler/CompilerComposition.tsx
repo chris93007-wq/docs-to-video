@@ -36,13 +36,24 @@ const renderSceneSequences = () =>
     </Sequence>
   ));
 
+const renderNarrationAudio = () =>
+  (typedManifest.narrationAudio?.segments ?? []).map((segment: any) => (
+    <Sequence
+      key={`narration-${segment.sceneId}`}
+      from={Math.round(segment.startSeconds * manifest.fps)}
+      durationInFrames={Math.max(1, Math.ceil(segment.audioDurationSeconds * manifest.fps))}
+    >
+      <Audio src={staticFile(segment.staticFile)} volume={0.9} />
+    </Sequence>
+  ));
+
 export const CompilerVideoComposition = () => {
   const isSddShowcase = typedManifest.showcase === "sdd-orchestrator";
   const hasShotPlan = Array.isArray(typedManifest.shots) && typedManifest.shots.length > 0;
 
   return (
     <AbsoluteFill>
-      <Audio src={staticFile("audio/compiler-narration.wav")} volume={0.9} />
+      {renderNarrationAudio()}
       {isSddShowcase ? <SddShowcaseComposition manifest={typedManifest} /> : hasShotPlan ? renderShotSequences() : renderSceneSequences()}
       {isSddShowcase ? null : (
         <CompilerCaptionLayer
