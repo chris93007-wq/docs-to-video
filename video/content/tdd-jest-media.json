@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "projectId": "tdd-jest-validation-v001",
+  "methodologyNote": "The film explains Red–Green–Refactor from authoritative practitioner sources. These screenshots illustrate repository-specific validator evidence around that loop; they are not canonical definitions of the three phases.",
+  "sequenceReference": {
+    "sourceFileName": "My Movie.mp4",
+    "sourcePath": "/Users/christinejohn/Desktop/SDD Demo/My Movie.mp4",
+    "usage": "Sequence index only; no frames were extracted from this stitched file."
+  },
+  "assets": [
+    {
+      "id": "red-prompt",
+      "classification": "validator-evidence-example",
+      "role": "representative-sample-and-prompt",
+      "output": "public/media/tdd-jest-validation/red-prompt.png",
+      "sourceFileName": "Screen Recording 2026-06-17 at 7.07.14 PM.mov",
+      "sourcePath": "/Users/christinejohn/Desktop/SDD Demo/Screen Recording 2026-06-17 at 7.07.14 PM.mov",
+      "requestedTimecode": "00:00:50",
+      "selectedTimecode": "00:00:53",
+      "sourceDimensions": {
+        "width": 2870,
+        "height": 1776
+      },
+      "crop": {
+        "x": 200,
+        "y": 120,
+        "width": 2432,
+        "height": 1368,
+        "aspectRatio": "16:9"
+      },
+      "redactionNotes": "No pixel redaction was needed. The crop removes recording margins and low-value window chrome; the demo ticket key and repository name remain visible as intentional engineering context.",
+      "selectionRationale": "The SDD request is fully readable, explicitly asks for Jest evidence before product code, and the active README lookup makes the repository orchestration behavior visible.",
+      "sha256": "5ff4ccba05a04c38dc7cd631ad455b4db72aeee69437bb8621cfa1e0fc1ea3d8"
+    },
+    {
+      "id": "green-diff",
+      "classification": "validator-evidence-example",
+      "role": "implementation-change",
+      "output": "public/media/tdd-jest-validation/green-diff.png",
+      "sourceFileName": "Screen Recording 2026-06-17 at 11.49.39 PM.mov",
+      "sourcePath": "/Users/christinejohn/Desktop/SDD Demo/Screen Recording 2026-06-17 at 11.49.39 PM.mov",
+      "requestedTimecode": "00:00:20",
+      "selectedTimecode": "00:00:23",
+      "sourceDimensions": {
+        "width": 3152,
+        "height": 1720
+      },
+      "crop": {
+        "x": 80,
+        "y": 40,
+        "width": 2944,
+        "height": 1656,
+        "aspectRatio": "16:9"
+      },
+      "redactionNotes": "No redaction was needed. The crop removes the outer recording border while retaining the repository, changed-file list, and readable implementation diff.",
+      "selectionRationale": "This is the clearest frame in the requested window: the selected implementation file and its change are stable, readable, and free of transition blur.",
+      "sha256": "55bedeb4ef1e251d71b4d24cbc9b1e5c853260f2b2a4cc2b94fda7d77ceba66e"
+    },
+    {
+      "id": "refactor-evidence",
+      "classification": "validator-evidence-example",
+      "role": "validation-evidence",
+      "output": "public/media/tdd-jest-validation/refactor-evidence.png",
+      "sourceFileName": "Screen Recording 2026-06-17 at 11.51.42 PM.mov",
+      "sourcePath": "/Users/christinejohn/Desktop/SDD Demo/Screen Recording 2026-06-17 at 11.51.42 PM.mov",
+      "requestedTimecode": "00:00:45",
+      "selectedTimecode": "00:00:44",
+      "sourceDimensions": {
+        "width": 3092,
+        "height": 1776
+      },
+      "crop": {
+        "x": 80,
+        "y": 205,
+        "width": 2752,
+        "height": 1548,
+        "aspectRatio": "16:9"
+      },
+      "redactionNotes": "The browser address bar and its local filesystem path were removed by the crop. No pixel redaction was applied; demo-local artifact paths inside the SDD evidence table remain visible as non-secret workflow context.",
+      "selectionRationale": "The Codex transcript links test-first implementation activity to the adjacent dashboard, which shows durable SDD stage and validation evidence.",
+      "sha256": "8db60fd4b6988f5d399b9f71d15f565fe6854f0f9e0498aaa97bfaaafe0872ad"
+    }
+  ],
+  "dashboardCapture": {
+    "sourceFileName": "jest-unit-test-dashboard.html",
+    "sourcePath": "/Users/christinejohn/Documents/Workspace/pharmacy-ui/skills/tdd-jest-validation/jest-unit-test-dashboard.html",
+    "status": "designed-recreation",
+    "requestedOutputs": [
+      "dashboard-overview.png",
+      "dashboard-findings.png",
+      "dashboard-features.png"
+    ],
+    "reason": "Local-file dashboard rendering was unavailable in the supported browser workflow. The Remotion scene therefore recreates the authoritative dashboard views and questions without hard-coding time-sensitive counts."
+  }
+}

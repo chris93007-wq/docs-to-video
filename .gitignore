@@ -3,3 +3,7 @@ video/node_modules/
 video/out/
 video/public/audio/
 video/artifacts/
+.DS_Store
+*.swp
+/tmp/
+/video/tmp/

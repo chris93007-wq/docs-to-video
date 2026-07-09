@@ -1,7 +1,9 @@
 import {interpolate} from "remotion";
 import {EngineeringIcon, EngineeringIconName} from "../../../../assets/icons/EngineeringIcons";
-import {theme} from "../../../../styles/theme";
 import {clamp, sequenceOpacity} from "../../../../utils/animation";
+import content from "../../../../../content/sdd-orchestrator-launch-content.json";
+import {colorForTone, useOracleBrand, useShowcaseTheme} from "./brand";
+import {SddLiveWorkflow} from "./SddLiveDemoProof";
 import {ShowcaseFrame, ShowcaseSceneProps, useSceneBeats} from "./shared";
 
 type RailStep = {
@@ -11,20 +13,16 @@ type RailStep = {
   color: string;
 };
 
-const steps: RailStep[] = [
-  {label: "Intent", detail: "Jira + Confluence", icon: "jira", color: theme.colors.accent},
-  {label: "Requirements", detail: "Source Truth", icon: "confluence", color: theme.colors.violet},
-  {label: "Design", detail: "Reviewed Plan", icon: "document", color: theme.colors.teal},
-  {label: "Approval", detail: "Human Gate", icon: "approval", color: theme.colors.gold},
-  {label: "TDD Unit Tests", detail: "Before Build", icon: "gate", color: theme.colors.red},
-  {label: "Build", detail: "Bounded Slices", icon: "code", color: theme.colors.teal},
-  {label: "Validate", detail: "Playwright Proof", icon: "browser", color: theme.colors.accent},
-  {label: "Lifecycle", detail: "Evidence Summary", icon: "check", color: theme.colors.teal},
-];
-
-const evidence = ["Requirements", "Tests", "Validation", "Lifecycle"];
-
-export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
+const SddWorkflowIllustrated = (props: ShowcaseSceneProps) => {
+  const theme = useShowcaseTheme();
+  const isOracle = useOracleBrand();
+  const sceneContent = content.scenes.workflow;
+  const legacyTones = ["accent", "violet", "teal", "accent", "gold", "red", "teal", "accent", "teal", "violet"];
+  const steps: RailStep[] = sceneContent.steps.map((step, index) => ({
+    ...step,
+    icon: step.icon as EngineeringIconName,
+    color: colorForTone(theme, isOracle ? step.tone : legacyTones[index]),
+  }));
   const {frame, fadeAt, startFor} = useSceneBeats(props);
   const railStart = startFor(0, 0.8);
   const localFrame = Math.max(0, frame - railStart);
@@ -35,15 +33,26 @@ export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
 
   return (
     <ShowcaseFrame
-      eyebrow="Guided Workflow"
-      title="Intent to Evidence"
-      subtitle="Requirements, approvals, tests, implementation, validation, and lifecycle updates stay connected."
+      eyebrow={sceneContent.eyebrow}
+      title={props.scene.title}
+      subtitle={sceneContent.subtitle}
     >
       <div style={{position: "absolute", left: 98, right: 98, top: 336, height: 592, borderRadius: 34, background: theme.gradients.dark, boxShadow: "0 38px 130px rgba(21,27,43,0.24)", overflow: "hidden", opacity: fadeAt(0, 0.8)}}>
-        <div style={{position: "absolute", inset: 0, background: "radial-gradient(circle at 18% 18%, rgba(47,128,237,0.28), transparent 34%), radial-gradient(circle at 72% 72%, rgba(0,168,142,0.2), transparent 38%)"}} />
+        <div style={{position: "absolute", inset: 0, background: isOracle ? "radial-gradient(circle at 18% 18%, rgba(222,176,104,0.2), transparent 34%), radial-gradient(circle at 72% 72%, rgba(92,146,109,0.18), transparent 38%)" : "radial-gradient(circle at 18% 18%, rgba(47,128,237,0.28), transparent 34%), radial-gradient(circle at 72% 72%, rgba(0,168,142,0.2), transparent 38%)"}} />
         <div style={{position: "absolute", left: 46, top: 38}}>
-          <div style={{...theme.typography.label, color: "#8FD8FF", textTransform: "uppercase"}}>Stateful Run</div>
-          <div style={{...theme.typography.h2, fontSize: 40, color: theme.colors.white, marginTop: 10}}>Coordinator-Owned Sequence</div>
+          <div style={{...theme.typography.label, color: isOracle ? theme.colors.violet : "#8FD8FF", textTransform: "uppercase"}}>{sceneContent.panelEyebrow}</div>
+          <div style={{...theme.typography.h2, fontSize: 40, color: theme.colors.white, marginTop: 10}}>{sceneContent.panelTitle}</div>
+        </div>
+
+        <div style={{position: "absolute", right: 42, top: 44, display: "flex", gap: 10}}>
+          {sceneContent.legend.map((label, index) => ({
+            label,
+            color: [theme.colors.teal, theme.colors.gold, theme.colors.accent][index],
+          })).map((item) => (
+            <div key={item.label} style={{padding: "10px 14px", borderRadius: theme.radius.pill, background: "rgba(255,255,255,0.12)", border: `1px solid ${item.color}`, color: theme.colors.white, ...theme.typography.small, fontWeight: 760}}>
+              <span style={{display: "inline-block", width: 9, height: 9, borderRadius: 99, background: item.color, marginRight: 8}} />{item.label}
+            </div>
+          ))}
         </div>
 
         <svg width="1724" height="592" viewBox="0 0 1724 592" style={{position: "absolute", inset: 0}}>
@@ -68,11 +77,13 @@ export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
 
         <div style={{position: "absolute", left: 82, right: 82, top: 196, height: 264}}>
           {steps.map((step, index) => {
-            const x = index * 210;
-            const y = index % 2 === 0 ? 98 : 24;
+            const x = index * 166;
+            const y = index % 2 === 0 ? 96 : 26;
             const appear = sequenceOpacity(localFrame - 14, index, 8);
             const isActive = activeProgress >= index;
-            const isApproval = step.label === "Approval";
+            const isApproval = index === 4;
+            const isJest = index === 5;
+            const isLargeNode = isApproval || isJest;
             const focusScale = isApproval ? interpolate(gateFocus, [0, 1], [1, 1.2], clamp) : 1;
 
             return (
@@ -82,8 +93,8 @@ export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
                   position: "absolute",
                   left: x,
                   top: y,
-                  width: isApproval ? 156 : 136,
-                  height: isApproval ? 156 : 136,
+                  width: isLargeNode ? 132 : 118,
+                  height: isLargeNode ? 132 : 118,
                   borderRadius: 999,
                   background: isActive ? step.color : "rgba(255,255,255,0.92)",
                   border: `4px solid ${step.color}`,
@@ -96,9 +107,9 @@ export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
                 }}
               >
                 <div style={{textAlign: "center", color: isActive ? theme.colors.white : theme.colors.ink}}>
-                  <EngineeringIcon name={step.icon} stroke={isActive ? theme.colors.white : step.color} size={isApproval ? 58 : 50} />
-                  <div style={{...theme.typography.label, color: isActive ? theme.colors.white : theme.colors.ink, marginTop: 9}}>{step.label}</div>
-                  <div style={{...theme.typography.small, color: isActive ? "rgba(255,255,255,0.78)" : theme.colors.muted, marginTop: 4, fontSize: 15}}>{step.detail}</div>
+                  <EngineeringIcon name={step.icon} stroke={isActive ? theme.colors.white : step.color} size={isApproval ? 48 : isJest ? 38 : 42} />
+                  <div style={{...theme.typography.label, fontSize: isJest ? 14 : 16, lineHeight: 1.02, maxWidth: isJest ? 96 : "none", color: isActive ? theme.colors.white : theme.colors.ink, marginTop: 7}}>{step.label}</div>
+                  <div style={{...theme.typography.small, color: isActive ? "rgba(255,255,255,0.78)" : theme.colors.muted, marginTop: 3, fontSize: 12}}>{step.detail}</div>
                 </div>
               </div>
             );
@@ -106,13 +117,13 @@ export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
         </div>
 
         <div style={{position: "absolute", left: 742, top: 54, width: 296, padding: "18px 22px", borderRadius: 22, background: "rgba(229,164,23,0.2)", border: "1px solid rgba(229,164,23,0.5)", color: theme.colors.white, opacity: gateFocus}}>
-          <div style={{...theme.typography.label, color: theme.colors.gold}}>Approval Gate</div>
-          <div style={{...theme.typography.small, color: "#DCE7F7", marginTop: 8}}>Human Decision Required Before Fan-Out</div>
+          <div style={{...theme.typography.label, color: theme.colors.gold}}>{sceneContent.approvalGate.title}</div>
+          <div style={{...theme.typography.small, color: isOracle ? "#D9DDDA" : "#DCE7F7", marginTop: 8}}>{sceneContent.approvalGate.detail}</div>
         </div>
 
         <div style={{position: "absolute", left: 50, right: 50, bottom: 38, height: 78, borderRadius: theme.radius.pill, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", display: "flex", alignItems: "center", justifyContent: "center", gap: 16, opacity: evidenceOpacity}}>
-          <div style={{...theme.typography.label, color: "#8FD8FF", marginRight: 10}}>Evidence Attached</div>
-          {evidence.map((item, index) => (
+          <div style={{...theme.typography.label, color: isOracle ? theme.colors.violet : "#8FD8FF", marginRight: 10}}>{sceneContent.evidenceHeading}</div>
+          {sceneContent.evidenceItems.map((item, index) => (
             <div key={item} style={{padding: "12px 18px", borderRadius: theme.radius.pill, background: "rgba(255,255,255,0.9)", color: theme.colors.ink, ...theme.typography.small, fontWeight: 780, opacity: sequenceOpacity(frame - startFor(4, 17.2), index, 5)}}>
               {item}
             </div>
@@ -122,3 +133,9 @@ export const SddWorkflowRail = (props: ShowcaseSceneProps) => {
     </ShowcaseFrame>
   );
 };
+
+export const SddWorkflowRail = (props: ShowcaseSceneProps) => (
+  props.presentationMode === "live-demo-hybrid" && props.liveDemo
+    ? <SddLiveWorkflow {...props} />
+    : <SddWorkflowIllustrated {...props} />
+);

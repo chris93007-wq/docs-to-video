@@ -21,5 +21,5 @@ Rules:
 - Do not use documentation headings as the narration structure.
 - Do not write bullet-list narration.
 - Do not describe animations or implementation details.
-- Do not over-index on tool names when a clearer process phrase works better for PMs and SDMs.
+- Do not over-index on tool names when a clearer process phrase works better for Product Managers and SDMs.
 - Return only structured JSON.

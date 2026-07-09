@@ -73,7 +73,7 @@ const narrationForScene = (scene, semanticDocument) => {
     case "guided walkthrough":
       return `The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context.`;
     case "benefits":
-      return `For engineers, the payoff is lower cognitive load and stronger traceability. New adopters get one entry point. PMs see requirements connected to evidence, and engineering managers get a process that is easier to repeat and inspect.`;
+      return `For engineers, the payoff is lower cognitive load and stronger traceability. New adopters get one entry point. Product Managers see requirements connected to evidence, and engineering managers get a process that is easier to repeat and inspect.`;
     case "developer experience":
       return `In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption.`;
     case "conclusion":

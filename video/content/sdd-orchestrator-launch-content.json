@@ -1,0 +1,271 @@
+{
+  "project": {
+    "title": "SDD Orchestrator Launch Explainer",
+    "audience": [
+      "Software engineers",
+      "Product managers",
+      "Engineering managers",
+      "Leadership stakeholders"
+    ],
+    "primaryCta": "Try SDD Orchestrator on your next feature.",
+    "spokenPrimaryCta": "Try out the SDD Orchestrator on your next feature.",
+    "secondaryCta": "Let’s team up to test, scale, and shape it together.",
+    "positioning": "The skills are powerful. The missing piece was a guided way to use them.",
+    "sourceTruth": [
+      "https://confluence.oraclecorp.com/confluence/pages/viewpage.action?pageId=19943505020",
+      "https://confluence.oraclecorp.com/confluence/display/OPDE/SDD+Orchestrator%3A+Making+Spec-Driven+Development+Easier+to+Run"
+    ]
+  },
+  "feature": {
+    "key": "RX-12345",
+    "status": "A feature ready to move"
+  },
+  "liveDemo": {
+    "badge": "LIVE DEMO",
+    "featureKey": "RX-13603",
+    "sourceLabel": "Actual SDD run",
+    "codex": {
+      "eyebrow": "Live Product Proof",
+      "title": "One prompt starts the run.",
+      "subtitle": "A real Codex session creates durable state and stops at review boundaries.",
+      "prompt": "Run SDD for RX-13603 in pharmacy-ui.",
+      "status": "Stateful run created",
+      "details": ["Requirements intake", "Durable checkpoint", "Human review"]
+    },
+    "workflow": {
+      "eyebrow": "Live Lifecycle Proof",
+      "title": "The lifecycle is backed by real artifacts.",
+      "proofs": [
+        {"id": "requirements", "label": "Requirements intake", "detail": "The run records durable state and waits for required input", "tone": "violet"},
+        {"id": "approval", "label": "Human approval", "detail": "Open decisions stay visible", "tone": "gold"},
+        {"id": "jest-unit-tests", "label": "Jest Unit Tests", "detail": "A test sample is reviewed before product code", "tone": "red"},
+        {"id": "implementation", "label": "Bounded implementation", "detail": "Parallel workers own non-overlapping slices", "tone": "teal"},
+        {"id": "validation", "label": "Validation evidence", "detail": "Passing checks and blockers are recorded", "tone": "accent"},
+        {"id": "lifecycle-evidence", "label": "Lifecycle and evidence", "detail": "Artifacts, approvals, and next actions stay connected", "tone": "violet"}
+      ]
+    }
+  },
+  "scenes": {
+    "hook": {
+      "title": "SDD Orchestrator is now live.",
+      "purpose": "Launch the product and establish the adoption gap.",
+      "teachingPoint": "SDD is powerful; the workflow around its skills has been hard to see.",
+      "cues": [
+        "SDD Orchestrator is now live",
+        "Powerful skills",
+        "Missing workflow",
+        "Too much to coordinate manually"
+      ],
+      "eyebrow": "Internal Developer Platform Launch",
+      "subtitle": "SDD starts with a strong idea: begin with intent and keep the work connected.",
+      "positive": {
+        "pills": ["Strong method", "Connected work"],
+        "headline": ["Clear intent.", "Reviewable work.", "Connected evidence."],
+        "body": "Generate the right artifacts, review the work, and keep evidence tied to the feature."
+      },
+      "friction": {
+        "pill": "The adoption gap",
+        "headline": ["Powerful method.", "Hard to coordinate."],
+        "body": "The missing piece was a guided way to move through it."
+      },
+      "principles": [
+        {"label": "Clear intent", "detail": "Start with purpose", "icon": "jira", "tone": "accent"},
+        {"label": "Right artifacts", "detail": "Make decisions visible", "icon": "document", "tone": "violet"},
+        {"label": "Review the work", "detail": "Create review points", "icon": "approval", "tone": "gold"},
+        {"label": "Evidence connected", "detail": "Tie proof to the feature", "icon": "database", "tone": "teal"}
+      ]
+    },
+    "problem": {
+      "title": "Powerful skills. Missing workflow.",
+      "purpose": "Name the real blockers without blaming the method or teams.",
+      "teachingPoint": "Each adoption question becomes visible at the exact moment the narrator asks it.",
+      "cues": ["Skill order", "Starting artifacts", "Codex alignment", "Lifecycle and scope"],
+      "eyebrow": "The Adoption Gap",
+      "headerLabel": "FAQs",
+      "introHeadline": ["Good method.", "Too many open questions."],
+      "questions": [
+        {"topic": "Onboarding", "text": "Which skill should I run first?"},
+        {"topic": "Provenance", "text": "What artifacts do I need in place to begin?"},
+        {"topic": "Trust", "text": "How do I know Codex and I are aligned?"},
+        {"topic": "Transparency", "text": "Where is this feature in the SDD lifecycle?"},
+        {"topic": "Hallucinations", "text": "And how do I know we did not drift out of scope?"}
+      ],
+      "skillOrder": ["Requirements", "Design", "Plan", "Jest", "Playwright"],
+      "artifactReadiness": {
+        "inputs": [
+          {"label": "Jira feature", "detail": "Feature intent", "icon": "jira", "tone": "accent"},
+          {"label": "Confluence", "detail": "Linked requirements", "icon": "confluence", "tone": "violet"},
+          {"label": "Existing artifacts", "detail": "Available context", "icon": "document", "tone": "teal"}
+        ],
+        "eyebrow": "Starting context",
+        "question": "What needs to be in place?",
+        "checklist": ["Intent", "Requirements", "Linked context"]
+      },
+      "alignment": {
+        "rows": ["Scope", "Next step", "Evidence"],
+        "sides": [
+          {"title": "Engineer intent", "subtitle": "What I mean", "icon": "worker", "tone": "accent"},
+          {"title": "Codex understanding", "subtitle": "What the run captured", "icon": "terminal", "tone": "violet"}
+        ],
+        "callout": "Aligned?"
+      },
+      "lifecycle": {
+        "nodes": ["Intake", "Design", "Plan", "Build", "Validate", "Update"],
+        "footer": "Where is RX-12345?"
+      },
+      "scope": {
+        "approvedLabel": "Approved scope",
+        "approvedDetail": "RX-12345 requirements",
+        "changedLabel": "Changed code",
+        "changedDetail": "Drift check",
+        "result": "Evidence connected"
+      }
+    },
+    "solution": {
+      "title": "One guided entry point to SDD.",
+      "purpose": "Introduce the Orchestrator as the missing product layer.",
+      "teachingPoint": "The Orchestrator coordinates the existing skills and makes lifecycle state visible.",
+      "cues": ["Jira + Confluence", "One guided entry point", "Codex activates the run", "Lifecycle visible"],
+      "eyebrow": "The Product Layer",
+      "subtitle": "The Orchestrator does not replace the SDD skills. It makes them usable.",
+      "sourceCards": [
+        {"label": "Jira", "detail": "Feature intent", "icon": "jira", "tone": "accent"},
+        {"label": "Confluence", "detail": "Requirements source", "icon": "confluence", "tone": "violet"},
+        {"label": "Codex", "detail": "Start or resume", "icon": "code", "tone": "teal"}
+      ],
+      "commandCenter": {
+        "title": "SDD Orchestrator",
+        "subtitle": "Coordinates skills · Preserves context",
+        "pills": ["Stateful run", "Lifecycle visible"]
+      },
+      "stateHeading": "Live lifecycle state",
+      "runState": [
+        {"label": "Requirements", "state": "Complete", "tone": "teal"},
+        {"label": "Design", "state": "Complete", "tone": "teal"},
+        {"label": "Approval", "state": "Waiting", "tone": "gold"},
+        {"label": "Validation", "state": "Next", "tone": "accent"}
+      ]
+    },
+    "developer-experience": {
+      "title": "Start naturally in Codex.",
+      "purpose": "Show exactly how an engineer starts or resumes a run.",
+      "teachingPoint": "A natural-language Codex prompt starts the guided, stateful workflow.",
+      "cues": ["Run SDD Orchestrator for RX-12345", "Pause for approval", "Resume the run", "Evidence missing"],
+      "eyebrow": "How You Use It",
+      "subtitle": "One clear prompt starts a new stateful run—or resumes an existing one.",
+      "promptTitle": "Codex",
+      "promptLines": [
+        "Run SDD Orchestrator for RX-12345.",
+        "Start from Jira + Confluence.",
+        "Guide me through the lifecycle.",
+        "Pause when human review is required.",
+        "Keep the evidence trail connected.",
+        "Keep scope bounded to approved requirements."
+      ],
+      "stateEyebrow": "SDD Run State",
+      "stateTitle": "RX-12345 · Active",
+      "runEvents": [
+        {"name": "requirements.intake", "status": "Complete"},
+        {"name": "design.reviewed", "status": "Complete"},
+        {"name": "implementation.plan", "status": "Complete"},
+        {"name": "approval.required", "status": "Approval"},
+        {"name": "jest.red_phase", "status": "Next"},
+        {"name": "playwright.validation", "status": "Evidence missing"}
+      ],
+      "approvalHeading": "Approval Required",
+      "approvalFallback": "Pause for approval",
+      "resumeLabel": "Resume the run"
+    },
+    "workflow": {
+      "title": "Track the lifecycle.",
+      "purpose": "Show the end-to-end lifecycle, human gates, and attached evidence.",
+      "teachingPoint": "Every stage exposes completed work, pending approval, next actions, and evidence.",
+      "cues": ["Completed", "Approval required", "Validation gate", "Evidence connected"],
+      "eyebrow": "Stateful SDD Run",
+      "subtitle": "Completed work, pending approvals, validation gates, and evidence stay visible on one rail.",
+      "panelEyebrow": "Stateful Run",
+      "panelTitle": "One Guided Lifecycle",
+      "legend": ["Completed", "Approval required", "Next"],
+      "steps": [
+        {"label": "Source", "detail": "Jira + Confluence", "icon": "jira", "tone": "accent"},
+        {"label": "Requirements", "detail": "Intake", "icon": "confluence", "tone": "violet"},
+        {"label": "Design", "detail": "Review", "icon": "document", "tone": "teal"},
+        {"label": "Impl Plan", "detail": "Bounded scope", "icon": "timeline", "tone": "muted"},
+        {"label": "Approval", "detail": "Human gate", "icon": "approval", "tone": "gold"},
+        {"label": "Jest Unit Tests", "detail": "Tests fail first", "icon": "gate", "tone": "red"},
+        {"label": "Implement", "detail": "Bounded change", "icon": "code", "tone": "teal"},
+        {"label": "Playwright", "detail": "Validation", "icon": "browser", "tone": "violet"},
+        {"label": "Lifecycle", "detail": "Update", "icon": "check", "tone": "teal"},
+        {"label": "Evidence", "detail": "Summary", "icon": "database", "tone": "muted"}
+      ],
+      "approvalGate": {
+        "title": "Approval Gate",
+        "detail": "Human decision required before implementation"
+      },
+      "evidenceHeading": "Evidence Attached",
+      "evidenceItems": ["Source", "Approvals", "Tests", "Validation", "Evidence Summary"]
+    },
+    "guardrails": {
+      "title": "Friction becomes guardrails.",
+      "purpose": "Connect the adoption blockers directly to practical guardrails.",
+      "teachingPoint": "Guidance, staged review, boundaries, gates, and evidence reduce delivery friction.",
+      "cues": ["One guided path", "Staged review", "Validation gates", "Clearer PR evidence"],
+      "eyebrow": "What This Solves",
+      "subtitle": "Each role gets a clearer path from adoption friction to an Orchestrator guardrail.",
+      "columns": ["Audience", "Adoption friction", "Orchestrator guardrail"],
+      "lanes": [
+        {
+          "role": "Engineers",
+          "value": "Guided parallel delivery",
+          "icon": "worker",
+          "tone": "teal",
+          "friction": ["Process guesswork", "Lost context", "Serial handoffs"],
+          "guardrails": ["One guided path", "Lifecycle management", "Parallel development"],
+          "performanceBeat": 0
+        },
+        {
+          "role": "Product Managers",
+          "value": "Requirements confidence",
+          "icon": "document",
+          "tone": "violet",
+          "friction": ["Requirements drift", "Unclear traceability"],
+          "guardrails": ["Requirement boundary", "Traceability back to source"],
+          "performanceBeat": 3
+        },
+        {
+          "role": "Engineering Managers",
+          "value": "Repeatable adoption",
+          "icon": "timeline",
+          "tone": "muted",
+          "friction": ["Limited visibility", "Inconsistent adoption"],
+          "guardrails": ["Visible lifecycle", "Repeatable path"],
+          "performanceBeat": 4
+        }
+      ],
+      "communityLine": "One shared entry point to improve SDD together"
+    },
+    "conclusion": {
+      "title": "Try it on your next feature.",
+      "purpose": "Close with a community contribution invitation.",
+      "teachingPoint": "The Orchestrator creates a shared platform for adoption and continuous improvement.",
+      "cues": ["Try it on your next feature", "Prompts", "Gates", "Help improve SDD together"],
+      "eyebrow": "Adopt and Improve It",
+      "subtitle": "Start with a real feature in Codex.",
+      "promptEyebrow": "Start in Codex",
+      "prompt": "Run SDD Orchestrator for RX-12345.",
+      "promptDetail": "Use it on the next feature your team is ready to move.",
+      "contributionHeading": "Shape the shared workflow",
+      "contributionSurfaces": [
+        "Prompts",
+        "Skills",
+        "Gates",
+        "Dashboards",
+        "Demos",
+        "Validation",
+        "Onboarding",
+        "Developer Environments"
+      ],
+      "communityLine": "Let’s team up to test, scale, and shape it together."
+    }
+  }
+}

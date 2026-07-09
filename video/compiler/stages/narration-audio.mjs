@@ -8,7 +8,7 @@ export const DEFAULT_SCENE_PAUSE_SECONDS = 0.6;
 
 export const pronunciationRules = [
   {pattern: /\bSDD\b/g, replacement: "S D D"},
-  {pattern: /\bJira\b/gi, replacement: "JEE-rah"},
+  {pattern: /\bJira\b/gi, replacement: "jeera"},
   {pattern: /\bCLI\b/g, replacement: "C L I"},
   {pattern: /\bTDD\b/g, replacement: "T D D"},
   {pattern: /\bPlaywright\b/gi, replacement: "PLAY-right"},

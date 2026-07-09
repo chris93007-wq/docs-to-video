@@ -1,0 +1,3249 @@
+{
+  "kind": "RenderManifest",
+  "version": "1.0.0",
+  "renderer": "remotion",
+  "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+  "showcase": "tdd-jest-validation",
+  "launchVersion": "v001",
+  "validationProfile": "tdd-jest-validation-engineer-explainer-v001",
+  "brandMode": "oracle-redwood-dark",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalDurationSeconds": 149,
+  "narrativeDurationSeconds": 143,
+  "endSlate": {
+    "staticFile": "brand/oracle/video/Oracle Endslate 2026 Opaque HD.mp4",
+    "durationSeconds": 6,
+    "source": "Oracle Brand and Assets Portal / Oracle Endslates 2026 / HD 1920x1080",
+    "treatment": "Play the official opaque end slate unmodified and muted."
+  },
+  "content": {
+    "project": {
+      "title": "TDD Jest Validation Gate",
+      "audience": [
+        "Software engineers"
+      ],
+      "genre": "Engineer explainer",
+      "narrationTone": "Warm, friendly, precise, and practical",
+      "positioning": "Requirement-backed tests should drive implementation; tests written only after code can mirror what was built and hide scope drift.",
+      "primaryCta": "Use it on your next feature.",
+      "contributionCta": "Stress-test the guardrails and contribute better prompts, checks, tests, and dashboard metrics.",
+      "sourceTruth": [
+        "https://confluence.oraclecorp.com/confluence/display/OPDE/Validation+Gate",
+        "/Users/christinejohn/Documents/Workspace/pharmacy-ui/skills/tdd-jest-validation/SKILL.md",
+        "/Users/christinejohn/Documents/Workspace/pharmacy-ui/skills/tdd-jest-validation/scripts/run-jest-validation-gate.mjs",
+        "https://newsletter.kentbeck.com/p/canon-tdd",
+        "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
+        "https://gds-way.digital.cabinet-office.gov.uk/standards/test-driven-development.html"
+      ]
+    },
+    "format": {
+      "brand": "Oracle Redwood",
+      "visualDirection": "Dark, code-forward, and high-contrast with red, green, and gold state accents",
+      "music": "none",
+      "captionLayer": "none",
+      "voice": "af_heart"
+    },
+    "media": {
+      "sequenceIndex": {
+        "sourceFile": "/Users/christinejohn/Desktop/SDD Demo/My Movie.mp4",
+        "usage": "Sequence reference only; do not use as a visual source."
+      },
+      "demoStills": [
+        {
+          "id": "representative-sample-demo",
+          "sourceFile": "/Users/christinejohn/Desktop/SDD Demo/7.07.14 PM.mov",
+          "timecodeSeconds": 50,
+          "sceneId": "red-green-refactor",
+          "evidenceRole": "representative-sample-and-prompt",
+          "usage": "Repository-specific validator evidence; not a definition of canonical Red.",
+          "crop": {
+            "x": 0.04,
+            "y": 0.07,
+            "width": 0.92,
+            "height": 0.86
+          },
+          "redactions": []
+        },
+        {
+          "id": "implementation-change-demo",
+          "sourceFile": "/Users/christinejohn/Desktop/SDD Demo/11.49.39 PM.mov",
+          "timecodeSeconds": 20,
+          "sceneId": "red-green-refactor",
+          "evidenceRole": "implementation-change",
+          "usage": "Repository-specific validator evidence; not a definition of canonical Green.",
+          "crop": {
+            "x": 0.04,
+            "y": 0.07,
+            "width": 0.92,
+            "height": 0.86
+          },
+          "redactions": []
+        },
+        {
+          "id": "validation-evidence-demo",
+          "sourceFile": "/Users/christinejohn/Desktop/SDD Demo/11.51.42 PM.mov",
+          "timecodeSeconds": 45,
+          "sceneId": "red-green-refactor",
+          "evidenceRole": "validation-evidence",
+          "usage": "Repository-specific validator evidence; not a definition of canonical Refactor.",
+          "crop": {
+            "x": 0.04,
+            "y": 0.07,
+            "width": 0.92,
+            "height": 0.86
+          },
+          "redactions": []
+        }
+      ],
+      "dashboard": {
+        "sourceFile": "/Users/christinejohn/Documents/Workspace/pharmacy-ui/skills/tdd-jest-validation/jest-unit-test-dashboard.html",
+        "capture": "Use current high-resolution browser captures; avoid narrating time-sensitive counts."
+      }
+    },
+    "scenes": {
+      "introduction": {
+        "title": "Meet the TDD Jest Validation Gate.",
+        "eyebrow": "ENGINEERING EXPLAINER",
+        "purpose": "Introduce the skill before naming the evidence gap it solves.",
+        "teachingPoint": "The gate establishes requirement-backed Jest tests before product code.",
+        "headline": "REQUIREMENT-BACKED TESTS. BEFORE PRODUCT CODE.",
+        "supportingCopy": "A validation gate for keeping intent, tests, and implementation connected.",
+        "cues": [
+          "TDD Jest Validation Gate",
+          "Requirement-backed tests",
+          "Before product code"
+        ]
+      },
+      "problem-hook": {
+        "title": "Tests written after code can mirror the code.",
+        "eyebrow": "WHY TEST-FIRST MATTERS",
+        "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+        "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+        "headline": "REQUIREMENTS DRIVE TESTS. TESTS DRIVE CODE.",
+        "supportingCopy": "The gate makes the implementation boundary observable throughout the feature.",
+        "comparison": {
+          "codeFirst": {
+            "label": "Code first",
+            "flow": [
+              "Codex implementation",
+              "Tests written afterward"
+            ],
+            "risk": "Passing tests may only confirm the implementation that already exists."
+          },
+          "testFirst": {
+            "label": "Requirement-backed TDD",
+            "flow": [
+              "Approved requirements",
+              "Jest evidence",
+              "Implementation"
+            ],
+            "benefit": "Unmapped source work surfaces as drift or a potential gap for review."
+          }
+        },
+        "evidenceNodes": [
+          {
+            "label": "Requirements",
+            "state": "approved"
+          },
+          {
+            "label": "Jest specs",
+            "state": "drives"
+          },
+          {
+            "label": "Product code",
+            "state": "bounded"
+          },
+          {
+            "label": "Gap review",
+            "state": "surfaced"
+          }
+        ],
+        "cues": [
+          "Code first → tests after",
+          "Tests can mirror code",
+          "Requirements → Jest → code",
+          "Unmapped work → review"
+        ]
+      },
+      "sdd-fit": {
+        "title": "The fourth canonical SDD phase.",
+        "eyebrow": "WHERE IT FITS",
+        "purpose": "Place the skill between reviewed planning and implementation.",
+        "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+        "headline": "REVIEWED PLAN → TDD JEST → IMPLEMENT",
+        "lifecycle": [
+          {
+            "label": "Requirements",
+            "state": "complete"
+          },
+          {
+            "label": "Design",
+            "state": "complete"
+          },
+          {
+            "label": "Implementation Plan",
+            "state": "complete"
+          },
+          {
+            "label": "TDD Jest Validation",
+            "state": "active"
+          },
+          {
+            "label": "Implementation",
+            "state": "next"
+          },
+          {
+            "label": "Playwright",
+            "state": "later"
+          }
+        ],
+        "callout": "Playwright complements Jest. It does not replace unit specs.",
+        "cues": [
+          "Fourth SDD phase",
+          "Reviewed planning",
+          "Before implementation",
+          "Playwright complements Jest"
+        ]
+      },
+      "capabilities": {
+        "title": "A composed gate for trustworthy evidence.",
+        "eyebrow": "WHAT IT CAN DO FOR YOU",
+        "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+        "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+        "headline": "FROM REVIEWED INTENT TO AUDITABLE UNIT EVIDENCE",
+        "flow": {
+          "inputs": [
+            "Requirements",
+            "Reviewed Unit Test Target Plan"
+          ],
+          "outputs": [
+            "Approved sample spec",
+            "Complete Jest specs",
+            "Red-phase baseline"
+          ]
+        },
+        "capabilities": [
+          {
+            "label": "Traceability",
+            "detail": "Map requirements and acceptance IDs to standard Jest names."
+          },
+          {
+            "label": "Drift detection",
+            "detail": "Require changed product paths to retain planned spec evidence."
+          },
+          {
+            "label": "Weakening checks",
+            "detail": "Detect removed, skipped, todo, unmapped, or lower-assertion tests."
+          },
+          {
+            "label": "Fixed scope",
+            "detail": "Record discoveries outside locked requirements as potential gaps."
+          },
+          {
+            "label": "Readiness audit",
+            "detail": "Compose generation, drift, coverage, baseline, and completion evidence."
+          }
+        ],
+        "cues": [
+          "Requirement traceability",
+          "Implementation drift",
+          "Weakening detection",
+          "Readiness audit"
+        ]
+      },
+      "getting-started": {
+        "title": "Start from approved requirements in the repo.",
+        "eyebrow": "GETTING STARTED",
+        "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+        "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+        "headline": "REQUIREMENTS → PLAN → SAMPLE → SUITE → BASELINE → GATE",
+        "inputs": [
+          {
+            "label": "Requirements in the repo",
+            "detail": "Product-approved feature requirements, acceptance criteria, and relevant validation cases."
+          },
+          {
+            "label": "TDD-prepared target plan",
+            "detail": "Planned implementation units, source paths, spec paths, mappings, and concrete assertions."
+          },
+          {
+            "label": "Repo + NFR patterns",
+            "detail": "Nearby Jest style, repository rules, shared NFRs, mocks, and fixtures."
+          }
+        ],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Commit approved requirements",
+            "owner": "Product + engineering"
+          },
+          {
+            "step": 2,
+            "label": "Prepare Unit Test Target Plan",
+            "owner": "TDD phase within reviewed scope"
+          },
+          {
+            "step": 3,
+            "label": "Review and approve the plan",
+            "owner": "Engineer"
+          },
+          {
+            "step": 4,
+            "label": "Review one representative failing spec",
+            "owner": "Engineer"
+          },
+          {
+            "step": 5,
+            "label": "Generate the complete planned suite",
+            "owner": "TDD phase"
+          },
+          {
+            "step": 6,
+            "label": "Capture the red-phase baseline",
+            "owner": "TDD phase"
+          },
+          {
+            "step": 7,
+            "label": "Run the composed gate before product code",
+            "owner": "Engineer + Codex"
+          }
+        ],
+        "approval": {
+          "label": "Human approval before generation",
+          "detail": "Approve the Unit Test Target Plan and one representative failing spec before generating the complete planned suite."
+        },
+        "cues": [
+          "Requirements in repo",
+          "TDD prepares plan",
+          "Human reviews plan + sample",
+          "Suite → baseline → gate"
+        ]
+      },
+      "red-green-refactor": {
+        "title": "The engineer–Codex working loop.",
+        "eyebrow": "RED · GREEN · REFACTOR",
+        "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+        "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+        "headline": "GREEN IS A CHECKPOINT. KEEP LEARNING.",
+        "canonicalMethodology": {
+          "label": "Canonical TDD methodology",
+          "testList": "List the desired behaviors, then choose exactly one case at a time.",
+          "cycle": [
+            {
+              "state": "RED",
+              "accent": "red",
+              "definition": "Turn one behavior into a runnable test and confirm it fails in the expected way."
+            },
+            {
+              "state": "GREEN",
+              "accent": "green",
+              "definition": "Write just enough code for the new test and every earlier test to pass."
+            },
+            {
+              "state": "REFACTOR",
+              "accent": "gold",
+              "definition": "While all tests remain green, improve the design without changing behavior."
+            }
+          ],
+          "repeat": "Choose the next behavior from the list and repeat until the list is empty.",
+          "sources": [
+            "https://newsletter.kentbeck.com/p/canon-tdd",
+            "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
+            "https://gds-way.digital.cabinet-office.gov.uk/standards/test-driven-development.html"
+          ]
+        },
+        "validatorGovernance": {
+          "label": "Validator evidence around the loop",
+          "statement": "The validator does not redefine Red, Green, or Refactor.",
+          "items": [
+            "Approved requirements",
+            "Reviewed target plan",
+            "Red-phase baseline",
+            "Requirement traceability",
+            "Implementation drift checks",
+            "Potential-gap review",
+            "Composed readiness gate"
+          ],
+          "boundary": "Approvals, baselines, traceability, drift checks, and the composed gate are governance around TDD; they are not canonical color definitions."
+        },
+        "workingLoop": {
+          "collaboration": "The engineer and Codex iterate one reviewed behavior or slice at a time.",
+          "greenCheckpoint": "Passing Jest tests are a safe checkpoint for local exploratory testing, not proof that the feature is PR-ready.",
+          "localValidation": "Exercise the local build to find incorrect behavior, UX defects, and edge cases that unit checks alone may not reveal.",
+          "inScopeChange": "For a unit-testable behavior change already covered by approved requirements, update the Jest evidence first, confirm the expected failure, and then change product code.",
+          "outsideScopeChange": "Record behavior outside approved requirements as a potential gap; do not implement it opportunistically.",
+          "refactor": "Improve structure only while the suite remains green, then repeat until the complete reviewed slice is ready."
+        },
+        "cues": [
+          "RED · requirement-backed failure",
+          "GREEN · checkpoint",
+          "LOCAL · explore behavior + UX",
+          "TEST FIRST · iterate to ready"
+        ]
+      },
+      "dashboard": {
+        "title": "A dashboard built for decisions.",
+        "eyebrow": "READ THE EVIDENCE",
+        "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+        "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+        "headline": "WHAT DO YOU NEED TO KNOW NEXT?",
+        "questions": [
+          "What blocks the gate?",
+          "Which requirements have evidence?",
+          "Which tests need mappings?",
+          "Are reviewed plans and baselines present?",
+          "Were tests deleted or weakened?",
+          "Which potential gaps need review?"
+        ],
+        "supportingViews": [
+          "Implementation Unit Spec Coverage",
+          "Requirement-to-test mappings",
+          "Initial Jest TDD suite versus final suite",
+          "NFR applicability and coverage",
+          "Backport and potential-gap review"
+        ],
+        "footnote": "Requirement coverage is primary. Percent coverage is supporting evidence.",
+        "cues": [
+          "Gate blockers",
+          "Traceability",
+          "Baseline delta",
+          "Potential gaps"
+        ]
+      },
+      "usage-cta": {
+        "title": "Use it three ways. Improve it together.",
+        "eyebrow": "PROMPT EXAMPLES",
+        "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+        "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+        "headline": "START WITH THE ENTRY POINT THAT FITS YOUR WORK.",
+        "usageModes": [
+          {
+            "id": "standalone-codex",
+            "label": "Standalone · Codex",
+            "command": "$tdd-jest-validation",
+            "prompt": "Start from the approved requirements in the repo. Prepare the Unit Test Target Plan within reviewed scope, then pause for plan and sample approval."
+          },
+          {
+            "id": "direct-cli",
+            "label": "Direct · CLI",
+            "command": "node skills/tdd-jest-validation/scripts/run-jest-validation-gate.mjs --feature <featureSlug> --baseline-file .tmp/tdd-jest/<featureSlug>/red-phase-baseline.json"
+          },
+          {
+            "id": "sdd-orchestrator",
+            "label": "With SDD Orchestrator",
+            "prompt": "Run SDD Orchestrator for RX-12345. Continue into the TDD Jest phase and pause for sample approval."
+          }
+        ],
+        "cta": [
+          "Use it.",
+          "Evaluate the evidence.",
+          "Stress-test the guardrails.",
+          "Improve the skill."
+        ],
+        "contributionSurfaces": [
+          "Prompts",
+          "Checks",
+          "Tests",
+          "Dashboard metrics"
+        ],
+        "cues": [
+          "Standalone Codex",
+          "Direct CLI",
+          "SDD Orchestrator",
+          "Stress-test · Contribute"
+        ]
+      }
+    }
+  },
+  "scenes": [
+    {
+      "id": "introduction",
+      "title": "Meet the TDD Jest Validation Gate.",
+      "purpose": "Introduce the skill before naming the evidence gap it solves.",
+      "teachingPoint": "The gate establishes requirement-backed Jest tests before product code.",
+      "startSeconds": 0,
+      "durationSeconds": 5,
+      "copy": {
+        "title": "Meet the TDD Jest Validation Gate.",
+        "eyebrow": "ENGINEERING EXPLAINER",
+        "purpose": "Introduce the skill before naming the evidence gap it solves.",
+        "teachingPoint": "The gate establishes requirement-backed Jest tests before product code.",
+        "headline": "REQUIREMENT-BACKED TESTS. BEFORE PRODUCT CODE.",
+        "supportingCopy": "A validation gate for keeping intent, tests, and implementation connected.",
+        "cues": [
+          "TDD Jest Validation Gate",
+          "Requirement-backed tests",
+          "Before product code"
+        ]
+      },
+      "visual": {
+        "sceneId": "introduction",
+        "visualPrimitive": "TddTitleIntroduction",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "TDD Jest Validation Gate",
+          "Requirement-backed tests",
+          "Before product code"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "introduction",
+        "startSeconds": 0,
+        "endSeconds": 4.35,
+        "text": "Meet the TDD Jest Validation Gate.",
+        "performanceSegments": [
+          {
+            "displayText": "Meet the TDD Jest Validation Gate.",
+            "spokenText": "Meet the T D D Jest Validation Gate.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.619,
+            "endSeconds": 2.669,
+            "pauseAfterMs": 50,
+            "effectivePauseAfterMs": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "problem-hook",
+      "title": "Tests written after code can mirror the code.",
+      "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+      "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+      "startSeconds": 5,
+      "durationSeconds": 17,
+      "copy": {
+        "title": "Tests written after code can mirror the code.",
+        "eyebrow": "WHY TEST-FIRST MATTERS",
+        "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+        "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+        "headline": "REQUIREMENTS DRIVE TESTS. TESTS DRIVE CODE.",
+        "supportingCopy": "The gate makes the implementation boundary observable throughout the feature.",
+        "comparison": {
+          "codeFirst": {
+            "label": "Code first",
+            "flow": [
+              "Codex implementation",
+              "Tests written afterward"
+            ],
+            "risk": "Passing tests may only confirm the implementation that already exists."
+          },
+          "testFirst": {
+            "label": "Requirement-backed TDD",
+            "flow": [
+              "Approved requirements",
+              "Jest evidence",
+              "Implementation"
+            ],
+            "benefit": "Unmapped source work surfaces as drift or a potential gap for review."
+          }
+        },
+        "evidenceNodes": [
+          {
+            "label": "Requirements",
+            "state": "approved"
+          },
+          {
+            "label": "Jest specs",
+            "state": "drives"
+          },
+          {
+            "label": "Product code",
+            "state": "bounded"
+          },
+          {
+            "label": "Gap review",
+            "state": "surfaced"
+          }
+        ],
+        "cues": [
+          "Code first → tests after",
+          "Tests can mirror code",
+          "Requirements → Jest → code",
+          "Unmapped work → review"
+        ]
+      },
+      "visual": {
+        "sceneId": "problem-hook",
+        "visualPrimitive": "EvidenceConvergence",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "Code first → tests after",
+          "Tests can mirror code",
+          "Requirements → Jest → code"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "problem-hook",
+        "startSeconds": 5,
+        "endSeconds": 21.35,
+        "text": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+        "performanceSegments": [
+          {
+            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "startSeconds": 0,
+            "speechEndSeconds": 4.327,
+            "endSeconds": 4.489,
+            "pauseAfterMs": 180,
+            "effectivePauseAfterMs": 162
+          },
+          {
+            "displayText": "Those tests can pass while simply mirroring the implementation.",
+            "spokenText": "Those tests can pass while simply mirroring the implementation.",
+            "startSeconds": 4.489,
+            "speechEndSeconds": 7.602,
+            "endSeconds": 7.763,
+            "pauseAfterMs": 180,
+            "effectivePauseAfterMs": 162
+          },
+          {
+            "displayText": "TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+            "spokenText": "T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+            "startSeconds": 7.763,
+            "speechEndSeconds": 16.1,
+            "endSeconds": 16.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "sdd-fit",
+      "title": "The fourth canonical SDD phase.",
+      "purpose": "Place the skill between reviewed planning and implementation.",
+      "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+      "startSeconds": 22,
+      "durationSeconds": 14,
+      "copy": {
+        "title": "The fourth canonical SDD phase.",
+        "eyebrow": "WHERE IT FITS",
+        "purpose": "Place the skill between reviewed planning and implementation.",
+        "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+        "headline": "REVIEWED PLAN → TDD JEST → IMPLEMENT",
+        "lifecycle": [
+          {
+            "label": "Requirements",
+            "state": "complete"
+          },
+          {
+            "label": "Design",
+            "state": "complete"
+          },
+          {
+            "label": "Implementation Plan",
+            "state": "complete"
+          },
+          {
+            "label": "TDD Jest Validation",
+            "state": "active"
+          },
+          {
+            "label": "Implementation",
+            "state": "next"
+          },
+          {
+            "label": "Playwright",
+            "state": "later"
+          }
+        ],
+        "callout": "Playwright complements Jest. It does not replace unit specs.",
+        "cues": [
+          "Fourth SDD phase",
+          "Reviewed planning",
+          "Before implementation",
+          "Playwright complements Jest"
+        ]
+      },
+      "visual": {
+        "sceneId": "sdd-fit",
+        "visualPrimitive": "SddLifecycleRail",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "Fourth SDD phase",
+          "Reviewed planning",
+          "Before implementation"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "sdd-fit",
+        "startSeconds": 22,
+        "endSeconds": 35.35,
+        "text": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+        "performanceSegments": [
+          {
+            "displayText": "SDD phase four sits between reviewed planning and product code.",
+            "spokenText": "S D D phase four sits between reviewed planning and product code.",
+            "startSeconds": 0,
+            "speechEndSeconds": 3.837,
+            "endSeconds": 4.097,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Engineers and Codex stay inside the boundary.",
+            "spokenText": "Engineers and Codex stay inside the boundary.",
+            "startSeconds": 4.097,
+            "speechEndSeconds": 6.809,
+            "endSeconds": 7.049,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+            "spokenText": "After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
+            "startSeconds": 7.049,
+            "speechEndSeconds": 12.891,
+            "endSeconds": 12.891,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "capabilities",
+      "title": "A composed gate for trustworthy evidence.",
+      "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "startSeconds": 36,
+      "durationSeconds": 17,
+      "copy": {
+        "title": "A composed gate for trustworthy evidence.",
+        "eyebrow": "WHAT IT CAN DO FOR YOU",
+        "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+        "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+        "headline": "FROM REVIEWED INTENT TO AUDITABLE UNIT EVIDENCE",
+        "flow": {
+          "inputs": [
+            "Requirements",
+            "Reviewed Unit Test Target Plan"
+          ],
+          "outputs": [
+            "Approved sample spec",
+            "Complete Jest specs",
+            "Red-phase baseline"
+          ]
+        },
+        "capabilities": [
+          {
+            "label": "Traceability",
+            "detail": "Map requirements and acceptance IDs to standard Jest names."
+          },
+          {
+            "label": "Drift detection",
+            "detail": "Require changed product paths to retain planned spec evidence."
+          },
+          {
+            "label": "Weakening checks",
+            "detail": "Detect removed, skipped, todo, unmapped, or lower-assertion tests."
+          },
+          {
+            "label": "Fixed scope",
+            "detail": "Record discoveries outside locked requirements as potential gaps."
+          },
+          {
+            "label": "Readiness audit",
+            "detail": "Compose generation, drift, coverage, baseline, and completion evidence."
+          }
+        ],
+        "cues": [
+          "Requirement traceability",
+          "Implementation drift",
+          "Weakening detection",
+          "Readiness audit"
+        ]
+      },
+      "visual": {
+        "sceneId": "capabilities",
+        "visualPrimitive": "ComposedValidationGate",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "Requirement traceability",
+          "Implementation drift",
+          "Weakening detection"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "capabilities",
+        "startSeconds": 36,
+        "endSeconds": 52.35,
+        "text": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+        "performanceSegments": [
+          {
+            "displayText": "The skill turns intent into auditable evidence.",
+            "spokenText": "The skill turns intent into auditable evidence.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.469,
+            "endSeconds": 2.684,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 215
+          },
+          {
+            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
+            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
+            "startSeconds": 2.684,
+            "speechEndSeconds": 8.725,
+            "endSeconds": 8.994,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 269
+          },
+          {
+            "displayText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+            "spokenText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+            "startSeconds": 8.994,
+            "speechEndSeconds": 16.1,
+            "endSeconds": 16.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "getting-started",
+      "title": "Start from approved requirements in the repo.",
+      "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+      "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+      "startSeconds": 53,
+      "durationSeconds": 20,
+      "copy": {
+        "title": "Start from approved requirements in the repo.",
+        "eyebrow": "GETTING STARTED",
+        "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+        "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+        "headline": "REQUIREMENTS → PLAN → SAMPLE → SUITE → BASELINE → GATE",
+        "inputs": [
+          {
+            "label": "Requirements in the repo",
+            "detail": "Product-approved feature requirements, acceptance criteria, and relevant validation cases."
+          },
+          {
+            "label": "TDD-prepared target plan",
+            "detail": "Planned implementation units, source paths, spec paths, mappings, and concrete assertions."
+          },
+          {
+            "label": "Repo + NFR patterns",
+            "detail": "Nearby Jest style, repository rules, shared NFRs, mocks, and fixtures."
+          }
+        ],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Commit approved requirements",
+            "owner": "Product + engineering"
+          },
+          {
+            "step": 2,
+            "label": "Prepare Unit Test Target Plan",
+            "owner": "TDD phase within reviewed scope"
+          },
+          {
+            "step": 3,
+            "label": "Review and approve the plan",
+            "owner": "Engineer"
+          },
+          {
+            "step": 4,
+            "label": "Review one representative failing spec",
+            "owner": "Engineer"
+          },
+          {
+            "step": 5,
+            "label": "Generate the complete planned suite",
+            "owner": "TDD phase"
+          },
+          {
+            "step": 6,
+            "label": "Capture the red-phase baseline",
+            "owner": "TDD phase"
+          },
+          {
+            "step": 7,
+            "label": "Run the composed gate before product code",
+            "owner": "Engineer + Codex"
+          }
+        ],
+        "approval": {
+          "label": "Human approval before generation",
+          "detail": "Approve the Unit Test Target Plan and one representative failing spec before generating the complete planned suite."
+        },
+        "cues": [
+          "Requirements in repo",
+          "TDD prepares plan",
+          "Human reviews plan + sample",
+          "Suite → baseline → gate"
+        ]
+      },
+      "visual": {
+        "sceneId": "getting-started",
+        "visualPrimitive": "InputApprovalGate",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "Requirements in repo",
+          "TDD prepares plan",
+          "Human reviews plan + sample"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "getting-started",
+        "startSeconds": 53,
+        "endSeconds": 72.35,
+        "text": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+        "performanceSegments": [
+          {
+            "displayText": "Begin with product-approved requirements committed to the repo.",
+            "spokenText": "Begin with product-approved requirements committed to the repo.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.885,
+            "endSeconds": 3.118,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 232
+          },
+          {
+            "displayText": "Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "spokenText": "Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "startSeconds": 3.118,
+            "speechEndSeconds": 9.505,
+            "endSeconds": 9.773,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 268
+          },
+          {
+            "displayText": "Review and approve the plan, then one representative failing spec.",
+            "spokenText": "Review and approve the plan, then one representative failing spec.",
+            "startSeconds": 9.773,
+            "speechEndSeconds": 13.338,
+            "endSeconds": 13.588,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 250
+          },
+          {
+            "displayText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "spokenText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "startSeconds": 13.588,
+            "speechEndSeconds": 19.1,
+            "endSeconds": 19.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "red-green-refactor",
+      "title": "The engineer–Codex working loop.",
+      "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+      "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+      "startSeconds": 73,
+      "durationSeconds": 34,
+      "copy": {
+        "title": "The engineer–Codex working loop.",
+        "eyebrow": "RED · GREEN · REFACTOR",
+        "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+        "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+        "headline": "GREEN IS A CHECKPOINT. KEEP LEARNING.",
+        "canonicalMethodology": {
+          "label": "Canonical TDD methodology",
+          "testList": "List the desired behaviors, then choose exactly one case at a time.",
+          "cycle": [
+            {
+              "state": "RED",
+              "accent": "red",
+              "definition": "Turn one behavior into a runnable test and confirm it fails in the expected way."
+            },
+            {
+              "state": "GREEN",
+              "accent": "green",
+              "definition": "Write just enough code for the new test and every earlier test to pass."
+            },
+            {
+              "state": "REFACTOR",
+              "accent": "gold",
+              "definition": "While all tests remain green, improve the design without changing behavior."
+            }
+          ],
+          "repeat": "Choose the next behavior from the list and repeat until the list is empty.",
+          "sources": [
+            "https://newsletter.kentbeck.com/p/canon-tdd",
+            "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
+            "https://gds-way.digital.cabinet-office.gov.uk/standards/test-driven-development.html"
+          ]
+        },
+        "validatorGovernance": {
+          "label": "Validator evidence around the loop",
+          "statement": "The validator does not redefine Red, Green, or Refactor.",
+          "items": [
+            "Approved requirements",
+            "Reviewed target plan",
+            "Red-phase baseline",
+            "Requirement traceability",
+            "Implementation drift checks",
+            "Potential-gap review",
+            "Composed readiness gate"
+          ],
+          "boundary": "Approvals, baselines, traceability, drift checks, and the composed gate are governance around TDD; they are not canonical color definitions."
+        },
+        "workingLoop": {
+          "collaboration": "The engineer and Codex iterate one reviewed behavior or slice at a time.",
+          "greenCheckpoint": "Passing Jest tests are a safe checkpoint for local exploratory testing, not proof that the feature is PR-ready.",
+          "localValidation": "Exercise the local build to find incorrect behavior, UX defects, and edge cases that unit checks alone may not reveal.",
+          "inScopeChange": "For a unit-testable behavior change already covered by approved requirements, update the Jest evidence first, confirm the expected failure, and then change product code.",
+          "outsideScopeChange": "Record behavior outside approved requirements as a potential gap; do not implement it opportunistically.",
+          "refactor": "Improve structure only while the suite remains green, then repeat until the complete reviewed slice is ready."
+        },
+        "cues": [
+          "RED · requirement-backed failure",
+          "GREEN · checkpoint",
+          "LOCAL · explore behavior + UX",
+          "TEST FIRST · iterate to ready"
+        ]
+      },
+      "visual": {
+        "sceneId": "red-green-refactor",
+        "visualPrimitive": "TddCycle",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "RED · requirement-backed failure",
+          "GREEN · checkpoint",
+          "LOCAL · explore behavior + UX"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "red-green-refactor",
+        "startSeconds": 73,
+        "endSeconds": 106.35,
+        "text": "This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it—and earlier tests—passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready.",
+        "performanceSegments": [
+          {
+            "displayText": "This is where engineers and Codex spend most of their time together.",
+            "spokenText": "This is where engineers and Codex spend most of their time together.",
+            "startSeconds": 0,
+            "speechEndSeconds": 3.31,
+            "endSeconds": 3.52,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
+            "spokenText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
+            "startSeconds": 3.52,
+            "speechEndSeconds": 9.069,
+            "endSeconds": 9.314,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "Green: make the smallest change that gets it—and earlier tests—passing.",
+            "spokenText": "Green: make the smallest change that gets it, and earlier tests, passing.",
+            "startSeconds": 9.314,
+            "speechEndSeconds": 12.807,
+            "endSeconds": 13.052,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "Green is a checkpoint, not proof that the feature is PR-ready.",
+            "spokenText": "Green is a checkpoint, not proof that the feature is PR-ready.",
+            "startSeconds": 13.052,
+            "speechEndSeconds": 16.244,
+            "endSeconds": 16.454,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Run the feature locally and explore behavior, UX, and edge cases.",
+            "spokenText": "Run the feature locally and explore behavior, UX, and edge cases.",
+            "startSeconds": 16.454,
+            "speechEndSeconds": 19.971,
+            "endSeconds": 20.199,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 228
+          },
+          {
+            "displayText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
+            "spokenText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
+            "startSeconds": 20.199,
+            "speechEndSeconds": 26.107,
+            "endSeconds": 26.352,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "New behavior outside that boundary becomes a potential gap for review.",
+            "spokenText": "New behavior outside that boundary becomes a potential gap for review.",
+            "startSeconds": 26.352,
+            "speechEndSeconds": 30.121,
+            "endSeconds": 30.331,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Refactor while green; repeat until the slice is ready.",
+            "spokenText": "Refactor while green; repeat until the slice is ready.",
+            "startSeconds": 30.331,
+            "speechEndSeconds": 33.1,
+            "endSeconds": 33.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "dashboard",
+      "title": "A dashboard built for decisions.",
+      "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+      "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+      "startSeconds": 107,
+      "durationSeconds": 18,
+      "copy": {
+        "title": "A dashboard built for decisions.",
+        "eyebrow": "READ THE EVIDENCE",
+        "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+        "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+        "headline": "WHAT DO YOU NEED TO KNOW NEXT?",
+        "questions": [
+          "What blocks the gate?",
+          "Which requirements have evidence?",
+          "Which tests need mappings?",
+          "Are reviewed plans and baselines present?",
+          "Were tests deleted or weakened?",
+          "Which potential gaps need review?"
+        ],
+        "supportingViews": [
+          "Implementation Unit Spec Coverage",
+          "Requirement-to-test mappings",
+          "Initial Jest TDD suite versus final suite",
+          "NFR applicability and coverage",
+          "Backport and potential-gap review"
+        ],
+        "footnote": "Requirement coverage is primary. Percent coverage is supporting evidence.",
+        "cues": [
+          "Gate blockers",
+          "Traceability",
+          "Baseline delta",
+          "Potential gaps"
+        ]
+      },
+      "visual": {
+        "sceneId": "dashboard",
+        "visualPrimitive": "DashboardDecisionSurface",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "Gate blockers",
+          "Traceability",
+          "Baseline delta"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "dashboard",
+        "startSeconds": 107,
+        "endSeconds": 124.35,
+        "text": "The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful.",
+        "performanceSegments": [
+          {
+            "displayText": "The dashboard turns the audit into decisions.",
+            "spokenText": "The dashboard turns the audit into decisions.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.341,
+            "endSeconds": 2.581,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
+            "spokenText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
+            "startSeconds": 2.581,
+            "speechEndSeconds": 7.29,
+            "endSeconds": 7.55,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Are the plan and baseline present? Were tests deleted or weakened?",
+            "spokenText": "Are the plan and baseline present? Were tests deleted or weakened?",
+            "startSeconds": 7.55,
+            "speechEndSeconds": 11.404,
+            "endSeconds": 11.664,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Which potential gaps need review?",
+            "spokenText": "Which potential gaps need review?",
+            "startSeconds": 11.664,
+            "speechEndSeconds": 13.401,
+            "endSeconds": 13.641,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "The numbers change; these questions remain useful.",
+            "spokenText": "The numbers change; these questions remain useful.",
+            "startSeconds": 13.641,
+            "speechEndSeconds": 16.55,
+            "endSeconds": 16.55,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "usage-cta",
+      "title": "Use it three ways. Improve it together.",
+      "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+      "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+      "startSeconds": 125,
+      "durationSeconds": 18,
+      "copy": {
+        "title": "Use it three ways. Improve it together.",
+        "eyebrow": "PROMPT EXAMPLES",
+        "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+        "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+        "headline": "START WITH THE ENTRY POINT THAT FITS YOUR WORK.",
+        "usageModes": [
+          {
+            "id": "standalone-codex",
+            "label": "Standalone · Codex",
+            "command": "$tdd-jest-validation",
+            "prompt": "Start from the approved requirements in the repo. Prepare the Unit Test Target Plan within reviewed scope, then pause for plan and sample approval."
+          },
+          {
+            "id": "direct-cli",
+            "label": "Direct · CLI",
+            "command": "node skills/tdd-jest-validation/scripts/run-jest-validation-gate.mjs --feature <featureSlug> --baseline-file .tmp/tdd-jest/<featureSlug>/red-phase-baseline.json"
+          },
+          {
+            "id": "sdd-orchestrator",
+            "label": "With SDD Orchestrator",
+            "prompt": "Run SDD Orchestrator for RX-12345. Continue into the TDD Jest phase and pause for sample approval."
+          }
+        ],
+        "cta": [
+          "Use it.",
+          "Evaluate the evidence.",
+          "Stress-test the guardrails.",
+          "Improve the skill."
+        ],
+        "contributionSurfaces": [
+          "Prompts",
+          "Checks",
+          "Tests",
+          "Dashboard metrics"
+        ],
+        "cues": [
+          "Standalone Codex",
+          "Direct CLI",
+          "SDD Orchestrator",
+          "Stress-test · Contribute"
+        ]
+      },
+      "visual": {
+        "sceneId": "usage-cta",
+        "visualPrimitive": "UsageTabsCta",
+        "visualType": "bespoke-tdd-jest-set-piece",
+        "layout": "full-frame custom composition",
+        "motionStyle": "continuous-progressive-reveal",
+        "density": "high",
+        "textDensity": "low",
+        "camera": "subtle-push-in",
+        "emphasis": [
+          "Standalone Codex",
+          "Direct CLI",
+          "SDD Orchestrator"
+        ],
+        "avoid": [
+          "generic centered cards",
+          "tiny code",
+          "paragraph captions",
+          "time-sensitive dashboard counts"
+        ]
+      },
+      "narration": {
+        "sceneId": "usage-cta",
+        "startSeconds": 125,
+        "endSeconds": 143,
+        "text": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+        "performanceSegments": [
+          {
+            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints.",
+            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints.",
+            "startSeconds": 0,
+            "speechEndSeconds": 6.933,
+            "endSeconds": 7.213,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 280
+          },
+          {
+            "displayText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "spokenText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "startSeconds": 7.213,
+            "speechEndSeconds": 11.717,
+            "endSeconds": 11.977,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+            "spokenText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+            "startSeconds": 11.977,
+            "speechEndSeconds": 16.676,
+            "endSeconds": 16.676,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    }
+  ],
+  "shots": [
+    {
+      "shotId": "introduction-shot-01",
+      "sceneId": "introduction",
+      "order": 1,
+      "title": "Meet the TDD Jest Validation Gate.",
+      "purpose": "Introduce the skill before naming the evidence gap it solves.",
+      "teachingPoint": "The gate establishes requirement-backed Jest tests before product code.",
+      "startSeconds": 0,
+      "durationSeconds": 1.667,
+      "visualIntent": "TDD Jest Validation Gate as part of the introduction set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "TDD Jest Validation Gate"
+      ],
+      "media": {
+        "shotId": "introduction-shot-01",
+        "sceneId": "introduction",
+        "mediaType": "kinetic-title"
+      }
+    },
+    {
+      "shotId": "introduction-shot-02",
+      "sceneId": "introduction",
+      "order": 2,
+      "title": "Meet the TDD Jest Validation Gate.",
+      "purpose": "Introduce the skill before naming the evidence gap it solves.",
+      "teachingPoint": "The gate establishes requirement-backed Jest tests before product code.",
+      "startSeconds": 1.667,
+      "durationSeconds": 1.667,
+      "visualIntent": "Requirement-backed tests as part of the introduction set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Requirement-backed tests"
+      ],
+      "media": {
+        "shotId": "introduction-shot-02",
+        "sceneId": "introduction",
+        "mediaType": "validation-gate"
+      }
+    },
+    {
+      "shotId": "introduction-shot-03",
+      "sceneId": "introduction",
+      "order": 3,
+      "title": "Meet the TDD Jest Validation Gate.",
+      "purpose": "Introduce the skill before naming the evidence gap it solves.",
+      "teachingPoint": "The gate establishes requirement-backed Jest tests before product code.",
+      "startSeconds": 3.333,
+      "durationSeconds": 1.667,
+      "visualIntent": "Before product code as part of the introduction set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Before product code"
+      ],
+      "media": {
+        "shotId": "introduction-shot-03",
+        "sceneId": "introduction",
+        "mediaType": "transition"
+      }
+    },
+    {
+      "shotId": "problem-hook-shot-01",
+      "sceneId": "problem-hook",
+      "order": 1,
+      "title": "Tests written after code can mirror the code.",
+      "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+      "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+      "startSeconds": 5,
+      "durationSeconds": 4.25,
+      "visualIntent": "Code first → tests after as part of the problem-hook set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Code first → tests after"
+      ],
+      "media": {
+        "shotId": "problem-hook-shot-01",
+        "sceneId": "problem-hook",
+        "mediaType": "kinetic-text"
+      }
+    },
+    {
+      "shotId": "problem-hook-shot-02",
+      "sceneId": "problem-hook",
+      "order": 2,
+      "title": "Tests written after code can mirror the code.",
+      "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+      "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+      "startSeconds": 9.25,
+      "durationSeconds": 4.25,
+      "visualIntent": "Tests can mirror code as part of the problem-hook set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Tests can mirror code"
+      ],
+      "media": {
+        "shotId": "problem-hook-shot-02",
+        "sceneId": "problem-hook",
+        "mediaType": "node-graph"
+      }
+    },
+    {
+      "shotId": "problem-hook-shot-03",
+      "sceneId": "problem-hook",
+      "order": 3,
+      "title": "Tests written after code can mirror the code.",
+      "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+      "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+      "startSeconds": 13.5,
+      "durationSeconds": 4.25,
+      "visualIntent": "Requirements → Jest → code as part of the problem-hook set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Requirements → Jest → code"
+      ],
+      "media": {
+        "shotId": "problem-hook-shot-03",
+        "sceneId": "problem-hook",
+        "mediaType": "terminal"
+      }
+    },
+    {
+      "shotId": "problem-hook-shot-04",
+      "sceneId": "problem-hook",
+      "order": 4,
+      "title": "Tests written after code can mirror the code.",
+      "purpose": "Contrast code-first generation with requirement-backed tests that drive implementation.",
+      "teachingPoint": "When requirements define tests before product code, unmapped implementation becomes visible as drift or a potential gap instead of silently expanding scope.",
+      "startSeconds": 17.75,
+      "durationSeconds": 4.25,
+      "visualIntent": "Unmapped work → review as part of the problem-hook set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Unmapped work → review"
+      ],
+      "media": {
+        "shotId": "problem-hook-shot-04",
+        "sceneId": "problem-hook",
+        "mediaType": "validation-gate"
+      }
+    },
+    {
+      "shotId": "sdd-fit-shot-01",
+      "sceneId": "sdd-fit",
+      "order": 1,
+      "title": "The fourth canonical SDD phase.",
+      "purpose": "Place the skill between reviewed planning and implementation.",
+      "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+      "startSeconds": 22,
+      "durationSeconds": 3.5,
+      "visualIntent": "Fourth SDD phase as part of the sdd-fit set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Fourth SDD phase"
+      ],
+      "media": {
+        "shotId": "sdd-fit-shot-01",
+        "sceneId": "sdd-fit",
+        "mediaType": "workflow-animation"
+      }
+    },
+    {
+      "shotId": "sdd-fit-shot-02",
+      "sceneId": "sdd-fit",
+      "order": 2,
+      "title": "The fourth canonical SDD phase.",
+      "purpose": "Place the skill between reviewed planning and implementation.",
+      "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+      "startSeconds": 25.5,
+      "durationSeconds": 3.5,
+      "visualIntent": "Reviewed planning as part of the sdd-fit set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Reviewed planning"
+      ],
+      "media": {
+        "shotId": "sdd-fit-shot-02",
+        "sceneId": "sdd-fit",
+        "mediaType": "diagram"
+      }
+    },
+    {
+      "shotId": "sdd-fit-shot-03",
+      "sceneId": "sdd-fit",
+      "order": 3,
+      "title": "The fourth canonical SDD phase.",
+      "purpose": "Place the skill between reviewed planning and implementation.",
+      "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+      "startSeconds": 29,
+      "durationSeconds": 3.5,
+      "visualIntent": "Before implementation as part of the sdd-fit set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Before implementation"
+      ],
+      "media": {
+        "shotId": "sdd-fit-shot-03",
+        "sceneId": "sdd-fit",
+        "mediaType": "callout"
+      }
+    },
+    {
+      "shotId": "sdd-fit-shot-04",
+      "sceneId": "sdd-fit",
+      "order": 4,
+      "title": "The fourth canonical SDD phase.",
+      "purpose": "Place the skill between reviewed planning and implementation.",
+      "teachingPoint": "Jest establishes unit-level evidence before product code; engineers and Codex implement inside reviewed boundaries, and Playwright later adds complementary browser validation.",
+      "startSeconds": 32.5,
+      "durationSeconds": 3.5,
+      "visualIntent": "Playwright complements Jest as part of the sdd-fit set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Playwright complements Jest"
+      ],
+      "media": {
+        "shotId": "sdd-fit-shot-04",
+        "sceneId": "sdd-fit",
+        "mediaType": "transition"
+      }
+    },
+    {
+      "shotId": "capabilities-shot-01",
+      "sceneId": "capabilities",
+      "order": 1,
+      "title": "A composed gate for trustworthy evidence.",
+      "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "startSeconds": 36,
+      "durationSeconds": 4.25,
+      "visualIntent": "Requirement traceability as part of the capabilities set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Requirement traceability"
+      ],
+      "media": {
+        "shotId": "capabilities-shot-01",
+        "sceneId": "capabilities",
+        "mediaType": "artifact-flow"
+      }
+    },
+    {
+      "shotId": "capabilities-shot-02",
+      "sceneId": "capabilities",
+      "order": 2,
+      "title": "A composed gate for trustworthy evidence.",
+      "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "startSeconds": 40.25,
+      "durationSeconds": 4.25,
+      "visualIntent": "Implementation drift as part of the capabilities set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Implementation drift"
+      ],
+      "media": {
+        "shotId": "capabilities-shot-02",
+        "sceneId": "capabilities",
+        "mediaType": "code-closeup"
+      }
+    },
+    {
+      "shotId": "capabilities-shot-03",
+      "sceneId": "capabilities",
+      "order": 3,
+      "title": "A composed gate for trustworthy evidence.",
+      "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "startSeconds": 44.5,
+      "durationSeconds": 4.25,
+      "visualIntent": "Weakening detection as part of the capabilities set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Weakening detection"
+      ],
+      "media": {
+        "shotId": "capabilities-shot-03",
+        "sceneId": "capabilities",
+        "mediaType": "validation-gate"
+      }
+    },
+    {
+      "shotId": "capabilities-shot-04",
+      "sceneId": "capabilities",
+      "order": 4,
+      "title": "A composed gate for trustworthy evidence.",
+      "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "startSeconds": 48.75,
+      "durationSeconds": 4.25,
+      "visualIntent": "Readiness audit as part of the capabilities set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Readiness audit"
+      ],
+      "media": {
+        "shotId": "capabilities-shot-04",
+        "sceneId": "capabilities",
+        "mediaType": "callout"
+      }
+    },
+    {
+      "shotId": "getting-started-shot-01",
+      "sceneId": "getting-started",
+      "order": 1,
+      "title": "Start from approved requirements in the repo.",
+      "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+      "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+      "startSeconds": 53,
+      "durationSeconds": 5,
+      "visualIntent": "Requirements in repo as part of the getting-started set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Requirements in repo"
+      ],
+      "media": {
+        "shotId": "getting-started-shot-01",
+        "sceneId": "getting-started",
+        "mediaType": "source-excerpt"
+      }
+    },
+    {
+      "shotId": "getting-started-shot-02",
+      "sceneId": "getting-started",
+      "order": 2,
+      "title": "Start from approved requirements in the repo.",
+      "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+      "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+      "startSeconds": 58,
+      "durationSeconds": 5,
+      "visualIntent": "TDD prepares plan as part of the getting-started set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "TDD prepares plan"
+      ],
+      "media": {
+        "shotId": "getting-started-shot-02",
+        "sceneId": "getting-started",
+        "mediaType": "artifact-cards"
+      }
+    },
+    {
+      "shotId": "getting-started-shot-03",
+      "sceneId": "getting-started",
+      "order": 3,
+      "title": "Start from approved requirements in the repo.",
+      "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+      "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+      "startSeconds": 63,
+      "durationSeconds": 5,
+      "visualIntent": "Human reviews plan + sample as part of the getting-started set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Human reviews plan + sample"
+      ],
+      "media": {
+        "shotId": "getting-started-shot-03",
+        "sceneId": "getting-started",
+        "mediaType": "repo-pattern"
+      }
+    },
+    {
+      "shotId": "getting-started-shot-04",
+      "sceneId": "getting-started",
+      "order": 4,
+      "title": "Start from approved requirements in the repo.",
+      "purpose": "Show the complete preparation and approval sequence before product implementation begins.",
+      "teachingPoint": "Within reviewed feature scope, the TDD phase prepares the Unit Test Target Plan; people approve the plan and representative sample before full-suite generation and baseline capture.",
+      "startSeconds": 68,
+      "durationSeconds": 5,
+      "visualIntent": "Suite → baseline → gate as part of the getting-started set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Suite → baseline → gate"
+      ],
+      "media": {
+        "shotId": "getting-started-shot-04",
+        "sceneId": "getting-started",
+        "mediaType": "approval-gate"
+      }
+    },
+    {
+      "shotId": "red-green-refactor-shot-01",
+      "sceneId": "red-green-refactor",
+      "order": 1,
+      "title": "The engineer–Codex working loop.",
+      "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+      "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+      "startSeconds": 73,
+      "durationSeconds": 8.5,
+      "visualIntent": "RED · requirement-backed failure as part of the red-green-refactor set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "RED · requirement-backed failure"
+      ],
+      "media": {
+        "shotId": "red-green-refactor-shot-01",
+        "sceneId": "red-green-refactor",
+        "mediaType": "demo-still"
+      }
+    },
+    {
+      "shotId": "red-green-refactor-shot-02",
+      "sceneId": "red-green-refactor",
+      "order": 2,
+      "title": "The engineer–Codex working loop.",
+      "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+      "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+      "startSeconds": 81.5,
+      "durationSeconds": 8.5,
+      "visualIntent": "GREEN · checkpoint as part of the red-green-refactor set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "GREEN · checkpoint"
+      ],
+      "media": {
+        "shotId": "red-green-refactor-shot-02",
+        "sceneId": "red-green-refactor",
+        "mediaType": "demo-still"
+      }
+    },
+    {
+      "shotId": "red-green-refactor-shot-03",
+      "sceneId": "red-green-refactor",
+      "order": 3,
+      "title": "The engineer–Codex working loop.",
+      "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+      "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+      "startSeconds": 90,
+      "durationSeconds": 8.5,
+      "visualIntent": "LOCAL · explore behavior + UX as part of the red-green-refactor set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "LOCAL · explore behavior + UX"
+      ],
+      "media": {
+        "shotId": "red-green-refactor-shot-03",
+        "sceneId": "red-green-refactor",
+        "mediaType": "demo-still"
+      }
+    },
+    {
+      "shotId": "red-green-refactor-shot-04",
+      "sceneId": "red-green-refactor",
+      "order": 4,
+      "title": "The engineer–Codex working loop.",
+      "purpose": "Show where most implementation iteration happens and why green is a checkpoint rather than a PR-ready finish line.",
+      "teachingPoint": "For unit-testable behavior already in approved scope, update Jest first and confirm red before changing product code; surface genuinely new behavior as a potential gap for review.",
+      "startSeconds": 98.5,
+      "durationSeconds": 8.5,
+      "visualIntent": "TEST FIRST · iterate to ready as part of the red-green-refactor set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "TEST FIRST · iterate to ready"
+      ],
+      "media": {
+        "shotId": "red-green-refactor-shot-04",
+        "sceneId": "red-green-refactor",
+        "mediaType": "validation-gate"
+      }
+    },
+    {
+      "shotId": "dashboard-shot-01",
+      "sceneId": "dashboard",
+      "order": 1,
+      "title": "A dashboard built for decisions.",
+      "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+      "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+      "startSeconds": 107,
+      "durationSeconds": 4.5,
+      "visualIntent": "Gate blockers as part of the dashboard set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Gate blockers"
+      ],
+      "media": {
+        "shotId": "dashboard-shot-01",
+        "sceneId": "dashboard",
+        "mediaType": "dashboard-crop"
+      }
+    },
+    {
+      "shotId": "dashboard-shot-02",
+      "sceneId": "dashboard",
+      "order": 2,
+      "title": "A dashboard built for decisions.",
+      "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+      "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+      "startSeconds": 111.5,
+      "durationSeconds": 4.5,
+      "visualIntent": "Traceability as part of the dashboard set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Traceability"
+      ],
+      "media": {
+        "shotId": "dashboard-shot-02",
+        "sceneId": "dashboard",
+        "mediaType": "dashboard-crop"
+      }
+    },
+    {
+      "shotId": "dashboard-shot-03",
+      "sceneId": "dashboard",
+      "order": 3,
+      "title": "A dashboard built for decisions.",
+      "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+      "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+      "startSeconds": 116,
+      "durationSeconds": 4.5,
+      "visualIntent": "Baseline delta as part of the dashboard set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Baseline delta"
+      ],
+      "media": {
+        "shotId": "dashboard-shot-03",
+        "sceneId": "dashboard",
+        "mediaType": "dashboard-crop"
+      }
+    },
+    {
+      "shotId": "dashboard-shot-04",
+      "sceneId": "dashboard",
+      "order": 4,
+      "title": "A dashboard built for decisions.",
+      "purpose": "Frame the dashboard around engineering questions rather than volatile counts.",
+      "teachingPoint": "Headline metrics are navigation; supporting audit tables carry the decision evidence.",
+      "startSeconds": 120.5,
+      "durationSeconds": 4.5,
+      "visualIntent": "Potential gaps as part of the dashboard set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Potential gaps"
+      ],
+      "media": {
+        "shotId": "dashboard-shot-04",
+        "sceneId": "dashboard",
+        "mediaType": "callout"
+      }
+    },
+    {
+      "shotId": "usage-cta-shot-01",
+      "sceneId": "usage-cta",
+      "order": 1,
+      "title": "Use it three ways. Improve it together.",
+      "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+      "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+      "startSeconds": 125,
+      "durationSeconds": 4.5,
+      "visualIntent": "Standalone Codex as part of the usage-cta set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Standalone Codex"
+      ],
+      "media": {
+        "shotId": "usage-cta-shot-01",
+        "sceneId": "usage-cta",
+        "mediaType": "terminal"
+      }
+    },
+    {
+      "shotId": "usage-cta-shot-02",
+      "sceneId": "usage-cta",
+      "order": 2,
+      "title": "Use it three ways. Improve it together.",
+      "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+      "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+      "startSeconds": 129.5,
+      "durationSeconds": 4.5,
+      "visualIntent": "Direct CLI as part of the usage-cta set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Direct CLI"
+      ],
+      "media": {
+        "shotId": "usage-cta-shot-02",
+        "sceneId": "usage-cta",
+        "mediaType": "terminal"
+      }
+    },
+    {
+      "shotId": "usage-cta-shot-03",
+      "sceneId": "usage-cta",
+      "order": 3,
+      "title": "Use it three ways. Improve it together.",
+      "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+      "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+      "startSeconds": 134,
+      "durationSeconds": 4.5,
+      "visualIntent": "SDD Orchestrator as part of the usage-cta set piece",
+      "framing": "wide",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "SDD Orchestrator"
+      ],
+      "media": {
+        "shotId": "usage-cta-shot-03",
+        "sceneId": "usage-cta",
+        "mediaType": "terminal"
+      }
+    },
+    {
+      "shotId": "usage-cta-shot-04",
+      "sceneId": "usage-cta",
+      "order": 4,
+      "title": "Use it three ways. Improve it together.",
+      "purpose": "Give engineers immediately reusable entry points and invite contribution.",
+      "teachingPoint": "The same gate supports standalone Codex use, direct CLI use, and orchestrated SDD.",
+      "startSeconds": 138.5,
+      "durationSeconds": 4.5,
+      "visualIntent": "Stress-test · Contribute as part of the usage-cta set piece",
+      "framing": "medium-close",
+      "camera": "subtle-push-in",
+      "onScreenText": [
+        "Stress-test · Contribute"
+      ],
+      "media": {
+        "shotId": "usage-cta-shot-04",
+        "sceneId": "usage-cta",
+        "mediaType": "kinetic-text"
+      }
+    }
+  ],
+  "mediaMix": {
+    "kind": "MediaMixPlan",
+    "version": "1.0.0",
+    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "assignments": [
+      {
+        "shotId": "introduction-shot-01",
+        "sceneId": "introduction",
+        "mediaType": "kinetic-title",
+        "rationale": "Supports TDD Jest Validation Gate"
+      },
+      {
+        "shotId": "introduction-shot-02",
+        "sceneId": "introduction",
+        "mediaType": "validation-gate",
+        "rationale": "Supports Requirement-backed tests"
+      },
+      {
+        "shotId": "introduction-shot-03",
+        "sceneId": "introduction",
+        "mediaType": "transition",
+        "rationale": "Supports Before product code"
+      },
+      {
+        "shotId": "problem-hook-shot-01",
+        "sceneId": "problem-hook",
+        "mediaType": "kinetic-text",
+        "rationale": "Supports Code first → tests after"
+      },
+      {
+        "shotId": "problem-hook-shot-02",
+        "sceneId": "problem-hook",
+        "mediaType": "node-graph",
+        "rationale": "Supports Tests can mirror code"
+      },
+      {
+        "shotId": "problem-hook-shot-03",
+        "sceneId": "problem-hook",
+        "mediaType": "terminal",
+        "rationale": "Supports Requirements → Jest → code"
+      },
+      {
+        "shotId": "problem-hook-shot-04",
+        "sceneId": "problem-hook",
+        "mediaType": "validation-gate",
+        "rationale": "Supports Unmapped work → review"
+      },
+      {
+        "shotId": "sdd-fit-shot-01",
+        "sceneId": "sdd-fit",
+        "mediaType": "workflow-animation",
+        "rationale": "Supports Fourth SDD phase"
+      },
+      {
+        "shotId": "sdd-fit-shot-02",
+        "sceneId": "sdd-fit",
+        "mediaType": "diagram",
+        "rationale": "Supports Reviewed planning"
+      },
+      {
+        "shotId": "sdd-fit-shot-03",
+        "sceneId": "sdd-fit",
+        "mediaType": "callout",
+        "rationale": "Supports Before implementation"
+      },
+      {
+        "shotId": "sdd-fit-shot-04",
+        "sceneId": "sdd-fit",
+        "mediaType": "transition",
+        "rationale": "Supports Playwright complements Jest"
+      },
+      {
+        "shotId": "capabilities-shot-01",
+        "sceneId": "capabilities",
+        "mediaType": "artifact-flow",
+        "rationale": "Supports Requirement traceability"
+      },
+      {
+        "shotId": "capabilities-shot-02",
+        "sceneId": "capabilities",
+        "mediaType": "code-closeup",
+        "rationale": "Supports Implementation drift"
+      },
+      {
+        "shotId": "capabilities-shot-03",
+        "sceneId": "capabilities",
+        "mediaType": "validation-gate",
+        "rationale": "Supports Weakening detection"
+      },
+      {
+        "shotId": "capabilities-shot-04",
+        "sceneId": "capabilities",
+        "mediaType": "callout",
+        "rationale": "Supports Readiness audit"
+      },
+      {
+        "shotId": "getting-started-shot-01",
+        "sceneId": "getting-started",
+        "mediaType": "source-excerpt",
+        "rationale": "Supports Requirements in repo"
+      },
+      {
+        "shotId": "getting-started-shot-02",
+        "sceneId": "getting-started",
+        "mediaType": "artifact-cards",
+        "rationale": "Supports TDD prepares plan"
+      },
+      {
+        "shotId": "getting-started-shot-03",
+        "sceneId": "getting-started",
+        "mediaType": "repo-pattern",
+        "rationale": "Supports Human reviews plan + sample"
+      },
+      {
+        "shotId": "getting-started-shot-04",
+        "sceneId": "getting-started",
+        "mediaType": "approval-gate",
+        "rationale": "Supports Suite → baseline → gate"
+      },
+      {
+        "shotId": "red-green-refactor-shot-01",
+        "sceneId": "red-green-refactor",
+        "mediaType": "demo-still",
+        "rationale": "Supports RED · requirement-backed failure"
+      },
+      {
+        "shotId": "red-green-refactor-shot-02",
+        "sceneId": "red-green-refactor",
+        "mediaType": "demo-still",
+        "rationale": "Supports GREEN · checkpoint"
+      },
+      {
+        "shotId": "red-green-refactor-shot-03",
+        "sceneId": "red-green-refactor",
+        "mediaType": "demo-still",
+        "rationale": "Supports LOCAL · explore behavior + UX"
+      },
+      {
+        "shotId": "red-green-refactor-shot-04",
+        "sceneId": "red-green-refactor",
+        "mediaType": "validation-gate",
+        "rationale": "Supports TEST FIRST · iterate to ready"
+      },
+      {
+        "shotId": "dashboard-shot-01",
+        "sceneId": "dashboard",
+        "mediaType": "dashboard-crop",
+        "rationale": "Supports Gate blockers"
+      },
+      {
+        "shotId": "dashboard-shot-02",
+        "sceneId": "dashboard",
+        "mediaType": "dashboard-crop",
+        "rationale": "Supports Traceability"
+      },
+      {
+        "shotId": "dashboard-shot-03",
+        "sceneId": "dashboard",
+        "mediaType": "dashboard-crop",
+        "rationale": "Supports Baseline delta"
+      },
+      {
+        "shotId": "dashboard-shot-04",
+        "sceneId": "dashboard",
+        "mediaType": "callout",
+        "rationale": "Supports Potential gaps"
+      },
+      {
+        "shotId": "usage-cta-shot-01",
+        "sceneId": "usage-cta",
+        "mediaType": "terminal",
+        "rationale": "Supports Standalone Codex"
+      },
+      {
+        "shotId": "usage-cta-shot-02",
+        "sceneId": "usage-cta",
+        "mediaType": "terminal",
+        "rationale": "Supports Direct CLI"
+      },
+      {
+        "shotId": "usage-cta-shot-03",
+        "sceneId": "usage-cta",
+        "mediaType": "terminal",
+        "rationale": "Supports SDD Orchestrator"
+      },
+      {
+        "shotId": "usage-cta-shot-04",
+        "sceneId": "usage-cta",
+        "mediaType": "kinetic-text",
+        "rationale": "Supports Stress-test · Contribute"
+      }
+    ]
+  },
+  "edl": {
+    "kind": "EditDecisionList",
+    "version": "1.0.0",
+    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "fps": 30,
+    "decisions": [
+      {
+        "cutId": "cut-introduction-shot-01",
+        "shotId": "introduction-shot-01",
+        "sceneId": "introduction",
+        "fromFrame": 0,
+        "durationFrames": 50,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-introduction-shot-02",
+        "shotId": "introduction-shot-02",
+        "sceneId": "introduction",
+        "fromFrame": 50,
+        "durationFrames": 50,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-introduction-shot-03",
+        "shotId": "introduction-shot-03",
+        "sceneId": "introduction",
+        "fromFrame": 100,
+        "durationFrames": 50,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-problem-hook-shot-01",
+        "shotId": "problem-hook-shot-01",
+        "sceneId": "problem-hook",
+        "fromFrame": 150,
+        "durationFrames": 128,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-problem-hook-shot-02",
+        "shotId": "problem-hook-shot-02",
+        "sceneId": "problem-hook",
+        "fromFrame": 278,
+        "durationFrames": 128,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-problem-hook-shot-03",
+        "shotId": "problem-hook-shot-03",
+        "sceneId": "problem-hook",
+        "fromFrame": 405,
+        "durationFrames": 128,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-problem-hook-shot-04",
+        "shotId": "problem-hook-shot-04",
+        "sceneId": "problem-hook",
+        "fromFrame": 533,
+        "durationFrames": 128,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-sdd-fit-shot-01",
+        "shotId": "sdd-fit-shot-01",
+        "sceneId": "sdd-fit",
+        "fromFrame": 660,
+        "durationFrames": 105,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-sdd-fit-shot-02",
+        "shotId": "sdd-fit-shot-02",
+        "sceneId": "sdd-fit",
+        "fromFrame": 765,
+        "durationFrames": 105,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-sdd-fit-shot-03",
+        "shotId": "sdd-fit-shot-03",
+        "sceneId": "sdd-fit",
+        "fromFrame": 870,
+        "durationFrames": 105,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-sdd-fit-shot-04",
+        "shotId": "sdd-fit-shot-04",
+        "sceneId": "sdd-fit",
+        "fromFrame": 975,
+        "durationFrames": 105,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-capabilities-shot-01",
+        "shotId": "capabilities-shot-01",
+        "sceneId": "capabilities",
+        "fromFrame": 1080,
+        "durationFrames": 128,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-capabilities-shot-02",
+        "shotId": "capabilities-shot-02",
+        "sceneId": "capabilities",
+        "fromFrame": 1208,
+        "durationFrames": 128,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-capabilities-shot-03",
+        "shotId": "capabilities-shot-03",
+        "sceneId": "capabilities",
+        "fromFrame": 1335,
+        "durationFrames": 128,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-capabilities-shot-04",
+        "shotId": "capabilities-shot-04",
+        "sceneId": "capabilities",
+        "fromFrame": 1463,
+        "durationFrames": 128,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-getting-started-shot-01",
+        "shotId": "getting-started-shot-01",
+        "sceneId": "getting-started",
+        "fromFrame": 1590,
+        "durationFrames": 150,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-getting-started-shot-02",
+        "shotId": "getting-started-shot-02",
+        "sceneId": "getting-started",
+        "fromFrame": 1740,
+        "durationFrames": 150,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-getting-started-shot-03",
+        "shotId": "getting-started-shot-03",
+        "sceneId": "getting-started",
+        "fromFrame": 1890,
+        "durationFrames": 150,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-getting-started-shot-04",
+        "shotId": "getting-started-shot-04",
+        "sceneId": "getting-started",
+        "fromFrame": 2040,
+        "durationFrames": 150,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-red-green-refactor-shot-01",
+        "shotId": "red-green-refactor-shot-01",
+        "sceneId": "red-green-refactor",
+        "fromFrame": 2190,
+        "durationFrames": 255,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-red-green-refactor-shot-02",
+        "shotId": "red-green-refactor-shot-02",
+        "sceneId": "red-green-refactor",
+        "fromFrame": 2445,
+        "durationFrames": 255,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-red-green-refactor-shot-03",
+        "shotId": "red-green-refactor-shot-03",
+        "sceneId": "red-green-refactor",
+        "fromFrame": 2700,
+        "durationFrames": 255,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-red-green-refactor-shot-04",
+        "shotId": "red-green-refactor-shot-04",
+        "sceneId": "red-green-refactor",
+        "fromFrame": 2955,
+        "durationFrames": 255,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-dashboard-shot-01",
+        "shotId": "dashboard-shot-01",
+        "sceneId": "dashboard",
+        "fromFrame": 3210,
+        "durationFrames": 135,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-dashboard-shot-02",
+        "shotId": "dashboard-shot-02",
+        "sceneId": "dashboard",
+        "fromFrame": 3345,
+        "durationFrames": 135,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-dashboard-shot-03",
+        "shotId": "dashboard-shot-03",
+        "sceneId": "dashboard",
+        "fromFrame": 3480,
+        "durationFrames": 135,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-dashboard-shot-04",
+        "shotId": "dashboard-shot-04",
+        "sceneId": "dashboard",
+        "fromFrame": 3615,
+        "durationFrames": 135,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      },
+      {
+        "cutId": "cut-usage-cta-shot-01",
+        "shotId": "usage-cta-shot-01",
+        "sceneId": "usage-cta",
+        "fromFrame": 3750,
+        "durationFrames": 135,
+        "transition": "match-cut",
+        "pacingRole": "scene-open"
+      },
+      {
+        "cutId": "cut-usage-cta-shot-02",
+        "shotId": "usage-cta-shot-02",
+        "sceneId": "usage-cta",
+        "fromFrame": 3885,
+        "durationFrames": 135,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-usage-cta-shot-03",
+        "shotId": "usage-cta-shot-03",
+        "sceneId": "usage-cta",
+        "fromFrame": 4020,
+        "durationFrames": 135,
+        "transition": "continuous-build",
+        "pacingRole": "scene-build"
+      },
+      {
+        "cutId": "cut-usage-cta-shot-04",
+        "shotId": "usage-cta-shot-04",
+        "sceneId": "usage-cta",
+        "fromFrame": 4155,
+        "durationFrames": 135,
+        "transition": "continuous-build",
+        "pacingRole": "scene-payoff"
+      }
+    ]
+  },
+  "narration": {
+    "kind": "Narration",
+    "version": "1.0.0",
+    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "text": "Meet the TDD Jest Validation Gate. Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap. SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, Playwright tests browser journeys. It complements, not replaces, Jest. The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate. Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code. This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it—and earlier tests—passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready. The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful. Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+    "wordCount": 350,
+    "tone": "Warm, friendly, precise, and practical",
+    "segments": [
+      {
+        "sceneId": "introduction",
+        "startSeconds": 0,
+        "endSeconds": 4.35,
+        "text": "Meet the TDD Jest Validation Gate.",
+        "performanceSegments": [
+          {
+            "displayText": "Meet the TDD Jest Validation Gate.",
+            "spokenText": "Meet the T D D Jest Validation Gate.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.619,
+            "endSeconds": 2.669,
+            "pauseAfterMs": 50,
+            "effectivePauseAfterMs": 50
+          }
+        ]
+      },
+      {
+        "sceneId": "problem-hook",
+        "startSeconds": 5,
+        "endSeconds": 21.35,
+        "text": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+        "performanceSegments": [
+          {
+            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "startSeconds": 0,
+            "speechEndSeconds": 4.327,
+            "endSeconds": 4.489,
+            "pauseAfterMs": 180,
+            "effectivePauseAfterMs": 162
+          },
+          {
+            "displayText": "Those tests can pass while simply mirroring the implementation.",
+            "spokenText": "Those tests can pass while simply mirroring the implementation.",
+            "startSeconds": 4.489,
+            "speechEndSeconds": 7.602,
+            "endSeconds": 7.763,
+            "pauseAfterMs": 180,
+            "effectivePauseAfterMs": 162
+          },
+          {
+            "displayText": "TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+            "spokenText": "T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+            "startSeconds": 7.763,
+            "speechEndSeconds": 16.1,
+            "endSeconds": 16.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "sdd-fit",
+        "startSeconds": 22,
+        "endSeconds": 35.35,
+        "text": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+        "performanceSegments": [
+          {
+            "displayText": "SDD phase four sits between reviewed planning and product code.",
+            "spokenText": "S D D phase four sits between reviewed planning and product code.",
+            "startSeconds": 0,
+            "speechEndSeconds": 3.837,
+            "endSeconds": 4.097,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Engineers and Codex stay inside the boundary.",
+            "spokenText": "Engineers and Codex stay inside the boundary.",
+            "startSeconds": 4.097,
+            "speechEndSeconds": 6.809,
+            "endSeconds": 7.049,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+            "spokenText": "After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
+            "startSeconds": 7.049,
+            "speechEndSeconds": 12.891,
+            "endSeconds": 12.891,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "capabilities",
+        "startSeconds": 36,
+        "endSeconds": 52.35,
+        "text": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+        "performanceSegments": [
+          {
+            "displayText": "The skill turns intent into auditable evidence.",
+            "spokenText": "The skill turns intent into auditable evidence.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.469,
+            "endSeconds": 2.684,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 215
+          },
+          {
+            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
+            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
+            "startSeconds": 2.684,
+            "speechEndSeconds": 8.725,
+            "endSeconds": 8.994,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 269
+          },
+          {
+            "displayText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+            "spokenText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+            "startSeconds": 8.994,
+            "speechEndSeconds": 16.1,
+            "endSeconds": 16.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "getting-started",
+        "startSeconds": 53,
+        "endSeconds": 72.35,
+        "text": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+        "performanceSegments": [
+          {
+            "displayText": "Begin with product-approved requirements committed to the repo.",
+            "spokenText": "Begin with product-approved requirements committed to the repo.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.885,
+            "endSeconds": 3.118,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 232
+          },
+          {
+            "displayText": "Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "spokenText": "Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "startSeconds": 3.118,
+            "speechEndSeconds": 9.505,
+            "endSeconds": 9.773,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 268
+          },
+          {
+            "displayText": "Review and approve the plan, then one representative failing spec.",
+            "spokenText": "Review and approve the plan, then one representative failing spec.",
+            "startSeconds": 9.773,
+            "speechEndSeconds": 13.338,
+            "endSeconds": 13.588,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 250
+          },
+          {
+            "displayText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "spokenText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "startSeconds": 13.588,
+            "speechEndSeconds": 19.1,
+            "endSeconds": 19.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "red-green-refactor",
+        "startSeconds": 73,
+        "endSeconds": 106.35,
+        "text": "This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it—and earlier tests—passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready.",
+        "performanceSegments": [
+          {
+            "displayText": "This is where engineers and Codex spend most of their time together.",
+            "spokenText": "This is where engineers and Codex spend most of their time together.",
+            "startSeconds": 0,
+            "speechEndSeconds": 3.31,
+            "endSeconds": 3.52,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
+            "spokenText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
+            "startSeconds": 3.52,
+            "speechEndSeconds": 9.069,
+            "endSeconds": 9.314,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "Green: make the smallest change that gets it—and earlier tests—passing.",
+            "spokenText": "Green: make the smallest change that gets it, and earlier tests, passing.",
+            "startSeconds": 9.314,
+            "speechEndSeconds": 12.807,
+            "endSeconds": 13.052,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "Green is a checkpoint, not proof that the feature is PR-ready.",
+            "spokenText": "Green is a checkpoint, not proof that the feature is PR-ready.",
+            "startSeconds": 13.052,
+            "speechEndSeconds": 16.244,
+            "endSeconds": 16.454,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Run the feature locally and explore behavior, UX, and edge cases.",
+            "spokenText": "Run the feature locally and explore behavior, UX, and edge cases.",
+            "startSeconds": 16.454,
+            "speechEndSeconds": 19.971,
+            "endSeconds": 20.199,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 228
+          },
+          {
+            "displayText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
+            "spokenText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
+            "startSeconds": 20.199,
+            "speechEndSeconds": 26.107,
+            "endSeconds": 26.352,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "New behavior outside that boundary becomes a potential gap for review.",
+            "spokenText": "New behavior outside that boundary becomes a potential gap for review.",
+            "startSeconds": 26.352,
+            "speechEndSeconds": 30.121,
+            "endSeconds": 30.331,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Refactor while green; repeat until the slice is ready.",
+            "spokenText": "Refactor while green; repeat until the slice is ready.",
+            "startSeconds": 30.331,
+            "speechEndSeconds": 33.1,
+            "endSeconds": 33.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "dashboard",
+        "startSeconds": 107,
+        "endSeconds": 124.35,
+        "text": "The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful.",
+        "performanceSegments": [
+          {
+            "displayText": "The dashboard turns the audit into decisions.",
+            "spokenText": "The dashboard turns the audit into decisions.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.341,
+            "endSeconds": 2.581,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
+            "spokenText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
+            "startSeconds": 2.581,
+            "speechEndSeconds": 7.29,
+            "endSeconds": 7.55,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Are the plan and baseline present? Were tests deleted or weakened?",
+            "spokenText": "Are the plan and baseline present? Were tests deleted or weakened?",
+            "startSeconds": 7.55,
+            "speechEndSeconds": 11.404,
+            "endSeconds": 11.664,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Which potential gaps need review?",
+            "spokenText": "Which potential gaps need review?",
+            "startSeconds": 11.664,
+            "speechEndSeconds": 13.401,
+            "endSeconds": 13.641,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "The numbers change; these questions remain useful.",
+            "spokenText": "The numbers change; these questions remain useful.",
+            "startSeconds": 13.641,
+            "speechEndSeconds": 16.55,
+            "endSeconds": 16.55,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "usage-cta",
+        "startSeconds": 125,
+        "endSeconds": 143,
+        "text": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+        "performanceSegments": [
+          {
+            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints.",
+            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints.",
+            "startSeconds": 0,
+            "speechEndSeconds": 6.933,
+            "endSeconds": 7.213,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 280
+          },
+          {
+            "displayText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "spokenText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "startSeconds": 7.213,
+            "speechEndSeconds": 11.717,
+            "endSeconds": 11.977,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+            "spokenText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+            "startSeconds": 11.977,
+            "speechEndSeconds": 16.676,
+            "endSeconds": 16.676,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ]
+      }
+    ]
+  },
+  "narrationAudio": {
+    "kind": "NarrationAudio",
+    "version": "1.0.0",
+    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
+    "voice": "af_heart",
+    "totalDurationSeconds": 143,
+    "segments": [
+      {
+        "sceneId": "introduction",
+        "spokenText": "Meet the T D D Jest Validation Gate.",
+        "performanceSegments": [
+          {
+            "displayText": "Meet the TDD Jest Validation Gate.",
+            "spokenText": "Meet the T D D Jest Validation Gate.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.619,
+            "endSeconds": 2.669,
+            "pauseAfterMs": 50,
+            "effectivePauseAfterMs": 50
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/introduction.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 2.669,
+        "playbackSpeed": 1,
+        "audioDurationSeconds": 4.35,
+        "startSeconds": 0,
+        "endSeconds": 4.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "problem-hook",
+        "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+        "performanceSegments": [
+          {
+            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "startSeconds": 0,
+            "speechEndSeconds": 4.327,
+            "endSeconds": 4.489,
+            "pauseAfterMs": 180,
+            "effectivePauseAfterMs": 162
+          },
+          {
+            "displayText": "Those tests can pass while simply mirroring the implementation.",
+            "spokenText": "Those tests can pass while simply mirroring the implementation.",
+            "startSeconds": 4.489,
+            "speechEndSeconds": 7.602,
+            "endSeconds": 7.763,
+            "pauseAfterMs": 180,
+            "effectivePauseAfterMs": 162
+          },
+          {
+            "displayText": "TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+            "spokenText": "T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
+            "startSeconds": 7.763,
+            "speechEndSeconds": 16.1,
+            "endSeconds": 16.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/problem-hook.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 17.92,
+        "playbackSpeed": 1.113,
+        "audioDurationSeconds": 16.35,
+        "startSeconds": 5,
+        "endSeconds": 21.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "sdd-fit",
+        "spokenText": "S D D phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
+        "performanceSegments": [
+          {
+            "displayText": "SDD phase four sits between reviewed planning and product code.",
+            "spokenText": "S D D phase four sits between reviewed planning and product code.",
+            "startSeconds": 0,
+            "speechEndSeconds": 3.837,
+            "endSeconds": 4.097,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Engineers and Codex stay inside the boundary.",
+            "spokenText": "Engineers and Codex stay inside the boundary.",
+            "startSeconds": 4.097,
+            "speechEndSeconds": 6.809,
+            "endSeconds": 7.049,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+            "spokenText": "After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
+            "startSeconds": 7.049,
+            "speechEndSeconds": 12.891,
+            "endSeconds": 12.891,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/sdd-fit.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 12.891,
+        "playbackSpeed": 1,
+        "audioDurationSeconds": 13.35,
+        "startSeconds": 22,
+        "endSeconds": 35.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "capabilities",
+        "spokenText": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+        "performanceSegments": [
+          {
+            "displayText": "The skill turns intent into auditable evidence.",
+            "spokenText": "The skill turns intent into auditable evidence.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.469,
+            "endSeconds": 2.684,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 215
+          },
+          {
+            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
+            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
+            "startSeconds": 2.684,
+            "speechEndSeconds": 8.725,
+            "endSeconds": 8.994,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 269
+          },
+          {
+            "displayText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+            "spokenText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+            "startSeconds": 8.994,
+            "speechEndSeconds": 16.1,
+            "endSeconds": 16.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/capabilities.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 17.935,
+        "playbackSpeed": 1.114,
+        "audioDurationSeconds": 16.35,
+        "startSeconds": 36,
+        "endSeconds": 52.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "getting-started",
+        "spokenText": "Begin with product-approved requirements committed to the repo. Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+        "performanceSegments": [
+          {
+            "displayText": "Begin with product-approved requirements committed to the repo.",
+            "spokenText": "Begin with product-approved requirements committed to the repo.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.885,
+            "endSeconds": 3.118,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 232
+          },
+          {
+            "displayText": "Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "spokenText": "Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "startSeconds": 3.118,
+            "speechEndSeconds": 9.505,
+            "endSeconds": 9.773,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 268
+          },
+          {
+            "displayText": "Review and approve the plan, then one representative failing spec.",
+            "spokenText": "Review and approve the plan, then one representative failing spec.",
+            "startSeconds": 9.773,
+            "speechEndSeconds": 13.338,
+            "endSeconds": 13.588,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 250
+          },
+          {
+            "displayText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "spokenText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "startSeconds": 13.588,
+            "speechEndSeconds": 19.1,
+            "endSeconds": 19.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/getting-started.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 21.386,
+        "playbackSpeed": 1.1197,
+        "audioDurationSeconds": 19.35,
+        "startSeconds": 53,
+        "endSeconds": 72.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "red-green-refactor",
+        "spokenText": "This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it, and earlier tests, passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready.",
+        "performanceSegments": [
+          {
+            "displayText": "This is where engineers and Codex spend most of their time together.",
+            "spokenText": "This is where engineers and Codex spend most of their time together.",
+            "startSeconds": 0,
+            "speechEndSeconds": 3.31,
+            "endSeconds": 3.52,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
+            "spokenText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
+            "startSeconds": 3.52,
+            "speechEndSeconds": 9.069,
+            "endSeconds": 9.314,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "Green: make the smallest change that gets it—and earlier tests—passing.",
+            "spokenText": "Green: make the smallest change that gets it, and earlier tests, passing.",
+            "startSeconds": 9.314,
+            "speechEndSeconds": 12.807,
+            "endSeconds": 13.052,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "Green is a checkpoint, not proof that the feature is PR-ready.",
+            "spokenText": "Green is a checkpoint, not proof that the feature is PR-ready.",
+            "startSeconds": 13.052,
+            "speechEndSeconds": 16.244,
+            "endSeconds": 16.454,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Run the feature locally and explore behavior, UX, and edge cases.",
+            "spokenText": "Run the feature locally and explore behavior, UX, and edge cases.",
+            "startSeconds": 16.454,
+            "speechEndSeconds": 19.971,
+            "endSeconds": 20.199,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 228
+          },
+          {
+            "displayText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
+            "spokenText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
+            "startSeconds": 20.199,
+            "speechEndSeconds": 26.107,
+            "endSeconds": 26.352,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 246
+          },
+          {
+            "displayText": "New behavior outside that boundary becomes a potential gap for review.",
+            "spokenText": "New behavior outside that boundary becomes a potential gap for review.",
+            "startSeconds": 26.352,
+            "speechEndSeconds": 30.121,
+            "endSeconds": 30.331,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 210
+          },
+          {
+            "displayText": "Refactor while green; repeat until the slice is ready.",
+            "spokenText": "Refactor while green; repeat until the slice is ready.",
+            "startSeconds": 30.331,
+            "speechEndSeconds": 33.1,
+            "endSeconds": 33.1,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/red-green-refactor.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 37.746,
+        "playbackSpeed": 1.1404,
+        "audioDurationSeconds": 33.35,
+        "startSeconds": 73,
+        "endSeconds": 106.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "dashboard",
+        "spokenText": "The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful.",
+        "performanceSegments": [
+          {
+            "displayText": "The dashboard turns the audit into decisions.",
+            "spokenText": "The dashboard turns the audit into decisions.",
+            "startSeconds": 0,
+            "speechEndSeconds": 2.341,
+            "endSeconds": 2.581,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
+            "spokenText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
+            "startSeconds": 2.581,
+            "speechEndSeconds": 7.29,
+            "endSeconds": 7.55,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Are the plan and baseline present? Were tests deleted or weakened?",
+            "spokenText": "Are the plan and baseline present? Were tests deleted or weakened?",
+            "startSeconds": 7.55,
+            "speechEndSeconds": 11.404,
+            "endSeconds": 11.664,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Which potential gaps need review?",
+            "spokenText": "Which potential gaps need review?",
+            "startSeconds": 11.664,
+            "speechEndSeconds": 13.401,
+            "endSeconds": 13.641,
+            "pauseAfterMs": 240,
+            "effectivePauseAfterMs": 240
+          },
+          {
+            "displayText": "The numbers change; these questions remain useful.",
+            "spokenText": "The numbers change; these questions remain useful.",
+            "startSeconds": 13.641,
+            "speechEndSeconds": 16.55,
+            "endSeconds": 16.55,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/dashboard.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 16.55,
+        "playbackSpeed": 1,
+        "audioDurationSeconds": 17.35,
+        "startSeconds": 107,
+        "endSeconds": 124.35,
+        "pauseAfterSeconds": 0.65
+      },
+      {
+        "sceneId": "usage-cta",
+        "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+        "performanceSegments": [
+          {
+            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints.",
+            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints.",
+            "startSeconds": 0,
+            "speechEndSeconds": 6.933,
+            "endSeconds": 7.213,
+            "pauseAfterMs": 280,
+            "effectivePauseAfterMs": 280
+          },
+          {
+            "displayText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "spokenText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "startSeconds": 7.213,
+            "speechEndSeconds": 11.717,
+            "endSeconds": 11.977,
+            "pauseAfterMs": 260,
+            "effectivePauseAfterMs": 260
+          },
+          {
+            "displayText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+            "spokenText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+            "startSeconds": 11.977,
+            "speechEndSeconds": 16.676,
+            "endSeconds": 16.676,
+            "pauseAfterMs": 0,
+            "effectivePauseAfterMs": 0
+          }
+        ],
+        "staticFile": "audio/tdd-jest-validation-v001/usage-cta.wav",
+        "sampleRate": 24000,
+        "rawDurationSeconds": 16.676,
+        "playbackSpeed": 1,
+        "audioDurationSeconds": 18,
+        "startSeconds": 125,
+        "endSeconds": 143,
+        "pauseAfterSeconds": 0
+      }
+    ]
+  }
+}

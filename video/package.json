@@ -10,24 +10,29 @@
     "validate-experience": "node scripts/video.mjs validate-experience",
     "test": "node --test test/*.test.mjs",
     "typecheck": "tsc --noEmit",
-    "prepare-audio": "node scripts/prepare-audio.mjs",
-    "studio": "node scripts/prepare-audio.mjs && remotion studio src/index.ts",
+    "studio": "remotion studio src/index.ts",
     "render": "node scripts/video.mjs render",
-    "render:v1": "node scripts/prepare-audio.mjs && remotion render src/index.ts SddOrchestratorExplainer out/sdd-orchestrator-explainer.mp4 --codec=h264 --pixel-format=yuv420p",
     "render:compiler": "node scripts/video.mjs render",
-    "build:launch-v006": "node scripts/build-sdd-launch-v006.mjs",
-    "render:launch-v006": "node scripts/build-sdd-launch-v006.mjs && remotion render src/index.ts SddOrchestratorLaunchV006 out/sdd-orchestrator-launch-explainer-new-v006.mp4 --codec=h264 --pixel-format=yuv420p"
+    "build:launch-v008": "node scripts/build-sdd-launch.mjs",
+    "render:launch-v008": "node scripts/build-sdd-launch.mjs && remotion render src/index.ts SddOrchestratorLaunchV008 out/sdd-orchestrator-launch-explainer-new-v008.mp4 --codec=h264 --pixel-format=yuv420p",
+    "build:launch-v009": "node scripts/build-sdd-launch.mjs launch/sdd-orchestrator-launch-v009.mjs",
+    "render:launch-v009": "node scripts/build-sdd-launch.mjs launch/sdd-orchestrator-launch-v009.mjs && remotion render src/index.ts SddOrchestratorLaunchV009 out/sdd-orchestrator-launch-explainer-new-v009.mp4 --codec=h264 --pixel-format=yuv420p",
+    "build:launch-v0.8.2": "node scripts/build-sdd-launch.mjs launch/sdd-orchestrator-launch-v0.8.2.mjs",
+    "render:launch-v0.8.2": "node scripts/build-sdd-launch.mjs launch/sdd-orchestrator-launch-v0.8.2.mjs && remotion render src/index.ts SddOrchestratorLaunchV082 out/sdd-orchestrator-launch-explainer-new-v0.8.2.mp4 --codec=h264 --pixel-format=yuv420p",
+    "build:tdd-jest-v001": "node scripts/build-tdd-jest-launch.mjs",
+    "render:tdd-jest-v001": "node scripts/build-tdd-jest-launch.mjs && remotion render src/index.ts TddJestValidationExplainerV001 out/tdd-jest-validation-explainer-v001.mp4 --codec=h264 --pixel-format=yuv420p"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.8.1",
-    "@remotion/cli": "^4.0.0",
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.2.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remotion": "^4.0.0",
-    "kokoro-js": "^1.2.1",
-    "typescript": "^5.4.5"
+    "kokoro-js": "^1.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "typescript": "^5.4.5"
+  }
 }

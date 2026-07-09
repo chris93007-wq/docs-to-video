@@ -1,59 +1,99 @@
 import {interpolate} from "remotion";
-import {EngineeringIcon} from "../../../../assets/icons/EngineeringIcons";
-import {theme} from "../../../../styles/theme";
-import {clamp, sequenceOpacity} from "../../../../utils/animation";
-import {ShowcaseFrame, ShowcaseSceneProps, TimingPill, useSceneBeats} from "./shared";
+import {EngineeringIcon, EngineeringIconName} from "../../../../assets/icons/EngineeringIcons";
+import {clamp} from "../../../../utils/animation";
+import content from "../../../../../content/sdd-orchestrator-launch-content.json";
+import {colorForTone, OracleIcon, oracleAssets, useOracleBrand, useShowcaseTheme} from "./brand";
+import {ShowcaseFrame, ShowcaseSceneProps, useSceneBeats} from "./shared";
 
-const guardrails = [
-  {label: "Scope Boundary", detail: "Source truth limits drift", icon: "shield" as const, color: theme.colors.violet},
-  {label: "Approval Stop", detail: "Human review before fan-out", icon: "approval" as const, color: theme.colors.gold},
-  {label: "TDD Unit Tests", detail: "Before product code", icon: "gate" as const, color: theme.colors.red},
-  {label: "Playwright Gate", detail: "Browser-visible validation", icon: "browser" as const, color: theme.colors.accent},
-  {label: "Evidence Chain", detail: "Handoff stays inspectable", icon: "database" as const, color: theme.colors.teal},
-];
+type PerformanceBeat = {
+  startSeconds: number;
+  speechEndSeconds: number;
+};
+
+type RoleLane = {
+  role: string;
+  value: string;
+  icon: EngineeringIconName;
+  color: string;
+  friction: string[];
+  guardrails: string[];
+  performanceBeat: number;
+};
 
 export const SddGuardrails = (props: ShowcaseSceneProps) => {
-  const {frame, fadeAt, cue} = useSceneBeats(props);
-  const draw = interpolate(frame, [72, 262], [0, 1], clamp);
-  const blocked = interpolate(frame, [138, 190, 234], [0, 1, 0.2], clamp);
+  const theme = useShowcaseTheme();
+  const isOracle = useOracleBrand();
+  const sceneContent = content.scenes.guardrails;
+  const roleLanes: RoleLane[] = sceneContent.lanes.map((lane, index) => ({
+    ...lane,
+    icon: lane.icon as EngineeringIconName,
+    color: colorForTone(theme, !isOracle && index === 2 ? "accent" : lane.tone),
+  }));
+  const {frame} = useSceneBeats(props);
+  const seconds = frame / props.fps;
+  const performanceSegments = ((props.scene.narration as unknown as {performanceSegments?: PerformanceBeat[]})?.performanceSegments ?? []);
+  const communityStart = performanceSegments[5]?.startSeconds ?? 18.5;
 
   return (
-    <ShowcaseFrame eyebrow="Guardrails and Traceability" title="The Coordinator Catches the Misses That Make SDD Fragile">
-      <div style={{position: "absolute", left: 100, top: 506, width: 530}}>
-        <div style={{height: 400, borderRadius: theme.radius.lg, background: "rgba(255,255,255,0.9)", boxShadow: theme.shadow.soft, padding: 30, opacity: fadeAt(0, 1.1)}}>
-          <div style={{...theme.typography.label, color: theme.colors.red, textTransform: "uppercase"}}>Blocked Drift</div>
-          <div style={{position: "relative", height: 224, marginTop: 24}}>
-            <div style={{position: "absolute", left: 24, top: 28, width: 136, height: 136, borderRadius: 999, background: theme.colors.redSoft, border: `3px solid ${theme.colors.red}`, display: "grid", placeItems: "center", opacity: 0.82}}>
-              <EngineeringIcon name="code" stroke={theme.colors.red} size={60} />
-            </div>
-            <div style={{position: "absolute", right: 20, top: 10, width: 210, padding: 20, borderRadius: theme.radius.md, background: theme.colors.surfaceMuted}}>
-              <div style={{...theme.typography.small, color: theme.colors.muted}}>Unreviewed Change</div>
-              <div style={{...theme.typography.h2, fontSize: 30, marginTop: 10}}>Drift</div>
-            </div>
-            <div style={{position: "absolute", left: 190, top: 80, width: 6, height: 132, borderRadius: 99, background: theme.colors.red, opacity: blocked}} />
-            <div style={{position: "absolute", left: 216, top: 170, ...theme.typography.label, color: theme.colors.red, opacity: blocked}}>Not Past Source Truth</div>
-          </div>
-          <TimingPill opacity={fadeAt(1, 4.6)} tone="red">{cue(1, "Implementation drift is visible")}</TimingPill>
-        </div>
-      </div>
+    <ShowcaseFrame
+      eyebrow={sceneContent.eyebrow}
+      title={props.scene.title}
+      subtitle={sceneContent.subtitle}
+    >
+      <div style={{position: "absolute", left: 96, right: 96, top: 388, bottom: 48, borderRadius: 34, background: theme.gradients.dark, boxShadow: "0 38px 130px rgba(21,27,43,0.24)", overflow: "hidden"}}>
+        <div style={{position: "absolute", inset: 0, background: isOracle ? "radial-gradient(circle at 10% 20%, rgba(222,176,104,0.16), transparent 34%), radial-gradient(circle at 90% 78%, rgba(92,146,109,0.16), transparent 36%)" : "radial-gradient(circle at 10% 20%, rgba(47,128,237,0.2), transparent 34%), radial-gradient(circle at 90% 78%, rgba(0,168,142,0.18), transparent 36%)"}} />
+        <div style={{position: "absolute", left: 36, top: 24, ...theme.typography.small, color: isOracle ? theme.colors.violet : "#8FD8FF", textTransform: "uppercase", letterSpacing: 1.1}}>{sceneContent.columns[0]}</div>
+        <div style={{position: "absolute", left: 386, top: 24, ...theme.typography.small, color: isOracle ? "#F0A99E" : "#F3A6B3", textTransform: "uppercase", letterSpacing: 1.1}}>{sceneContent.columns[1]}</div>
+        <div style={{position: "absolute", left: 914, top: 24, ...theme.typography.small, color: isOracle ? "#A7C5B0" : "#8BE0D0", textTransform: "uppercase", letterSpacing: 1.1}}>{sceneContent.columns[2]}</div>
 
-      <svg width="1120" height="560" viewBox="0 0 1120 560" style={{position: "absolute", right: 66, top: 374, opacity: fadeAt(1, 3.0)}}>
-        <path d="M76 290 C226 120 376 438 526 288 S820 136 1034 288" fill="none" stroke={theme.colors.lineStrong} strokeWidth="6" strokeLinecap="round" strokeDasharray="1600" strokeDashoffset={1600 * (1 - draw)} />
-      </svg>
-
-      <div style={{position: "absolute", right: 84, top: 330, width: 1060, height: 590}}>
-        {guardrails.map((item, index) => {
-          const x = 40 + index * 206;
-          const y = index % 2 === 0 ? 88 : 258;
-          const opacity = sequenceOpacity(frame - 88, index, 14);
+        {roleLanes.map((lane, index) => {
+          const start = performanceSegments[lane.performanceBeat]?.startSeconds ?? index * 4.6;
+          const nextStart = index < roleLanes.length - 1
+            ? performanceSegments[roleLanes[index + 1].performanceBeat]?.startSeconds ?? start + 4.6
+            : communityStart;
+          const opacity = interpolate(seconds, [start - 0.18, start + 0.28], [0, 1], clamp);
+          const guardrailProgress = interpolate(seconds, [start + 0.45, start + 1.2], [0, 1], clamp);
+          const active = seconds >= start && seconds < nextStart;
+          const top = 64 + index * 164;
           return (
-            <div key={item.label} style={{position: "absolute", left: x, top: y, width: 184, minHeight: 188, borderRadius: theme.radius.lg, background: "rgba(255,255,255,0.92)", border: `2px solid ${item.color}`, boxShadow: theme.shadow.soft, padding: 22, opacity, transform: `translateY(${interpolate(opacity, [0, 1], [24, 0], clamp)}px)`}}>
-              <EngineeringIcon name={item.icon} stroke={item.color} size={56} />
-              <div style={{...theme.typography.label, color: theme.colors.ink, marginTop: 16}}>{item.label}</div>
-              <div style={{...theme.typography.small, color: theme.colors.muted, marginTop: 9}}>{item.detail}</div>
+            <div key={lane.role} style={{position: "absolute", left: 28, right: 28, top, height: 144, opacity, transform: `translateY(${interpolate(opacity, [0, 1], [20, 0], clamp)}px)`}}>
+              <div style={{position: "absolute", left: 0, top: 0, width: 318, height: 144, boxSizing: "border-box", borderRadius: 22, background: "rgba(255,255,255,0.96)", border: `3px solid ${lane.color}`, boxShadow: active ? `0 18px 52px ${lane.color}38` : "0 14px 38px rgba(0,0,0,0.15)", padding: "20px 22px", display: "grid", gridTemplateColumns: "64px 1fr", alignItems: "center", gap: 16}}>
+                {isOracle ? <OracleIcon src={[oracleAssets.icons.engineer, oracleAssets.icons.product, oracleAssets.icons.leadership][index]} size={58} /> : <EngineeringIcon name={lane.icon} stroke={lane.color} size={58} />}
+                <div>
+                  <div style={{...theme.typography.h2, fontSize: 28, lineHeight: 1.05}}>{lane.role}</div>
+                  <div style={{...theme.typography.small, color: lane.color, marginTop: 8, fontWeight: 760}}>{lane.value}</div>
+                </div>
+              </div>
+
+              <div style={{position: "absolute", left: 350, top: 0, width: 386, height: 144, boxSizing: "border-box", borderRadius: 22, background: "rgba(214,69,93,0.11)", border: "1px solid rgba(214,69,93,0.34)", padding: 18, display: "flex", flexWrap: "wrap", alignContent: "center", gap: 10}}>
+                {lane.friction.map((item) => (
+                  <div key={item} style={{padding: "10px 14px", borderRadius: theme.radius.pill, background: "rgba(255,255,255,0.9)", color: theme.colors.ink, ...theme.typography.small, fontWeight: 730}}>
+                    <span style={{display: "inline-block", width: 9, height: 9, borderRadius: 99, background: theme.colors.red, marginRight: 9}} />{item}
+                  </div>
+                ))}
+              </div>
+
+              <svg width="148" height="144" viewBox="0 0 148 144" style={{position: "absolute", left: 748, top: 0}}>
+                <path d="M12 72 H126" fill="none" stroke={lane.color} strokeWidth="7" strokeLinecap="round" strokeDasharray="114" strokeDashoffset={114 * (1 - guardrailProgress)} />
+                <path d="m108 52 22 20-22 20" fill="none" stroke={lane.color} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity={guardrailProgress} />
+              </svg>
+
+              <div style={{position: "absolute", left: 908, right: 0, top: 0, height: 144, boxSizing: "border-box", borderRadius: 22, background: "rgba(255,255,255,0.96)", border: `2px solid ${lane.color}`, padding: "18px 22px", display: "flex", alignItems: "center", gap: 12, opacity: guardrailProgress, transform: `translateX(${interpolate(guardrailProgress, [0, 1], [28, 0], clamp)}px)`}}>
+                <EngineeringIcon name="shield" stroke={lane.color} size={54} />
+                <div style={{display: "flex", flexWrap: "wrap", gap: 10}}>
+                  {lane.guardrails.map((item) => (
+                    <div key={item} style={{padding: "10px 14px", borderRadius: theme.radius.pill, background: `${lane.color}16`, color: theme.colors.ink, ...theme.typography.small, fontWeight: 780}}>{item}</div>
+                  ))}
+                </div>
+              </div>
             </div>
           );
         })}
+
+        <div style={{position: "absolute", left: 310, right: 310, bottom: 18, height: 82, borderRadius: theme.radius.pill, background: isOracle ? theme.colors.teal : "linear-gradient(90deg, rgba(47,128,237,0.95), rgba(111,76,214,0.95), rgba(0,168,142,0.95))", color: theme.colors.white, display: "flex", alignItems: "center", justifyContent: "center", gap: 16, boxShadow: isOracle ? "0 22px 60px rgba(49,45,42,0.24)" : "0 22px 60px rgba(47,128,237,0.28)", opacity: interpolate(seconds, [communityStart - 0.18, communityStart + 0.32], [0, 1], clamp), transform: `translateY(${interpolate(seconds, [communityStart - 0.18, communityStart + 0.32], [24, 0], clamp)}px)`}}>
+          <EngineeringIcon name="branch" stroke={theme.colors.white} size={48} />
+          <div style={{...theme.typography.h2, fontSize: 30, color: theme.colors.white}}>{sceneContent.communityLine}</div>
+        </div>
       </div>
     </ShowcaseFrame>
   );

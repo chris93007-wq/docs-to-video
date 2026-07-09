@@ -39,7 +39,7 @@ import {
   pronunciationProfile,
 } from "./stages/narration-audio.mjs";
 import {planAnimation} from "./stages/animation.mjs";
-import {planEditDecisionList} from "./stages/edl.mjs";
+import {planEditDecisionList} from "./stages/edit-decision-list.mjs";
 import {hashFile} from "./utils.mjs";
 
 const stageIndex = {

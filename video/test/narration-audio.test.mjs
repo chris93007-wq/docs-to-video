@@ -39,7 +39,7 @@ const narration = {
 test("speech-only pronunciation rules preserve display narration", () => {
   assert.equal(
     speechTextFor("SDD uses Jira, CLI, TDD, and Playwright."),
-    "S D D uses JEE-rah, C L I, T D D, and PLAY-right.",
+    "S D D uses jeera, C L I, T D D, and PLAY-right.",
   );
   assert.equal(narration.segments[0].text, "SDD uses Jira.");
 });
@@ -71,7 +71,7 @@ test("Kokoro scene synthesis produces cacheable assets and retimes scenes", asyn
   });
 
   try {
-    assert.deepEqual(spoken, ["S D D uses JEE-rah.", "C L I uses T D D and PLAY-right."]);
+    assert.deepEqual(spoken, ["S D D uses jeera.", "C L I uses T D D and PLAY-right."]);
     assert.equal(audio.segments.length, 2);
     assert.equal(audio.segments[0].audioDurationSeconds, 1);
     assert.equal(audio.segments[0].pauseAfterSeconds, 0.6);

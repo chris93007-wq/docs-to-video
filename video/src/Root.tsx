@@ -6,26 +6,37 @@ import {
   COMPILER_WIDTH,
   CompilerVideoComposition,
 } from "./compiler/CompilerComposition";
-import {SddOrchestratorComposition} from "./Composition";
-import {FPS, VIDEO_DURATION_FRAMES, VIDEO_HEIGHT, VIDEO_WIDTH} from "./data/timeline";
 import {
-  SDD_LAUNCH_V006_DURATION_FRAMES,
-  SDD_LAUNCH_V006_FPS,
-  SDD_LAUNCH_V006_HEIGHT,
-  SDD_LAUNCH_V006_WIDTH,
-  SddLaunchV006Composition,
-} from "./launch/SddLaunchV006Composition";
+  SDD_LAUNCH_V008_DURATION_FRAMES,
+  SDD_LAUNCH_V008_FPS,
+  SDD_LAUNCH_V008_HEIGHT,
+  SDD_LAUNCH_V008_WIDTH,
+  SddLaunchV008Composition,
+} from "./launch/SddLaunchV008Composition";
+import {
+  SDD_LAUNCH_V009_DURATION_FRAMES,
+  SDD_LAUNCH_V009_FPS,
+  SDD_LAUNCH_V009_HEIGHT,
+  SDD_LAUNCH_V009_WIDTH,
+  SddLaunchV009Composition,
+} from "./launch/SddLaunchV009Composition";
+import {
+  SDD_LAUNCH_V082_DURATION_FRAMES,
+  SDD_LAUNCH_V082_FPS,
+  SDD_LAUNCH_V082_HEIGHT,
+  SDD_LAUNCH_V082_WIDTH,
+  SddLaunchV082Composition,
+} from "./launch/SddLaunchV082Composition";
+import {
+  TDD_JEST_V001_DURATION_FRAMES,
+  TDD_JEST_V001_FPS,
+  TDD_JEST_V001_HEIGHT,
+  TDD_JEST_V001_WIDTH,
+  TddJestValidationV001Composition,
+} from "./launch/TddJestValidationV001Composition";
 
 export const RemotionRoot = () => (
   <>
-    <Composition
-      id="SddOrchestratorExplainer"
-      component={SddOrchestratorComposition}
-      durationInFrames={VIDEO_DURATION_FRAMES}
-      fps={FPS}
-      width={VIDEO_WIDTH}
-      height={VIDEO_HEIGHT}
-    />
     <Composition
       id="DocumentationCompilerVideo"
       component={CompilerVideoComposition}
@@ -35,12 +46,36 @@ export const RemotionRoot = () => (
       height={COMPILER_HEIGHT}
     />
     <Composition
-      id="SddOrchestratorLaunchV006"
-      component={SddLaunchV006Composition}
-      durationInFrames={SDD_LAUNCH_V006_DURATION_FRAMES}
-      fps={SDD_LAUNCH_V006_FPS}
-      width={SDD_LAUNCH_V006_WIDTH}
-      height={SDD_LAUNCH_V006_HEIGHT}
+      id="SddOrchestratorLaunchV008"
+      component={SddLaunchV008Composition}
+      durationInFrames={SDD_LAUNCH_V008_DURATION_FRAMES}
+      fps={SDD_LAUNCH_V008_FPS}
+      width={SDD_LAUNCH_V008_WIDTH}
+      height={SDD_LAUNCH_V008_HEIGHT}
+    />
+    <Composition
+      id="SddOrchestratorLaunchV009"
+      component={SddLaunchV009Composition}
+      durationInFrames={SDD_LAUNCH_V009_DURATION_FRAMES}
+      fps={SDD_LAUNCH_V009_FPS}
+      width={SDD_LAUNCH_V009_WIDTH}
+      height={SDD_LAUNCH_V009_HEIGHT}
+    />
+    <Composition
+      id="SddOrchestratorLaunchV082"
+      component={SddLaunchV082Composition}
+      durationInFrames={SDD_LAUNCH_V082_DURATION_FRAMES}
+      fps={SDD_LAUNCH_V082_FPS}
+      width={SDD_LAUNCH_V082_WIDTH}
+      height={SDD_LAUNCH_V082_HEIGHT}
+    />
+    <Composition
+      id="TddJestValidationExplainerV001"
+      component={TddJestValidationV001Composition}
+      durationInFrames={TDD_JEST_V001_DURATION_FRAMES}
+      fps={TDD_JEST_V001_FPS}
+      width={TDD_JEST_V001_WIDTH}
+      height={TDD_JEST_V001_HEIGHT}
     />
   </>
 );

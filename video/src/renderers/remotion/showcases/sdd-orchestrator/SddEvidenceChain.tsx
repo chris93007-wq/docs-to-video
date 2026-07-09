@@ -1,66 +1,75 @@
 import {interpolate, spring} from "remotion";
 import {BrandMark} from "../../../../assets/svg/BrandMark";
-import {EngineeringIcon} from "../../../../assets/icons/EngineeringIcons";
-import {theme} from "../../../../styles/theme";
-import {clamp, fadeIn, sequenceOpacity} from "../../../../utils/animation";
+import {EngineeringIcon, EngineeringIconName} from "../../../../assets/icons/EngineeringIcons";
+import {clamp, sequenceOpacity} from "../../../../utils/animation";
+import content from "../../../../../content/sdd-orchestrator-launch-content.json";
+import {colorForTone, OracleIcon, oracleAssets, useOracleBrand, useShowcaseTheme} from "./brand";
 import {ShowcaseFrame, ShowcaseSceneProps, TimingPill, useSceneBeats} from "./shared";
 
-const evidenceNodes = [
-  {label: "Requirements", icon: "confluence" as const, color: theme.colors.violet},
-  {label: "Design", icon: "document" as const, color: theme.colors.accent},
-  {label: "Plan", icon: "timeline" as const, color: theme.colors.gold},
-  {label: "Tests", icon: "gate" as const, color: theme.colors.red},
-  {label: "Implementation", icon: "code" as const, color: theme.colors.teal},
-  {label: "Validation", icon: "browser" as const, color: theme.colors.accent},
-  {label: "Lifecycle", icon: "check" as const, color: theme.colors.teal},
-];
-
 export const SddEvidenceChain = (props: ShowcaseSceneProps) => {
-  const {frame, fadeAt, cue} = useSceneBeats(props);
-  const collapse = interpolate(frame, [46, 150], [0, 1], clamp);
-  const draw = interpolate(frame, [90, 260], [0, 1], clamp);
-  const scale = interpolate(spring({frame, fps: props.fps, config: {damping: 20, stiffness: 100}}), [0, 1], [0.86, 1], clamp);
+  const theme = useShowcaseTheme();
+  const isOracle = useOracleBrand();
+  const sceneContent = content.scenes.solution;
+  const sourceCards = sceneContent.sourceCards.map((item, index) => ({
+    ...item,
+    icon: item.icon as EngineeringIconName,
+    color: colorForTone(theme, item.tone),
+    y: [388, 574, 760][index],
+  }));
+  const runState = sceneContent.runState.map((item) => ({
+    ...item,
+    color: colorForTone(theme, item.tone),
+  }));
+  const {frame, fadeAt} = useSceneBeats(props);
+  const drawIn = interpolate(frame, [32, 202], [0, 1], clamp);
+  const drawOut = interpolate(frame, [104, 316], [0, 1], clamp);
+  const scale = interpolate(spring({frame, fps: props.fps, config: {damping: 20, stiffness: 96}}), [0, 1], [0.84, 1], clamp);
 
   return (
-    <ShowcaseFrame eyebrow="The Solution" title="One Guided Workflow. One Source of Truth">
-      <div style={{position: "absolute", left: 96, top: 386, width: 500, opacity: fadeAt(1, 2.2)}}>
-        {["Stateful Workflow", "Source of Truth", "Evidence Trail"].map((phrase, index) => (
-          <div key={phrase} style={{marginBottom: 18, padding: "20px 24px", borderRadius: theme.radius.md, background: "rgba(255,255,255,0.88)", boxShadow: theme.shadow.line, opacity: sequenceOpacity(frame - 48, index, 12), transform: `translateX(${interpolate(collapse, [0, 1], [0, 30 + index * 18], clamp)}px)`}}>
-            <div style={{...theme.typography.label, color: index === 0 ? theme.colors.teal : index === 1 ? theme.colors.violet : theme.colors.accent}}>
-              {phrase}
-            </div>
-          </div>
-        ))}
-        <div style={{display: "flex", gap: 14, marginTop: 30}}>
-          <TimingPill opacity={fadeAt(2, 8.0)} tone="teal">{cue(2, "Stateful Run")}</TimingPill>
-          <TimingPill opacity={fadeAt(3, 12.0)} tone="blue">{cue(3, "Evidence Stays Connected")}</TimingPill>
-        </div>
-      </div>
-
-      <div style={{position: "absolute", left: 734, top: 284, width: 528, height: 528, borderRadius: 999, background: "rgba(255,255,255,0.78)", boxShadow: "0 35px 120px rgba(47,128,237,0.16)", display: "grid", placeItems: "center", opacity: fadeAt(0, 0.8), transform: `scale(${scale})`}}>
-        <div style={{position: "absolute", inset: 42, borderRadius: 999, border: `2px solid ${theme.colors.line}`}} />
-        <BrandMark frame={frame + 40} size={260} />
-        <div style={{position: "absolute", bottom: 78}}>
-          <TimingPill opacity={fadeAt(1, 4.8)} tone="dark">Stateful Run</TimingPill>
-        </div>
-      </div>
-
-      <svg width="1160" height="520" viewBox="0 0 1160 520" style={{position: "absolute", right: 54, bottom: 72, opacity: fadeIn(frame, 82, 22)}}>
-        <path d="M88 260 C258 142 400 378 574 260 S860 142 1074 260" fill="none" stroke={theme.colors.lineStrong} strokeWidth="5" strokeLinecap="round" strokeDasharray="1600" strokeDashoffset={1600 * (1 - draw)} />
+    <ShowcaseFrame eyebrow={sceneContent.eyebrow} title={props.scene.title} subtitle={sceneContent.subtitle}>
+      <svg width="1500" height="650" viewBox="0 0 1500 650" style={{position: "absolute", left: 236, top: 322, opacity: fadeAt(0, 0.5)}}>
+        <defs>
+          <linearGradient id="solution-in" x1="0" x2="1">
+            <stop offset="0" stopColor={theme.colors.violet} />
+            <stop offset="1" stopColor={theme.colors.teal} />
+          </linearGradient>
+        </defs>
+        <path d="M128 92 C340 92 330 244 528 292 M128 278 C340 278 330 298 528 300 M128 464 C340 464 330 346 528 308" fill="none" stroke="url(#solution-in)" strokeWidth="6" strokeLinecap="round" strokeDasharray="700" strokeDashoffset={700 * (1 - drawIn)} />
+        <path d="M892 300 C1050 300 1078 112 1260 112 M892 300 C1050 300 1078 268 1260 268 M892 300 C1050 300 1078 424 1260 424 M892 300 C1050 300 1078 558 1260 558" fill="none" stroke={theme.colors.lineStrong} strokeWidth="6" strokeLinecap="round" strokeDasharray="760" strokeDashoffset={760 * (1 - drawOut)} />
       </svg>
 
-      <div style={{position: "absolute", right: 70, bottom: 146, width: 1100, height: 340}}>
-        {evidenceNodes.map((node, index) => {
-          const x = 32 + index * 166;
-          const y = index % 2 === 0 ? 42 : 154;
-          const appear = sequenceOpacity(frame - 108, index, 10);
-          return (
-            <div key={node.label} style={{position: "absolute", left: x, top: y, width: 134, height: 134, borderRadius: 999, display: "grid", placeItems: "center", background: appear > 0.95 ? node.color : theme.colors.surface, border: `3px solid ${node.color}`, boxShadow: theme.shadow.soft, opacity: appear}}>
-              <EngineeringIcon name={node.icon} stroke={appear > 0.95 ? theme.colors.white : node.color} size={50} />
-              <div style={{position: "absolute", top: 144, width: 180, textAlign: "center", ...theme.typography.small, color: theme.colors.ink, fontWeight: 760}}>{node.label}</div>
-            </div>
-          );
-        })}
+      {sourceCards.map((item, index) => (
+        <div key={item.label} style={{position: "absolute", left: 96, top: item.y, width: 320, minHeight: 132, borderRadius: theme.radius.lg, background: "rgba(255,255,255,0.94)", border: `2px solid ${item.color}`, boxShadow: theme.shadow.soft, padding: 22, display: "grid", gridTemplateColumns: "70px 1fr", gap: 14, alignItems: "center", opacity: sequenceOpacity(frame - 24, index, 15)}}>
+          {isOracle && item.label === sceneContent.sourceCards[2].label ? <OracleIcon src={oracleAssets.icons.codex} size={60} /> : <EngineeringIcon name={item.icon} stroke={item.color} size={60} />}
+          <div>
+            <div style={{...theme.typography.h2, fontSize: 30}}>{item.label}</div>
+            <div style={{...theme.typography.small, color: theme.colors.muted, marginTop: 7}}>{item.detail}</div>
+          </div>
+        </div>
+      ))}
+
+      <div style={{position: "absolute", left: 620, top: 346, width: 680, height: 570, borderRadius: 48, background: theme.gradients.dark, boxShadow: "0 38px 130px rgba(21,27,43,0.26)", color: theme.colors.white, display: "grid", placeItems: "center", opacity: fadeAt(1, 3.2), transform: `scale(${scale})`}}>
+        <div style={{position: "absolute", inset: 0, background: isOracle ? "radial-gradient(circle at 50% 30%, rgba(222,176,104,0.2), transparent 42%), radial-gradient(circle at 50% 76%, rgba(92,146,109,0.2), transparent 36%)" : "radial-gradient(circle at 50% 30%, rgba(47,128,237,0.3), transparent 42%), radial-gradient(circle at 50% 76%, rgba(0,168,142,0.24), transparent 36%)"}} />
+        <div style={{textAlign: "center", zIndex: 2}}>
+          {isOracle ? <OracleIcon src={oracleAssets.icons.automation} size={220} /> : <BrandMark frame={frame + 40} size={240} />}
+          <div style={{...theme.typography.h2, color: theme.colors.white, fontSize: 50, marginTop: 18}}>{sceneContent.commandCenter.title}</div>
+          <div style={{...theme.typography.body, color: isOracle ? "#D9DDDA" : "#B7C7DD", marginTop: 12}}>{sceneContent.commandCenter.subtitle}</div>
+          <div style={{display: "flex", justifyContent: "center", gap: 12, marginTop: 28}}>
+            <TimingPill opacity={fadeAt(2, 7.2)} tone="teal">{sceneContent.commandCenter.pills[0]}</TimingPill>
+            <TimingPill opacity={fadeAt(2, 7.2)} tone="blue">{sceneContent.commandCenter.pills[1]}</TimingPill>
+          </div>
+        </div>
+      </div>
+
+      <div style={{position: "absolute", right: 94, top: 382, width: 420, display: "grid", gap: 18}}>
+        <div style={{...theme.typography.label, color: theme.colors.accent, textTransform: "uppercase", marginBottom: 4, opacity: fadeAt(2, 7.4)}}>{sceneContent.stateHeading}</div>
+        {runState.map((item, index) => (
+          <div key={item.label} style={{height: 102, borderRadius: theme.radius.lg, background: "rgba(255,255,255,0.94)", border: `2px solid ${item.color}`, boxShadow: theme.shadow.soft, display: "grid", gridTemplateColumns: "52px 1fr auto", alignItems: "center", gap: 14, padding: "0 22px", opacity: sequenceOpacity(frame - 142, index, 14)}}>
+            <EngineeringIcon name={item.state === "Complete" ? "check" : item.state === "Waiting" ? "approval" : "timeline"} stroke={item.color} size={46} />
+            <div style={{...theme.typography.label, color: theme.colors.ink}}>{item.label}</div>
+            <div style={{padding: "8px 12px", borderRadius: theme.radius.pill, background: `${item.color}18`, color: item.color, ...theme.typography.small, fontWeight: 780}}>{item.state}</div>
+          </div>
+        ))}
       </div>
     </ShowcaseFrame>
   );

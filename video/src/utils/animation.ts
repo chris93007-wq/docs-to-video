@@ -1,5 +1,6 @@
 import {Easing, interpolate, spring} from "remotion";
-import {FPS} from "../data/timeline";
+
+const DEFAULT_FPS = 30;
 
 export const clamp = {
   extrapolateLeft: "clamp" as const,
@@ -27,7 +28,7 @@ export const drawStroke = (frame: number, start: number, end: number) =>
 export const softSpring = (frame: number, delay = 0) =>
   spring({
     frame: Math.max(0, frame - delay),
-    fps: FPS,
+    fps: DEFAULT_FPS,
     config: {
       damping: 18,
       stiffness: 90,
