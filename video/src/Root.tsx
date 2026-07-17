@@ -34,6 +34,13 @@ import {
   TDD_JEST_V001_WIDTH,
   TddJestValidationV001Composition,
 } from "./launch/TddJestValidationV001Composition";
+import {
+  PHARMACY_WORKFLOW_V001_DURATION_FRAMES,
+  PHARMACY_WORKFLOW_V001_FPS,
+  PHARMACY_WORKFLOW_V001_HEIGHT,
+  PHARMACY_WORKFLOW_V001_WIDTH,
+  PharmacyTaskWorkflowV001Composition,
+} from "./launch/PharmacyTaskWorkflowV001Composition";
 
 export const RemotionRoot = () => (
   <>
@@ -76,6 +83,14 @@ export const RemotionRoot = () => (
       fps={TDD_JEST_V001_FPS}
       width={TDD_JEST_V001_WIDTH}
       height={TDD_JEST_V001_HEIGHT}
+    />
+    <Composition
+      id="PharmacyTaskWorkflowExplainerV001"
+      component={PharmacyTaskWorkflowV001Composition}
+      durationInFrames={PHARMACY_WORKFLOW_V001_DURATION_FRAMES}
+      fps={PHARMACY_WORKFLOW_V001_FPS}
+      width={PHARMACY_WORKFLOW_V001_WIDTH}
+      height={PHARMACY_WORKFLOW_V001_HEIGHT}
     />
   </>
 );

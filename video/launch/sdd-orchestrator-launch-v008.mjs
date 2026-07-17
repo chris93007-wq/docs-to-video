@@ -17,12 +17,12 @@ const sceneBlueprints = [
     media: ["kinetic-text", "metaphor-visual", "diagram", "transition"],
     performanceSegments: [
       {text: "The SDD Orchestrator is live!", pauseAfterMs: 850},
-      {text: "And it is here to make Spec-Driven Development easier to use.", pauseAfterMs: 500},
-      {text: "The idea behind Spec-Driven Development is strong.", pauseAfterMs: 650},
-      {text: "We start with clear intent.", pauseAfterMs: 280},
-      {text: "Generate the right artifacts.", pauseAfterMs: 280},
-      {text: "Review the work.", pauseAfterMs: 280},
-      {text: "Keep evidence tied to the feature.", pauseAfterMs: 750},
+      {text: "And it's here to make Spec-Driven Development easier for you to run.", pauseAfterMs: 500},
+      {text: "You already know the idea behind it is solid —", pauseAfterMs: 650},
+      {text: "start with clear intent,", pauseAfterMs: 280},
+      {text: "generate the right artifacts,", pauseAfterMs: 280},
+      {text: "review the work,", pauseAfterMs: 280},
+      {text: "and keep the evidence tied to the feature.", pauseAfterMs: 750},
     ],
   },
   {
@@ -31,7 +31,7 @@ const sceneBlueprints = [
     visualPrimitive: "MorphingCardStack",
     media: ["metaphor-visual", "source-excerpt", "diagram", "workflow-animation"],
     performanceSegments: [
-      {text: "But in practice, it can be a bit confusing and hard to navigate.", pauseAfterMs: 600},
+      {text: "But in practice, it's easy to lose your footing.", pauseAfterMs: 600},
       ...visualScenes.problem.questions.map((question, index) => ({
         text: question.text,
         pauseAfterMs: [420, 420, 450, 480, 750][index],
@@ -45,8 +45,8 @@ const sceneBlueprints = [
     media: ["source-excerpt", "diagram", "ui-mockup", "workflow-animation"],
     performanceSegments: [
       {text: "This is where the SDD Orchestrator comes in.", pauseAfterMs: 750},
-      {text: "It is not another skill to memorize.", pauseAfterMs: 500},
-      {text: "It is the guided path through the skills we already have.", pauseAfterMs: 750},
+      {text: "It's not another skill for you to memorize.", pauseAfterMs: 500},
+      {text: "It's the guided path through the skills you already have.", pauseAfterMs: 750},
     ],
   },
   {
@@ -55,9 +55,9 @@ const sceneBlueprints = [
     visualPrimitive: "TerminalSequence",
     media: ["ui-mockup", "terminal", "ui-mockup", "callout"],
     performanceSegments: [
-      {text: "Start with a Jira ticket.", pauseAfterMs: 400},
-      {text: "Ask Codex to run the Orchestrator.", pauseAfterMs: 450},
-      {text: "Then move through the workflow, one step at a time.", pauseAfterMs: 700},
+      {text: "Start with a Jira ticket,", pauseAfterMs: 400},
+      {text: "ask Codex to run the Orchestrator,", pauseAfterMs: 450},
+      {text: "then move through the workflow with it, one step at a time.", pauseAfterMs: 700},
     ],
   },
   {
@@ -66,16 +66,13 @@ const sceneBlueprints = [
     visualPrimitive: "AnimatedWorkflow",
     media: ["workflow-animation", "diagram", "ui-mockup", "workflow-animation"],
     performanceSegments: [
-      {text: "Requirements intake.", pauseAfterMs: 320},
-      {text: "Design.", pauseAfterMs: 280},
-      {text: "Implementation planning.", pauseAfterMs: 320},
-      {text: "TDD Jest Unit Tests", pauseAfterMs: 320},
-      {text: "Implementation.", pauseAfterMs: 320},
-      {text: "Playwright validation.", pauseAfterMs: 700},
-      {text: "The Orchestrator keeps the run stateful.", pauseAfterMs: 550},
-      {text: "It remembers what steps have been completed.", pauseAfterMs: 420},
-      {text: "It shows what still needs review.", pauseAfterMs: 420},
-      {text: "And it keeps the evidence connected as the feature moves forward in the SDD lifecycle.", pauseAfterMs: 750},
+      {text: "You move through it all in order —", pauseAfterMs: 320},
+      {text: "requirements intake, design, implementation planning,", pauseAfterMs: 320},
+      {text: "Jest unit tests, then Playwright validation.", pauseAfterMs: 700},
+      {text: "And the whole time, the Orchestrator keeps your run stateful —", pauseAfterMs: 550},
+      {text: "it remembers what you've finished,", pauseAfterMs: 420},
+      {text: "flags what still needs your review,", pauseAfterMs: 420},
+      {text: "and keeps your evidence connected as the feature moves through the lifecycle.", pauseAfterMs: 750},
     ],
   },
   {
@@ -84,12 +81,11 @@ const sceneBlueprints = [
     visualPrimitive: "ValidationGate",
     media: ["metaphor-visual", "diagram", "workflow-animation", "callout"],
     performanceSegments: [
-      {text: "For engineers, that means less guess work ", pauseAfterMs: 450},
-      {text: "better lifecycle management to enable parallel development.", pauseAfterMs: 450},
-      {text: "And less lost context.", pauseAfterMs: 700},
-      {text: "For Product Managers, it means clearer traceability back to requirements.", pauseAfterMs: 550},
-      {text: "For Engineering Managers, it means a more visible, repeatable path for adoption.", pauseAfterMs: 600},
-      {text: "And for everyone, it gives us an entry point to keep improving Spec-Driven Development together.", pauseAfterMs: 800},
+      {text: "If you're an engineer, that means less guesswork,", pauseAfterMs: 450},
+      {text: "easier parallel work, and a lot less lost context.", pauseAfterMs: 700},
+      {text: "Product managers get clearer traceability back to requirements.", pauseAfterMs: 550},
+      {text: "Engineering managers get a visible, repeatable path to adoption.", pauseAfterMs: 600},
+      {text: "And all of us get a shared way to keep improving Spec-Driven Development together.", pauseAfterMs: 800},
     ],
   },
   {

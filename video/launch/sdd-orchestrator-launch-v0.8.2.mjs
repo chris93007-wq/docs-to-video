@@ -6,8 +6,16 @@ export const launchPlan = {
   ...v008Plan,
   id: "sdd-orchestrator-launch-v0.8.2",
   version: "v0.8.2",
+  brandMode: "oracle-redwood",
   presentationMode: "live-demo-hybrid",
   reuseNarrationFromId: "sdd-orchestrator-launch-v008",
+  runtimeSeconds: v008Plan.runtimeSeconds + 6,
+  endSlate: {
+    staticFile: "brand/oracle/video/Oracle Endslate 2026 Opaque HD.mp4",
+    durationSeconds: 6,
+    source: "Oracle Brand and Assets Portal / Oracle Endslates 2026 / HD 1920x1080",
+    treatment: "Play the official opaque end slate unmodified and muted.",
+  },
   sourceTruth: [
     ...v008Plan.sourceTruth,
     "Internal live SDD run for RX-13603, recorded 2026-06-17 through 2026-06-18.",

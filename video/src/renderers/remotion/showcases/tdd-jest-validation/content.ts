@@ -13,13 +13,13 @@ export const tddContent = {
   hook: {
     eyebrow: "WHY CHANGE THE WORKFLOW?",
     title: "Which came first: the requirement, or the code?",
-    subtitle: "A green Jest run can prove the implementation is internally consistent without proving it is the right implementation.",
+    subtitle: "A green Jest run shows that its executed assertions passed—not that requirements were satisfied.",
     codeFirst: {
       label: "CODE FIRST",
       title: "Tests inherit the implementation",
       steps: [
         {title: "Codex implements", detail: "The code change defines the shape"},
-        {title: "Tests follow", detail: "Post-hoc tests mirror what was built"},
+        {title: "Tests follow", detail: "Post-hoc tests can mirror what was built"},
         {title: "Jest is green", detail: "Requirement alignment is still unknown"},
       ],
       verdict: "Green does not prove requirement alignment",
@@ -47,7 +47,7 @@ export const tddContent = {
       {label: "Requirements", detail: "reviewed"},
       {label: "Design", detail: "reviewed"},
       {label: "Implementation Plan", detail: "reviewed"},
-      {label: "Jest gate", detail: "red → green"},
+      {label: "Jest gate", detail: "red-phase evidence"},
       {label: "Implement", detail: "planned paths"},
       {label: "Playwright", detail: "browser evidence"},
     ],
@@ -61,7 +61,7 @@ export const tddContent = {
     signals: [
       {label: "Traceability", detail: "Requirement → test → source"},
       {label: "Drift detection", detail: "Plan and implementation stay aligned"},
-      {label: "Test integrity", detail: "Weakening and deletion stay visible"},
+      {label: "Test integrity", detail: "Deletes, skips, TODOs, and assertion drops"},
       {label: "Fixed scope", detail: "Only planned paths move"},
       {label: "Readiness", detail: "Blockers before implementation"},
     ],

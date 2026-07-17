@@ -1,154 +1,75 @@
-# SDD Orchestrator Video Studio
+# Docs to Video
 
-This project turns structured product content into polished Remotion videos. It includes two supported SDD Orchestrator launch editions and a reusable documentation-to-video compiler:
+Turn structured product documentation into polished, narrated videos with Remotion.
 
-- **v008** — approved launch narrative and visual system.
-- **v009** — Oracle Redwood edition with official brand assets and end slate.
-- **v0.8.2** — v008 narrative with synchronized proof from the RX-13603 live SDD demo.
+This workspace supports two complementary production paths:
 
-Visible copy for both editions lives in one editable file: [`content/sdd-orchestrator-launch-content.json`](content/sdd-orchestrator-launch-content.json).
+1. **Curated showcases** for launch-ready stories with purpose-built scenes, validated copy, synchronized narration, and versioned renders.
+2. **The documentation compiler** for turning Markdown into a reusable semantic plan, story, narration, shot list, animation plan, and Remotion composition.
 
-## Table of contents
+The pipeline is inspectable at every stage, works deterministically without an AI key, and keeps source content separate from generated manifests and final media.
 
-- [Prerequisites](#prerequisites)
-- [Capabilities](#capabilities)
-- [Getting started](#getting-started)
-- [How to use](#how-to-use)
-  - [Via Codex](#via-codex)
-  - [Via CLI](#via-cli)
-- [Editing the launch video](#editing-the-launch-video)
-- [Project structure](#project-structure)
-- [Validation](#validation)
-- [Troubleshooting](#troubleshooting)
+## Quick start
 
-## Prerequisites
+Requirements:
 
-- Node.js 20 or newer.
-- npm 10 or newer.
-- Approximately 2 GB of free disk space for dependencies, Chromium, and the first Kokoro voice-model download.
-- Network access for the first `npm install` and first narration synthesis.
-- Optional: `OPENAI_API_KEY` for AI-backed compiler stages. The deterministic `--no-ai` workflow does not require a key.
-- Optional: `FFMPEG_PATH` if you prefer a system FFmpeg binary. Otherwise the build discovers Remotion's bundled FFmpeg automatically.
+- Node.js 20 or newer
+- npm 10 or newer
+- About 2 GB of free space for dependencies, Chromium, and the first Kokoro voice-model download
+- Network access for the initial install and first narration synthesis
 
-The Oracle assets under `public/brand/oracle/` are intended for authorized internal use. Their source filenames and provenance are documented in `public/brand/oracle/ASSET-SOURCES.md`.
-
-## Capabilities
-
-- Builds and renders the approved v008, Oracle Redwood v009, and live-demo v0.8.2 launch videos.
-- Keeps narration, pauses, scene timing, and visual beats synchronized.
-- Reuses v008 narration audio for v009 and v0.8.2 without resynthesis.
-- Centralizes all bespoke on-screen copy, including FAQs, prompts, lifecycle labels, role lanes, guardrails, and CTAs.
-- Provides an isolated brand provider so v009 styling does not change v008.
-- Compiles Markdown documentation through structured semantic, story, narration, visual, shot, animation, and render stages.
-- Supports deterministic offline compiler fallbacks for testing and iteration.
-- Produces inspectable JSON artifacts and Remotion manifests before rendering MP4 output.
-
-## Getting started
-
-From this directory:
+From the `video/` directory:
 
 ```bash
 npm install
 npm test
 npm run typecheck
-```
-
-Build the supported launch manifests:
-
-```bash
-npm run build:launch-v008
-npm run build:launch-v009
-npm run build:launch-v0.8.2
-```
-
-Open Remotion Studio for interactive previewing:
-
-```bash
 npm run studio
 ```
 
-Select either `SddOrchestratorLaunchV008` or `SddOrchestratorLaunchV009` in Studio.
+Remotion Studio exposes all curated showcases plus the generic `DocumentationCompilerVideo` composition.
 
-## How to use
+## Curated showcases
 
-### Via Codex
+| Showcase | Composition | Build | Render |
+| --- | --- | --- | --- |
+| SDD Orchestrator v008 | `SddOrchestratorLaunchV008` | `npm run build:launch-v008` | `npm run render:launch-v008` |
+| SDD Orchestrator v009, Oracle Redwood | `SddOrchestratorLaunchV009` | `npm run build:launch-v009` | `npm run render:launch-v009` |
+| SDD Orchestrator v0.8.2, Oracle Redwood live-demo hybrid | `SddOrchestratorLaunchV082` | `npm run build:launch-v0.8.2` | `npm run render:launch-v0.8.2` |
+| TDD Jest Validation v001 | `TddJestValidationExplainerV001` | `npm run build:tdd-jest-v001` | `npm run render:tdd-jest-v001` |
 
-Codex can edit the shared copy, update visuals, run validation, and render a version. Give it a specific outcome and name the version you want to preserve.
+Build commands validate the launch plan, synthesize or reuse narration, and write generated manifests. Render commands perform the build and then create an H.264 MP4 under `out/`.
 
-Example: render the Oracle Redwood edition.
+### SDD Orchestrator editions
 
-```text
-Build and render SDD Orchestrator launch v009.
-Preserve the approved narration and timing from v008.
-Run tests and TypeScript checks, inspect representative stills,
-and save the final MP4 under out/.
-```
+The three SDD editions share the approved v008 narrative while varying presentation and proof:
 
-Example: render the live-demo hybrid edition.
+- **v008** is the baseline launch story and visual system.
+- **v009** applies the Oracle Redwood brand treatment and official end slate.
+- **v0.8.2** combines the v008 story with Oracle Redwood branding and synchronized evidence from the RX-13603 live SDD run.
 
-```text
-Build and render SDD Orchestrator launch v0.8.2.
-Preserve the v008 narration and timing exactly.
-Use the bundled RX-13603 live-demo proof assets,
-inspect the Codex and lifecycle proof beats, and save the MP4 under out/.
-```
+Edit shared on-screen copy in [`content/sdd-orchestrator-launch-content.json`](content/sdd-orchestrator-launch-content.json). Timing, narration, and edition-specific metadata live under [`launch/`](launch/).
 
-Example: make a copy change safely.
+### TDD Jest Validation
 
-```text
-In content/sdd-orchestrator-launch-content.json,
-change the FAQ header from "FAQs" to "Top questions".
-Do not change narration or timing.
-Rebuild v008 and v009, then render a still of the FAQ scene for review.
-```
+The TDD Jest showcase explains the requirement-backed test gate, the Red-Green-Refactor working loop, evidence and drift checks, and the supported ways engineers can use the workflow.
 
-Example: change a lifecycle label.
+Its primary editing surfaces are:
 
-```text
-Update the workflow label "Jest Unit Tests" to "Jest Tests"
-through the shared project content file.
-Check for visual overflow in both v008 and v009 and run the full test suite.
-```
+- [`content/tdd-jest-validation-v001.json`](content/tdd-jest-validation-v001.json) for structured copy and visual content
+- [`launch/tdd-jest-validation-v001.mjs`](launch/tdd-jest-validation-v001.mjs) for narration, timing, source truth, and launch metadata
+- [`src/renderers/remotion/showcases/tdd-jest-validation/`](src/renderers/remotion/showcases/tdd-jest-validation/) for scene implementation
+- [`public/media/tdd-jest-validation/`](public/media/tdd-jest-validation/) for curated proof media
 
-Example: compile a new document-driven video.
+## Compile a Markdown document
 
-```text
-Use the documentation-to-video compiler on fixtures/sdd-orchestrator-launch.md.
-Use deterministic fallbacks, inspect the story and shot plans,
-validate the experience profile, and do not render an MP4 yet.
-```
-
-### Via CLI
-
-Build a supported launch edition:
-
-```bash
-npm run build:launch-v008
-npm run build:launch-v009
-npm run build:launch-v0.8.2
-```
-
-Render the final MP4s:
-
-```bash
-npm run render:launch-v008
-npm run render:launch-v009
-npm run render:launch-v0.8.2
-```
-
-Outputs:
-
-```text
-out/sdd-orchestrator-launch-explainer-new-v008.mp4
-out/sdd-orchestrator-launch-explainer-new-v009.mp4
-out/sdd-orchestrator-launch-explainer-new-v0.8.2.mp4
-```
-
-Compile a Markdown document without rendering:
+Run the full compiler without rendering:
 
 ```bash
 npm run compile -- fixtures/sdd-orchestrator-launch.md --no-ai
 ```
+
+The `--no-ai` flag uses deterministic fallbacks and does not require credentials. To use AI-backed stages, set `OPENAI_API_KEY` and omit the flag.
 
 Render a compiler-generated video:
 
@@ -156,90 +77,180 @@ Render a compiler-generated video:
 npm run render:compiler -- fixtures/sdd-orchestrator-launch.md --mp4
 ```
 
-Run or inspect one compiler stage:
+By default, the compiler uses Remotion. Motion Canvas can also be selected when supported by the target workflow:
 
 ```bash
-npm run video -- story fixtures/sdd-orchestrator-launch.md --no-ai
-npm run video -- inspect story fixtures/sdd-orchestrator-launch.md
-npm run video -- inspect shots fixtures/sdd-orchestrator-launch.md
-npm run video -- validate-experience fixtures/sdd-orchestrator-launch.md
+npm run compile -- docs.md --renderer motion-canvas --no-ai
 ```
 
-Clean generated compiler artifacts for one source document:
+### Work stage by stage
+
+The compiler stages are independently runnable and cached:
 
 ```bash
-npm run video -- clean fixtures/sdd-orchestrator-launch.md
+npm run video -- parse docs.md --no-ai
+npm run video -- semantic docs.md --no-ai
+npm run video -- story docs.md --no-ai
+npm run video -- visual docs.md --no-ai
+npm run video -- shots docs.md --no-ai
+npm run video -- narration docs.md --no-ai
+npm run video -- animation docs.md --no-ai
+npm run video -- edl docs.md --no-ai
 ```
 
-Show all compiler commands:
+Inspect an artifact without rerunning the pipeline:
+
+```bash
+npm run video -- inspect story docs.md
+npm run video -- inspect shots docs.md
+npm run video -- inspect edl docs.md
+```
+
+Validate the result against the experience profile:
+
+```bash
+npm run video -- validate-experience docs.md --no-ai
+```
+
+Force a rebuild, choose a custom artifact directory, or clean one document's generated artifacts:
+
+```bash
+npm run compile -- docs.md --no-ai --force
+npm run compile -- docs.md --no-ai --artifact-dir artifacts/my-video
+npm run video -- clean docs.md
+```
+
+See the complete command and flag reference with:
 
 ```bash
 npm run video -- --help
 ```
 
-## Editing the launch video
+## Work with Codex
 
-Use these files as the supported editing surface:
+Ask for the outcome, identify the edition or source document, and state what must remain unchanged. For example:
 
-- `content/sdd-orchestrator-launch-content.json` — all editable visual copy and project messaging.
-- `launch/sdd-orchestrator-launch-v008.mjs` — approved narration, pauses, durations, and media intent.
-- `launch/sdd-orchestrator-launch-v009.mjs` — v009-only brand mode and official end-slate metadata.
-- `launch/sdd-orchestrator-launch-v0.8.2.mjs` — v0.8.2 live-demo asset mapping and narration-synchronized proof timings.
-- `public/demo/sdd-live-v0.8.2/ASSET-SOURCES.md` — source recording and timestamp provenance for each proof asset.
-- `src/renderers/remotion/showcases/sdd-orchestrator/` — visual composition and animation code.
-- `src/renderers/remotion/showcases/sdd-orchestrator/brand.tsx` — legacy and Oracle Redwood brand providers.
+```text
+Update the SDD Orchestrator FAQ copy in the shared content file.
+Do not change narration or timing. Rebuild v008 and v009, run the
+validation suite, and render a representative still from each edition.
+```
 
-Generated manifests under `src/launch/*.json` should not be edited manually. Rebuild them through the npm scripts.
+```text
+Compile fixtures/sdd-orchestrator-launch.md with deterministic fallbacks.
+Inspect the story, shot plan, and experience validation artifacts. Do not
+render an MP4 yet.
+```
+
+```text
+Build and render TDD Jest Validation v001. Preserve the approved runtime,
+narration intent, and official end slate. Run tests and type checking before
+reporting the output path.
+```
+
+## Editing model
+
+Treat source files and generated files differently:
+
+- Edit project copy under `content/`.
+- Edit narration, scene timing, validation requirements, and edition metadata under `launch/`.
+- Edit React/Remotion visuals under `src/renderers/`.
+- Add approved media under `public/` and document its provenance alongside the asset set.
+- Do not hand-edit generated manifests under `src/launch/`; rebuild them with the matching npm script.
+
+Narration audio is versioned under `public/audio/` and reused when its inputs have not changed. A changed narration beat triggers synthesis during the next build.
 
 ## Project structure
 
 ```text
-content/                 Shared project copy
-launch/                  Supported v008/v009/v0.8.2 launch plans
-compiler/                Documentation-to-video compiler
-prompts/                 Compiler-stage prompts
-src/launch/              Remotion launch compositions and generated manifests
-src/renderers/           Showcase and generic compiler renderers
-public/audio/            Versioned narration audio
-public/brand/oracle/     Oracle fonts, marks, icons, texture, and end slate
-artifacts/                Generated build plans and manifests
-out/                      Final MP4 files
-test/                     Compiler and launch regression tests
+video/
+├── content/       Editable structured copy for curated showcases
+├── launch/        Narration, timing, validation, and edition metadata
+├── compiler/      Markdown-to-video pipeline and renderer adapters
+├── prompts/       Instructions for AI-backed compiler stages
+├── fixtures/      Example Markdown inputs
+├── src/           Remotion compositions, visuals, and generated manifests
+├── public/        Narration, brand assets, and proof media
+├── artifacts/     Generated plans, validation output, and render manifests
+├── test/          Compiler and showcase regression tests
+└── out/           Final rendered videos
 ```
 
 ## Validation
 
-Run the complete local check set:
+Run the standard local checks:
 
 ```bash
 npm test
 npm run typecheck
+```
+
+When changing a curated showcase, also run its build command. The build scripts enforce content, runtime, narration, evidence, branding, and composition-specific requirements before writing a new manifest.
+
+For SDD changes that affect shared copy or visuals, validate all three editions:
+
+```bash
 npm run build:launch-v008
 npm run build:launch-v009
 npm run build:launch-v0.8.2
+```
+
+For TDD Jest changes:
+
+```bash
+npm run build:tdd-jest-v001
+```
+
+Before committing documentation or code changes, also run:
+
+```bash
 git diff --check
 ```
 
-The launch build validates runtime, scene count, narration length, Codex usage, lifecycle content, approval boundaries, evidence, CTA presence, and visual-first composition.
+## Output names
+
+Curated renders use stable filenames:
+
+```text
+out/sdd-orchestrator-launch-explainer-new-v008.mp4
+out/sdd-orchestrator-launch-explainer-new-v009.mp4
+out/sdd-orchestrator-launch-explainer-new-v0.8.2.mp4
+out/tdd-jest-validation-explainer-v001.mp4
+```
+
+Compiler renders can be named with `--title`, `--version`, or an explicit `--output` path:
+
+```bash
+npm run render:compiler -- docs.md --mp4 --title "Feature Overview" --version v002
+npm run render:compiler -- docs.md --mp4 --output out/feature-overview.mp4
+```
 
 ## Troubleshooting
 
-**The first build is slow**
+### The first build is slow
 
-Kokoro downloads its voice model on first use. Later builds reuse the local model and versioned narration WAVs.
+Kokoro downloads its voice model on first use. Later builds reuse the local model and any narration whose inputs are unchanged.
 
-**FFmpeg cannot be found**
+### FFmpeg cannot be found
 
-Run `npm install` again, or set `FFMPEG_PATH` to an FFmpeg executable.
+Re-run `npm install` so the Remotion compositor is available, or point the build at a system binary:
 
 ```bash
 FFMPEG_PATH=/path/to/ffmpeg npm run build:launch-v008
 ```
 
-**A text edit does not appear**
+### A copy change does not appear
 
-Confirm the change is in `content/sdd-orchestrator-launch-content.json`, rebuild the target version, and restart Remotion Studio if it was already open.
+Confirm that you edited the source file under `content/` or `launch/`, rebuild the target showcase, and restart Remotion Studio if it was already running. Generated files under `src/launch/` are build outputs, not editing surfaces.
 
-**The compiler uses AI when it should not**
+### The compiler calls AI unexpectedly
 
-Pass `--no-ai` to use deterministic stage fallbacks.
+Add `--no-ai` to the command. This selects deterministic stage fallbacks and does not use `OPENAI_API_KEY`.
+
+### Narration changed but audio did not
+
+Run the relevant build again. If you need to bypass cached compiler stages, add `--force`; curated showcase builders compare narration inputs before deciding whether audio can be reused.
+
+## Asset use
+
+Oracle assets under `public/brand/oracle/` are intended for authorized internal use. Source filenames and provenance are recorded in [`public/brand/oracle/ASSET-SOURCES.md`](public/brand/oracle/ASSET-SOURCES.md). Live-demo sources are documented with their corresponding asset sets under `public/demo/`.

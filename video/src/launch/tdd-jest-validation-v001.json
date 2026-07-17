@@ -2,7 +2,7 @@
   "kind": "RenderManifest",
   "version": "1.0.0",
   "renderer": "remotion",
-  "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+  "sourceHash": "3dd63f5396091ef58a231726e96c4a9fe314454655a85489961be46c27b0de39",
   "showcase": "tdd-jest-validation",
   "launchVersion": "v001",
   "validationProfile": "tdd-jest-validation-engineer-explainer-v001",
@@ -211,7 +211,7 @@
         "title": "A composed gate for trustworthy evidence.",
         "eyebrow": "WHAT IT CAN DO FOR YOU",
         "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-        "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+        "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
         "headline": "FROM REVIEWED INTENT TO AUDITABLE UNIT EVIDENCE",
         "flow": {
           "inputs": [
@@ -603,27 +603,18 @@
         "text": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
         "performanceSegments": [
           {
-            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
-            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation.",
+            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation.",
             "startSeconds": 0,
-            "speechEndSeconds": 4.327,
-            "endSeconds": 4.489,
-            "pauseAfterMs": 180,
-            "effectivePauseAfterMs": 162
-          },
-          {
-            "displayText": "Those tests can pass while simply mirroring the implementation.",
-            "spokenText": "Those tests can pass while simply mirroring the implementation.",
-            "startSeconds": 4.489,
-            "speechEndSeconds": 7.602,
-            "endSeconds": 7.763,
-            "pauseAfterMs": 180,
-            "effectivePauseAfterMs": 162
+            "speechEndSeconds": 7.691,
+            "endSeconds": 8.022,
+            "pauseAfterMs": 380,
+            "effectivePauseAfterMs": 331
           },
           {
             "displayText": "TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
             "spokenText": "T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
-            "startSeconds": 7.763,
+            "startSeconds": 8.022,
             "speechEndSeconds": 16.1,
             "endSeconds": 16.1,
             "pauseAfterMs": 0,
@@ -704,32 +695,23 @@
         "sceneId": "sdd-fit",
         "startSeconds": 22,
         "endSeconds": 35.35,
-        "text": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+        "text": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered. After implementation, Playwright tests browser journeys — it complements Jest, never replaces it.",
         "performanceSegments": [
           {
-            "displayText": "SDD phase four sits between reviewed planning and product code.",
-            "spokenText": "S D D phase four sits between reviewed planning and product code.",
+            "displayText": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered.",
+            "spokenText": "S D D phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered.",
             "startSeconds": 0,
-            "speechEndSeconds": 3.837,
-            "endSeconds": 4.097,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "speechEndSeconds": 7.482,
+            "endSeconds": 7.757,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 276
           },
           {
-            "displayText": "Engineers and Codex stay inside the boundary.",
-            "spokenText": "Engineers and Codex stay inside the boundary.",
-            "startSeconds": 4.097,
-            "speechEndSeconds": 6.809,
-            "endSeconds": 7.049,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
-          },
-          {
-            "displayText": "After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
-            "spokenText": "After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
-            "startSeconds": 7.049,
-            "speechEndSeconds": 12.891,
-            "endSeconds": 12.891,
+            "displayText": "After implementation, Playwright tests browser journeys — it complements Jest, never replaces it.",
+            "spokenText": "After implementation, PLAY-right tests browser journeys ,  it complements Jest, never replaces it.",
+            "startSeconds": 7.757,
+            "speechEndSeconds": 13.1,
+            "endSeconds": 13.1,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
@@ -740,14 +722,14 @@
       "id": "capabilities",
       "title": "A composed gate for trustworthy evidence.",
       "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
       "startSeconds": 36,
       "durationSeconds": 17,
       "copy": {
         "title": "A composed gate for trustworthy evidence.",
         "eyebrow": "WHAT IT CAN DO FOR YOU",
         "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-        "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+        "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
         "headline": "FROM REVIEWED INTENT TO AUDITABLE UNIT EVIDENCE",
         "flow": {
           "inputs": [
@@ -814,30 +796,21 @@
         "sceneId": "capabilities",
         "startSeconds": 36,
         "endSeconds": 52.35,
-        "text": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+        "text": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
         "performanceSegments": [
           {
             "displayText": "The skill turns intent into auditable evidence.",
             "spokenText": "The skill turns intent into auditable evidence.",
             "startSeconds": 0,
-            "speechEndSeconds": 2.469,
-            "endSeconds": 2.684,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 215
+            "speechEndSeconds": 2.53,
+            "endSeconds": 2.824,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 294
           },
           {
-            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
-            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
-            "startSeconds": 2.684,
-            "speechEndSeconds": 8.725,
-            "endSeconds": 8.994,
-            "pauseAfterMs": 300,
-            "effectivePauseAfterMs": 269
-          },
-          {
-            "displayText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
-            "spokenText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
-            "startSeconds": 8.994,
+            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
+            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
+            "startSeconds": 2.824,
             "speechEndSeconds": 16.1,
             "endSeconds": 16.1,
             "pauseAfterMs": 0,
@@ -946,39 +919,30 @@
         "sceneId": "getting-started",
         "startSeconds": 53,
         "endSeconds": 72.35,
-        "text": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+        "text": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. You review and approve the plan, then one representative failing spec. You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
         "performanceSegments": [
           {
-            "displayText": "Begin with product-approved requirements committed to the repo.",
-            "spokenText": "Begin with product-approved requirements committed to the repo.",
+            "displayText": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "spokenText": "Begin with product-approved requirements committed to the repo. Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
             "startSeconds": 0,
-            "speechEndSeconds": 2.885,
-            "endSeconds": 3.118,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 232
+            "speechEndSeconds": 9.628,
+            "endSeconds": 9.922,
+            "pauseAfterMs": 340,
+            "effectivePauseAfterMs": 294
           },
           {
-            "displayText": "Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
-            "spokenText": "Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
-            "startSeconds": 3.118,
-            "speechEndSeconds": 9.505,
-            "endSeconds": 9.773,
+            "displayText": "You review and approve the plan, then one representative failing spec.",
+            "spokenText": "You review and approve the plan, then one representative failing spec.",
+            "startSeconds": 9.922,
+            "speechEndSeconds": 13.458,
+            "endSeconds": 13.717,
             "pauseAfterMs": 300,
-            "effectivePauseAfterMs": 268
+            "effectivePauseAfterMs": 259
           },
           {
-            "displayText": "Review and approve the plan, then one representative failing spec.",
-            "spokenText": "Review and approve the plan, then one representative failing spec.",
-            "startSeconds": 9.773,
-            "speechEndSeconds": 13.338,
-            "endSeconds": 13.588,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 250
-          },
-          {
-            "displayText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
-            "spokenText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
-            "startSeconds": 13.588,
+            "displayText": "You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "spokenText": "You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "startSeconds": 13.717,
             "speechEndSeconds": 19.1,
             "endSeconds": 19.1,
             "pauseAfterMs": 0,
@@ -1081,75 +1045,39 @@
         "sceneId": "red-green-refactor",
         "startSeconds": 73,
         "endSeconds": 106.35,
-        "text": "This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it—and earlier tests—passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready.",
+        "text": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite. Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready. Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review. Refactor while green, and repeat until the slice is ready.",
         "performanceSegments": [
           {
-            "displayText": "This is where engineers and Codex spend most of their time together.",
-            "spokenText": "This is where engineers and Codex spend most of their time together.",
+            "displayText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite.",
+            "spokenText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite.",
             "startSeconds": 0,
-            "speechEndSeconds": 3.31,
-            "endSeconds": 3.52,
+            "speechEndSeconds": 4.234,
+            "endSeconds": 4.438,
             "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
+            "effectivePauseAfterMs": 203
           },
           {
-            "displayText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
-            "spokenText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
-            "startSeconds": 3.52,
-            "speechEndSeconds": 9.069,
-            "endSeconds": 9.314,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
+            "displayText": "Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready.",
+            "spokenText": "Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready.",
+            "startSeconds": 4.438,
+            "speechEndSeconds": 15.573,
+            "endSeconds": 15.827,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 254
           },
           {
-            "displayText": "Green: make the smallest change that gets it—and earlier tests—passing.",
-            "spokenText": "Green: make the smallest change that gets it, and earlier tests, passing.",
-            "startSeconds": 9.314,
-            "speechEndSeconds": 12.807,
-            "endSeconds": 13.052,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
-          },
-          {
-            "displayText": "Green is a checkpoint, not proof that the feature is PR-ready.",
-            "spokenText": "Green is a checkpoint, not proof that the feature is PR-ready.",
-            "startSeconds": 13.052,
-            "speechEndSeconds": 16.244,
-            "endSeconds": 16.454,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
-          },
-          {
-            "displayText": "Run the feature locally and explore behavior, UX, and edge cases.",
-            "spokenText": "Run the feature locally and explore behavior, UX, and edge cases.",
-            "startSeconds": 16.454,
-            "speechEndSeconds": 19.971,
-            "endSeconds": 20.199,
+            "displayText": "Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review.",
+            "spokenText": "Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review.",
+            "startSeconds": 15.827,
+            "speechEndSeconds": 29.966,
+            "endSeconds": 30.187,
             "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 228
+            "effectivePauseAfterMs": 220
           },
           {
-            "displayText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
-            "spokenText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
-            "startSeconds": 20.199,
-            "speechEndSeconds": 26.107,
-            "endSeconds": 26.352,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
-          },
-          {
-            "displayText": "New behavior outside that boundary becomes a potential gap for review.",
-            "spokenText": "New behavior outside that boundary becomes a potential gap for review.",
-            "startSeconds": 26.352,
-            "speechEndSeconds": 30.121,
-            "endSeconds": 30.331,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
-          },
-          {
-            "displayText": "Refactor while green; repeat until the slice is ready.",
-            "spokenText": "Refactor while green; repeat until the slice is ready.",
-            "startSeconds": 30.331,
+            "displayText": "Refactor while green, and repeat until the slice is ready.",
+            "spokenText": "Refactor while green, and repeat until the slice is ready.",
+            "startSeconds": 30.187,
             "speechEndSeconds": 33.1,
             "endSeconds": 33.1,
             "pauseAfterMs": 0,
@@ -1219,50 +1147,32 @@
         "sceneId": "dashboard",
         "startSeconds": 107,
         "endSeconds": 124.35,
-        "text": "The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful.",
+        "text": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions — what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened? The numbers change — these questions stay the same.",
         "performanceSegments": [
           {
-            "displayText": "The dashboard turns the audit into decisions.",
-            "spokenText": "The dashboard turns the audit into decisions.",
+            "displayText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions —",
+            "spokenText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions , ",
             "startSeconds": 0,
-            "speechEndSeconds": 2.341,
-            "endSeconds": 2.581,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
+            "speechEndSeconds": 5.117,
+            "endSeconds": 5.434,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 317
           },
           {
-            "displayText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
-            "spokenText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
-            "startSeconds": 2.581,
-            "speechEndSeconds": 7.29,
-            "endSeconds": 7.55,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "displayText": "what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened?",
+            "spokenText": "what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened?",
+            "startSeconds": 5.434,
+            "speechEndSeconds": 14.025,
+            "endSeconds": 14.362,
+            "pauseAfterMs": 340,
+            "effectivePauseAfterMs": 337
           },
           {
-            "displayText": "Are the plan and baseline present? Were tests deleted or weakened?",
-            "spokenText": "Are the plan and baseline present? Were tests deleted or weakened?",
-            "startSeconds": 7.55,
-            "speechEndSeconds": 11.404,
-            "endSeconds": 11.664,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
-          },
-          {
-            "displayText": "Which potential gaps need review?",
-            "spokenText": "Which potential gaps need review?",
-            "startSeconds": 11.664,
-            "speechEndSeconds": 13.401,
-            "endSeconds": 13.641,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
-          },
-          {
-            "displayText": "The numbers change; these questions remain useful.",
-            "spokenText": "The numbers change; these questions remain useful.",
-            "startSeconds": 13.641,
-            "speechEndSeconds": 16.55,
-            "endSeconds": 16.55,
+            "displayText": "The numbers change — these questions stay the same.",
+            "spokenText": "The numbers change ,  these questions stay the same.",
+            "startSeconds": 14.362,
+            "speechEndSeconds": 17.1,
+            "endSeconds": 17.1,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
@@ -1347,29 +1257,20 @@
         "text": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
         "performanceSegments": [
           {
-            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints.",
-            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints.",
+            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
             "startSeconds": 0,
-            "speechEndSeconds": 6.933,
-            "endSeconds": 7.213,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 280
-          },
-          {
-            "displayText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
-            "spokenText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
-            "startSeconds": 7.213,
-            "speechEndSeconds": 11.717,
-            "endSeconds": 11.977,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "speechEndSeconds": 12.017,
+            "endSeconds": 12.397,
+            "pauseAfterMs": 380,
+            "effectivePauseAfterMs": 380
           },
           {
             "displayText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
             "spokenText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
-            "startSeconds": 11.977,
-            "speechEndSeconds": 16.676,
-            "endSeconds": 16.676,
+            "startSeconds": 12.397,
+            "speechEndSeconds": 17.096,
+            "endSeconds": 17.096,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
@@ -1615,7 +1516,7 @@
       "order": 1,
       "title": "A composed gate for trustworthy evidence.",
       "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
       "startSeconds": 36,
       "durationSeconds": 4.25,
       "visualIntent": "Requirement traceability as part of the capabilities set piece",
@@ -1636,7 +1537,7 @@
       "order": 2,
       "title": "A composed gate for trustworthy evidence.",
       "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
       "startSeconds": 40.25,
       "durationSeconds": 4.25,
       "visualIntent": "Implementation drift as part of the capabilities set piece",
@@ -1657,7 +1558,7 @@
       "order": 3,
       "title": "A composed gate for trustworthy evidence.",
       "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
       "startSeconds": 44.5,
       "durationSeconds": 4.25,
       "visualIntent": "Weakening detection as part of the capabilities set piece",
@@ -1678,7 +1579,7 @@
       "order": 4,
       "title": "A composed gate for trustworthy evidence.",
       "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
       "startSeconds": 48.75,
       "durationSeconds": 4.25,
       "visualIntent": "Readiness audit as part of the capabilities set piece",
@@ -2033,7 +1934,7 @@
   "mediaMix": {
     "kind": "MediaMixPlan",
     "version": "1.0.0",
-    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "sourceHash": "3dd63f5396091ef58a231726e96c4a9fe314454655a85489961be46c27b0de39",
     "assignments": [
       {
         "shotId": "introduction-shot-01",
@@ -2226,7 +2127,7 @@
   "edl": {
     "kind": "EditDecisionList",
     "version": "1.0.0",
-    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "sourceHash": "3dd63f5396091ef58a231726e96c4a9fe314454655a85489961be46c27b0de39",
     "fps": 30,
     "decisions": [
       {
@@ -2513,9 +2414,9 @@
   "narration": {
     "kind": "Narration",
     "version": "1.0.0",
-    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
-    "text": "Meet the TDD Jest Validation Gate. Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap. SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, Playwright tests browser journeys. It complements, not replaces, Jest. The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate. Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code. This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it—and earlier tests—passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready. The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful. Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
-    "wordCount": 350,
+    "sourceHash": "3dd63f5396091ef58a231726e96c4a9fe314454655a85489961be46c27b0de39",
+    "text": "Meet the TDD Jest Validation Gate. Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap. SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered. After implementation, Playwright tests browser journeys — it complements Jest, never replaces it. The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness. Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. You review and approve the plan, then one representative failing spec. You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code. Here, engineers and Codex iterate together. The gate prepares the reviewed suite. Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready. Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review. Refactor while green, and repeat until the slice is ready. The dashboard turns audit trails into decisions. You'll keep asking the same few questions — what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened? The numbers change — these questions stay the same. Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
+    "wordCount": 362,
     "tone": "Warm, friendly, precise, and practical",
     "segments": [
       {
@@ -2542,27 +2443,18 @@
         "text": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
         "performanceSegments": [
           {
-            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
-            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation.",
+            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation.",
             "startSeconds": 0,
-            "speechEndSeconds": 4.327,
-            "endSeconds": 4.489,
-            "pauseAfterMs": 180,
-            "effectivePauseAfterMs": 162
-          },
-          {
-            "displayText": "Those tests can pass while simply mirroring the implementation.",
-            "spokenText": "Those tests can pass while simply mirroring the implementation.",
-            "startSeconds": 4.489,
-            "speechEndSeconds": 7.602,
-            "endSeconds": 7.763,
-            "pauseAfterMs": 180,
-            "effectivePauseAfterMs": 162
+            "speechEndSeconds": 7.691,
+            "endSeconds": 8.022,
+            "pauseAfterMs": 380,
+            "effectivePauseAfterMs": 331
           },
           {
             "displayText": "TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
             "spokenText": "T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
-            "startSeconds": 7.763,
+            "startSeconds": 8.022,
             "speechEndSeconds": 16.1,
             "endSeconds": 16.1,
             "pauseAfterMs": 0,
@@ -2574,32 +2466,23 @@
         "sceneId": "sdd-fit",
         "startSeconds": 22,
         "endSeconds": 35.35,
-        "text": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
+        "text": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered. After implementation, Playwright tests browser journeys — it complements Jest, never replaces it.",
         "performanceSegments": [
           {
-            "displayText": "SDD phase four sits between reviewed planning and product code.",
-            "spokenText": "S D D phase four sits between reviewed planning and product code.",
+            "displayText": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered.",
+            "spokenText": "S D D phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered.",
             "startSeconds": 0,
-            "speechEndSeconds": 3.837,
-            "endSeconds": 4.097,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "speechEndSeconds": 7.482,
+            "endSeconds": 7.757,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 276
           },
           {
-            "displayText": "Engineers and Codex stay inside the boundary.",
-            "spokenText": "Engineers and Codex stay inside the boundary.",
-            "startSeconds": 4.097,
-            "speechEndSeconds": 6.809,
-            "endSeconds": 7.049,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
-          },
-          {
-            "displayText": "After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
-            "spokenText": "After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
-            "startSeconds": 7.049,
-            "speechEndSeconds": 12.891,
-            "endSeconds": 12.891,
+            "displayText": "After implementation, Playwright tests browser journeys — it complements Jest, never replaces it.",
+            "spokenText": "After implementation, PLAY-right tests browser journeys ,  it complements Jest, never replaces it.",
+            "startSeconds": 7.757,
+            "speechEndSeconds": 13.1,
+            "endSeconds": 13.1,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
@@ -2609,30 +2492,21 @@
         "sceneId": "capabilities",
         "startSeconds": 36,
         "endSeconds": 52.35,
-        "text": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+        "text": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
         "performanceSegments": [
           {
             "displayText": "The skill turns intent into auditable evidence.",
             "spokenText": "The skill turns intent into auditable evidence.",
             "startSeconds": 0,
-            "speechEndSeconds": 2.469,
-            "endSeconds": 2.684,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 215
+            "speechEndSeconds": 2.53,
+            "endSeconds": 2.824,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 294
           },
           {
-            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
-            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
-            "startSeconds": 2.684,
-            "speechEndSeconds": 8.725,
-            "endSeconds": 8.994,
-            "pauseAfterMs": 300,
-            "effectivePauseAfterMs": 269
-          },
-          {
-            "displayText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
-            "spokenText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
-            "startSeconds": 8.994,
+            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
+            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
+            "startSeconds": 2.824,
             "speechEndSeconds": 16.1,
             "endSeconds": 16.1,
             "pauseAfterMs": 0,
@@ -2644,39 +2518,30 @@
         "sceneId": "getting-started",
         "startSeconds": 53,
         "endSeconds": 72.35,
-        "text": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+        "text": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. You review and approve the plan, then one representative failing spec. You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
         "performanceSegments": [
           {
-            "displayText": "Begin with product-approved requirements committed to the repo.",
-            "spokenText": "Begin with product-approved requirements committed to the repo.",
+            "displayText": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "spokenText": "Begin with product-approved requirements committed to the repo. Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
             "startSeconds": 0,
-            "speechEndSeconds": 2.885,
-            "endSeconds": 3.118,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 232
+            "speechEndSeconds": 9.628,
+            "endSeconds": 9.922,
+            "pauseAfterMs": 340,
+            "effectivePauseAfterMs": 294
           },
           {
-            "displayText": "Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
-            "spokenText": "Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
-            "startSeconds": 3.118,
-            "speechEndSeconds": 9.505,
-            "endSeconds": 9.773,
+            "displayText": "You review and approve the plan, then one representative failing spec.",
+            "spokenText": "You review and approve the plan, then one representative failing spec.",
+            "startSeconds": 9.922,
+            "speechEndSeconds": 13.458,
+            "endSeconds": 13.717,
             "pauseAfterMs": 300,
-            "effectivePauseAfterMs": 268
+            "effectivePauseAfterMs": 259
           },
           {
-            "displayText": "Review and approve the plan, then one representative failing spec.",
-            "spokenText": "Review and approve the plan, then one representative failing spec.",
-            "startSeconds": 9.773,
-            "speechEndSeconds": 13.338,
-            "endSeconds": 13.588,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 250
-          },
-          {
-            "displayText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
-            "spokenText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
-            "startSeconds": 13.588,
+            "displayText": "You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "spokenText": "You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "startSeconds": 13.717,
             "speechEndSeconds": 19.1,
             "endSeconds": 19.1,
             "pauseAfterMs": 0,
@@ -2688,75 +2553,39 @@
         "sceneId": "red-green-refactor",
         "startSeconds": 73,
         "endSeconds": 106.35,
-        "text": "This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it—and earlier tests—passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready.",
+        "text": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite. Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready. Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review. Refactor while green, and repeat until the slice is ready.",
         "performanceSegments": [
           {
-            "displayText": "This is where engineers and Codex spend most of their time together.",
-            "spokenText": "This is where engineers and Codex spend most of their time together.",
+            "displayText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite.",
+            "spokenText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite.",
             "startSeconds": 0,
-            "speechEndSeconds": 3.31,
-            "endSeconds": 3.52,
+            "speechEndSeconds": 4.234,
+            "endSeconds": 4.438,
             "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
+            "effectivePauseAfterMs": 203
           },
           {
-            "displayText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
-            "spokenText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
-            "startSeconds": 3.52,
-            "speechEndSeconds": 9.069,
-            "endSeconds": 9.314,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
+            "displayText": "Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready.",
+            "spokenText": "Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready.",
+            "startSeconds": 4.438,
+            "speechEndSeconds": 15.573,
+            "endSeconds": 15.827,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 254
           },
           {
-            "displayText": "Green: make the smallest change that gets it—and earlier tests—passing.",
-            "spokenText": "Green: make the smallest change that gets it, and earlier tests, passing.",
-            "startSeconds": 9.314,
-            "speechEndSeconds": 12.807,
-            "endSeconds": 13.052,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
-          },
-          {
-            "displayText": "Green is a checkpoint, not proof that the feature is PR-ready.",
-            "spokenText": "Green is a checkpoint, not proof that the feature is PR-ready.",
-            "startSeconds": 13.052,
-            "speechEndSeconds": 16.244,
-            "endSeconds": 16.454,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
-          },
-          {
-            "displayText": "Run the feature locally and explore behavior, UX, and edge cases.",
-            "spokenText": "Run the feature locally and explore behavior, UX, and edge cases.",
-            "startSeconds": 16.454,
-            "speechEndSeconds": 19.971,
-            "endSeconds": 20.199,
+            "displayText": "Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review.",
+            "spokenText": "Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review.",
+            "startSeconds": 15.827,
+            "speechEndSeconds": 29.966,
+            "endSeconds": 30.187,
             "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 228
+            "effectivePauseAfterMs": 220
           },
           {
-            "displayText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
-            "spokenText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
-            "startSeconds": 20.199,
-            "speechEndSeconds": 26.107,
-            "endSeconds": 26.352,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
-          },
-          {
-            "displayText": "New behavior outside that boundary becomes a potential gap for review.",
-            "spokenText": "New behavior outside that boundary becomes a potential gap for review.",
-            "startSeconds": 26.352,
-            "speechEndSeconds": 30.121,
-            "endSeconds": 30.331,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
-          },
-          {
-            "displayText": "Refactor while green; repeat until the slice is ready.",
-            "spokenText": "Refactor while green; repeat until the slice is ready.",
-            "startSeconds": 30.331,
+            "displayText": "Refactor while green, and repeat until the slice is ready.",
+            "spokenText": "Refactor while green, and repeat until the slice is ready.",
+            "startSeconds": 30.187,
             "speechEndSeconds": 33.1,
             "endSeconds": 33.1,
             "pauseAfterMs": 0,
@@ -2768,50 +2597,32 @@
         "sceneId": "dashboard",
         "startSeconds": 107,
         "endSeconds": 124.35,
-        "text": "The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful.",
+        "text": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions — what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened? The numbers change — these questions stay the same.",
         "performanceSegments": [
           {
-            "displayText": "The dashboard turns the audit into decisions.",
-            "spokenText": "The dashboard turns the audit into decisions.",
+            "displayText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions —",
+            "spokenText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions , ",
             "startSeconds": 0,
-            "speechEndSeconds": 2.341,
-            "endSeconds": 2.581,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
+            "speechEndSeconds": 5.117,
+            "endSeconds": 5.434,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 317
           },
           {
-            "displayText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
-            "spokenText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
-            "startSeconds": 2.581,
-            "speechEndSeconds": 7.29,
-            "endSeconds": 7.55,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "displayText": "what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened?",
+            "spokenText": "what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened?",
+            "startSeconds": 5.434,
+            "speechEndSeconds": 14.025,
+            "endSeconds": 14.362,
+            "pauseAfterMs": 340,
+            "effectivePauseAfterMs": 337
           },
           {
-            "displayText": "Are the plan and baseline present? Were tests deleted or weakened?",
-            "spokenText": "Are the plan and baseline present? Were tests deleted or weakened?",
-            "startSeconds": 7.55,
-            "speechEndSeconds": 11.404,
-            "endSeconds": 11.664,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
-          },
-          {
-            "displayText": "Which potential gaps need review?",
-            "spokenText": "Which potential gaps need review?",
-            "startSeconds": 11.664,
-            "speechEndSeconds": 13.401,
-            "endSeconds": 13.641,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
-          },
-          {
-            "displayText": "The numbers change; these questions remain useful.",
-            "spokenText": "The numbers change; these questions remain useful.",
-            "startSeconds": 13.641,
-            "speechEndSeconds": 16.55,
-            "endSeconds": 16.55,
+            "displayText": "The numbers change — these questions stay the same.",
+            "spokenText": "The numbers change ,  these questions stay the same.",
+            "startSeconds": 14.362,
+            "speechEndSeconds": 17.1,
+            "endSeconds": 17.1,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
@@ -2824,29 +2635,20 @@
         "text": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
         "performanceSegments": [
           {
-            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints.",
-            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints.",
+            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
             "startSeconds": 0,
-            "speechEndSeconds": 6.933,
-            "endSeconds": 7.213,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 280
-          },
-          {
-            "displayText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
-            "spokenText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
-            "startSeconds": 7.213,
-            "speechEndSeconds": 11.717,
-            "endSeconds": 11.977,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "speechEndSeconds": 12.017,
+            "endSeconds": 12.397,
+            "pauseAfterMs": 380,
+            "effectivePauseAfterMs": 380
           },
           {
             "displayText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
             "spokenText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
-            "startSeconds": 11.977,
-            "speechEndSeconds": 16.676,
-            "endSeconds": 16.676,
+            "startSeconds": 12.397,
+            "speechEndSeconds": 17.096,
+            "endSeconds": 17.096,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
@@ -2857,7 +2659,7 @@
   "narrationAudio": {
     "kind": "NarrationAudio",
     "version": "1.0.0",
-    "sourceHash": "c8c605eb94c2cbc3a6ad77b2800820542cbc1c2a6d613df4478c38e70cb6252a",
+    "sourceHash": "3dd63f5396091ef58a231726e96c4a9fe314454655a85489961be46c27b0de39",
     "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
     "voice": "af_heart",
     "totalDurationSeconds": 143,
@@ -2890,27 +2692,18 @@
         "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation. T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
         "performanceSegments": [
           {
-            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
-            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output.",
+            "displayText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation.",
+            "spokenText": "Here's the code-first risk: Codex writes the change, then tests its own output. Those tests can pass while simply mirroring the implementation.",
             "startSeconds": 0,
-            "speechEndSeconds": 4.327,
-            "endSeconds": 4.489,
-            "pauseAfterMs": 180,
-            "effectivePauseAfterMs": 162
-          },
-          {
-            "displayText": "Those tests can pass while simply mirroring the implementation.",
-            "spokenText": "Those tests can pass while simply mirroring the implementation.",
-            "startSeconds": 4.489,
-            "speechEndSeconds": 7.602,
-            "endSeconds": 7.763,
-            "pauseAfterMs": 180,
-            "effectivePauseAfterMs": 162
+            "speechEndSeconds": 7.691,
+            "endSeconds": 8.022,
+            "pauseAfterMs": 380,
+            "effectivePauseAfterMs": 331
           },
           {
             "displayText": "TDD flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
             "spokenText": "T D D flips it: requirement-backed tests define the boundary and drive code. Unmapped implementation surfaces as drift or a potential gap.",
-            "startSeconds": 7.763,
+            "startSeconds": 8.022,
             "speechEndSeconds": 16.1,
             "endSeconds": 16.1,
             "pauseAfterMs": 0,
@@ -2919,8 +2712,8 @@
         ],
         "staticFile": "audio/tdd-jest-validation-v001/problem-hook.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 17.92,
-        "playbackSpeed": 1.113,
+        "rawDurationSeconds": 18.493,
+        "playbackSpeed": 1.1486,
         "audioDurationSeconds": 16.35,
         "startSeconds": 5,
         "endSeconds": 21.35,
@@ -2928,40 +2721,31 @@
       },
       {
         "sceneId": "sdd-fit",
-        "spokenText": "S D D phase four sits between reviewed planning and product code. Engineers and Codex stay inside the boundary. After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
+        "spokenText": "S D D phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered. After implementation, PLAY-right tests browser journeys ,  it complements Jest, never replaces it.",
         "performanceSegments": [
           {
-            "displayText": "SDD phase four sits between reviewed planning and product code.",
-            "spokenText": "S D D phase four sits between reviewed planning and product code.",
+            "displayText": "SDD phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered.",
+            "spokenText": "S D D phase four sits between reviewed planning and product code. Engineers and Codex stay inside agreed boundaries, so you're covered.",
             "startSeconds": 0,
-            "speechEndSeconds": 3.837,
-            "endSeconds": 4.097,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "speechEndSeconds": 7.482,
+            "endSeconds": 7.757,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 276
           },
           {
-            "displayText": "Engineers and Codex stay inside the boundary.",
-            "spokenText": "Engineers and Codex stay inside the boundary.",
-            "startSeconds": 4.097,
-            "speechEndSeconds": 6.809,
-            "endSeconds": 7.049,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
-          },
-          {
-            "displayText": "After implementation, Playwright tests browser journeys. It complements, not replaces, Jest.",
-            "spokenText": "After implementation, PLAY-right tests browser journeys. It complements, not replaces, Jest.",
-            "startSeconds": 7.049,
-            "speechEndSeconds": 12.891,
-            "endSeconds": 12.891,
+            "displayText": "After implementation, Playwright tests browser journeys — it complements Jest, never replaces it.",
+            "spokenText": "After implementation, PLAY-right tests browser journeys ,  it complements Jest, never replaces it.",
+            "startSeconds": 7.757,
+            "speechEndSeconds": 13.1,
+            "endSeconds": 13.1,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
         ],
         "staticFile": "audio/tdd-jest-validation-v001/sdd-fit.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 12.891,
-        "playbackSpeed": 1,
+        "rawDurationSeconds": 15.208,
+        "playbackSpeed": 1.1609,
         "audioDurationSeconds": 13.35,
         "startSeconds": 22,
         "endSeconds": 35.35,
@@ -2969,30 +2753,21 @@
       },
       {
         "sceneId": "capabilities",
-        "spokenText": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
+        "spokenText": "The skill turns intent into auditable evidence. It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
         "performanceSegments": [
           {
             "displayText": "The skill turns intent into auditable evidence.",
             "spokenText": "The skill turns intent into auditable evidence.",
             "startSeconds": 0,
-            "speechEndSeconds": 2.469,
-            "endSeconds": 2.684,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 215
+            "speechEndSeconds": 2.53,
+            "endSeconds": 2.824,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 294
           },
           {
-            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
-            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline.",
-            "startSeconds": 2.684,
-            "speechEndSeconds": 8.725,
-            "endSeconds": 8.994,
-            "pauseAfterMs": 300,
-            "effectivePauseAfterMs": 269
-          },
-          {
-            "displayText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
-            "spokenText": "It detects implementation drift and weakened tests, combining traceability, test integrity, and feature readiness in one gate.",
-            "startSeconds": 8.994,
+            "displayText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
+            "spokenText": "It maps requirement and acceptance IDs to Jest specs, ties specs to source paths, and records the baseline. It flags implementation drift and weakening signals, so you get traceability, test integrity, and feature readiness.",
+            "startSeconds": 2.824,
             "speechEndSeconds": 16.1,
             "endSeconds": 16.1,
             "pauseAfterMs": 0,
@@ -3001,8 +2776,8 @@
         ],
         "staticFile": "audio/tdd-jest-validation-v001/capabilities.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 17.935,
-        "playbackSpeed": 1.114,
+        "rawDurationSeconds": 17.501,
+        "playbackSpeed": 1.087,
         "audioDurationSeconds": 16.35,
         "startSeconds": 36,
         "endSeconds": 52.35,
@@ -3010,39 +2785,30 @@
       },
       {
         "sceneId": "getting-started",
-        "spokenText": "Begin with product-approved requirements committed to the repo. Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. Review and approve the plan, then one representative failing spec. Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+        "spokenText": "Begin with product-approved requirements committed to the repo. Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions. You review and approve the plan, then one representative failing spec. You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
         "performanceSegments": [
           {
-            "displayText": "Begin with product-approved requirements committed to the repo.",
-            "spokenText": "Begin with product-approved requirements committed to the repo.",
+            "displayText": "Begin with product-approved requirements committed to the repo. Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
+            "spokenText": "Begin with product-approved requirements committed to the repo. Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
             "startSeconds": 0,
-            "speechEndSeconds": 2.885,
-            "endSeconds": 3.118,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 232
+            "speechEndSeconds": 9.628,
+            "endSeconds": 9.922,
+            "pauseAfterMs": 340,
+            "effectivePauseAfterMs": 294
           },
           {
-            "displayText": "Ask the TDD phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
-            "spokenText": "Ask the T D D phase to prepare the Unit Test Target Plan, mapping units to source paths, specs, and assertions.",
-            "startSeconds": 3.118,
-            "speechEndSeconds": 9.505,
-            "endSeconds": 9.773,
+            "displayText": "You review and approve the plan, then one representative failing spec.",
+            "spokenText": "You review and approve the plan, then one representative failing spec.",
+            "startSeconds": 9.922,
+            "speechEndSeconds": 13.458,
+            "endSeconds": 13.717,
             "pauseAfterMs": 300,
-            "effectivePauseAfterMs": 268
+            "effectivePauseAfterMs": 259
           },
           {
-            "displayText": "Review and approve the plan, then one representative failing spec.",
-            "spokenText": "Review and approve the plan, then one representative failing spec.",
-            "startSeconds": 9.773,
-            "speechEndSeconds": 13.338,
-            "endSeconds": 13.588,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 250
-          },
-          {
-            "displayText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
-            "spokenText": "Generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
-            "startSeconds": 13.588,
+            "displayText": "You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "spokenText": "You generate the planned suite, capture the red-phase baseline, and run the gate before changing product code.",
+            "startSeconds": 13.717,
             "speechEndSeconds": 19.1,
             "endSeconds": 19.1,
             "pauseAfterMs": 0,
@@ -3051,8 +2817,8 @@
         ],
         "staticFile": "audio/tdd-jest-validation-v001/getting-started.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 21.386,
-        "playbackSpeed": 1.1197,
+        "rawDurationSeconds": 22.125,
+        "playbackSpeed": 1.1584,
         "audioDurationSeconds": 19.35,
         "startSeconds": 53,
         "endSeconds": 72.35,
@@ -3060,75 +2826,39 @@
       },
       {
         "sceneId": "red-green-refactor",
-        "spokenText": "This is where engineers and Codex spend most of their time together. Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure. Green: make the smallest change that gets it, and earlier tests, passing. Green is a checkpoint, not proof that the feature is PR-ready. Run the feature locally and explore behavior, UX, and edge cases. For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code. New behavior outside that boundary becomes a potential gap for review. Refactor while green; repeat until the slice is ready.",
+        "spokenText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite. Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready. Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review. Refactor while green, and repeat until the slice is ready.",
         "performanceSegments": [
           {
-            "displayText": "This is where engineers and Codex spend most of their time together.",
-            "spokenText": "This is where engineers and Codex spend most of their time together.",
+            "displayText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite.",
+            "spokenText": "Here, engineers and Codex iterate together. The gate prepares the reviewed suite.",
             "startSeconds": 0,
-            "speechEndSeconds": 3.31,
-            "endSeconds": 3.52,
+            "speechEndSeconds": 4.234,
+            "endSeconds": 4.438,
             "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
+            "effectivePauseAfterMs": 203
           },
           {
-            "displayText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
-            "spokenText": "Choose one planned behavior. Red: write its requirement-backed test and confirm the expected failure.",
-            "startSeconds": 3.52,
-            "speechEndSeconds": 9.069,
-            "endSeconds": 9.314,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
+            "displayText": "Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready.",
+            "spokenText": "Red confirms one planned behavior's requirement-backed test fails as expected. Green: make the smallest change that gets earlier tests, and this one, passing. Green is a checkpoint, not proof it's PR-ready.",
+            "startSeconds": 4.438,
+            "speechEndSeconds": 15.573,
+            "endSeconds": 15.827,
+            "pauseAfterMs": 300,
+            "effectivePauseAfterMs": 254
           },
           {
-            "displayText": "Green: make the smallest change that gets it—and earlier tests—passing.",
-            "spokenText": "Green: make the smallest change that gets it, and earlier tests, passing.",
-            "startSeconds": 9.314,
-            "speechEndSeconds": 12.807,
-            "endSeconds": 13.052,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
-          },
-          {
-            "displayText": "Green is a checkpoint, not proof that the feature is PR-ready.",
-            "spokenText": "Green is a checkpoint, not proof that the feature is PR-ready.",
-            "startSeconds": 13.052,
-            "speechEndSeconds": 16.244,
-            "endSeconds": 16.454,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
-          },
-          {
-            "displayText": "Run the feature locally and explore behavior, UX, and edge cases.",
-            "spokenText": "Run the feature locally and explore behavior, UX, and edge cases.",
-            "startSeconds": 16.454,
-            "speechEndSeconds": 19.971,
-            "endSeconds": 20.199,
+            "displayText": "Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review.",
+            "spokenText": "Run the feature locally, explore its behavior, UX, and edge cases. When it's a unit-testable behavior change in approved scope, you update Jest first, confirm red, then change the code. If it's new behavior outside that boundary, that's a potential gap for review.",
+            "startSeconds": 15.827,
+            "speechEndSeconds": 29.966,
+            "endSeconds": 30.187,
             "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 228
+            "effectivePauseAfterMs": 220
           },
           {
-            "displayText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
-            "spokenText": "For a unit-testable change already in approved scope, update Jest first, confirm red, then change the code.",
-            "startSeconds": 20.199,
-            "speechEndSeconds": 26.107,
-            "endSeconds": 26.352,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 246
-          },
-          {
-            "displayText": "New behavior outside that boundary becomes a potential gap for review.",
-            "spokenText": "New behavior outside that boundary becomes a potential gap for review.",
-            "startSeconds": 26.352,
-            "speechEndSeconds": 30.121,
-            "endSeconds": 30.331,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 210
-          },
-          {
-            "displayText": "Refactor while green; repeat until the slice is ready.",
-            "spokenText": "Refactor while green; repeat until the slice is ready.",
-            "startSeconds": 30.331,
+            "displayText": "Refactor while green, and repeat until the slice is ready.",
+            "spokenText": "Refactor while green, and repeat until the slice is ready.",
+            "startSeconds": 30.187,
             "speechEndSeconds": 33.1,
             "endSeconds": 33.1,
             "pauseAfterMs": 0,
@@ -3137,8 +2867,8 @@
         ],
         "staticFile": "audio/tdd-jest-validation-v001/red-green-refactor.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 37.746,
-        "playbackSpeed": 1.1404,
+        "rawDurationSeconds": 39.058,
+        "playbackSpeed": 1.18,
         "audioDurationSeconds": 33.35,
         "startSeconds": 73,
         "endSeconds": 106.35,
@@ -3146,58 +2876,40 @@
       },
       {
         "sceneId": "dashboard",
-        "spokenText": "The dashboard turns the audit into decisions. What blocks the gate? Which requirements have evidence? Which tests need mappings? Are the plan and baseline present? Were tests deleted or weakened? Which potential gaps need review? The numbers change; these questions remain useful.",
+        "spokenText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions ,  what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened? The numbers change ,  these questions stay the same.",
         "performanceSegments": [
           {
-            "displayText": "The dashboard turns the audit into decisions.",
-            "spokenText": "The dashboard turns the audit into decisions.",
+            "displayText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions —",
+            "spokenText": "The dashboard turns audit trails into decisions. You'll keep asking the same few questions , ",
             "startSeconds": 0,
-            "speechEndSeconds": 2.341,
-            "endSeconds": 2.581,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
+            "speechEndSeconds": 5.117,
+            "endSeconds": 5.434,
+            "pauseAfterMs": 320,
+            "effectivePauseAfterMs": 317
           },
           {
-            "displayText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
-            "spokenText": "What blocks the gate? Which requirements have evidence? Which tests need mappings?",
-            "startSeconds": 2.581,
-            "speechEndSeconds": 7.29,
-            "endSeconds": 7.55,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "displayText": "what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened?",
+            "spokenText": "what's blocking the gate, which requirements have evidence, which tests need mappings. Is the baseline still there? Did anything get deleted or weakened?",
+            "startSeconds": 5.434,
+            "speechEndSeconds": 14.025,
+            "endSeconds": 14.362,
+            "pauseAfterMs": 340,
+            "effectivePauseAfterMs": 337
           },
           {
-            "displayText": "Are the plan and baseline present? Were tests deleted or weakened?",
-            "spokenText": "Are the plan and baseline present? Were tests deleted or weakened?",
-            "startSeconds": 7.55,
-            "speechEndSeconds": 11.404,
-            "endSeconds": 11.664,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
-          },
-          {
-            "displayText": "Which potential gaps need review?",
-            "spokenText": "Which potential gaps need review?",
-            "startSeconds": 11.664,
-            "speechEndSeconds": 13.401,
-            "endSeconds": 13.641,
-            "pauseAfterMs": 240,
-            "effectivePauseAfterMs": 240
-          },
-          {
-            "displayText": "The numbers change; these questions remain useful.",
-            "spokenText": "The numbers change; these questions remain useful.",
-            "startSeconds": 13.641,
-            "speechEndSeconds": 16.55,
-            "endSeconds": 16.55,
+            "displayText": "The numbers change — these questions stay the same.",
+            "spokenText": "The numbers change ,  these questions stay the same.",
+            "startSeconds": 14.362,
+            "speechEndSeconds": 17.1,
+            "endSeconds": 17.1,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
         ],
         "staticFile": "audio/tdd-jest-validation-v001/dashboard.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 16.55,
-        "playbackSpeed": 1,
+        "rawDurationSeconds": 17.257,
+        "playbackSpeed": 1.0092,
         "audioDurationSeconds": 17.35,
         "startSeconds": 107,
         "endSeconds": 124.35,
@@ -3208,36 +2920,27 @@
         "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails. Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
         "performanceSegments": [
           {
-            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints.",
-            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints.",
+            "displayText": "Use it in Codex, from the CLI, or through SDD Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
+            "spokenText": "Use it in Codex, from the C L I, or through S D D Orchestrator, with human approval at key checkpoints. Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
             "startSeconds": 0,
-            "speechEndSeconds": 6.933,
-            "endSeconds": 7.213,
-            "pauseAfterMs": 280,
-            "effectivePauseAfterMs": 280
-          },
-          {
-            "displayText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
-            "spokenText": "Try it on your next feature, evaluate the evidence, and stress-test the guardrails.",
-            "startSeconds": 7.213,
-            "speechEndSeconds": 11.717,
-            "endSeconds": 11.977,
-            "pauseAfterMs": 260,
-            "effectivePauseAfterMs": 260
+            "speechEndSeconds": 12.017,
+            "endSeconds": 12.397,
+            "pauseAfterMs": 380,
+            "effectivePauseAfterMs": 380
           },
           {
             "displayText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
             "spokenText": "Then contribute prompts, checks, tests, and dashboard metrics for the next engineer.",
-            "startSeconds": 11.977,
-            "speechEndSeconds": 16.676,
-            "endSeconds": 16.676,
+            "startSeconds": 12.397,
+            "speechEndSeconds": 17.096,
+            "endSeconds": 17.096,
             "pauseAfterMs": 0,
             "effectivePauseAfterMs": 0
           }
         ],
         "staticFile": "audio/tdd-jest-validation-v001/usage-cta.wav",
         "sampleRate": 24000,
-        "rawDurationSeconds": 16.676,
+        "rawDurationSeconds": 17.096,
         "playbackSpeed": 1,
         "audioDurationSeconds": 18,
         "startSeconds": 125,

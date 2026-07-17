@@ -1,0 +1,79 @@
+{
+  "project": {
+    "title": "From Scattered State to Authoritative Task Workflows",
+    "subtitle": "Signal-driven loading and readiness for Pharmacy UI",
+    "audience": ["Pharmacy UI engineers", "Technical stakeholders"],
+    "genre": "Architecture explainer",
+    "positioning": "Asynchronous task data needs one authoritative lifecycle owner, while each task keeps its own business-readiness rules.",
+    "sourceTruth": [
+      "Codex task 019f5f3d-84c8-73c0-a44e-c35dc68c54f5",
+      "Oracle DevOps pharmacy-ui PR 966",
+      "origin/fix/chrjohn-RX-17230-enhance-load-stateMgmt"
+    ]
+  },
+  "format": {
+    "brand": "Oracle Redwood",
+    "visualDirection": "Dark, diagram-led, and high-contrast with red for legacy risk, green for new ownership, and blue for UI outcomes",
+    "music": "none",
+    "voice": "af_heart"
+  },
+  "scenes": {
+    "introduction": {
+      "eyebrow": "PHARMACY UI ARCHITECTURE",
+      "title": "From scattered state to authoritative task workflows",
+      "subtitle": "One loading model. Task-specific readiness. Predictable user experience.",
+      "cues": ["Pick Up", "Verify", "Fill / Dispense"]
+    },
+    "legacy-problem": {
+      "eyebrow": "THE LEGACY PROBLEM",
+      "title": "One task. Too many independent owners.",
+      "subtitle": "The UI can observe a workflow between updates—after some values arrive, but before the task is actually safe to use.",
+      "writers": [
+        "loading booleans",
+        "component state",
+        "effects",
+        "context values",
+        "independent providers",
+        "click-time guards"
+      ],
+      "risks": ["Form looks ready too early", "Stale data crosses tasks", "Skeleton never resolves", "Submit silently returns"]
+    },
+    "new-solution": {
+      "eyebrow": "THE NEW SOLUTION",
+      "title": "Separate the lifecycles. Centralize the ownership.",
+      "subtitle": "Each open task gets one instance-scoped workflow store and three explicit responsibilities.",
+      "loadStates": ["not_started", "loading", "ready", "empty", "error"],
+      "readinessChecks": ["authoritative data", "validation", "required fields", "submission idle"],
+      "submissionStates": ["idle", "submitting", "error", "success"],
+      "benefits": ["atomic commits", "stale request cancellation", "Retry instead of dead ends", "narrow signal subscriptions"]
+    },
+    "pickup-proof": {
+      "eyebrow": "PR 966 · RX-17230",
+      "title": "Pick Up proves the pattern in production code.",
+      "subtitle": "The drawer owns stable patient groups and renders only authoritative task responses.",
+      "patientGroups": ["Patient A · active", "Patient B · lazy", "Patient C · lazy"],
+      "identityChecks": ["patient", "action", "anchor Rx", "medication dispense"],
+      "submitChecks": ["ready response", "valid selections", "valid handoff"]
+    },
+    "verify": {
+      "eyebrow": "CASE 1 · VERIFY",
+      "title": "Ready is not the same as actionable.",
+      "subtitle": "Verify has one authoritative data gate, followed by its task-specific readiness policy.",
+      "readinessChecks": ["Original Provider Order ready", "validation complete", "required fields valid", "submission idle"],
+      "failureOutcome": "Incomplete or failed data → controlled error + Retry"
+    },
+    "fill-dispense": {
+      "eyebrow": "CASE 2 · FILL / DISPENSE",
+      "title": "Two data gates. One final readiness decision.",
+      "subtitle": "Fill adds a medication-dispense dependency before its business rules can be evaluated.",
+      "readinessChecks": ["product + scan valid", "substitution classified", "required fields valid", "submission idle"],
+      "failureOutcome": "Missing action or dispense IDs → visible not-ready / error state"
+    },
+    "outcomes": {
+      "eyebrow": "THE RESULT",
+      "title": "Common architecture. Task-specific rules.",
+      "subtitle": "The user always sees usable data, meaningful progress, or a clear path to recover.",
+      "outcomes": ["No premature actions", "No dead clicks", "No stale submissions", "Less flicker and layout shift"]
+    }
+  }
+}

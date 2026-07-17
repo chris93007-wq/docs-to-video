@@ -1,4 +1,4 @@
-import {AbsoluteFill, Audio, Sequence, staticFile} from "remotion";
+import {AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile} from "remotion";
 import {SddShowcaseComposition} from "../renderers/remotion/showcases/sdd-orchestrator/SddShowcaseComposition";
 import manifest from "./sdd-orchestrator-launch-v0.8.2.json";
 
@@ -9,8 +9,11 @@ export const SDD_LAUNCH_V082_DURATION_FRAMES = Math.round(
   manifest.totalDurationSeconds * manifest.fps,
 );
 
+const endSlate = manifest.endSlate;
+const narrativeDurationSeconds = manifest.totalDurationSeconds - endSlate.durationSeconds;
+
 export const SddLaunchV082Composition = () => (
-  <AbsoluteFill style={{background: "#F4F7FB"}}>
+  <AbsoluteFill style={{background: "#F1EFED"}}>
     {manifest.narrationAudio.segments.map((segment) => (
       <Sequence
         key={segment.sceneId}
@@ -21,5 +24,13 @@ export const SddLaunchV082Composition = () => (
       </Sequence>
     ))}
     <SddShowcaseComposition manifest={manifest as any} />
+    <Sequence
+      from={Math.round(narrativeDurationSeconds * manifest.fps)}
+      durationInFrames={Math.round(endSlate.durationSeconds * manifest.fps)}
+    >
+      <AbsoluteFill style={{background: "#1E1E1C"}}>
+        <OffthreadVideo src={staticFile(endSlate.staticFile)} muted />
+      </AbsoluteFill>
+    </Sequence>
   </AbsoluteFill>
 );

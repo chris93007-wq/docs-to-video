@@ -377,7 +377,7 @@ export const GettingStartedScene = ({fps}: TddSceneProps) => {
             </div>
           );
         })}
-        <div style={{position: "absolute", left: 690, top: 217, width: 340, height: 38, borderRadius: 999, display: "grid", placeItems: "center", background: tddPalette.panelRaised, border: `1px solid ${tddPalette.gold}68`, color: tddPalette.gold, fontSize: 12, letterSpacing: 1.15, fontWeight: 900}}>
+        <div style={{position: "absolute", left: 690, top: 217, width: 340, height: 38, borderRadius: 999, display: "grid", placeItems: "center", background: tddPalette.panelRaised, border: `1px solid ${tddPalette.gold}68`, color: tddPalette.gold, fontSize: 12, letterSpacing: 1.15, fontWeight: 900, opacity: reveal(frame, fps * 6.1, fps * 0.55)}}>
           APPROVED PLAN → TEST GENERATION
         </div>
       </div>

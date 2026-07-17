@@ -183,12 +183,12 @@ test("getting started preserves the reviewed plan and sample approval sequence",
 test("red-green-refactor models the iterative engineer and Codex working loop", () => {
   const cycle = content.scenes["red-green-refactor"];
   const narration = launchPlan.scenes.find(({id}) => id === "red-green-refactor").narration;
-  assert.match(narration, /engineers and Codex.*(iterative work|time together)/i);
-  assert.match(narration, /Red:.*requirement-backed test.*expected failure/i);
+  assert.match(narration, /engineers and Codex.*(iterate together|iterative work|time together)/i);
+  assert.match(narration, /Red.*requirement-backed test.*(?:expected failure|fails as expected)/i);
   assert.match(narration, /Green:.*smallest change.*earlier tests.*passing/i);
   assert.match(narration, /green is a checkpoint.*not proof.*PR-ready/i);
   assert.match(narration, /feature locally.*behavior, UX, and edge cases/i);
-  assert.match(narration, /unit-testable change.*approved scope.*update Jest first.*confirm red.*change the code/i);
+  assert.match(narration, /unit-testable behavior change.*approved scope.*update Jest first.*confirm red.*change the code/i);
   assert.match(narration, /New behavior outside that boundary.*potential gap for review/i);
   assert.match(narration, /Refactor while green.*slice is ready/i);
 

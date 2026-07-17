@@ -125,7 +125,7 @@
       "title": "A composed gate for trustworthy evidence.",
       "eyebrow": "WHAT IT CAN DO FOR YOU",
       "purpose": "Explain the artifacts the skill creates and the guardrails it coordinates.",
-      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, weakening, scope, and readiness checks.",
+      "teachingPoint": "The skill joins generation, baseline capture, traceability, drift, defined weakening-signal checks, scope, and readiness checks.",
       "headline": "FROM REVIEWED INTENT TO AUDITABLE UNIT EVIDENCE",
       "flow": {
         "inputs": ["Requirements", "Reviewed Unit Test Target Plan"],

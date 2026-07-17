@@ -15,13 +15,17 @@ const projectContent = JSON.parse(
 );
 const sha256 = (filePath) => createHash("sha256").update(readFileSync(filePath)).digest("hex");
 
-test("v0.8.2 preserves the approved v008 narrative and timing", () => {
+test("v0.8.2 preserves the approved v008 narrative timing and adds Oracle Redwood branding", () => {
   const v008Manifest = manifestFor("v008");
   const v082Manifest = manifestFor("v0.8.2");
 
   assert.equal(v082Plan.version, "v0.8.2");
+  assert.equal(v082Plan.brandMode, "oracle-redwood");
   assert.equal(v082Plan.presentationMode, "live-demo-hybrid");
-  assert.equal(v082Manifest.totalDurationSeconds, 117);
+  assert.equal(v082Manifest.totalDurationSeconds, 123);
+  assert.ok(v082Manifest.totalDurationSeconds < 125);
+  assert.equal(v082Manifest.endSlate.durationSeconds, 6);
+  assert.equal(v082Manifest.scenes.at(-1).startSeconds + v082Manifest.scenes.at(-1).durationSeconds, 117);
   assert.equal(v082Manifest.scenes.length, 7);
   assert.deepEqual(
     v082Plan.scenes.map(({narration, performanceSegments}) => ({narration, performanceSegments})),
@@ -39,6 +43,7 @@ test("v0.8.2 bundles and maps the synchronized live-demo proof assets", () => {
   const assetIds = new Set(assets.map((asset) => asset.id));
 
   assert.equal(manifest.presentationMode, "live-demo-hybrid");
+  assert.equal(manifest.brandMode, "oracle-redwood");
   assert.equal(manifest.liveDemo.featureKey, "RX-13603");
   assert.ok(assets.some((asset) => asset.kind === "video"));
   assert.ok(assets.filter((asset) => asset.kind === "image").length >= 6);

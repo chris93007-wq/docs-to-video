@@ -1,0 +1,391 @@
+{
+  "kind": "RenderManifest",
+  "version": "1.0.0",
+  "renderer": "remotion",
+  "sourceHash": "48b3c7f0664e907acec6633f2e0050a761a5b63bc687fde7ee83091976b1b173",
+  "showcase": "pharmacy-task-workflow",
+  "launchVersion": "v001",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "narrativeDurationSeconds": 165.375,
+  "totalDurationSeconds": 171.375,
+  "content": {
+    "project": {
+      "title": "From Scattered State to Authoritative Task Workflows",
+      "subtitle": "Signal-driven loading and readiness for Pharmacy UI",
+      "audience": [
+        "Pharmacy UI engineers",
+        "Technical stakeholders"
+      ],
+      "genre": "Architecture explainer",
+      "positioning": "Asynchronous task data needs one authoritative lifecycle owner, while each task keeps its own business-readiness rules.",
+      "sourceTruth": [
+        "Codex task 019f5f3d-84c8-73c0-a44e-c35dc68c54f5",
+        "Oracle DevOps pharmacy-ui PR 966",
+        "origin/fix/chrjohn-RX-17230-enhance-load-stateMgmt"
+      ]
+    },
+    "format": {
+      "brand": "Oracle Redwood",
+      "visualDirection": "Dark, diagram-led, and high-contrast with red for legacy risk, green for new ownership, and blue for UI outcomes",
+      "music": "none",
+      "voice": "af_heart"
+    },
+    "scenes": {
+      "introduction": {
+        "eyebrow": "PHARMACY UI ARCHITECTURE",
+        "title": "From scattered state to authoritative task workflows",
+        "subtitle": "One loading model. Task-specific readiness. Predictable user experience.",
+        "cues": [
+          "Pick Up",
+          "Verify",
+          "Fill / Dispense"
+        ]
+      },
+      "legacy-problem": {
+        "eyebrow": "THE LEGACY PROBLEM",
+        "title": "One task. Too many independent owners.",
+        "subtitle": "The UI can observe a workflow between updates—after some values arrive, but before the task is actually safe to use.",
+        "writers": [
+          "loading booleans",
+          "component state",
+          "effects",
+          "context values",
+          "independent providers",
+          "click-time guards"
+        ],
+        "risks": [
+          "Form looks ready too early",
+          "Stale data crosses tasks",
+          "Skeleton never resolves",
+          "Submit silently returns"
+        ]
+      },
+      "new-solution": {
+        "eyebrow": "THE NEW SOLUTION",
+        "title": "Separate the lifecycles. Centralize the ownership.",
+        "subtitle": "Each open task gets one instance-scoped workflow store and three explicit responsibilities.",
+        "loadStates": [
+          "not_started",
+          "loading",
+          "ready",
+          "empty",
+          "error"
+        ],
+        "readinessChecks": [
+          "authoritative data",
+          "validation",
+          "required fields",
+          "submission idle"
+        ],
+        "submissionStates": [
+          "idle",
+          "submitting",
+          "error",
+          "success"
+        ],
+        "benefits": [
+          "atomic commits",
+          "stale request cancellation",
+          "Retry instead of dead ends",
+          "narrow signal subscriptions"
+        ]
+      },
+      "pickup-proof": {
+        "eyebrow": "PR 966 · RX-17230",
+        "title": "Pick Up proves the pattern in production code.",
+        "subtitle": "The drawer owns stable patient groups and renders only authoritative task responses.",
+        "patientGroups": [
+          "Patient A · active",
+          "Patient B · lazy",
+          "Patient C · lazy"
+        ],
+        "identityChecks": [
+          "patient",
+          "action",
+          "anchor Rx",
+          "medication dispense"
+        ],
+        "submitChecks": [
+          "ready response",
+          "valid selections",
+          "valid handoff"
+        ]
+      },
+      "verify": {
+        "eyebrow": "CASE 1 · VERIFY",
+        "title": "Ready is not the same as actionable.",
+        "subtitle": "Verify has one authoritative data gate, followed by its task-specific readiness policy.",
+        "readinessChecks": [
+          "Original Provider Order ready",
+          "validation complete",
+          "required fields valid",
+          "submission idle"
+        ],
+        "failureOutcome": "Incomplete or failed data → controlled error + Retry"
+      },
+      "fill-dispense": {
+        "eyebrow": "CASE 2 · FILL / DISPENSE",
+        "title": "Two data gates. One final readiness decision.",
+        "subtitle": "Fill adds a medication-dispense dependency before its business rules can be evaluated.",
+        "readinessChecks": [
+          "product + scan valid",
+          "substitution classified",
+          "required fields valid",
+          "submission idle"
+        ],
+        "failureOutcome": "Missing action or dispense IDs → visible not-ready / error state"
+      },
+      "outcomes": {
+        "eyebrow": "THE RESULT",
+        "title": "Common architecture. Task-specific rules.",
+        "subtitle": "The user always sees usable data, meaningful progress, or a clear path to recover.",
+        "outcomes": [
+          "No premature actions",
+          "No dead clicks",
+          "No stale submissions",
+          "Less flicker and layout shift"
+        ]
+      }
+    }
+  },
+  "scenes": [
+    {
+      "id": "introduction",
+      "intendedDurationSeconds": 9,
+      "narration": "This is how Pharmacy UI moves from scattered asynchronous state to authoritative, signal-driven task workflows.",
+      "eyebrow": "PHARMACY UI ARCHITECTURE",
+      "title": "From scattered state to authoritative task workflows",
+      "subtitle": "One loading model. Task-specific readiness. Predictable user experience.",
+      "cues": [
+        "Pick Up",
+        "Verify",
+        "Fill / Dispense"
+      ],
+      "startSeconds": 0,
+      "durationSeconds": 8.275
+    },
+    {
+      "id": "legacy-problem",
+      "intendedDurationSeconds": 28,
+      "narration": "In the legacy architecture, the data needed by one task is spread across loading booleans, component state, effects, context, and independent providers. Each value can update at a different time. That lets the UI observe a half-loaded task: a form can appear ready while the original order or medication dispense identifiers are still missing. Failures can leave an endless skeleton, and an enabled Submit can silently do nothing. The root problem is shared: the lifecycle has no single authoritative owner.",
+      "eyebrow": "THE LEGACY PROBLEM",
+      "title": "One task. Too many independent owners.",
+      "subtitle": "The UI can observe a workflow between updates—after some values arrive, but before the task is actually safe to use.",
+      "writers": [
+        "loading booleans",
+        "component state",
+        "effects",
+        "context values",
+        "independent providers",
+        "click-time guards"
+      ],
+      "risks": [
+        "Form looks ready too early",
+        "Stale data crosses tasks",
+        "Skeleton never resolves",
+        "Submit silently returns"
+      ],
+      "startSeconds": 8.275,
+      "durationSeconds": 27.400000000000002
+    },
+    {
+      "id": "new-solution",
+      "intendedDurationSeconds": 30,
+      "narration": "The new solution gives each open task an instance-scoped workflow store. One atomic Async Load State represents not started, loading, ready, empty, or error. A separate computed readiness signal enables the action only when authoritative data, validation, required fields, and an idle submission state all agree. Submission then has its own lifecycle. Related values commit together, stale requests are ignored, and failures resolve to Retry. Narrow signal subscriptions also keep loading updates local, reducing unnecessary rerenders and layout shift.",
+      "eyebrow": "THE NEW SOLUTION",
+      "title": "Separate the lifecycles. Centralize the ownership.",
+      "subtitle": "Each open task gets one instance-scoped workflow store and three explicit responsibilities.",
+      "loadStates": [
+        "not_started",
+        "loading",
+        "ready",
+        "empty",
+        "error"
+      ],
+      "readinessChecks": [
+        "authoritative data",
+        "validation",
+        "required fields",
+        "submission idle"
+      ],
+      "submissionStates": [
+        "idle",
+        "submitting",
+        "error",
+        "success"
+      ],
+      "benefits": [
+        "atomic commits",
+        "stale request cancellation",
+        "Retry instead of dead ends",
+        "narrow signal subscriptions"
+      ],
+      "startSeconds": 35.675,
+      "durationSeconds": 28.775000000000002
+    },
+    {
+      "id": "pickup-proof",
+      "intendedDurationSeconds": 22,
+      "narration": "Pull request nine sixty-six applies the pattern to Pick Up. A Pick Up Task Workflow Store owns stable per-patient groups. The active group loads atomically; later groups load lazily. The drawer renders only the ready response, verifies the patient, action, anchor prescription, and medication dispense identities, and keeps submission disabled until selections and handoff choices are valid. Closing or replacing the drawer invalidates late results.",
+      "eyebrow": "PR 966 · RX-17230",
+      "title": "Pick Up proves the pattern in production code.",
+      "subtitle": "The drawer owns stable patient groups and renders only authoritative task responses.",
+      "patientGroups": [
+        "Patient A · active",
+        "Patient B · lazy",
+        "Patient C · lazy"
+      ],
+      "identityChecks": [
+        "patient",
+        "action",
+        "anchor Rx",
+        "medication dispense"
+      ],
+      "submitChecks": [
+        "ready response",
+        "valid selections",
+        "valid handoff"
+      ],
+      "startSeconds": 64.45,
+      "durationSeconds": 28.625
+    },
+    {
+      "id": "verify",
+      "intendedDurationSeconds": 24,
+      "narration": "For Verify, the per-tab Pharmacy Detail store owns action details as one load state. Ready is not the same as actionable. Can Verify turns true only when the authoritative Original Provider Order has arrived, validation is complete, required fields are valid, and submission is idle. An incomplete or failed response becomes a controlled error with Retry, rather than an indefinite skeleton or premature Submit.",
+      "eyebrow": "CASE 1 · VERIFY",
+      "title": "Ready is not the same as actionable.",
+      "subtitle": "Verify has one authoritative data gate, followed by its task-specific readiness policy.",
+      "readinessChecks": [
+        "Original Provider Order ready",
+        "validation complete",
+        "required fields valid",
+        "submission idle"
+      ],
+      "failureOutcome": "Incomplete or failed data → controlled error + Retry",
+      "startSeconds": 93.075,
+      "durationSeconds": 26.975
+    },
+    {
+      "id": "fill-dispense",
+      "intendedDurationSeconds": 28,
+      "narration": "Fill and Dispense use the same architecture with one extra data dependency. Action details must be ready before the medication dispense summary loads. Only after both resources are ready does Can Fill evaluate product and scan matching, substitution classification, required fields, and submission state. Missing action or medication dispense identifiers become a visible not-ready or error state, instead of a late click-time guard that silently returns. Submit appears enabled only when the whole workflow is safe.",
+      "eyebrow": "CASE 2 · FILL / DISPENSE",
+      "title": "Two data gates. One final readiness decision.",
+      "subtitle": "Fill adds a medication-dispense dependency before its business rules can be evaluated.",
+      "readinessChecks": [
+        "product + scan valid",
+        "substitution classified",
+        "required fields valid",
+        "submission idle"
+      ],
+      "failureOutcome": "Missing action or dispense IDs → visible not-ready / error state",
+      "startSeconds": 120.05,
+      "durationSeconds": 28.2
+    },
+    {
+      "id": "outcomes",
+      "intendedDurationSeconds": 16,
+      "narration": "The result is one reusable architecture with task-specific business rules: meaningful loading, recoverable errors, no dead clicks, no stale submissions, and fewer visual jumps. The user sees either usable data, clear progress, or a path to recover.",
+      "eyebrow": "THE RESULT",
+      "title": "Common architecture. Task-specific rules.",
+      "subtitle": "The user always sees usable data, meaningful progress, or a clear path to recover.",
+      "outcomes": [
+        "No premature actions",
+        "No dead clicks",
+        "No stale submissions",
+        "Less flicker and layout shift"
+      ],
+      "startSeconds": 148.25,
+      "durationSeconds": 17.125
+    }
+  ],
+  "narrationAudio": {
+    "kind": "NarrationAudio",
+    "version": "1.0.0",
+    "sourceHash": "4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f",
+    "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
+    "voice": "af_heart",
+    "pauseSeconds": 0.55,
+    "totalDurationSeconds": 165.375,
+    "segments": [
+      {
+        "sceneId": "introduction",
+        "spokenText": "This is how Pharmacy UI moves from scattered asynchronous state to authoritative, signal-driven task workflows.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/introduction.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 7.725,
+        "startSeconds": 0,
+        "endSeconds": 7.725,
+        "pauseAfterSeconds": 0.55
+      },
+      {
+        "sceneId": "legacy-problem",
+        "spokenText": "In the legacy architecture, the data needed by one task is spread across loading booleans, component state, effects, context, and independent providers. Each value can update at a different time. That lets the UI observe a half-loaded task: a form can appear ready while the original order or medication dispense identifiers are still missing. Failures can leave an endless skeleton, and an enabled Submit can silently do nothing. The root problem is shared: the lifecycle has no single authoritative owner.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/legacy-problem.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 26.85,
+        "startSeconds": 8.275,
+        "endSeconds": 35.125,
+        "pauseAfterSeconds": 0.55
+      },
+      {
+        "sceneId": "new-solution",
+        "spokenText": "The new solution gives each open task an instance-scoped workflow store. One atomic Async Load State represents not started, loading, ready, empty, or error. A separate computed readiness signal enables the action only when authoritative data, validation, required fields, and an idle submission state all agree. Submission then has its own lifecycle. Related values commit together, stale requests are ignored, and failures resolve to Retry. Narrow signal subscriptions also keep loading updates local, reducing unnecessary rerenders and layout shift.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/new-solution.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 28.225,
+        "startSeconds": 35.675,
+        "endSeconds": 63.9,
+        "pauseAfterSeconds": 0.55
+      },
+      {
+        "sceneId": "pickup-proof",
+        "spokenText": "Pull request nine sixty-six applies the pattern to Pick Up. A Pick Up Task Workflow Store owns stable per-patient groups. The active group loads atomically; later groups load lazily. The drawer renders only the ready response, verifies the patient, action, anchor prescription, and medication dispense identities, and keeps submission disabled until selections and handoff choices are valid. Closing or replacing the drawer invalidates late results.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/pickup-proof.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 28.075,
+        "startSeconds": 64.45,
+        "endSeconds": 92.525,
+        "pauseAfterSeconds": 0.55
+      },
+      {
+        "sceneId": "verify",
+        "spokenText": "For Verify, the per-tab Pharmacy Detail store owns action details as one load state. Ready is not the same as actionable. Can Verify turns true only when the authoritative Original Provider Order has arrived, validation is complete, required fields are valid, and submission is idle. An incomplete or failed response becomes a controlled error with Retry, rather than an indefinite skeleton or premature Submit.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/verify.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 26.425,
+        "startSeconds": 93.075,
+        "endSeconds": 119.5,
+        "pauseAfterSeconds": 0.55
+      },
+      {
+        "sceneId": "fill-dispense",
+        "spokenText": "Fill and Dispense use the same architecture with one extra data dependency. Action details must be ready before the medication dispense summary loads. Only after both resources are ready does Can Fill evaluate product and scan matching, substitution classification, required fields, and submission state. Missing action or medication dispense identifiers become a visible not-ready or error state, instead of a late click-time guard that silently returns. Submit appears enabled only when the whole workflow is safe.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/fill-dispense.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 27.65,
+        "startSeconds": 120.05,
+        "endSeconds": 147.7,
+        "pauseAfterSeconds": 0.55
+      },
+      {
+        "sceneId": "outcomes",
+        "spokenText": "The result is one reusable architecture with task-specific business rules: meaningful loading, recoverable errors, no dead clicks, no stale submissions, and fewer visual jumps. The user sees either usable data, clear progress, or a path to recover.",
+        "staticFile": "audio/compiler/4557d5f664b80b599fa62973942f46382dbdc737c6a844b1a0465f490942460f/outcomes.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 17.125,
+        "startSeconds": 148.25,
+        "endSeconds": 165.375,
+        "pauseAfterSeconds": 0
+      }
+    ]
+  },
+  "endSlate": {
+    "staticFile": "brand/oracle/video/Oracle Endslate 2026 Opaque HD.mp4",
+    "durationSeconds": 6,
+    "treatment": "Play the official opaque Oracle end slate unmodified and muted."
+  }
+}

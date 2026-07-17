@@ -60,26 +60,26 @@ const narrationForScene = (scene, semanticDocument) => {
   const system = semanticDocument.systems[0]?.name ?? semanticDocument.title;
 
   if (scene.id === "guardrails") {
-    return `The orchestrator also guards against the failures that make SDD hard to adopt: skipped approvals, lost context, implementation drift, missing validation, and ambiguous handoffs. Scope stays tied to reviewed requirements, and evidence reconnects before the lifecycle update.`;
+    return `The orchestrator also guards you against the failures that make SDD hard to adopt — skipped approvals, lost context, implementation drift, missing validation, ambiguous handoffs. Your scope stays tied to reviewed requirements, and your evidence reconnects before the lifecycle update.`;
   }
 
   switch (scene.arcRole) {
     case "hook":
-      return `Spec-Driven Development works best when the spec is not a document on the side. It is the control plane: defining scope, validating work, and keeping evidence connected.`;
+      return `Spec-Driven Development works best when your spec isn't a document off to the side. It's your control plane: it defines scope, validates the work, and keeps evidence connected.`;
     case "problem":
-      return `Before orchestration, the work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks an engineer to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That is where context and confidence disappear.`;
+      return `Before orchestration, your work crosses prompts, artifacts, approvals, tests, and validation. Every handoff asks you to reconstruct what happened, which evidence was registered, and whether the next gate is clear. That's where context and confidence disappear.`;
     case "solution":
-      return `The SDD orchestrator turns those loose steps into a stateful workflow. Start from a Jira key or feature input, and the coordinator creates a run with status, blockers, pending approvals, artifacts, and events. The run stops when a human decision is required.`;
+      return `The SDD orchestrator turns those loose steps into a stateful workflow you can trust. Start from a Jira key or feature input, and the coordinator creates a run for you — with status, blockers, pending approvals, artifacts, and events. It stops the moment you need to make a call.`;
     case "guided walkthrough":
-      return `The canonical path stays visible: requirements intake, design, implementation planning, TDD unit tests, bounded implementation, Playwright requirement validation, and lifecycle update. Each phase registers durable evidence, so the next gate checks run state instead of trusting thread context.`;
+      return `You can see the canonical path the whole way through: requirements intake, design, implementation planning, Jest unit tests, bounded implementation, then Playwright requirement validation and a lifecycle update. Every phase registers durable evidence, so your next gate checks run state instead of trusting thread context.`;
     case "benefits":
-      return `For engineers, the payoff is lower cognitive load and stronger traceability. New adopters get one entry point. Product Managers see requirements connected to evidence, and engineering managers get a process that is easier to repeat and inspect.`;
+      return `If you're an engineer, that's lower cognitive load and stronger traceability, with one entry point instead of guesswork. Product managers see requirements connected to evidence, and engineering managers get a process that's easier to repeat and inspect.`;
     case "developer experience":
-      return `In Codex, the prompt asks the coordinator to run SDD for the Jira issue, register artifacts, capture approvals, create TDD unit tests before product code, and report blockers honestly. CLI support uses the same runtime, but Codex is the guided path for adoption.`;
+      return `In Codex, you just ask the coordinator to run SDD for your Jira issue — it registers artifacts, captures approvals, creates Jest unit tests before product code, and reports blockers honestly. CLI works the same runtime, but Codex is your guided path in.`;
     case "conclusion":
-      return `Try it on the next feature. Start one ${system} run, then contribute improvements to the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience.`;
+      return `Try it on your next feature. Start one ${system} run, then help us improve the workflow, prompts, gates, dashboard, validation, onboarding, or developer experience.`;
     default:
-      return `${scene.title} makes ${conceptPhrase} concrete. The viewer should see the mechanism, understand the boundary, and leave knowing why the workflow is easier to trust.`;
+      return `${scene.title} makes ${conceptPhrase} concrete for you. You should see the mechanism, understand the boundary, and leave knowing why the workflow is easier to trust.`;
   }
 };
 
