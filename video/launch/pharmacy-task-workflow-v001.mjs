@@ -18,19 +18,19 @@ const sceneBlueprints = [
     id: "legacy-problem",
     intendedDurationSeconds: 28,
     narration:
-      "In the legacy architecture, the data needed by one task is spread across loading booleans, component state, effects, context, and independent providers. Each value can update at a different time. That lets the UI observe a half-loaded task: a form can appear ready while the original order or medication dispense identifiers are still missing. Failures can leave an endless skeleton, and an enabled Submit can silently do nothing. The root problem is shared: the lifecycle has no single authoritative owner.",
+      "The goal is simple: by the time a pharmacist can click Submit, the task needs to actually be ready, not just look ready. In the legacy architecture, no single piece of code owns that decision. Readiness gets inferred instead, from loading booleans, component state, effects, and independent providers scattered through the component, each updating on its own timeline. That's how a form can appear ready before the original order or medication dispense identifiers have actually arrived, how a failed request can leave a skeleton spinning forever, and how an enabled Submit button can be clicked and just do nothing.",
   },
   {
     id: "new-solution",
     intendedDurationSeconds: 30,
     narration:
-      "The new solution gives each open task an instance-scoped workflow store. One atomic Async Load State represents not started, loading, ready, empty, or error. A separate computed readiness signal enables the action only when authoritative data, validation, required fields, and an idle submission state all agree. Submission then has its own lifecycle. Related values commit together, stale requests are ignored, and failures resolve to Retry. Narrow signal subscriptions also keep loading updates local, reducing unnecessary rerenders and layout shift.",
+      "The fix gives each open task one clear owner for its own lifecycle. A single load state tracks whether that task's data hasn't started, is loading, is ready, is empty, or has failed. The action only turns on once the data has arrived, passed validation, and nothing else is mid-submit. Submitting is tracked as its own separate step, so related values land together, an old request can't overwrite a newer one, and a failure just means Retry, not a dead end. And because each part of the screen only listens for the one signal it actually needs, an update in one place doesn't force everything else to redraw.",
   },
   {
     id: "pickup-proof",
     intendedDurationSeconds: 22,
     narration:
-      "Pull request nine sixty-six applies the pattern to Pick Up. A Pick Up Task Workflow Store owns stable per-patient groups. The active group loads atomically; later groups load lazily. The drawer renders only the ready response, verifies the patient, action, anchor prescription, and medication dispense identities, and keeps submission disabled until selections and handoff choices are valid. Closing or replacing the drawer invalidates late results.",
+      "Pick Up shows this pattern working in real production code, from pull request nine sixty-six. A dedicated store keeps each patient's data in its own group: the active patient loads right away, and the rest load quietly in the background. The drawer only ever shows a group once it's confirmed ready, double-checks that the patient, action, and prescription actually match before you can proceed, and keeps Submit off until every choice you've made is valid. Close the drawer or switch patients, and any response still in flight is simply thrown away.",
   },
   {
     id: "verify",

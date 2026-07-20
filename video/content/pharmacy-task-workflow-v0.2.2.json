@@ -1,0 +1,158 @@
+{
+  "project": {
+    "title": "A Pharmacy Screen Should Never Be Half Ready",
+    "subtitle": "One owner for loading, readiness, and submission",
+    "audience": ["Pharmacy UI engineers", "Technical stakeholders"],
+    "genre": "Architecture explainer",
+    "author": "Christine John",
+    "production": "AI-assisted visual and narration production",
+    "sourceTruth": [
+      "Oracle DevOps pharmacy-ui PR 966",
+      "RX-17230",
+      "origin/master legacy useWorklistActions.ts",
+      "origin/fix/chrjohn-RX-17230-enhance-load-stateMgmt"
+    ]
+  },
+  "format": {
+    "brand": "Oracle Redwood light",
+    "visualDirection": "Warm off-white canvas, white surfaces, Bark typography, Oracle red accents, and restrained green, blue, and gold workflow states",
+    "music": "none",
+    "voice": "af_heart"
+  },
+  "scenes": {
+    "big-picture": {
+      "eyebrow": "THE BIG PICTURE",
+      "title": "A Pharmacy screen should never be half ready.",
+      "subtitle": "The form and its action must agree about whether the required data is complete.",
+      "problem": "The screen looks ready",
+      "missing": "Required task data is still loading",
+      "goal": "Predictable before the user clicks"
+    },
+    "concrete-example": {
+      "eyebrow": "A CONCRETE LEGACY EXAMPLE",
+      "title": "The button could trust partial state.",
+      "subtitle": "Pick Up stored related facts separately, then enabled Submit from only two of them.",
+      "file": "plugins/pharmacy/src/hooks/useWorklistActions.ts",
+      "code": [
+        "pickupPrescriptions = signal([])",
+        "selectedDispenseIds = signal([])",
+        "isPickupLoading = signal(false)",
+        "patientContexts = signal([])",
+        "",
+        "canSubmit = !isPickupLoading",
+        "  && selectedDispenseIds.length > 0"
+      ],
+      "gap": "This does not prove the latest complete task response is ready.",
+      "evidence": {
+        "staticFile": "media/pharmacy-workflow-v0.2.2/pr-966-before-after.png",
+        "sourceUrl": "https://devops.oci.oraclecorp.com/devops-coderepository/namespaces/axuxirvibvvo/projects/OHAI_CLINICAL/repositories/pharmacy-ui/pullRequestsTabs/966?_ctx=us-phoenix-1%2Cdevops_scm_central",
+        "sourceLabel": "Source: PR 966 · Before & After",
+        "caption": "Green = new · Red = legacy · Gray = unchanged",
+        "naturalWidth": 3631,
+        "naturalHeight": 1138,
+        "sha256": "0c98e51901a90f804004d176889cc867d8389489cecc6d384a7211b6902fbcd0",
+        "focusRegions": [
+          {
+            "id": "legacy-orchestration",
+            "label": "Legacy orchestration removed",
+            "tone": "red",
+            "x": 0,
+            "y": 548,
+            "width": 1280,
+            "height": 590
+          },
+          {
+            "id": "signal-owned-store",
+            "label": "Signal-owned workflow state",
+            "tone": "green",
+            "x": 700,
+            "y": 440,
+            "width": 2140,
+            "height": 660
+          }
+        ]
+      }
+    },
+    "root-cause": {
+      "eyebrow": "THE ROOT CAUSE",
+      "title": "The issue is ownership, not the state library.",
+      "subtitle": "Several independent values can tell the screen different stories at the same time.",
+      "facts": ["Loading says complete", "Selections exist", "Original order is missing", "Latest request is still in flight"],
+      "outcomes": ["Premature action", "Endless skeleton", "Silent no-op"]
+    },
+    "one-owner": {
+      "eyebrow": "THE NEW SOLUTION",
+      "title": "One owner. Three plain questions.",
+      "subtitle": "The open task has one place that can give the UI a consistent answer.",
+      "questions": [
+        {"number": "1", "question": "Is the required data loaded?", "implementation": "AsyncLoadState"},
+        {"number": "2", "question": "Is this task safe to perform?", "implementation": "task readiness signal"},
+        {"number": "3", "question": "Is submission already running?", "implementation": "submission state"}
+      ],
+      "behaviors": ["related values change together", "late responses are ignored", "errors offer Retry"],
+      "evidence": {
+        "staticFile": "media/pharmacy-workflow-v0.2.2/pr-966-design.png",
+        "sourceUrl": "https://devops.oci.oraclecorp.com/devops-coderepository/namespaces/axuxirvibvvo/projects/OHAI_CLINICAL/repositories/pharmacy-ui/pullRequestsTabs/966?_ctx=us-phoenix-1%2Cdevops_scm_central",
+        "sourceLabel": "Source: PR 966 · Design",
+        "caption": "Loading, readiness, and submission remain separate lifecycle questions",
+        "naturalWidth": 2536,
+        "naturalHeight": 890,
+        "sha256": "93eb59baaea337111ba874b608f62dccffc25a4514c1aaba9f5e55da62a09713",
+        "focusRegions": [
+          {
+            "id": "task-data-loading",
+            "label": "1 · Task-data loading",
+            "tone": "blue",
+            "x": 0,
+            "y": 0,
+            "width": 1180,
+            "height": 400
+          },
+          {
+            "id": "readiness-gate",
+            "label": "2 · Readiness conditions",
+            "tone": "green",
+            "x": 850,
+            "y": 380,
+            "width": 850,
+            "height": 510
+          },
+          {
+            "id": "action-submission",
+            "label": "3 · Action submission",
+            "tone": "gold",
+            "x": 1450,
+            "y": 430,
+            "width": 1086,
+            "height": 300
+          }
+        ]
+      }
+    },
+    "verify": {
+      "eyebrow": "CASE 1 · VERIFY",
+      "title": "Verify separates rendering from action readiness.",
+      "subtitle": "The form may render before the Verify button is allowed to act.",
+      "load": "Action details loaded",
+      "checks": ["Original Provider Order present", "Validation complete", "Required fields valid", "Submission idle"],
+      "error": "Order cannot load → error + Retry"
+    },
+    "fill-dispense": {
+      "eyebrow": "CASE 2 · FILL / DISPENSE",
+      "title": "Fill has two data gates before its business rules.",
+      "subtitle": "Each dependency must be ready in sequence; a partial response cannot enable the action.",
+      "stages": ["Action details", "Medication dispense summary", "Fill readiness"],
+      "checks": ["Product + barcode", "Substitution", "Required fields", "Submission idle"],
+      "error": "Missing action or dispense ID → visible not-ready state"
+    },
+    "outcome": {
+      "eyebrow": "THE OUTCOME",
+      "title": "Loading, ready, or recoverable—never half ready.",
+      "subtitle": "The button is enabled only when the workflow can actually complete.",
+      "outcomes": ["No premature actions", "No dead clicks", "No stale submissions"],
+      "credit": "Architecture and narrative direction: Christine John",
+      "production": "AI-assisted production",
+      "sources": "Grounded in PR 966 · RX-17230 · pharmacy-ui branch diff"
+    }
+  }
+}

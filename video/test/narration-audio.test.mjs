@@ -5,9 +5,11 @@ import {test} from "node:test";
 import {
   applyNarrationTiming,
   createNarrationAudio,
+  findSynthesisArtifacts,
   narrationAudioFilesExist,
   pcmWavBuffer,
   speechTextFor,
+  trimTrailingSynthesisArtifact,
 } from "../compiler/stages/narration-audio.mjs";
 import {projectRoot} from "../compiler/utils.mjs";
 
@@ -35,6 +37,92 @@ const narration = {
     {sceneId: "conclusion", startSeconds: 1, endSeconds: 2, text: "CLI uses TDD and Playwright."},
   ],
 };
+
+const SAMPLE_RATE = 24000;
+const silence = (seconds) => new Float32Array(Math.round(seconds * SAMPLE_RATE));
+const tone = (seconds, amplitude, freq = 200) => {
+  const n = Math.round(seconds * SAMPLE_RATE);
+  const out = new Float32Array(n);
+  for (let i = 0; i < n; i += 1) {
+    out[i] = Math.sin((2 * Math.PI * freq * i) / SAMPLE_RATE) * amplitude;
+  }
+  return out;
+};
+const concatSamples = (...arrays) => {
+  const total = arrays.reduce((sum, array) => sum + array.length, 0);
+  const out = new Float32Array(total);
+  let offset = 0;
+  for (const array of arrays) {
+    out.set(array, offset);
+    offset += array.length;
+  }
+  return out;
+};
+
+test("trimTrailingSynthesisArtifact removes a trailing clip burst after real speech ends", () => {
+  const samples = concatSamples(tone(1, 0.3), silence(0.5), tone(0.03, 0.999));
+  const trimmed = trimTrailingSynthesisArtifact(samples, SAMPLE_RATE);
+
+  assert.ok(trimmed.length < samples.length);
+  assert.deepEqual(findSynthesisArtifacts(trimmed, SAMPLE_RATE), []);
+});
+
+test("trimTrailingSynthesisArtifact leaves clean audio untouched", () => {
+  const samples = concatSamples(tone(1, 0.3), silence(0.3));
+  const trimmed = trimTrailingSynthesisArtifact(samples, SAMPLE_RATE);
+  assert.equal(trimmed, samples);
+});
+
+test("findSynthesisArtifacts flags an isolated clip burst bounded by real silence", () => {
+  const samples = concatSamples(silence(0.3), tone(0.03, 0.999), silence(0.3));
+  const artifacts = findSynthesisArtifacts(samples, SAMPLE_RATE);
+  assert.equal(artifacts.length, 1);
+  assert.ok(artifacts[0].startSeconds >= 0.29 && artifacts[0].startSeconds <= 0.31);
+});
+
+test("findSynthesisArtifacts ignores a loud consonant inside ordinary continuous speech", () => {
+  // A brief (<50ms) dip below the silence threshold between syllables, followed
+  // by a loud peak, surrounded by ordinary speech on both sides and real
+  // silence only far away — this should read as a real word, not a glitch.
+  const samples = concatSamples(
+    silence(0.3),
+    tone(0.08, 0.3),
+    silence(0.02),
+    tone(0.01, 0.999),
+    tone(0.12, 0.3),
+    silence(0.3),
+  );
+  assert.deepEqual(findSynthesisArtifacts(samples, SAMPLE_RATE), []);
+});
+
+test("createNarrationAudio rejects a scene whose synthesized audio contains an isolated clipping burst", async () => {
+  const glitchedStoryPlan = {
+    ...storyPlan,
+    scenes: [{id: "hook", durationSeconds: 1}],
+  };
+  const glitchedNarration = {
+    ...narration,
+    segments: [{sceneId: "hook", startSeconds: 0, endSeconds: 1, text: "Hello."}],
+  };
+  // The glitch sits well before the end, followed by more ordinary speech, so
+  // trimTrailingSynthesisArtifact (tail-only) can't reach it — only the
+  // whole-buffer assertion catches it.
+  const synthesize = async () => ({
+    samples: concatSamples(silence(0.3), tone(0.03, 0.999), silence(0.3), tone(0.3, 0.3)),
+    sampleRate: SAMPLE_RATE,
+  });
+
+  await assert.rejects(
+    createNarrationAudio({
+      storyPlan: glitchedStoryPlan,
+      narration: glitchedNarration,
+      voice: "af_heart",
+      model: "test-model",
+      synthesize,
+    }),
+    /isolated clipping burst/,
+  );
+});
 
 test("speech-only pronunciation rules preserve display narration", () => {
   assert.equal(

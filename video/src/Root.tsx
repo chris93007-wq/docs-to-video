@@ -41,6 +41,20 @@ import {
   PHARMACY_WORKFLOW_V001_WIDTH,
   PharmacyTaskWorkflowV001Composition,
 } from "./launch/PharmacyTaskWorkflowV001Composition";
+import {
+  PHARMACY_WORKFLOW_V021_DURATION_FRAMES,
+  PHARMACY_WORKFLOW_V021_FPS,
+  PHARMACY_WORKFLOW_V021_HEIGHT,
+  PHARMACY_WORKFLOW_V021_WIDTH,
+  PharmacyTaskWorkflowV021Composition,
+} from "./launch/PharmacyTaskWorkflowV021Composition";
+import {
+  PHARMACY_WORKFLOW_V022_DURATION_FRAMES,
+  PHARMACY_WORKFLOW_V022_FPS,
+  PHARMACY_WORKFLOW_V022_HEIGHT,
+  PHARMACY_WORKFLOW_V022_WIDTH,
+  PharmacyTaskWorkflowV022Composition,
+} from "./launch/PharmacyTaskWorkflowV022Composition";
 
 export const RemotionRoot = () => (
   <>
@@ -91,6 +105,22 @@ export const RemotionRoot = () => (
       fps={PHARMACY_WORKFLOW_V001_FPS}
       width={PHARMACY_WORKFLOW_V001_WIDTH}
       height={PHARMACY_WORKFLOW_V001_HEIGHT}
+    />
+    <Composition
+      id="PharmacyTaskWorkflowExplainerV021"
+      component={PharmacyTaskWorkflowV021Composition}
+      durationInFrames={PHARMACY_WORKFLOW_V021_DURATION_FRAMES}
+      fps={PHARMACY_WORKFLOW_V021_FPS}
+      width={PHARMACY_WORKFLOW_V021_WIDTH}
+      height={PHARMACY_WORKFLOW_V021_HEIGHT}
+    />
+    <Composition
+      id="PharmacyTaskWorkflowExplainerV022"
+      component={PharmacyTaskWorkflowV022Composition}
+      durationInFrames={PHARMACY_WORKFLOW_V022_DURATION_FRAMES}
+      fps={PHARMACY_WORKFLOW_V022_FPS}
+      width={PHARMACY_WORKFLOW_V022_WIDTH}
+      height={PHARMACY_WORKFLOW_V022_HEIGHT}
     />
   </>
 );

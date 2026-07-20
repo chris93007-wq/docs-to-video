@@ -1,0 +1,524 @@
+{
+  "kind": "RenderManifest",
+  "version": "1.0.0",
+  "renderer": "remotion",
+  "sourceHash": "abde8a6b00b83674733ca75616cb21914fb3734e7f81b0c423f78ab7b3de984f",
+  "narrationSignature": "2d7ec7392b05c0d506cb52c5e7653e86563062c651969f7e59897756bcb67b98",
+  "narrationSettings": {
+    "voice": "af_heart",
+    "pauseSeconds": 0.5,
+    "tailPaddingSeconds": 0.4
+  },
+  "showcase": "pharmacy-task-workflow-light",
+  "launchVersion": "v0.2.2",
+  "brandMode": "oracle-redwood-light",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "narrativeDurationSeconds": 156.675,
+  "totalDurationSeconds": 162.675,
+  "content": {
+    "project": {
+      "title": "A Pharmacy Screen Should Never Be Half Ready",
+      "subtitle": "One owner for loading, readiness, and submission",
+      "audience": [
+        "Pharmacy UI engineers",
+        "Technical stakeholders"
+      ],
+      "genre": "Architecture explainer",
+      "author": "Christine John",
+      "production": "AI-assisted visual and narration production",
+      "sourceTruth": [
+        "Oracle DevOps pharmacy-ui PR 966",
+        "RX-17230",
+        "origin/master legacy useWorklistActions.ts",
+        "origin/fix/chrjohn-RX-17230-enhance-load-stateMgmt"
+      ]
+    },
+    "format": {
+      "brand": "Oracle Redwood light",
+      "visualDirection": "Warm off-white canvas, white surfaces, Bark typography, Oracle red accents, and restrained green, blue, and gold workflow states",
+      "music": "none",
+      "voice": "af_heart"
+    },
+    "scenes": {
+      "big-picture": {
+        "eyebrow": "THE BIG PICTURE",
+        "title": "A Pharmacy screen should never be half ready.",
+        "subtitle": "The form and its action must agree about whether the required data is complete.",
+        "problem": "The screen looks ready",
+        "missing": "Required task data is still loading",
+        "goal": "Predictable before the user clicks"
+      },
+      "concrete-example": {
+        "eyebrow": "A CONCRETE LEGACY EXAMPLE",
+        "title": "The button could trust partial state.",
+        "subtitle": "Pick Up stored related facts separately, then enabled Submit from only two of them.",
+        "file": "plugins/pharmacy/src/hooks/useWorklistActions.ts",
+        "code": [
+          "pickupPrescriptions = signal([])",
+          "selectedDispenseIds = signal([])",
+          "isPickupLoading = signal(false)",
+          "patientContexts = signal([])",
+          "",
+          "canSubmit = !isPickupLoading",
+          "  && selectedDispenseIds.length > 0"
+        ],
+        "gap": "This does not prove the latest complete task response is ready.",
+        "evidence": {
+          "staticFile": "media/pharmacy-workflow-v0.2.2/pr-966-before-after.png",
+          "sourceUrl": "https://devops.oci.oraclecorp.com/devops-coderepository/namespaces/axuxirvibvvo/projects/OHAI_CLINICAL/repositories/pharmacy-ui/pullRequestsTabs/966?_ctx=us-phoenix-1%2Cdevops_scm_central",
+          "sourceLabel": "Source: PR 966 · Before & After",
+          "caption": "Green = new · Red = legacy · Gray = unchanged",
+          "naturalWidth": 3631,
+          "naturalHeight": 1138,
+          "sha256": "0c98e51901a90f804004d176889cc867d8389489cecc6d384a7211b6902fbcd0",
+          "focusRegions": [
+            {
+              "id": "legacy-orchestration",
+              "label": "Legacy orchestration removed",
+              "tone": "red",
+              "x": 0,
+              "y": 548,
+              "width": 1280,
+              "height": 590
+            },
+            {
+              "id": "signal-owned-store",
+              "label": "Signal-owned workflow state",
+              "tone": "green",
+              "x": 700,
+              "y": 440,
+              "width": 2140,
+              "height": 660
+            }
+          ]
+        }
+      },
+      "root-cause": {
+        "eyebrow": "THE ROOT CAUSE",
+        "title": "The issue is ownership, not the state library.",
+        "subtitle": "Several independent values can tell the screen different stories at the same time.",
+        "facts": [
+          "Loading says complete",
+          "Selections exist",
+          "Original order is missing",
+          "Latest request is still in flight"
+        ],
+        "outcomes": [
+          "Premature action",
+          "Endless skeleton",
+          "Silent no-op"
+        ]
+      },
+      "one-owner": {
+        "eyebrow": "THE NEW SOLUTION",
+        "title": "One owner. Three plain questions.",
+        "subtitle": "The open task has one place that can give the UI a consistent answer.",
+        "questions": [
+          {
+            "number": "1",
+            "question": "Is the required data loaded?",
+            "implementation": "AsyncLoadState"
+          },
+          {
+            "number": "2",
+            "question": "Is this task safe to perform?",
+            "implementation": "task readiness signal"
+          },
+          {
+            "number": "3",
+            "question": "Is submission already running?",
+            "implementation": "submission state"
+          }
+        ],
+        "behaviors": [
+          "related values change together",
+          "late responses are ignored",
+          "errors offer Retry"
+        ],
+        "evidence": {
+          "staticFile": "media/pharmacy-workflow-v0.2.2/pr-966-design.png",
+          "sourceUrl": "https://devops.oci.oraclecorp.com/devops-coderepository/namespaces/axuxirvibvvo/projects/OHAI_CLINICAL/repositories/pharmacy-ui/pullRequestsTabs/966?_ctx=us-phoenix-1%2Cdevops_scm_central",
+          "sourceLabel": "Source: PR 966 · Design",
+          "caption": "Loading, readiness, and submission remain separate lifecycle questions",
+          "naturalWidth": 2536,
+          "naturalHeight": 890,
+          "sha256": "93eb59baaea337111ba874b608f62dccffc25a4514c1aaba9f5e55da62a09713",
+          "focusRegions": [
+            {
+              "id": "task-data-loading",
+              "label": "1 · Task-data loading",
+              "tone": "blue",
+              "x": 0,
+              "y": 0,
+              "width": 1180,
+              "height": 400
+            },
+            {
+              "id": "readiness-gate",
+              "label": "2 · Readiness conditions",
+              "tone": "green",
+              "x": 850,
+              "y": 380,
+              "width": 850,
+              "height": 510
+            },
+            {
+              "id": "action-submission",
+              "label": "3 · Action submission",
+              "tone": "gold",
+              "x": 1450,
+              "y": 430,
+              "width": 1086,
+              "height": 300
+            }
+          ]
+        }
+      },
+      "verify": {
+        "eyebrow": "CASE 1 · VERIFY",
+        "title": "Verify separates rendering from action readiness.",
+        "subtitle": "The form may render before the Verify button is allowed to act.",
+        "load": "Action details loaded",
+        "checks": [
+          "Original Provider Order present",
+          "Validation complete",
+          "Required fields valid",
+          "Submission idle"
+        ],
+        "error": "Order cannot load → error + Retry"
+      },
+      "fill-dispense": {
+        "eyebrow": "CASE 2 · FILL / DISPENSE",
+        "title": "Fill has two data gates before its business rules.",
+        "subtitle": "Each dependency must be ready in sequence; a partial response cannot enable the action.",
+        "stages": [
+          "Action details",
+          "Medication dispense summary",
+          "Fill readiness"
+        ],
+        "checks": [
+          "Product + barcode",
+          "Substitution",
+          "Required fields",
+          "Submission idle"
+        ],
+        "error": "Missing action or dispense ID → visible not-ready state"
+      },
+      "outcome": {
+        "eyebrow": "THE OUTCOME",
+        "title": "Loading, ready, or recoverable—never half ready.",
+        "subtitle": "The button is enabled only when the workflow can actually complete.",
+        "outcomes": [
+          "No premature actions",
+          "No dead clicks",
+          "No stale submissions"
+        ],
+        "credit": "Architecture and narrative direction: Christine John",
+        "production": "AI-assisted production",
+        "sources": "Grounded in PR 966 · RX-17230 · pharmacy-ui branch diff"
+      }
+    }
+  },
+  "scenes": [
+    {
+      "id": "big-picture",
+      "intendedDurationSeconds": 15,
+      "narration": "Users should never be able to act on a Pharmacy screen that is only half loaded. Today, the form can look ready while information it still needs is arriving. The goal of this change is simple: make the open screen predictable before the user clicks.",
+      "eyebrow": "THE BIG PICTURE",
+      "title": "A Pharmacy screen should never be half ready.",
+      "subtitle": "The form and its action must agree about whether the required data is complete.",
+      "problem": "The screen looks ready",
+      "missing": "Required task data is still loading",
+      "goal": "Predictable before the user clicks",
+      "startSeconds": 0,
+      "durationSeconds": 16.325
+    },
+    {
+      "id": "concrete-example",
+      "intendedDurationSeconds": 22,
+      "narration": "Here is the concrete legacy pattern. Pick Up stored prescriptions, selected dispense identifiers, loading, and patient context as separate values. But the Submit rule only asked two questions: is loading false, and is at least one identifier selected? Those can be true before the latest complete task response has been verified, so the button can look ready too early.",
+      "eyebrow": "A CONCRETE LEGACY EXAMPLE",
+      "title": "The button could trust partial state.",
+      "subtitle": "Pick Up stored related facts separately, then enabled Submit from only two of them.",
+      "file": "plugins/pharmacy/src/hooks/useWorklistActions.ts",
+      "code": [
+        "pickupPrescriptions = signal([])",
+        "selectedDispenseIds = signal([])",
+        "isPickupLoading = signal(false)",
+        "patientContexts = signal([])",
+        "",
+        "canSubmit = !isPickupLoading",
+        "  && selectedDispenseIds.length > 0"
+      ],
+      "gap": "This does not prove the latest complete task response is ready.",
+      "evidence": {
+        "staticFile": "media/pharmacy-workflow-v0.2.2/pr-966-before-after.png",
+        "sourceUrl": "https://devops.oci.oraclecorp.com/devops-coderepository/namespaces/axuxirvibvvo/projects/OHAI_CLINICAL/repositories/pharmacy-ui/pullRequestsTabs/966?_ctx=us-phoenix-1%2Cdevops_scm_central",
+        "sourceLabel": "Source: PR 966 · Before & After",
+        "caption": "Green = new · Red = legacy · Gray = unchanged",
+        "naturalWidth": 3631,
+        "naturalHeight": 1138,
+        "sha256": "0c98e51901a90f804004d176889cc867d8389489cecc6d384a7211b6902fbcd0",
+        "focusRegions": [
+          {
+            "id": "legacy-orchestration",
+            "label": "Legacy orchestration removed",
+            "tone": "red",
+            "x": 0,
+            "y": 548,
+            "width": 1280,
+            "height": 590
+          },
+          {
+            "id": "signal-owned-store",
+            "label": "Signal-owned workflow state",
+            "tone": "green",
+            "x": 700,
+            "y": 440,
+            "width": 2140,
+            "height": 660
+          }
+        ]
+      },
+      "startSeconds": 16.325,
+      "durationSeconds": 24.75
+    },
+    {
+      "id": "root-cause",
+      "intendedDurationSeconds": 18,
+      "narration": "This is not a problem with signals themselves. It is an ownership problem. Several values can tell the screen different stories at the same time. On failure, the screen can also remain a skeleton with no recovery path. There is no single place that can say whether the task is truly ready.",
+      "eyebrow": "THE ROOT CAUSE",
+      "title": "The issue is ownership, not the state library.",
+      "subtitle": "Several independent values can tell the screen different stories at the same time.",
+      "facts": [
+        "Loading says complete",
+        "Selections exist",
+        "Original order is missing",
+        "Latest request is still in flight"
+      ],
+      "outcomes": [
+        "Premature action",
+        "Endless skeleton",
+        "Silent no-op"
+      ],
+      "startSeconds": 41.075,
+      "durationSeconds": 19.375
+    },
+    {
+      "id": "one-owner",
+      "intendedDurationSeconds": 25,
+      "narration": "The new design gives the open task one owner and asks three plain questions. Is the required data loaded? Is this specific task safe to perform? And is a submission already running? Loading has clear outcomes: ready, empty, or error. Related values change together, late responses are ignored, and errors offer Retry. The implementation names are Async Load State, a task workflow store, and a readiness signal. The idea is simply one consistent answer.",
+      "eyebrow": "THE NEW SOLUTION",
+      "title": "One owner. Three plain questions.",
+      "subtitle": "The open task has one place that can give the UI a consistent answer.",
+      "questions": [
+        {
+          "number": "1",
+          "question": "Is the required data loaded?",
+          "implementation": "AsyncLoadState"
+        },
+        {
+          "number": "2",
+          "question": "Is this task safe to perform?",
+          "implementation": "task readiness signal"
+        },
+        {
+          "number": "3",
+          "question": "Is submission already running?",
+          "implementation": "submission state"
+        }
+      ],
+      "behaviors": [
+        "related values change together",
+        "late responses are ignored",
+        "errors offer Retry"
+      ],
+      "evidence": {
+        "staticFile": "media/pharmacy-workflow-v0.2.2/pr-966-design.png",
+        "sourceUrl": "https://devops.oci.oraclecorp.com/devops-coderepository/namespaces/axuxirvibvvo/projects/OHAI_CLINICAL/repositories/pharmacy-ui/pullRequestsTabs/966?_ctx=us-phoenix-1%2Cdevops_scm_central",
+        "sourceLabel": "Source: PR 966 · Design",
+        "caption": "Loading, readiness, and submission remain separate lifecycle questions",
+        "naturalWidth": 2536,
+        "naturalHeight": 890,
+        "sha256": "93eb59baaea337111ba874b608f62dccffc25a4514c1aaba9f5e55da62a09713",
+        "focusRegions": [
+          {
+            "id": "task-data-loading",
+            "label": "1 · Task-data loading",
+            "tone": "blue",
+            "x": 0,
+            "y": 0,
+            "width": 1180,
+            "height": 400
+          },
+          {
+            "id": "readiness-gate",
+            "label": "2 · Readiness conditions",
+            "tone": "green",
+            "x": 850,
+            "y": 380,
+            "width": 850,
+            "height": 510
+          },
+          {
+            "id": "action-submission",
+            "label": "3 · Action submission",
+            "tone": "gold",
+            "x": 1450,
+            "y": 430,
+            "width": 1086,
+            "height": 300
+          }
+        ]
+      },
+      "startSeconds": 60.45,
+      "durationSeconds": 29.4
+    },
+    {
+      "id": "verify",
+      "intendedDurationSeconds": 20,
+      "narration": "For Verify, action details must arrive before the form can render. But the button stays disabled until the Original Provider Order is present, validation is complete, required fields are valid, and no submission is running. If the order cannot load, the user gets a clear error and Retry instead of an endless skeleton.",
+      "eyebrow": "CASE 1 · VERIFY",
+      "title": "Verify separates rendering from action readiness.",
+      "subtitle": "The form may render before the Verify button is allowed to act.",
+      "load": "Action details loaded",
+      "checks": [
+        "Original Provider Order present",
+        "Validation complete",
+        "Required fields valid",
+        "Submission idle"
+      ],
+      "error": "Order cannot load → error + Retry",
+      "startSeconds": 89.85,
+      "durationSeconds": 21.575
+    },
+    {
+      "id": "fill-dispense",
+      "intendedDurationSeconds": 22,
+      "narration": "Fill and Dispense need one additional step. Action details load first, then the medication dispense summary. Only after both are ready do we check the product and barcode, substitution, required fields, and submission state. Missing action or dispense identifiers become a visible not-ready state, not a click that silently does nothing.",
+      "eyebrow": "CASE 2 · FILL / DISPENSE",
+      "title": "Fill has two data gates before its business rules.",
+      "subtitle": "Each dependency must be ready in sequence; a partial response cannot enable the action.",
+      "stages": [
+        "Action details",
+        "Medication dispense summary",
+        "Fill readiness"
+      ],
+      "checks": [
+        "Product + barcode",
+        "Substitution",
+        "Required fields",
+        "Submission idle"
+      ],
+      "error": "Missing action or dispense ID → visible not-ready state",
+      "startSeconds": 111.425,
+      "durationSeconds": 22.875
+    },
+    {
+      "id": "outcome",
+      "intendedDurationSeconds": 18,
+      "narration": "The result is not more architecture for its own sake. It is a screen that is loading, ready, or recoverable, and a button that is enabled only when it can work. This explanation reflects Christine John's architecture direction and is grounded in pull request nine sixty-six and the Pharmacy UI branch diff. AI assisted with production.",
+      "eyebrow": "THE OUTCOME",
+      "title": "Loading, ready, or recoverable—never half ready.",
+      "subtitle": "The button is enabled only when the workflow can actually complete.",
+      "outcomes": [
+        "No premature actions",
+        "No dead clicks",
+        "No stale submissions"
+      ],
+      "credit": "Architecture and narrative direction: Christine John",
+      "production": "AI-assisted production",
+      "sources": "Grounded in PR 966 · RX-17230 · pharmacy-ui branch diff",
+      "startSeconds": 134.3,
+      "durationSeconds": 22.375
+    }
+  ],
+  "narrationAudio": {
+    "kind": "NarrationAudio",
+    "version": "1.0.0",
+    "sourceHash": "ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9",
+    "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
+    "voice": "af_heart",
+    "pauseSeconds": 0.5,
+    "totalDurationSeconds": 156.675,
+    "segments": [
+      {
+        "sceneId": "big-picture",
+        "spokenText": "Users should never be able to act on a Pharmacy screen that is only half loaded. Today, the form can look ready while information it still needs is arriving. The goal of this change is simple: make the open screen predictable before the user clicks.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/big-picture.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 15.825,
+        "startSeconds": 0,
+        "endSeconds": 15.825,
+        "pauseAfterSeconds": 0.5
+      },
+      {
+        "sceneId": "concrete-example",
+        "spokenText": "Here is the concrete legacy pattern. Pick Up stored prescriptions, selected dispense identifiers, loading, and patient context as separate values. But the Submit rule only asked two questions: is loading false, and is at least one identifier selected? Those can be true before the latest complete task response has been verified, so the button can look ready too early.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/concrete-example.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 24.25,
+        "startSeconds": 16.325,
+        "endSeconds": 40.575,
+        "pauseAfterSeconds": 0.5
+      },
+      {
+        "sceneId": "root-cause",
+        "spokenText": "This is not a problem with signals themselves. It is an ownership problem. Several values can tell the screen different stories at the same time. On failure, the screen can also remain a skeleton with no recovery path. There is no single place that can say whether the task is truly ready.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/root-cause.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 18.875,
+        "startSeconds": 41.075,
+        "endSeconds": 59.95,
+        "pauseAfterSeconds": 0.5
+      },
+      {
+        "sceneId": "one-owner",
+        "spokenText": "The new design gives the open task one owner and asks three plain questions. Is the required data loaded? Is this specific task safe to perform? And is a submission already running? Loading has clear outcomes: ready, empty, or error. Related values change together, late responses are ignored, and errors offer Retry. The implementation names are Async Load State, a task workflow store, and a readiness signal. The idea is simply one consistent answer.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/one-owner.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 28.9,
+        "startSeconds": 60.45,
+        "endSeconds": 89.35,
+        "pauseAfterSeconds": 0.5
+      },
+      {
+        "sceneId": "verify",
+        "spokenText": "For Verify, action details must arrive before the form can render. But the button stays disabled until the Original Provider Order is present, validation is complete, required fields are valid, and no submission is running. If the order cannot load, the user gets a clear error and Retry instead of an endless skeleton.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/verify.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 21.075,
+        "startSeconds": 89.85,
+        "endSeconds": 110.925,
+        "pauseAfterSeconds": 0.5
+      },
+      {
+        "sceneId": "fill-dispense",
+        "spokenText": "Fill and Dispense need one additional step. Action details load first, then the medication dispense summary. Only after both are ready do we check the product and barcode, substitution, required fields, and submission state. Missing action or dispense identifiers become a visible not-ready state, not a click that silently does nothing.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/fill-dispense.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 22.375,
+        "startSeconds": 111.425,
+        "endSeconds": 133.8,
+        "pauseAfterSeconds": 0.5
+      },
+      {
+        "sceneId": "outcome",
+        "spokenText": "The result is not more architecture for its own sake. It is a screen that is loading, ready, or recoverable, and a button that is enabled only when it can work. This explanation reflects Christine John's architecture direction and is grounded in pull request nine sixty-six and the Pharmacy UI branch diff. AI assisted with production.",
+        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/outcome.wav",
+        "sampleRate": 24000,
+        "audioDurationSeconds": 22.375,
+        "startSeconds": 134.3,
+        "endSeconds": 156.675,
+        "pauseAfterSeconds": 0
+      }
+    ]
+  },
+  "endSlate": {
+    "staticFile": "brand/oracle/video/Oracle Endslate 2026 Opaque HD.mp4",
+    "durationSeconds": 6,
+    "treatment": "Play the official opaque Oracle end slate unmodified and muted."
+  }
+}

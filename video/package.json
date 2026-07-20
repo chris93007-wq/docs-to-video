@@ -22,7 +22,11 @@
     "build:tdd-jest-v001": "node scripts/build-tdd-jest-launch.mjs",
     "render:tdd-jest-v001": "node scripts/build-tdd-jest-launch.mjs && remotion render src/index.ts TddJestValidationExplainerV001 out/tdd-jest-validation-explainer-v001.mp4 --codec=h264 --pixel-format=yuv420p",
     "build:pharmacy-workflow-v001": "node scripts/build-pharmacy-task-workflow.mjs",
-    "render:pharmacy-workflow-v001": "node scripts/build-pharmacy-task-workflow.mjs && remotion render src/index.ts PharmacyTaskWorkflowExplainerV001 out/pharmacy-task-workflow-explainer-v001.mp4 --codec=h264 --pixel-format=yuv420p"
+    "render:pharmacy-workflow-v001": "node scripts/build-pharmacy-task-workflow.mjs && remotion render src/index.ts PharmacyTaskWorkflowExplainerV001 out/pharmacy-task-workflow-explainer-v001.mp4 --codec=h264 --pixel-format=yuv420p",
+    "build:pharmacy-workflow-v0.2.1": "node scripts/build-pharmacy-task-workflow-v0.2.1.mjs",
+    "render:pharmacy-workflow-v0.2.1": "node scripts/build-pharmacy-task-workflow-v0.2.1.mjs && remotion render src/index.ts PharmacyTaskWorkflowExplainerV021 out/pharmacy-task-workflow-explainer-v0.2.1.mp4 --codec=h264 --pixel-format=yuv420p --color-space=bt709",
+    "build:pharmacy-workflow-v0.2.2": "node scripts/build-pharmacy-task-workflow-v0.2.2.mjs",
+    "render:pharmacy-workflow-v0.2.2": "node scripts/build-pharmacy-task-workflow-v0.2.2.mjs && remotion render src/index.ts PharmacyTaskWorkflowExplainerV022 out/pharmacy-task-workflow-explainer-v0.2.2.mp4 --codec=h264 --pixel-format=yuv420p --color-space=bt709"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.8.1",
