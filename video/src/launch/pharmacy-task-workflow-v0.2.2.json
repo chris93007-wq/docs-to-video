@@ -2,12 +2,12 @@
   "kind": "RenderManifest",
   "version": "1.0.0",
   "renderer": "remotion",
-  "sourceHash": "abde8a6b00b83674733ca75616cb21914fb3734e7f81b0c423f78ab7b3de984f",
-  "narrationSignature": "2d7ec7392b05c0d506cb52c5e7653e86563062c651969f7e59897756bcb67b98",
+  "sourceHash": "edff193e1ccc8c9cb08072102ae0b022172d32512ed79f4d36991d6eaaa8b213",
+  "narrationSignature": "225e344edbe7ae188c32cc034cfc811dd5ecac111fa9d8aa65ae3070df99df8b",
   "narrationSettings": {
     "voice": "af_heart",
     "pauseSeconds": 0.5,
-    "tailPaddingSeconds": 0.4
+    "tailPaddingSeconds": 0.1
   },
   "showcase": "pharmacy-task-workflow-light",
   "launchVersion": "v0.2.2",
@@ -15,8 +15,8 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "narrativeDurationSeconds": 156.675,
-  "totalDurationSeconds": 162.675,
+  "narrativeDurationSeconds": 165.2,
+  "totalDurationSeconds": 171.2,
   "content": {
     "project": {
       "title": "A Pharmacy Screen Should Never Be Half Ready",
@@ -225,7 +225,7 @@
     {
       "id": "big-picture",
       "intendedDurationSeconds": 15,
-      "narration": "Users should never be able to act on a Pharmacy screen that is only half loaded. Today, the form can look ready while information it still needs is arriving. The goal of this change is simple: make the open screen predictable before the user clicks.",
+      "narration": "A Pharmacy screen should never let someone act on it while it's only half loaded. Today, the form can look ready even though the data it actually needs hasn't fully arrived yet. The goal here is simple: make the screen predictable before the user ever clicks.",
       "eyebrow": "THE BIG PICTURE",
       "title": "A Pharmacy screen should never be half ready.",
       "subtitle": "The form and its action must agree about whether the required data is complete.",
@@ -233,12 +233,12 @@
       "missing": "Required task data is still loading",
       "goal": "Predictable before the user clicks",
       "startSeconds": 0,
-      "durationSeconds": 16.325
+      "durationSeconds": 16.125
     },
     {
       "id": "concrete-example",
       "intendedDurationSeconds": 22,
-      "narration": "Here is the concrete legacy pattern. Pick Up stored prescriptions, selected dispense identifiers, loading, and patient context as separate values. But the Submit rule only asked two questions: is loading false, and is at least one identifier selected? Those can be true before the latest complete task response has been verified, so the button can look ready too early.",
+      "narration": "Take Pick Up as it exists today. Prescriptions, the dispense identifiers you've selected, whether things are still loading, even the patient you're working with — all of that lives in its own separate value. And Submit really only asks two things: has loading wrapped up, and have you picked at least one identifier? Both of those can be true before the real task response ever comes back verified, which is exactly how the button ends up looking ready before it actually is.",
       "eyebrow": "A CONCRETE LEGACY EXAMPLE",
       "title": "The button could trust partial state.",
       "subtitle": "Pick Up stored related facts separately, then enabled Submit from only two of them.",
@@ -282,13 +282,13 @@
           }
         ]
       },
-      "startSeconds": 16.325,
-      "durationSeconds": 24.75
+      "startSeconds": 16.125,
+      "durationSeconds": 27.5
     },
     {
       "id": "root-cause",
       "intendedDurationSeconds": 18,
-      "narration": "This is not a problem with signals themselves. It is an ownership problem. Several values can tell the screen different stories at the same time. On failure, the screen can also remain a skeleton with no recovery path. There is no single place that can say whether the task is truly ready.",
+      "narration": "This isn't really a signals problem, it's an ownership problem. Several values can each tell the screen a different story at the same time. And when something fails, the screen can just sit there as a skeleton with no way to recover. There's no single place that gets to say whether the task is actually ready.",
       "eyebrow": "THE ROOT CAUSE",
       "title": "The issue is ownership, not the state library.",
       "subtitle": "Several independent values can tell the screen different stories at the same time.",
@@ -303,13 +303,13 @@
         "Endless skeleton",
         "Silent no-op"
       ],
-      "startSeconds": 41.075,
-      "durationSeconds": 19.375
+      "startSeconds": 43.625,
+      "durationSeconds": 19.475
     },
     {
       "id": "one-owner",
       "intendedDurationSeconds": 25,
-      "narration": "The new design gives the open task one owner and asks three plain questions. Is the required data loaded? Is this specific task safe to perform? And is a submission already running? Loading has clear outcomes: ready, empty, or error. Related values change together, late responses are ignored, and errors offer Retry. The implementation names are Async Load State, a task workflow store, and a readiness signal. The idea is simply one consistent answer.",
+      "narration": "The fix is to give the open task a single owner, and that owner boils everything down to three questions. Has the data actually loaded? Is this particular task safe to act on right now? And is something already mid-submit? Loading only ever lands in one of three places: ready, empty, or error, never stuck in between. Related values move together, a late response can't sneak in and overwrite a newer one, and a failure just means Retry. One owner, one answer.",
       "eyebrow": "THE NEW SOLUTION",
       "title": "One owner. Three plain questions.",
       "subtitle": "The open task has one place that can give the UI a consistent answer.",
@@ -373,13 +373,13 @@
           }
         ]
       },
-      "startSeconds": 60.45,
-      "durationSeconds": 29.4
+      "startSeconds": 63.1,
+      "durationSeconds": 28.225
     },
     {
       "id": "verify",
       "intendedDurationSeconds": 20,
-      "narration": "For Verify, action details must arrive before the form can render. But the button stays disabled until the Original Provider Order is present, validation is complete, required fields are valid, and no submission is running. If the order cannot load, the user gets a clear error and Retry instead of an endless skeleton.",
+      "narration": "Verify can't even render its form until the action details show up. And Submit stays off the table until everything lines up: the Original Provider Order has actually arrived, validation's clean, the required fields hold up, and nothing's mid-submit. If that order fails to load, the pharmacist just gets a clear error and a Retry button, instead of staring at a skeleton that never resolves.",
       "eyebrow": "CASE 1 · VERIFY",
       "title": "Verify separates rendering from action readiness.",
       "subtitle": "The form may render before the Verify button is allowed to act.",
@@ -391,13 +391,13 @@
         "Submission idle"
       ],
       "error": "Order cannot load → error + Retry",
-      "startSeconds": 89.85,
-      "durationSeconds": 21.575
+      "startSeconds": 91.325,
+      "durationSeconds": 25.1
     },
     {
       "id": "fill-dispense",
       "intendedDurationSeconds": 22,
-      "narration": "Fill and Dispense need one additional step. Action details load first, then the medication dispense summary. Only after both are ready do we check the product and barcode, substitution, required fields, and submission state. Missing action or dispense identifiers become a visible not-ready state, not a click that silently does nothing.",
+      "narration": "Fill and Dispense work the same way, with one extra step: action details load first, then the medication dispense summary. Only once both of those are in hand does the screen check whether the product and barcode actually match, whether the substitution's been classified, and whether everything else is in order. Miss an action or dispense identifier, and the pharmacist sees a clear not-ready state, not a click that quietly goes nowhere.",
       "eyebrow": "CASE 2 · FILL / DISPENSE",
       "title": "Fill has two data gates before its business rules.",
       "subtitle": "Each dependency must be ready in sequence; a partial response cannot enable the action.",
@@ -413,13 +413,13 @@
         "Submission idle"
       ],
       "error": "Missing action or dispense ID → visible not-ready state",
-      "startSeconds": 111.425,
-      "durationSeconds": 22.875
+      "startSeconds": 116.42500000000001,
+      "durationSeconds": 26.575
     },
     {
       "id": "outcome",
       "intendedDurationSeconds": 18,
-      "narration": "The result is not more architecture for its own sake. It is a screen that is loading, ready, or recoverable, and a button that is enabled only when it can work. This explanation reflects Christine John's architecture direction and is grounded in pull request nine sixty-six and the Pharmacy UI branch diff. AI assisted with production.",
+      "narration": "None of this is architecture for its own sake. It's a screen that's either loading, ready, or recoverable, and a Submit button that only turns on when it will actually work. This walkthrough follows Christine John's architecture direction, grounded in pull request nine sixty-six and the Pharmacy UI branch diff, with AI assisting on the production.",
       "eyebrow": "THE OUTCOME",
       "title": "Loading, ready, or recoverable—never half ready.",
       "subtitle": "The button is enabled only when the workflow can actually complete.",
@@ -431,87 +431,87 @@
       "credit": "Architecture and narrative direction: Christine John",
       "production": "AI-assisted production",
       "sources": "Grounded in PR 966 · RX-17230 · pharmacy-ui branch diff",
-      "startSeconds": 134.3,
-      "durationSeconds": 22.375
+      "startSeconds": 143,
+      "durationSeconds": 22.2
     }
   ],
   "narrationAudio": {
     "kind": "NarrationAudio",
     "version": "1.0.0",
-    "sourceHash": "ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9",
+    "sourceHash": "061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9",
     "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
     "voice": "af_heart",
     "pauseSeconds": 0.5,
-    "totalDurationSeconds": 156.675,
+    "totalDurationSeconds": 165.2,
     "segments": [
       {
         "sceneId": "big-picture",
-        "spokenText": "Users should never be able to act on a Pharmacy screen that is only half loaded. Today, the form can look ready while information it still needs is arriving. The goal of this change is simple: make the open screen predictable before the user clicks.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/big-picture.wav",
+        "spokenText": "A Pharmacy screen should never let someone act on it while it's only half loaded. Today, the form can look ready even though the data it actually needs hasn't fully arrived yet. The goal here is simple: make the screen predictable before the user ever clicks.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/big-picture.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 15.825,
+        "audioDurationSeconds": 15.625,
         "startSeconds": 0,
-        "endSeconds": 15.825,
+        "endSeconds": 15.625,
         "pauseAfterSeconds": 0.5
       },
       {
         "sceneId": "concrete-example",
-        "spokenText": "Here is the concrete legacy pattern. Pick Up stored prescriptions, selected dispense identifiers, loading, and patient context as separate values. But the Submit rule only asked two questions: is loading false, and is at least one identifier selected? Those can be true before the latest complete task response has been verified, so the button can look ready too early.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/concrete-example.wav",
+        "spokenText": "Take Pick Up as it exists today. Prescriptions, the dispense identifiers you've selected, whether things are still loading, even the patient you're working with — all of that lives in its own separate value. And Submit really only asks two things: has loading wrapped up, and have you picked at least one identifier? Both of those can be true before the real task response ever comes back verified, which is exactly how the button ends up looking ready before it actually is.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/concrete-example.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 24.25,
-        "startSeconds": 16.325,
-        "endSeconds": 40.575,
+        "audioDurationSeconds": 27,
+        "startSeconds": 16.125,
+        "endSeconds": 43.125,
         "pauseAfterSeconds": 0.5
       },
       {
         "sceneId": "root-cause",
-        "spokenText": "This is not a problem with signals themselves. It is an ownership problem. Several values can tell the screen different stories at the same time. On failure, the screen can also remain a skeleton with no recovery path. There is no single place that can say whether the task is truly ready.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/root-cause.wav",
+        "spokenText": "This isn't really a signals problem, it's an ownership problem. Several values can each tell the screen a different story at the same time. And when something fails, the screen can just sit there as a skeleton with no way to recover. There's no single place that gets to say whether the task is actually ready.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/root-cause.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 18.875,
-        "startSeconds": 41.075,
-        "endSeconds": 59.95,
+        "audioDurationSeconds": 18.975,
+        "startSeconds": 43.625,
+        "endSeconds": 62.6,
         "pauseAfterSeconds": 0.5
       },
       {
         "sceneId": "one-owner",
-        "spokenText": "The new design gives the open task one owner and asks three plain questions. Is the required data loaded? Is this specific task safe to perform? And is a submission already running? Loading has clear outcomes: ready, empty, or error. Related values change together, late responses are ignored, and errors offer Retry. The implementation names are Async Load State, a task workflow store, and a readiness signal. The idea is simply one consistent answer.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/one-owner.wav",
+        "spokenText": "The fix is to give the open task a single owner, and that owner boils everything down to three questions. Has the data actually loaded? Is this particular task safe to act on right now? And is something already mid-submit? Loading only ever lands in one of three places: ready, empty, or error, never stuck in between. Related values move together, a late response can't sneak in and overwrite a newer one, and a failure just means Retry. One owner, one answer.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/one-owner.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 28.9,
-        "startSeconds": 60.45,
-        "endSeconds": 89.35,
+        "audioDurationSeconds": 27.725,
+        "startSeconds": 63.1,
+        "endSeconds": 90.825,
         "pauseAfterSeconds": 0.5
       },
       {
         "sceneId": "verify",
-        "spokenText": "For Verify, action details must arrive before the form can render. But the button stays disabled until the Original Provider Order is present, validation is complete, required fields are valid, and no submission is running. If the order cannot load, the user gets a clear error and Retry instead of an endless skeleton.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/verify.wav",
+        "spokenText": "Verify can't even render its form until the action details show up. And Submit stays off the table until everything lines up: the Original Provider Order has actually arrived, validation's clean, the required fields hold up, and nothing's mid-submit. If that order fails to load, the pharmacist just gets a clear error and a Retry button, instead of staring at a skeleton that never resolves.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/verify.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 21.075,
-        "startSeconds": 89.85,
-        "endSeconds": 110.925,
+        "audioDurationSeconds": 24.6,
+        "startSeconds": 91.325,
+        "endSeconds": 115.92500000000001,
         "pauseAfterSeconds": 0.5
       },
       {
         "sceneId": "fill-dispense",
-        "spokenText": "Fill and Dispense need one additional step. Action details load first, then the medication dispense summary. Only after both are ready do we check the product and barcode, substitution, required fields, and submission state. Missing action or dispense identifiers become a visible not-ready state, not a click that silently does nothing.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/fill-dispense.wav",
+        "spokenText": "Fill and Dispense work the same way, with one extra step: action details load first, then the medication dispense summary. Only once both of those are in hand does the screen check whether the product and barcode actually match, whether the substitution's been classified, and whether everything else is in order. Miss an action or dispense identifier, and the pharmacist sees a clear not-ready state, not a click that quietly goes nowhere.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/fill-dispense.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 22.375,
-        "startSeconds": 111.425,
-        "endSeconds": 133.8,
+        "audioDurationSeconds": 26.075,
+        "startSeconds": 116.42500000000001,
+        "endSeconds": 142.5,
         "pauseAfterSeconds": 0.5
       },
       {
         "sceneId": "outcome",
-        "spokenText": "The result is not more architecture for its own sake. It is a screen that is loading, ready, or recoverable, and a button that is enabled only when it can work. This explanation reflects Christine John's architecture direction and is grounded in pull request nine sixty-six and the Pharmacy UI branch diff. AI assisted with production.",
-        "staticFile": "audio/compiler/ec163c588c6139fb129a107d58bf46d33194fcadcf48e9cb4b09fe291427e5d9/outcome.wav",
+        "spokenText": "None of this is architecture for its own sake. It's a screen that's either loading, ready, or recoverable, and a Submit button that only turns on when it will actually work. This walkthrough follows Christine John's architecture direction, grounded in pull request nine sixty-six and the Pharmacy UI branch diff, with AI assisting on the production.",
+        "staticFile": "audio/compiler/061efcf5a54a033a528df667a675e5c81d591eed68c8657273f558683f129bb9/outcome.wav",
         "sampleRate": 24000,
-        "audioDurationSeconds": 22.375,
-        "startSeconds": 134.3,
-        "endSeconds": 156.675,
+        "audioDurationSeconds": 22.2,
+        "startSeconds": 143,
+        "endSeconds": 165.2,
         "pauseAfterSeconds": 0
       }
     ]

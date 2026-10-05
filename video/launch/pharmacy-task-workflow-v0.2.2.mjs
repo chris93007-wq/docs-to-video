@@ -12,43 +12,43 @@ const sceneBlueprints = [
     id: "big-picture",
     intendedDurationSeconds: 15,
     narration:
-      "Users should never be able to act on a Pharmacy screen that is only half loaded. Today, the form can look ready while information it still needs is arriving. The goal of this change is simple: make the open screen predictable before the user clicks.",
+      "A Pharmacy screen should never let someone act on it while it's only half loaded. Today, the form can look ready even though the data it actually needs hasn't fully arrived yet. The goal here is simple: make the screen predictable before the user ever clicks.",
   },
   {
     id: "concrete-example",
     intendedDurationSeconds: 22,
     narration:
-      "Here is the concrete legacy pattern. Pick Up stored prescriptions, selected dispense identifiers, loading, and patient context as separate values. But the Submit rule only asked two questions: is loading false, and is at least one identifier selected? Those can be true before the latest complete task response has been verified, so the button can look ready too early.",
+      "Take Pick Up as it exists today. Prescriptions, the dispense identifiers you've selected, whether things are still loading, even the patient you're working with — all of that lives in its own separate value. And Submit really only asks two things: has loading wrapped up, and have you picked at least one identifier? Both of those can be true before the real task response ever comes back verified, which is exactly how the button ends up looking ready before it actually is.",
   },
   {
     id: "root-cause",
     intendedDurationSeconds: 18,
     narration:
-      "This is not a problem with signals themselves. It is an ownership problem. Several values can tell the screen different stories at the same time. On failure, the screen can also remain a skeleton with no recovery path. There is no single place that can say whether the task is truly ready.",
+      "This isn't really a signals problem, it's an ownership problem. Several values can each tell the screen a different story at the same time. And when something fails, the screen can just sit there as a skeleton with no way to recover. There's no single place that gets to say whether the task is actually ready.",
   },
   {
     id: "one-owner",
     intendedDurationSeconds: 25,
     narration:
-      "The new design gives the open task one owner and asks three plain questions. Is the required data loaded? Is this specific task safe to perform? And is a submission already running? Loading has clear outcomes: ready, empty, or error. Related values change together, late responses are ignored, and errors offer Retry. The implementation names are Async Load State, a task workflow store, and a readiness signal. The idea is simply one consistent answer.",
+      "The fix is to give the open task a single owner, and that owner boils everything down to three questions. Has the data actually loaded? Is this particular task safe to act on right now? And is something already mid-submit? Loading only ever lands in one of three places: ready, empty, or error, never stuck in between. Related values move together, a late response can't sneak in and overwrite a newer one, and a failure just means Retry. One owner, one answer.",
   },
   {
     id: "verify",
     intendedDurationSeconds: 20,
     narration:
-      "For Verify, action details must arrive before the form can render. But the button stays disabled until the Original Provider Order is present, validation is complete, required fields are valid, and no submission is running. If the order cannot load, the user gets a clear error and Retry instead of an endless skeleton.",
+      "Verify can't even render its form until the action details show up. And Submit stays off the table until everything lines up: the Original Provider Order has actually arrived, validation's clean, the required fields hold up, and nothing's mid-submit. If that order fails to load, the pharmacist just gets a clear error and a Retry button, instead of staring at a skeleton that never resolves.",
   },
   {
     id: "fill-dispense",
     intendedDurationSeconds: 22,
     narration:
-      "Fill and Dispense need one additional step. Action details load first, then the medication dispense summary. Only after both are ready do we check the product and barcode, substitution, required fields, and submission state. Missing action or dispense identifiers become a visible not-ready state, not a click that silently does nothing.",
+      "Fill and Dispense work the same way, with one extra step: action details load first, then the medication dispense summary. Only once both of those are in hand does the screen check whether the product and barcode actually match, whether the substitution's been classified, and whether everything else is in order. Miss an action or dispense identifier, and the pharmacist sees a clear not-ready state, not a click that quietly goes nowhere.",
   },
   {
     id: "outcome",
     intendedDurationSeconds: 18,
     narration:
-      "The result is not more architecture for its own sake. It is a screen that is loading, ready, or recoverable, and a button that is enabled only when it can work. This explanation reflects Christine John's architecture direction and is grounded in pull request nine sixty-six and the Pharmacy UI branch diff. AI assisted with production.",
+      "None of this is architecture for its own sake. It's a screen that's either loading, ready, or recoverable, and a Submit button that only turns on when it will actually work. This walkthrough follows Christine John's architecture direction, grounded in pull request nine sixty-six and the Pharmacy UI branch diff, with AI assisting on the production.",
   },
 ];
 
@@ -60,7 +60,7 @@ export const launchPlan = {
   width: 1920,
   height: 1080,
   pauseSeconds: 0.5,
-  tailPaddingSeconds: 0.4,
+  tailPaddingSeconds: 0.1,
   voice: content.format.voice,
   content,
   endSlate: {
